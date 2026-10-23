@@ -1,0 +1,36 @@
+{
+  "name": "android",
+  "link": "tcp:pebble.local:7777",
+  "sensors": {
+    "battery": {"kind": "android"},
+    "temperature": {"kind": "android"},
+    "light": {"kind": "android"},
+    "imu": {"kind": "android"}
+  },
+  "drive": {"max_power": 600, "max_speed_mm_s": 250, "max_move_seconds": 3, "wheel_track_mm": 165, "cpm": 20.7},
+  "tilt": {"min": -35, "max": 90, "rest": 8},
+  "screen": {"width": 3120, "height": 1440, "face_pixels": 32},
+  "firmware_settings": {},
+  "eyes": {
+    "source": "android",
+    "front": {"fov_h_deg": 81.1, "width": 640, "height": 480, "rotate": 0, "mirror": false},
+    "rear": {"fov_h_deg": 71.4, "width": 1280, "height": 960, "rotate": 0, "mirror": false},
+    "tag_size_m": 0.048,
+    "max_fps": 10,
+    "slow": true,
+    "slow_threads": 1,
+    "slow_every_s": 1.0,
+    "slow_keep_s": 3.0,
+    "slow_score": 0.45,
+    "slow_change": 0.06,
+    "floor": true,
+    "floor_gate": "moving",
+    "floor_every_s": 0.2,
+    "floor_threads": 2,
+    "detect": {"backend": "auto", "threads": 2}
+  },
+  "voice": {"kind": "android"},
+  "hearing": {"kind": "android", "listen": true},
+  "power": {"kind": "android", "mode": "rest"},
+  "safety": {"hearing": {"kind": "android", "model": "phone"}, "sensors": "android", "sounder": {"kind": "android"}}
+}

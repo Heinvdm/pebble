@@ -1,0 +1,11 @@
+{
+  "name": "pebble_air",
+  "version": "0.1.0",
+  "description": "BME688 room-air sensor for the Pebble body: Bosch BME68x Sensor API in forced mode behind a bus seam, non-blocking sampling, unit tested on the PC",
+  "dependencies": [
+    { "name": "bme68x" },
+    { "name": "pebble_core" }
+  ],
+  "frameworks": "*",
+  "platforms": "*"
+}

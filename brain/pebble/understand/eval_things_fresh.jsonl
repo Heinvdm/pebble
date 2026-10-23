@@ -1,0 +1,50 @@
+{"id": 1, "group": "command", "core": false, "text": "find the ball no the cat", "expect": {"kind": "find", "thing": "cat"}}
+{"id": 2, "group": "command", "core": false, "text": "pebble go to the um the beanbag", "expect": {"kind": "go_to_thing", "thing": "beanbag"}}
+{"id": 3, "group": "command", "core": false, "text": "pebble can you please please find my dinosaur", "context": {"speaker": "sam", "tier": "child", "present": ["ina", "sam"]}, "expect": {"kind": "find", "thing": "dinosaur"}}
+{"id": 4, "group": "command", "core": true, "text": "look at my drawing pebble", "expect": {"kind": "look", "thing": "drawing"}}
+{"id": 5, "group": "command", "core": true, "text": "go over by the lamp", "expect": {"kind": "go_to_thing", "thing": "lamp"}}
+{"id": 6, "group": "command", "core": true, "text": "find the dog for me please", "expect": {"kind": "find", "thing": "dog"}}
+{"id": 7, "group": "command", "core": false, "text": "pebble walk behind the kitty cat", "context": {"speaker": "sam", "tier": "child", "present": ["ina", "sam"]}, "expect": {"kind": "follow", "thing": "cat"}}
+{"id": 8, "group": "command", "core": false, "text": "my bunny's lost can you find her", "context": {"speaker": "sam", "tier": "child", "present": ["ina", "sam"]}, "expect": {"kind": "find", "thing": "bunny"}}
+{"id": 9, "group": "command", "core": false, "text": "shoot over to the heater", "expect": {"kind": "go_to_thing", "thing": "heater"}}
+{"id": 10, "group": "command", "core": false, "text": "pebble check out my new shoes", "expect": {"kind": "look", "thing": "shoe"}}
+{"id": 11, "group": "command", "core": false, "text": "pebble go up to the christmas tree", "expect": {"kind": "go_to_thing", "thing": "christmas tree"}}
+{"id": 12, "group": "command", "core": false, "text": "pebble look look at the bird", "context": {"speaker": "sam", "tier": "child", "present": ["ina", "sam"]}, "expect": {"kind": "look", "thing": "bird"}}
+{"id": 13, "group": "command", "core": false, "text": "go to the table no the chair", "expect": {"kind": "go_to_thing", "thing": "chair"}}
+{"id": 14, "group": "command", "core": false, "text": "i dropped my wallet somewhere can you look for it", "expect": {"kind": "find", "thing": "wallet"}}
+{"id": 15, "group": "command", "core": true, "text": "pebble go and find the torch", "expect": {"kind": "find", "thing": "torch"}}
+{"id": 16, "group": "command", "core": false, "text": "follow the cat wait no the dog", "expect": {"kind": "follow", "thing": "dog"}}
+{"id": 17, "group": "command", "core": false, "text": "lookit the puppy", "context": {"speaker": "sam", "tier": "child", "present": ["ina", "sam"]}, "expect": {"kind": "look", "thing": "dog"}}
+{"id": 18, "group": "command", "core": true, "text": "please go over to the toy box", "expect": {"kind": "go_to_thing", "thing": "toy box"}}
+{"id": 19, "group": "question", "core": true, "text": "where has the kitty got to", "expect": {"kind": "where_is", "thing": "cat"}}
+{"id": 20, "group": "question", "core": false, "text": "did you see where i left my purse", "expect": {"kind": "where_is", "thing": "purse"}}
+{"id": 21, "group": "question", "core": true, "text": "pebble the dog where is he", "expect": {"kind": "where_is", "thing": "dog"}}
+{"id": 22, "group": "question", "core": false, "text": "pebble do you remember where my scooter is", "context": {"speaker": "sam", "tier": "child", "present": ["ina", "sam"]}, "expect": {"kind": "where_is", "thing": "scooter"}}
+{"id": 23, "group": "question", "core": false, "text": "any sign of the clicker", "expect": {"kind": "where_is", "thing": "remote control"}}
+{"id": 24, "group": "question", "core": true, "text": "what is that thing on the floor", "expect": {"kind": "what_is"}}
+{"id": 25, "group": "question", "core": false, "text": "pebble whats this one called", "context": {"speaker": "sam", "tier": "child", "present": ["ina", "sam"]}, "expect": {"kind": "what_is"}}
+{"id": 26, "group": "question", "core": false, "text": "what's that you've found", "expect": {"kind": "what_is"}}
+{"id": 27, "group": "question", "core": true, "text": "tell me everything you can see", "expect": {"kind": "what_see"}}
+{"id": 28, "group": "question", "core": false, "text": "what's in the room with you", "expect": {"kind": "what_see"}}
+{"id": 29, "group": "not_command", "core": true, "text": "sam come look at the cat", "context": {"present": ["ina", "sam"]}, "expect": {"kind": "chat"}}
+{"id": 30, "group": "not_command", "core": true, "text": "pebble keeps staring at the dog", "expect": {"kind": "chat"}}
+{"id": 31, "group": "not_command", "core": true, "text": "can you recognise a cat", "expect": {"kind": "chat"}}
+{"id": 32, "group": "not_command", "core": false, "text": "do you know what a jandal is", "expect": {"kind": "chat"}}
+{"id": 33, "group": "not_command", "core": false, "text": "i think pebble is scared of the dog", "expect": {"kind": "chat"}}
+{"id": 34, "group": "not_command", "core": false, "text": "mum wheres my hat", "context": {"speaker": "sam", "tier": "child", "present": ["ina", "sam"]}, "expect": {"kind": "chat"}}
+{"id": 35, "group": "not_command", "core": false, "text": "the puppy chewed my takkies", "expect": {"kind": "chat"}}
+{"id": 36, "group": "not_command", "core": false, "text": "can you tell the difference between a cat and a dog", "expect": {"kind": "chat"}}
+{"id": 37, "group": "not_command", "core": false, "text": "look at the size of that spider", "expect": {"kind": "chat"}}
+{"id": 38, "group": "not_command", "core": false, "text": "show me a picture of a giraffe", "expect": {"kind": "other"}}
+{"id": 39, "group": "not_command", "core": false, "text": "is the cat allowed on the couch", "expect": {"kind": "chat"}}
+{"id": 40, "group": "not_command", "core": false, "text": "dad pebble found my sock", "context": {"speaker": "sam", "tier": "child", "present": ["sam", "dad"]}, "expect": {"kind": "chat"}}
+{"id": 41, "group": "not_command", "core": false, "text": "go find your own ball rex", "expect": {"kind": "chat"}}
+{"id": 42, "group": "not_command", "core": true, "text": "i can see the cat from here", "expect": {"kind": "chat"}}
+{"id": 43, "group": "context", "core": true, "text": "pebble go hunt for her", "context": {"recent": ["ina: the cat's hiding somewhere again"]}, "expect": {"kind": "find", "thing": "cat"}}
+{"id": 44, "group": "context", "core": false, "text": "ok forget the cat follow the dog", "context": {"activity": {"kind": "follow", "with": "cat", "by": "ina"}}, "expect": {"kind": "follow", "thing": "dog"}}
+{"id": 45, "group": "context", "core": false, "text": "pebble roll over to him", "context": {"speaker": "sam", "tier": "child", "present": ["sam"], "recent": ["sam: the dogs asleep by the heater"]}, "expect": {"kind": "go_to_thing", "thing": "dog"}}
+{"id": 46, "group": "context", "core": false, "text": "no wait the chair", "context": {"activity": {"kind": "go_to_thing", "with": "couch", "by": "ina"}}, "expect": {"kind": "go_to_thing", "thing": "chair"}}
+{"id": 47, "group": "compound", "core": true, "text": "roll over to the window and look at the birds", "expect": {"kind": "go_to_thing", "thing": "window", "then": [{"kind": "look", "thing": "bird"}]}}
+{"id": 48, "group": "compound", "core": false, "text": "look for the cat and when you find her come tell me", "expect": {"kind": "find", "thing": "cat", "then": [{"kind": "come", "who": "me"}]}}
+{"id": 49, "group": "compound", "core": false, "text": "sniff out my glasses then pop back here", "expect": {"kind": "find", "thing": "glasses", "then": [{"kind": "come", "who": "me"}]}}
+{"id": 50, "group": "compound", "core": false, "text": "look at the fish tank then off to bed with you", "expect": {"kind": "look", "thing": "fish tank", "then": [{"kind": "go_home"}]}}

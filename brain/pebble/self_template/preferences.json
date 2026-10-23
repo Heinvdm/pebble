@@ -1,0 +1,10 @@
+{
+  "format": 1,
+  "quiet_hours": {"start": "22:00", "end": "07:00"},
+  "initiative_minutes": 10,
+  "chaos": {"pinned": null},
+  "favourite_spot": null,
+  "favourite_song": null,
+  "disliked_noises": [],
+  "voice": {"engine": "piper", "pitch_shift": 0.0, "speed": 1.0}
+}

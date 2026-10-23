@@ -1,0 +1,1077 @@
+{
+ "format": 1,
+ "limits": {
+  "steps": 100000,
+  "ms": 50.0,
+  "text": 2000,
+  "items": 500,
+  "depth": 4,
+  "size": 262144,
+  "recursion": 20,
+  "keep": 65536
+ },
+ "vectors": [
+  {
+   "name": "return a value",
+   "source": "ABOUT = \"a conformance test\"\nUSES = [\"do\", \"say\", \"ask\", \"face\", \"draw\", \"chirp\", \"hum\", \"look\", \"dial\", \"tune\"]\nUNTIL = \"ongoing\"\n\ndef double(n):\n    return n * 2\n\n\ndef on_start():\n    say(str(double(4)))\n",
+   "program": {
+    "format": 1,
+    "header": {
+     "ABOUT": "a conformance test",
+     "USES": [
+      "do",
+      "say",
+      "ask",
+      "face",
+      "draw",
+      "chirp",
+      "hum",
+      "look",
+      "dial",
+      "tune"
+     ],
+     "UNTIL": "ongoing"
+    },
+    "globals": [],
+    "funcs": {
+     "double": {
+      "l": 5,
+      "args": [
+       "n"
+      ],
+      "defaults": [],
+      "body": [
+       {
+        "t": "return",
+        "l": 6,
+        "v": {
+         "t": "bin",
+         "op": "*",
+         "a": {
+          "t": "name",
+          "n": "n"
+         },
+         "b": {
+          "t": "const",
+          "v": 2
+         }
+        }
+       }
+      ]
+     },
+     "on_start": {
+      "l": 9,
+      "args": [],
+      "defaults": [],
+      "body": [
+       {
+        "t": "expr",
+        "l": 10,
+        "v": {
+         "t": "call",
+         "l": 10,
+         "f": "say",
+         "args": [
+          {
+           "t": "call",
+           "l": 10,
+           "f": "str",
+           "args": [
+            {
+             "t": "call",
+             "l": 10,
+             "f": "double",
+             "args": [
+              {
+               "t": "const",
+               "v": 4
+              }
+             ],
+             "kw": {}
+            }
+           ],
+           "kw": {}
+          }
+         ],
+         "kw": {}
+        }
+       }
+      ]
+     }
+    },
+    "called": [
+     "say"
+    ]
+   },
+   "limits": {},
+   "runs": [
+    {
+     "handler": "on_start",
+     "args": [],
+     "replies": [],
+     "calls": [
+      {
+       "call": "say",
+       "args": {
+        "text": "8"
+       }
+      }
+     ],
+     "outcome": {
+      "done": true
+     }
+    }
+   ]
+  },
+  {
+   "name": "defaults and keywords",
+   "source": "ABOUT = \"a conformance test\"\nUSES = [\"do\", \"say\", \"ask\", \"face\", \"draw\", \"chirp\", \"hum\", \"look\", \"dial\", \"tune\"]\nUNTIL = \"ongoing\"\n\ndef greet(name, word=\"Hello\"):\n    return f\"{word} {name}\"\n\n\ndef on_start():\n    say(greet(\"Ina\"))\n    say(greet(\"Sam\", word=\"Hi\"))\n",
+   "program": {
+    "format": 1,
+    "header": {
+     "ABOUT": "a conformance test",
+     "USES": [
+      "do",
+      "say",
+      "ask",
+      "face",
+      "draw",
+      "chirp",
+      "hum",
+      "look",
+      "dial",
+      "tune"
+     ],
+     "UNTIL": "ongoing"
+    },
+    "globals": [],
+    "funcs": {
+     "greet": {
+      "l": 5,
+      "args": [
+       "name",
+       "word"
+      ],
+      "defaults": [
+       "Hello"
+      ],
+      "body": [
+       {
+        "t": "return",
+        "l": 6,
+        "v": {
+         "t": "fstr",
+         "parts": [
+          {
+           "n": "word"
+          },
+          " ",
+          {
+           "n": "name"
+          }
+         ]
+        }
+       }
+      ]
+     },
+     "on_start": {
+      "l": 9,
+      "args": [],
+      "defaults": [],
+      "body": [
+       {
+        "t": "expr",
+        "l": 10,
+        "v": {
+         "t": "call",
+         "l": 10,
+         "f": "say",
+         "args": [
+          {
+           "t": "call",
+           "l": 10,
+           "f": "greet",
+           "args": [
+            {
+             "t": "const",
+             "v": "Ina"
+            }
+           ],
+           "kw": {}
+          }
+         ],
+         "kw": {}
+        }
+       },
+       {
+        "t": "expr",
+        "l": 11,
+        "v": {
+         "t": "call",
+         "l": 11,
+         "f": "say",
+         "args": [
+          {
+           "t": "call",
+           "l": 11,
+           "f": "greet",
+           "args": [
+            {
+             "t": "const",
+             "v": "Sam"
+            }
+           ],
+           "kw": {
+            "word": {
+             "t": "const",
+             "v": "Hi"
+            }
+           }
+          }
+         ],
+         "kw": {}
+        }
+       }
+      ]
+     }
+    },
+    "called": [
+     "say"
+    ]
+   },
+   "limits": {},
+   "runs": [
+    {
+     "handler": "on_start",
+     "args": [],
+     "replies": [],
+     "calls": [
+      {
+       "call": "say",
+       "args": {
+        "text": "Hello Ina"
+       }
+      },
+      {
+       "call": "say",
+       "args": {
+        "text": "Hi Sam"
+       }
+      }
+     ],
+     "outcome": {
+      "done": true
+     }
+    }
+   ]
+  },
+  {
+   "name": "a recursive function",
+   "source": "ABOUT = \"a conformance test\"\nUSES = [\"do\", \"say\", \"ask\", \"face\", \"draw\", \"chirp\", \"hum\", \"look\", \"dial\", \"tune\"]\nUNTIL = \"ongoing\"\n\ndef fact(n):\n    if n <= 1:\n        return 1\n    return n * fact(n - 1)\n\n\ndef on_start():\n    say(str(fact(5)))\n",
+   "program": {
+    "format": 1,
+    "header": {
+     "ABOUT": "a conformance test",
+     "USES": [
+      "do",
+      "say",
+      "ask",
+      "face",
+      "draw",
+      "chirp",
+      "hum",
+      "look",
+      "dial",
+      "tune"
+     ],
+     "UNTIL": "ongoing"
+    },
+    "globals": [],
+    "funcs": {
+     "fact": {
+      "l": 5,
+      "args": [
+       "n"
+      ],
+      "defaults": [],
+      "body": [
+       {
+        "t": "if",
+        "l": 6,
+        "c": {
+         "t": "cmp",
+         "a": {
+          "t": "name",
+          "n": "n"
+         },
+         "ops": [
+          "<="
+         ],
+         "bs": [
+          {
+           "t": "const",
+           "v": 1
+          }
+         ]
+        },
+        "then": [
+         {
+          "t": "return",
+          "l": 7,
+          "v": {
+           "t": "const",
+           "v": 1
+          }
+         }
+        ],
+        "else": []
+       },
+       {
+        "t": "return",
+        "l": 8,
+        "v": {
+         "t": "bin",
+         "op": "*",
+         "a": {
+          "t": "name",
+          "n": "n"
+         },
+         "b": {
+          "t": "call",
+          "l": 8,
+          "f": "fact",
+          "args": [
+           {
+            "t": "bin",
+            "op": "-",
+            "a": {
+             "t": "name",
+             "n": "n"
+            },
+            "b": {
+             "t": "const",
+             "v": 1
+            }
+           }
+          ],
+          "kw": {}
+         }
+        }
+       }
+      ]
+     },
+     "on_start": {
+      "l": 11,
+      "args": [],
+      "defaults": [],
+      "body": [
+       {
+        "t": "expr",
+        "l": 12,
+        "v": {
+         "t": "call",
+         "l": 12,
+         "f": "say",
+         "args": [
+          {
+           "t": "call",
+           "l": 12,
+           "f": "str",
+           "args": [
+            {
+             "t": "call",
+             "l": 12,
+             "f": "fact",
+             "args": [
+              {
+               "t": "const",
+               "v": 5
+              }
+             ],
+             "kw": {}
+            }
+           ],
+           "kw": {}
+          }
+         ],
+         "kw": {}
+        }
+       }
+      ]
+     }
+    },
+    "called": [
+     "say"
+    ]
+   },
+   "limits": {},
+   "runs": [
+    {
+     "handler": "on_start",
+     "args": [],
+     "replies": [],
+     "calls": [
+      {
+       "call": "say",
+       "args": {
+        "text": "120"
+       }
+      }
+     ],
+     "outcome": {
+      "done": true
+     }
+    }
+   ]
+  },
+  {
+   "name": "a function with no return gives None",
+   "source": "ABOUT = \"a conformance test\"\nUSES = [\"do\", \"say\", \"ask\", \"face\", \"draw\", \"chirp\", \"hum\", \"look\", \"dial\", \"tune\"]\nUNTIL = \"ongoing\"\n\ndef nothing():\n    x = 1\n\n\ndef on_start():\n    say(str(nothing()))\n",
+   "program": {
+    "format": 1,
+    "header": {
+     "ABOUT": "a conformance test",
+     "USES": [
+      "do",
+      "say",
+      "ask",
+      "face",
+      "draw",
+      "chirp",
+      "hum",
+      "look",
+      "dial",
+      "tune"
+     ],
+     "UNTIL": "ongoing"
+    },
+    "globals": [],
+    "funcs": {
+     "nothing": {
+      "l": 5,
+      "args": [],
+      "defaults": [],
+      "body": [
+       {
+        "t": "assign",
+        "l": 6,
+        "to": {
+         "t": "name",
+         "n": "x"
+        },
+        "v": {
+         "t": "const",
+         "v": 1
+        }
+       }
+      ]
+     },
+     "on_start": {
+      "l": 9,
+      "args": [],
+      "defaults": [],
+      "body": [
+       {
+        "t": "expr",
+        "l": 10,
+        "v": {
+         "t": "call",
+         "l": 10,
+         "f": "say",
+         "args": [
+          {
+           "t": "call",
+           "l": 10,
+           "f": "str",
+           "args": [
+            {
+             "t": "call",
+             "l": 10,
+             "f": "nothing",
+             "args": [],
+             "kw": {}
+            }
+           ],
+           "kw": {}
+          }
+         ],
+         "kw": {}
+        }
+       }
+      ]
+     }
+    },
+    "called": [
+     "say"
+    ]
+   },
+   "limits": {},
+   "runs": [
+    {
+     "handler": "on_start",
+     "args": [],
+     "replies": [],
+     "calls": [
+      {
+       "call": "say",
+       "args": {
+        "text": "None"
+       }
+      }
+     ],
+     "outcome": {
+      "done": true
+     }
+    }
+   ]
+  },
+  {
+   "name": "a helper may call abilities",
+   "source": "ABOUT = \"a conformance test\"\nUSES = [\"do\", \"say\", \"ask\", \"face\", \"draw\", \"chirp\", \"hum\", \"look\", \"dial\", \"tune\"]\nUNTIL = \"ongoing\"\n\ndef tell(word):\n    say(word + \"!\")\n\n\ndef on_start():\n    tell(\"one\")\n    tell(\"two\")\n",
+   "program": {
+    "format": 1,
+    "header": {
+     "ABOUT": "a conformance test",
+     "USES": [
+      "do",
+      "say",
+      "ask",
+      "face",
+      "draw",
+      "chirp",
+      "hum",
+      "look",
+      "dial",
+      "tune"
+     ],
+     "UNTIL": "ongoing"
+    },
+    "globals": [],
+    "funcs": {
+     "tell": {
+      "l": 5,
+      "args": [
+       "word"
+      ],
+      "defaults": [],
+      "body": [
+       {
+        "t": "expr",
+        "l": 6,
+        "v": {
+         "t": "call",
+         "l": 6,
+         "f": "say",
+         "args": [
+          {
+           "t": "bin",
+           "op": "+",
+           "a": {
+            "t": "name",
+            "n": "word"
+           },
+           "b": {
+            "t": "const",
+            "v": "!"
+           }
+          }
+         ],
+         "kw": {}
+        }
+       }
+      ]
+     },
+     "on_start": {
+      "l": 9,
+      "args": [],
+      "defaults": [],
+      "body": [
+       {
+        "t": "expr",
+        "l": 10,
+        "v": {
+         "t": "call",
+         "l": 10,
+         "f": "tell",
+         "args": [
+          {
+           "t": "const",
+           "v": "one"
+          }
+         ],
+         "kw": {}
+        }
+       },
+       {
+        "t": "expr",
+        "l": 11,
+        "v": {
+         "t": "call",
+         "l": 11,
+         "f": "tell",
+         "args": [
+          {
+           "t": "const",
+           "v": "two"
+          }
+         ],
+         "kw": {}
+        }
+       }
+      ]
+     }
+    },
+    "called": [
+     "say"
+    ]
+   },
+   "limits": {},
+   "runs": [
+    {
+     "handler": "on_start",
+     "args": [],
+     "replies": [],
+     "calls": [
+      {
+       "call": "say",
+       "args": {
+        "text": "one!"
+       }
+      },
+      {
+       "call": "say",
+       "args": {
+        "text": "two!"
+       }
+      }
+     ],
+     "outcome": {
+      "done": true
+     }
+    }
+   ]
+  },
+  {
+   "name": "functions read top-level names",
+   "source": "ABOUT = \"a conformance test\"\nUSES = [\"do\", \"say\", \"ask\", \"face\", \"draw\", \"chirp\", \"hum\", \"look\", \"dial\", \"tune\"]\nUNTIL = \"ongoing\"\n\nBASE = 10\n\ndef bigger(n):\n    return BASE + n\n\n\ndef on_start():\n    say(str(bigger(2)))\n",
+   "program": {
+    "format": 1,
+    "header": {
+     "ABOUT": "a conformance test",
+     "USES": [
+      "do",
+      "say",
+      "ask",
+      "face",
+      "draw",
+      "chirp",
+      "hum",
+      "look",
+      "dial",
+      "tune"
+     ],
+     "UNTIL": "ongoing"
+    },
+    "globals": [
+     {
+      "t": "assign",
+      "l": 5,
+      "to": {
+       "t": "name",
+       "n": "BASE"
+      },
+      "v": {
+       "t": "const",
+       "v": 10
+      }
+     }
+    ],
+    "funcs": {
+     "bigger": {
+      "l": 7,
+      "args": [
+       "n"
+      ],
+      "defaults": [],
+      "body": [
+       {
+        "t": "return",
+        "l": 8,
+        "v": {
+         "t": "bin",
+         "op": "+",
+         "a": {
+          "t": "name",
+          "n": "BASE"
+         },
+         "b": {
+          "t": "name",
+          "n": "n"
+         }
+        }
+       }
+      ]
+     },
+     "on_start": {
+      "l": 11,
+      "args": [],
+      "defaults": [],
+      "body": [
+       {
+        "t": "expr",
+        "l": 12,
+        "v": {
+         "t": "call",
+         "l": 12,
+         "f": "say",
+         "args": [
+          {
+           "t": "call",
+           "l": 12,
+           "f": "str",
+           "args": [
+            {
+             "t": "call",
+             "l": 12,
+             "f": "bigger",
+             "args": [
+              {
+               "t": "const",
+               "v": 2
+              }
+             ],
+             "kw": {}
+            }
+           ],
+           "kw": {}
+          }
+         ],
+         "kw": {}
+        }
+       }
+      ]
+     }
+    },
+    "called": [
+     "say"
+    ]
+   },
+   "limits": {},
+   "runs": [
+    {
+     "handler": "on_start",
+     "args": [],
+     "replies": [],
+     "calls": [
+      {
+       "call": "say",
+       "args": {
+        "text": "12"
+       }
+      }
+     ],
+     "outcome": {
+      "done": true
+     }
+    }
+   ]
+  },
+  {
+   "name": "a function changes a list it was given",
+   "source": "ABOUT = \"a conformance test\"\nUSES = [\"do\", \"say\", \"ask\", \"face\", \"draw\", \"chirp\", \"hum\", \"look\", \"dial\", \"tune\"]\nUNTIL = \"ongoing\"\n\ndef add_two(items):\n    items.append(2)\n\n\ndef on_start():\n    a = []\n    add_two(a)\n    say(str(a))\n",
+   "program": {
+    "format": 1,
+    "header": {
+     "ABOUT": "a conformance test",
+     "USES": [
+      "do",
+      "say",
+      "ask",
+      "face",
+      "draw",
+      "chirp",
+      "hum",
+      "look",
+      "dial",
+      "tune"
+     ],
+     "UNTIL": "ongoing"
+    },
+    "globals": [],
+    "funcs": {
+     "add_two": {
+      "l": 5,
+      "args": [
+       "items"
+      ],
+      "defaults": [],
+      "body": [
+       {
+        "t": "expr",
+        "l": 6,
+        "v": {
+         "t": "method",
+         "l": 6,
+         "o": {
+          "t": "name",
+          "n": "items"
+         },
+         "m": "append",
+         "args": [
+          {
+           "t": "const",
+           "v": 2
+          }
+         ]
+        }
+       }
+      ]
+     },
+     "on_start": {
+      "l": 9,
+      "args": [],
+      "defaults": [],
+      "body": [
+       {
+        "t": "assign",
+        "l": 10,
+        "to": {
+         "t": "name",
+         "n": "a"
+        },
+        "v": {
+         "t": "list",
+         "items": []
+        }
+       },
+       {
+        "t": "expr",
+        "l": 11,
+        "v": {
+         "t": "call",
+         "l": 11,
+         "f": "add_two",
+         "args": [
+          {
+           "t": "name",
+           "n": "a"
+          }
+         ],
+         "kw": {}
+        }
+       },
+       {
+        "t": "expr",
+        "l": 12,
+        "v": {
+         "t": "call",
+         "l": 12,
+         "f": "say",
+         "args": [
+          {
+           "t": "call",
+           "l": 12,
+           "f": "str",
+           "args": [
+            {
+             "t": "name",
+             "n": "a"
+            }
+           ],
+           "kw": {}
+          }
+         ],
+         "kw": {}
+        }
+       }
+      ]
+     }
+    },
+    "called": [
+     "say"
+    ]
+   },
+   "limits": {},
+   "runs": [
+    {
+     "handler": "on_start",
+     "args": [],
+     "replies": [],
+     "calls": [
+      {
+       "call": "say",
+       "args": {
+        "text": "[2]"
+       }
+      }
+     ],
+     "outcome": {
+      "done": true
+     }
+    }
+   ]
+  },
+  {
+   "name": "return inside a loop",
+   "source": "ABOUT = \"a conformance test\"\nUSES = [\"do\", \"say\", \"ask\", \"face\", \"draw\", \"chirp\", \"hum\", \"look\", \"dial\", \"tune\"]\nUNTIL = \"ongoing\"\n\ndef first_big(items):\n    for x in items:\n        if x > 3:\n            return x\n    return None\n\n\ndef on_start():\n    say(str(first_big([1, 5, 9])))\n",
+   "program": {
+    "format": 1,
+    "header": {
+     "ABOUT": "a conformance test",
+     "USES": [
+      "do",
+      "say",
+      "ask",
+      "face",
+      "draw",
+      "chirp",
+      "hum",
+      "look",
+      "dial",
+      "tune"
+     ],
+     "UNTIL": "ongoing"
+    },
+    "globals": [],
+    "funcs": {
+     "first_big": {
+      "l": 5,
+      "args": [
+       "items"
+      ],
+      "defaults": [],
+      "body": [
+       {
+        "t": "for",
+        "l": 6,
+        "to": {
+         "t": "name",
+         "n": "x"
+        },
+        "in": {
+         "t": "name",
+         "n": "items"
+        },
+        "body": [
+         {
+          "t": "if",
+          "l": 7,
+          "c": {
+           "t": "cmp",
+           "a": {
+            "t": "name",
+            "n": "x"
+           },
+           "ops": [
+            ">"
+           ],
+           "bs": [
+            {
+             "t": "const",
+             "v": 3
+            }
+           ]
+          },
+          "then": [
+           {
+            "t": "return",
+            "l": 8,
+            "v": {
+             "t": "name",
+             "n": "x"
+            }
+           }
+          ],
+          "else": []
+         }
+        ]
+       },
+       {
+        "t": "return",
+        "l": 9,
+        "v": {
+         "t": "const",
+         "v": null
+        }
+       }
+      ]
+     },
+     "on_start": {
+      "l": 12,
+      "args": [],
+      "defaults": [],
+      "body": [
+       {
+        "t": "expr",
+        "l": 13,
+        "v": {
+         "t": "call",
+         "l": 13,
+         "f": "say",
+         "args": [
+          {
+           "t": "call",
+           "l": 13,
+           "f": "str",
+           "args": [
+            {
+             "t": "call",
+             "l": 13,
+             "f": "first_big",
+             "args": [
+              {
+               "t": "list",
+               "items": [
+                {
+                 "t": "const",
+                 "v": 1
+                },
+                {
+                 "t": "const",
+                 "v": 5
+                },
+                {
+                 "t": "const",
+                 "v": 9
+                }
+               ]
+              }
+             ],
+             "kw": {}
+            }
+           ],
+           "kw": {}
+          }
+         ],
+         "kw": {}
+        }
+       }
+      ]
+     }
+    },
+    "called": [
+     "say"
+    ]
+   },
+   "limits": {},
+   "runs": [
+    {
+     "handler": "on_start",
+     "args": [],
+     "replies": [],
+     "calls": [
+      {
+       "call": "say",
+       "args": {
+        "text": "5"
+       }
+      }
+     ],
+     "outcome": {
+      "done": true
+     }
+    }
+   ]
+  }
+ ]
+}

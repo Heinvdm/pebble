@@ -1,0 +1,100 @@
+{"id": 1, "group": "teach", "core": true, "text": "This is my mug.", "expect": {"kind": "teach", "thing": "cup", "who": "me"}}
+{"id": 2, "group": "teach", "core": true, "text": "This is Sam's ball.", "expect": {"kind": "teach", "thing": "ball", "who": "sam"}}
+{"id": 3, "group": "teach", "core": true, "text": "This is yours.", "expect": {"kind": "teach", "who": "pebble"}}
+{"id": 4, "group": "teach", "core": true, "text": "This one's for you.", "expect": {"kind": "teach", "who": "pebble"}}
+{"id": 5, "group": "teach", "core": true, "text": "You can have this.", "expect": {"kind": "teach", "who": "pebble"}}
+{"id": 6, "group": "teach", "core": true, "text": "This is your ball.", "expect": {"kind": "teach", "thing": "ball", "who": "pebble"}}
+{"id": 7, "group": "teach", "core": true, "text": "It's called Mr Snuggles.", "expect": {"kind": "teach", "name": "mr snuggles"}}
+{"id": 8, "group": "teach", "core": false, "text": "His name is Teddy.", "expect": {"kind": "teach", "name": "teddy"}}
+{"id": 9, "group": "teach", "core": true, "text": "This is my teddy, he's called Bob.", "expect": {"kind": "teach", "thing": "teddy bear", "who": "me", "name": "bob"}}
+{"id": 10, "group": "teach", "core": false, "text": "Pebble, this is my phone.", "expect": {"kind": "teach", "thing": "phone", "who": "me"}}
+{"id": 11, "group": "teach", "core": false, "text": "this is mo's water bottle", "expect": {"kind": "teach", "thing": "water bottle", "who": "mo"}}
+{"id": 12, "group": "teach", "core": true, "text": "These are my keys.", "expect": {"kind": "teach", "thing": "key", "who": "me"}}
+{"id": 13, "group": "teach", "core": false, "text": "This is my favourite cup.", "expect": {"kind": "teach", "thing": "cup", "who": "me"}}
+{"id": 14, "group": "teach", "core": false, "text": "Look Pebble, this is Dad's hat.", "expect": {"kind": "teach", "thing": "hat", "who": "dad"}}
+{"id": 15, "group": "teach", "core": false, "text": "This is Whiskers, she's a cat.", "expect": {"kind": "teach", "thing": "cat", "name": "whiskers"}}
+{"id": 16, "group": "teach", "core": false, "text": "This sofa is mine.", "expect": {"kind": "teach", "thing": "couch", "who": "me"}}
+{"id": 17, "group": "teach", "core": false, "text": "This here is Grandpa's chair.", "expect": {"kind": "teach", "thing": "chair", "who": "grandpa"}}
+{"id": 18, "group": "teach", "core": false, "text": "These are Sam's takkies.", "expect": {"kind": "teach", "thing": "shoe", "who": "sam"}}
+{"id": 19, "group": "teach", "core": false, "text": "This is a remote.", "expect": {"kind": "teach", "thing": "remote control"}}
+{"id": 20, "group": "teach", "core": false, "text": "This is a kiwi.", "expect": {"kind": "teach", "thing": "kiwi"}}
+{"id": 21, "group": "teach", "core": false, "text": "Pebble, meet my teddy, Mr Bear.", "expect": {"kind": "teach", "thing": "teddy bear", "who": "me", "name": "mr bear"}}
+{"id": 22, "group": "teach", "core": false, "text": "This blanket is for you.", "expect": {"kind": "teach", "thing": "blanket", "who": "pebble"}}
+{"id": 23, "group": "teach", "core": false, "text": "Her name's Daisy.", "expect": {"kind": "teach", "name": "daisy"}}
+{"id": 24, "group": "teach", "core": false, "text": "This is my mum's handbag.", "expect": {"kind": "teach", "thing": "bag", "who": "mum"}}
+{"id": 25, "group": "teach", "core": false, "text": "This little guy is called Sir Fluffington.", "expect": {"kind": "teach", "name": "sir fluffington"}}
+{"id": 26, "group": "teach", "core": false, "text": "This mug is Ina's.", "context": {"speaker": "sam", "tier": "child", "present": ["ina", "sam"]}, "expect": {"kind": "teach", "thing": "cup", "who": "ina"}}
+{"id": 27, "group": "teach", "core": false, "text": "This is my plant, her name is Fern.", "expect": {"kind": "teach", "thing": "plant", "who": "me", "name": "fern"}}
+{"id": 28, "group": "teach", "core": false, "text": "I'm going to call it Bubbles.", "expect": {"kind": "teach", "name": "bubbles"}}
+{"id": 29, "group": "teach", "core": false, "text": "The ball's yours, Pebble.", "expect": {"kind": "teach", "thing": "ball", "who": "pebble"}}
+{"id": 30, "group": "teach", "core": false, "text": "These are my specs.", "expect": {"kind": "teach", "thing": "glasses", "who": "me"}}
+{"id": 31, "group": "clarify", "core": true, "text": "It's my mug.", "context": {"pending": {"about": "name", "request": {"kind": "teach"}, "question": "Ooh, a cup? What's it called?"}}, "expect": {"kind": "teach", "thing": "cup", "who": "me"}}
+{"id": 32, "group": "clarify", "core": true, "text": "That's Ina's.", "context": {"speaker": "sam", "present": ["ina", "sam"], "pending": {"about": "name", "request": {"kind": "teach"}, "question": "Ooh, a cup? What's it called?"}}, "expect": {"kind": "teach", "who": "ina"}}
+{"id": 33, "group": "clarify", "core": true, "text": "Bob.", "context": {"pending": {"about": "name", "request": {"kind": "teach"}, "question": "A teddy! What's his name?"}}, "expect": {"kind": "teach", "name": "bob"}}
+{"id": 34, "group": "clarify", "core": true, "text": "No idea.", "context": {"pending": {"about": "name", "request": {"kind": "teach"}, "question": "Ooh, a cup? What's it called?"}}, "expect": {"kind": "chat"}}
+{"id": 35, "group": "clarify", "core": true, "text": "Never mind.", "context": {"pending": {"about": "name", "request": {"kind": "teach"}, "question": "Ooh, a cup? What's it called?"}}, "expect": {"kind": "chat"}}
+{"id": 36, "group": "clarify", "core": false, "text": "It's called Mr Wobbles.", "context": {"pending": {"about": "name", "request": {"kind": "teach"}, "question": "A teddy! What's his name?"}}, "expect": {"kind": "teach", "name": "mr wobbles"}}
+{"id": 37, "group": "clarify", "core": false, "text": "Um, Fluffy I think.", "context": {"pending": {"about": "name", "request": {"kind": "teach"}, "question": "A teddy! What's his name?"}}, "expect": {"kind": "teach", "name": "fluffy"}}
+{"id": 38, "group": "clarify", "core": false, "text": "That's Sam's cup.", "context": {"pending": {"about": "name", "request": {"kind": "teach"}, "question": "Ooh, a cup? What's it called?"}}, "expect": {"kind": "teach", "thing": "cup", "who": "sam"}}
+{"id": 39, "group": "clarify", "core": false, "text": "It's yours now.", "context": {"pending": {"about": "name", "request": {"kind": "teach"}, "question": "Ooh, a cup? What's it called?"}}, "expect": {"kind": "teach", "who": "pebble"}}
+{"id": 40, "group": "clarify", "core": false, "text": "Mine.", "context": {"pending": {"about": "name", "request": {"kind": "teach"}, "question": "Ooh, a cup? What's it called?"}}, "expect": {"kind": "teach", "who": "me"}}
+{"id": 41, "group": "clarify", "core": false, "text": "It doesn't have a name.", "context": {"pending": {"about": "name", "request": {"kind": "teach"}, "question": "A teddy! What's his name?"}}, "expect": {"kind": "chat"}}
+{"id": 42, "group": "clarify", "core": false, "text": "Call him Biscuit.", "context": {"pending": {"about": "name", "request": {"kind": "teach"}, "question": "A teddy! What's his name?"}}, "expect": {"kind": "teach", "name": "biscuit"}}
+{"id": 43, "group": "what_is", "core": true, "text": "What do you call this?", "expect": {"kind": "what_is"}}
+{"id": 44, "group": "what_is", "core": true, "text": "Do you know what this is?", "expect": {"kind": "what_is"}}
+{"id": 45, "group": "what_is", "core": false, "text": "Any idea what this is?", "expect": {"kind": "what_is"}}
+{"id": 46, "group": "what_is", "core": false, "text": "Can you tell me what this is?", "expect": {"kind": "what_is"}}
+{"id": 47, "group": "what_is", "core": false, "text": "What would you call this?", "expect": {"kind": "what_is"}}
+{"id": 48, "group": "what_is", "core": false, "text": "Recognise this?", "expect": {"kind": "what_is"}}
+{"id": 49, "group": "play", "core": true, "text": "Let's play!", "expect": {"kind": "play"}}
+{"id": 50, "group": "play", "core": true, "text": "Want to play?", "expect": {"kind": "play"}}
+{"id": 51, "group": "play", "core": true, "text": "Play with your ball.", "expect": {"kind": "play", "thing": "ball"}}
+{"id": 52, "group": "play", "core": true, "text": "Go chase the ball.", "expect": {"kind": "play", "thing": "ball"}}
+{"id": 53, "group": "play", "core": true, "text": "Pebble, wanna play?", "expect": {"kind": "play"}}
+{"id": 54, "group": "play", "core": false, "text": "Play with the balloon for a bit.", "expect": {"kind": "play", "thing": "balloon"}}
+{"id": 55, "group": "play", "core": false, "text": "Go play with your teddy.", "expect": {"kind": "play", "thing": "teddy bear"}}
+{"id": 56, "group": "play", "core": false, "text": "Chase the bubbles!", "expect": {"kind": "play", "thing": "bubble"}}
+{"id": 57, "group": "play", "core": false, "text": "Let's have a game.", "expect": {"kind": "play"}}
+{"id": 58, "group": "play", "core": false, "text": "Fancy a game of chase?", "expect": {"kind": "play"}}
+{"id": 59, "group": "play", "core": false, "text": "Time to play, Pebble!", "expect": {"kind": "play"}}
+{"id": 60, "group": "play", "core": false, "text": "Play with the cat for a while.", "expect": {"kind": "play", "thing": "cat"}}
+{"id": 61, "group": "play", "core": false, "text": "Go play.", "context": {"activity": {"kind": "wait", "by": "ina"}}, "expect": {"kind": "release"}}
+{"id": 62, "group": "play", "core": false, "text": "Let's play ball.", "expect": {"kind": "play", "thing": "ball"}}
+{"id": 63, "group": "where_am_i", "core": true, "text": "Where are you?", "expect": {"kind": "where_am_i"}}
+{"id": 64, "group": "where_am_i", "core": true, "text": "Which room are you in?", "expect": {"kind": "where_am_i"}}
+{"id": 65, "group": "where_am_i", "core": true, "text": "where are you right now pebble", "expect": {"kind": "where_am_i"}}
+{"id": 66, "group": "where_am_i", "core": false, "text": "Pebble? Where are you, buddy?", "expect": {"kind": "where_am_i"}}
+{"id": 67, "group": "where_am_i", "core": false, "text": "Where've you got to?", "expect": {"kind": "where_am_i"}}
+{"id": 68, "group": "where_am_i", "core": false, "text": "Where are you hiding?", "expect": {"kind": "where_am_i"}}
+{"id": 69, "group": "where_am_i", "core": false, "text": "Tell me where you are.", "expect": {"kind": "where_am_i"}}
+{"id": 70, "group": "where_am_i", "core": false, "text": "Pebble, whereabouts are you?", "expect": {"kind": "where_am_i"}}
+{"id": 71, "group": "pointing", "core": true, "text": "Look at that.", "context": {"pointing": true}, "expect": {"kind": "look", "place": "there"}}
+{"id": 72, "group": "pointing", "core": true, "text": "Look over there.", "context": {"pointing": true}, "expect": {"kind": "look", "place": "there"}}
+{"id": 73, "group": "pointing", "core": false, "text": "Look there.", "context": {"pointing": true}, "expect": {"kind": "look", "place": "there"}}
+{"id": 74, "group": "pointing", "core": true, "text": "Go there.", "context": {"pointing": true}, "expect": {"kind": "go_to_place", "place": "there"}}
+{"id": 75, "group": "pointing", "core": true, "text": "Go over there.", "context": {"pointing": true}, "expect": {"kind": "go_to_place", "place": "there"}}
+{"id": 76, "group": "pointing", "core": false, "text": "Go and have a look over there.", "context": {"pointing": true}, "expect": {"kind": "go_to_place", "place": "there"}}
+{"id": 77, "group": "pointing", "core": true, "text": "Look at that.", "expect": {"kind": "chat"}}
+{"id": 78, "group": "pointing", "core": false, "text": "Can you go over there?", "expect": {"kind": "go_to_place", "ask": "place"}}
+{"id": 79, "group": "pointing", "core": false, "text": "Pebble, look over that way.", "context": {"pointing": true}, "expect": {"kind": "look", "place": "there"}}
+{"id": 80, "group": "pointing", "core": false, "text": "Head over there please.", "context": {"pointing": true}, "expect": {"kind": "go_to_place", "place": "there"}}
+{"id": 81, "group": "pointing", "core": false, "text": "Ooh, look at that!", "context": {"pointing": true}, "expect": {"kind": "look", "place": "there"}}
+{"id": 82, "group": "pointing", "core": false, "text": "go over there and wait", "context": {"pointing": true}, "expect": {"kind": "go_to_place", "place": "there", "then": [{"kind": "wait"}]}}
+{"id": 83, "group": "not_command", "core": true, "text": "This is my favourite song.", "expect": {"kind": "chat"}}
+{"id": 84, "group": "not_command", "core": false, "text": "This is ridiculous.", "expect": {"kind": "chat"}}
+{"id": 85, "group": "not_command", "core": true, "text": "This is Sam.", "context": {"present": ["ina", "sam"]}, "expect": {"kind": "chat"}}
+{"id": 86, "group": "not_command", "core": false, "text": "That's mine, Sam!", "context": {"present": ["ina", "sam"]}, "expect": {"kind": "chat"}}
+{"id": 87, "group": "not_command", "core": true, "text": "Your ball is under the couch.", "expect": {"kind": "chat"}}
+{"id": 88, "group": "not_command", "core": false, "text": "Is this yours, Mo?", "context": {"present": ["ina", "mo"]}, "expect": {"kind": "chat"}}
+{"id": 89, "group": "not_command", "core": true, "text": "I'll play with you later.", "expect": {"kind": "chat"}}
+{"id": 90, "group": "not_command", "core": true, "text": "The cat wants to play.", "expect": {"kind": "chat"}}
+{"id": 91, "group": "not_command", "core": true, "text": "Do you like playing?", "expect": {"kind": "chat"}}
+{"id": 92, "group": "not_command", "core": false, "text": "Where are you off to, Pebble?", "expect": {"kind": "chat"}}
+{"id": 93, "group": "not_command", "core": false, "text": "This is the life.", "expect": {"kind": "chat"}}
+{"id": 94, "group": "not_command", "core": false, "text": "This is my brother Mo.", "context": {"present": ["ina", "mo"]}, "expect": {"kind": "chat"}}
+{"id": 95, "group": "not_command", "core": true, "text": "Let's play later.", "expect": {"kind": "chat"}}
+{"id": 96, "group": "not_command", "core": false, "text": "Play some Johnny Clegg.", "expect": {"kind": "other"}}
+{"id": 97, "group": "not_command", "core": false, "text": "We'll play just now.", "expect": {"kind": "chat"}}
+{"id": 98, "group": "not_command", "core": false, "text": "Sam, this is Pebble.", "context": {"present": ["ina", "sam"]}, "expect": {"kind": "chat"}}
+{"id": 99, "group": "not_command", "core": false, "text": "Can you play chess?", "expect": {"kind": "chat"}}
+{"id": 100, "group": "not_command", "core": false, "text": "Sam never plays with his toys.", "expect": {"kind": "chat"}}

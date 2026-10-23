@@ -1,0 +1,270 @@
+{"id": 1, "group": "command", "core": true, "text": "follow me", "expect": {"kind": "follow", "who": "me"}}
+{"id": 2, "group": "command", "core": true, "text": "Pebble, follow me.", "expect": {"kind": "follow", "who": "me"}}
+{"id": 3, "group": "command", "core": true, "text": "Follow me please, Pebble.", "expect": {"kind": "follow", "who": "me"}}
+{"id": 4, "group": "command", "core": true, "text": "Come with me.", "expect": {"kind": "follow", "who": "me"}}
+{"id": 5, "group": "command", "core": true, "text": "Could you follow me please?", "expect": {"kind": "follow", "who": "me"}}
+{"id": 6, "group": "command", "core": false, "text": "How about you follow me?", "expect": {"kind": "follow", "who": "me"}}
+{"id": 7, "group": "command", "core": false, "text": "Mind tagging along?", "expect": {"kind": "follow", "who": "me"}}
+{"id": 8, "group": "command", "core": false, "text": "Walk with me, Pebble.", "expect": {"kind": "follow", "who": "me"}}
+{"id": 9, "group": "command", "core": false, "text": "Stick with me, ok?", "expect": {"kind": "follow", "who": "me"}}
+{"id": 10, "group": "command", "core": true, "text": "Follow Sam.", "context": {"present": ["ina", "sam"]}, "expect": {"kind": "follow", "who": "sam"}}
+{"id": 11, "group": "command", "core": false, "text": "Can you follow Mo, please?", "context": {"present": ["ina", "mo"]}, "expect": {"kind": "follow", "who": "mo"}}
+{"id": 12, "group": "command", "core": true, "text": "Come here.", "expect": {"kind": "come", "who": "me"}}
+{"id": 13, "group": "command", "core": true, "text": "come here please", "expect": {"kind": "come", "who": "me"}}
+{"id": 14, "group": "command", "core": true, "text": "Pebble, come here.", "expect": {"kind": "come", "who": "me"}}
+{"id": 15, "group": "command", "core": true, "text": "Come over here.", "expect": {"kind": "come", "who": "me"}}
+{"id": 16, "group": "command", "core": true, "text": "Come to me.", "expect": {"kind": "come", "who": "me"}}
+{"id": 17, "group": "command", "core": true, "text": "Can you come here?", "expect": {"kind": "come", "who": "me"}}
+{"id": 18, "group": "command", "core": false, "text": "Will you come here please?", "expect": {"kind": "come", "who": "me"}}
+{"id": 19, "group": "command", "core": false, "text": "Be a dear and come here.", "expect": {"kind": "come", "who": "me"}}
+{"id": 20, "group": "command", "core": false, "text": "You coming?", "expect": {"kind": "come", "who": "me"}}
+{"id": 21, "group": "command", "core": false, "text": "Get over here, Pebble.", "expect": {"kind": "come", "who": "me"}}
+{"id": 22, "group": "command", "core": false, "text": "Come here slowly.", "expect": {"kind": "come", "who": "me", "speed": "slow"}}
+{"id": 23, "group": "command", "core": false, "text": "Go over to Sam, please.", "context": {"present": ["ina", "sam"]}, "expect": {"kind": "come", "who": "sam"}}
+{"id": 24, "group": "command", "core": true, "text": "Wait here.", "expect": {"kind": "wait"}}
+{"id": 25, "group": "command", "core": true, "text": "Stay here.", "expect": {"kind": "wait"}}
+{"id": 26, "group": "command", "core": true, "text": "Stay.", "expect": {"kind": "wait"}}
+{"id": 27, "group": "command", "core": true, "text": "Pebble, wait.", "expect": {"kind": "wait"}}
+{"id": 28, "group": "command", "core": false, "text": "Would you mind waiting here?", "expect": {"kind": "wait"}}
+{"id": 29, "group": "command", "core": false, "text": "I need you to wait here.", "expect": {"kind": "wait"}}
+{"id": 30, "group": "command", "core": false, "text": "Don't move.", "expect": {"kind": "wait"}}
+{"id": 31, "group": "command", "core": false, "text": "Wait for me here.", "expect": {"kind": "wait"}}
+{"id": 32, "group": "command", "core": false, "text": "Wait here for five minutes.", "expect": {"kind": "wait", "seconds": 300}}
+{"id": 33, "group": "command", "core": false, "text": "Wait here for a minute, ok?", "expect": {"kind": "wait", "seconds": 60}}
+{"id": 34, "group": "command", "core": false, "text": "Stay here until I say so.", "expect": {"kind": "wait", "until": "called"}}
+{"id": 35, "group": "command", "core": false, "text": "Wait here till I get back.", "expect": {"kind": "wait", "until": "back"}}
+{"id": 36, "group": "command", "core": false, "text": "Wait for ten seconds.", "expect": {"kind": "wait", "seconds": 10}}
+{"id": 37, "group": "command", "core": true, "text": "Look at me.", "expect": {"kind": "look", "who": "me"}}
+{"id": 38, "group": "command", "core": true, "text": "Look at Sam.", "context": {"present": ["ina", "sam"]}, "expect": {"kind": "look", "who": "sam"}}
+{"id": 39, "group": "command", "core": false, "text": "Look over here at me.", "expect": {"kind": "look", "who": "me"}}
+{"id": 40, "group": "command", "core": false, "text": "Turn to face me.", "expect": {"kind": "look", "who": "me"}}
+{"id": 41, "group": "command", "core": false, "text": "Can you look at me?", "expect": {"kind": "look", "who": "me"}}
+{"id": 42, "group": "command", "core": true, "text": "Back off.", "expect": {"kind": "back_off"}}
+{"id": 43, "group": "command", "core": true, "text": "Give me some space.", "expect": {"kind": "back_off"}}
+{"id": 44, "group": "command", "core": true, "text": "Go away, Pebble.", "expect": {"kind": "back_off"}}
+{"id": 45, "group": "command", "core": false, "text": "Move away from me, please.", "expect": {"kind": "back_off"}}
+{"id": 46, "group": "command", "core": false, "text": "Get out of the way.", "expect": {"kind": "back_off"}}
+{"id": 47, "group": "command", "core": true, "text": "Go home.", "expect": {"kind": "go_home"}}
+{"id": 48, "group": "command", "core": true, "text": "Go to bed.", "expect": {"kind": "go_home"}}
+{"id": 49, "group": "command", "core": true, "text": "Go to sleep, Pebble.", "expect": {"kind": "go_home"}}
+{"id": 50, "group": "command", "core": false, "text": "Back to your charger.", "expect": {"kind": "go_home"}}
+{"id": 51, "group": "command", "core": false, "text": "Go charge yourself.", "expect": {"kind": "go_home"}}
+{"id": 52, "group": "command", "core": false, "text": "Your battery's low, go and charge.", "expect": {"kind": "go_home"}}
+{"id": 53, "group": "command", "core": true, "text": "Go to the kitchen.", "context": {"places": ["kitchen", "lounge", "front door"]}, "expect": {"kind": "go_to_place", "place": "kitchen"}}
+{"id": 54, "group": "command", "core": false, "text": "Head to the lounge please.", "context": {"places": ["kitchen", "lounge", "front door"]}, "expect": {"kind": "go_to_place", "place": "lounge"}}
+{"id": 55, "group": "command", "core": false, "text": "Can you go to the front door?", "context": {"places": ["kitchen", "lounge", "front door"]}, "expect": {"kind": "go_to_place", "place": "front door"}}
+{"id": 56, "group": "command", "core": false, "text": "Go to the kitchen slowly.", "context": {"places": ["kitchen", "lounge", "front door"]}, "expect": {"kind": "go_to_place", "place": "kitchen", "speed": "slow"}}
+{"id": 57, "group": "command", "core": true, "text": "Turn left.", "expect": {"kind": "turn", "way": "left"}}
+{"id": 58, "group": "command", "core": true, "text": "Turn right.", "expect": {"kind": "turn", "way": "right"}}
+{"id": 59, "group": "command", "core": true, "text": "Turn around.", "expect": {"kind": "turn", "way": "around"}}
+{"id": 60, "group": "command", "core": true, "text": "Spin around.", "expect": {"kind": "turn", "way": "around", "degrees": 360}}
+{"id": 61, "group": "command", "core": false, "text": "Do a twirl!", "expect": {"kind": "turn", "way": "around", "degrees": 360}}
+{"id": 62, "group": "command", "core": false, "text": "Turn left a bit.", "expect": {"kind": "turn", "way": "left", "amount": "little"}}
+{"id": 63, "group": "command", "core": false, "text": "Turn right 90 degrees.", "expect": {"kind": "turn", "way": "right", "degrees": 90}}
+{"id": 64, "group": "command", "core": false, "text": "Do a quarter turn to the left.", "expect": {"kind": "turn", "way": "left", "degrees": 90}}
+{"id": 65, "group": "command", "core": false, "text": "Spin around twice.", "expect": {"kind": "turn", "way": "around", "degrees": 720}}
+{"id": 66, "group": "command", "core": true, "text": "Move forward.", "expect": {"kind": "move", "way": "forward"}}
+{"id": 67, "group": "command", "core": false, "text": "Come forward a bit.", "expect": {"kind": "move", "way": "forward", "amount": "little"}}
+{"id": 68, "group": "command", "core": false, "text": "Go backwards a little.", "expect": {"kind": "move", "way": "back", "amount": "little"}}
+{"id": 69, "group": "command", "core": false, "text": "Reverse a bit.", "expect": {"kind": "move", "way": "back", "amount": "little"}}
+{"id": 70, "group": "command", "core": false, "text": "Drive forward half a metre.", "expect": {"kind": "move", "way": "forward", "metres": 0.5}}
+{"id": 71, "group": "command", "core": false, "text": "Go back two metres.", "expect": {"kind": "move", "way": "back", "metres": 2}}
+{"id": 72, "group": "command", "core": true, "text": "You're free to go.", "context": {"activity": {"kind": "wait", "by": "ina"}}, "expect": {"kind": "release"}}
+{"id": 73, "group": "command", "core": true, "text": "Carry on.", "context": {"activity": {"kind": "wait", "by": "ina"}}, "expect": {"kind": "release"}}
+{"id": 74, "group": "command", "core": false, "text": "That's all, thanks.", "context": {"activity": {"kind": "wait", "by": "ina"}}, "expect": {"kind": "release"}}
+{"id": 75, "group": "command", "core": false, "text": "Off you go.", "context": {"activity": {"kind": "wait", "by": "ina"}}, "expect": {"kind": "release"}}
+{"id": 76, "group": "command", "core": true, "text": "Tell me a joke.", "expect": {"kind": "other"}}
+{"id": 77, "group": "command", "core": false, "text": "Draw me a cat.", "expect": {"kind": "other"}}
+{"id": 78, "group": "command", "core": false, "text": "Remember I like tea.", "expect": {"kind": "other"}}
+{"id": 79, "group": "command", "core": false, "text": "Turn the lights off.", "expect": {"kind": "other"}}
+{"id": 80, "group": "command", "core": false, "text": "Play some music, Pebble.", "expect": {"kind": "other"}}
+{"id": 81, "group": "command", "core": false, "text": "Set a timer for ten minutes.", "expect": {"kind": "other"}}
+{"id": 82, "group": "not_command", "core": true, "text": "Don't follow me.", "expect": {"kind": "chat"}}
+{"id": 83, "group": "not_command", "core": true, "text": "Please don't come here.", "expect": {"kind": "chat"}}
+{"id": 84, "group": "not_command", "core": true, "text": "Can you see me?", "expect": {"kind": "chat"}}
+{"id": 85, "group": "not_command", "core": true, "text": "Do you like following people?", "expect": {"kind": "chat"}}
+{"id": 86, "group": "not_command", "core": true, "text": "Can you follow people?", "expect": {"kind": "chat"}}
+{"id": 87, "group": "not_command", "core": true, "text": "Sam keeps following me around.", "context": {"present": ["ina", "sam"]}, "expect": {"kind": "chat"}}
+{"id": 88, "group": "not_command", "core": true, "text": "My dog follows me everywhere.", "expect": {"kind": "chat"}}
+{"id": 89, "group": "not_command", "core": true, "text": "I'll wait for the bus.", "expect": {"kind": "chat"}}
+{"id": 90, "group": "not_command", "core": false, "text": "Come on, really?", "expect": {"kind": "chat"}}
+{"id": 91, "group": "not_command", "core": false, "text": "Come on!", "expect": {"kind": "chat"}}
+{"id": 92, "group": "not_command", "core": false, "text": "Who are you following?", "context": {"activity": {"kind": "follow", "with": "ina", "by": "ina"}}, "expect": {"kind": "chat"}}
+{"id": 93, "group": "not_command", "core": true, "text": "I'm going home now.", "expect": {"kind": "chat"}}
+{"id": 94, "group": "not_command", "core": true, "text": "Ina went to bed.", "context": {"speaker": "sam", "present": ["sam"]}, "expect": {"kind": "chat"}}
+{"id": 95, "group": "not_command", "core": false, "text": "She told me to wait.", "expect": {"kind": "chat"}}
+{"id": 96, "group": "not_command", "core": false, "text": "Never follow strangers.", "expect": {"kind": "chat"}}
+{"id": 97, "group": "not_command", "core": false, "text": "I wonder if it can come up the stairs.", "expect": {"kind": "chat"}}
+{"id": 98, "group": "not_command", "core": true, "text": "Wait, what?", "expect": {"kind": "chat"}}
+{"id": 99, "group": "not_command", "core": false, "text": "Wait, I forgot my keys.", "expect": {"kind": "chat"}}
+{"id": 100, "group": "not_command", "core": false, "text": "Hang on, where's my phone?", "expect": {"kind": "chat"}}
+{"id": 101, "group": "not_command", "core": false, "text": "Look, I'm busy.", "expect": {"kind": "chat"}}
+{"id": 102, "group": "not_command", "core": false, "text": "Look here, mate.", "expect": {"kind": "chat"}}
+{"id": 103, "group": "not_command", "core": false, "text": "Follow me just now.", "expect": {"kind": "chat"}}
+{"id": 104, "group": "not_command", "core": false, "text": "I'll feed you just now.", "expect": {"kind": "chat"}}
+{"id": 105, "group": "not_command", "core": false, "text": "Pebble, come here just now.", "expect": {"kind": "chat"}}
+{"id": 106, "group": "not_command", "core": false, "text": "I'll take you to the kitchen just now.", "context": {"places": ["kitchen", "lounge", "front door"]}, "expect": {"kind": "chat"}}
+{"id": 107, "group": "not_command", "core": false, "text": "Now now, I'm still cooking.", "expect": {"kind": "chat"}}
+{"id": 108, "group": "not_command", "core": true, "text": "Good morning, Pebble.", "expect": {"kind": "chat"}}
+{"id": 109, "group": "not_command", "core": true, "text": "How are you today?", "expect": {"kind": "chat"}}
+{"id": 110, "group": "not_command", "core": true, "text": "What's your name?", "expect": {"kind": "chat"}}
+{"id": 111, "group": "not_command", "core": true, "text": "Thanks, Pebble.", "expect": {"kind": "chat"}}
+{"id": 112, "group": "not_command", "core": false, "text": "You don't need to wait.", "expect": {"kind": "chat"}}
+{"id": 113, "group": "not_command", "core": true, "text": "I don't want you to follow me.", "expect": {"kind": "chat"}}
+{"id": 114, "group": "not_command", "core": false, "text": "I'd rather you didn't follow me.", "expect": {"kind": "chat"}}
+{"id": 115, "group": "not_command", "core": false, "text": "Don't wait up for me.", "expect": {"kind": "chat"}}
+{"id": 116, "group": "not_command", "core": false, "text": "We'll have to wait and see.", "expect": {"kind": "chat"}}
+{"id": 117, "group": "not_command", "core": false, "text": "I can't follow this recipe at all.", "expect": {"kind": "chat"}}
+{"id": 118, "group": "not_command", "core": false, "text": "I'm going to bed, night Pebble.", "expect": {"kind": "chat"}}
+{"id": 119, "group": "not_command", "core": false, "text": "I need to go to the kitchen.", "context": {"places": ["kitchen", "lounge", "front door"]}, "expect": {"kind": "chat"}}
+{"id": 120, "group": "not_command", "core": false, "text": "Sam, come here!", "context": {"present": ["ina", "sam"]}, "expect": {"kind": "chat"}}
+{"id": 121, "group": "not_command", "core": false, "text": "Mo, wait for me!", "context": {"present": ["ina", "mo"]}, "expect": {"kind": "chat"}}
+{"id": 122, "group": "not_command", "core": false, "text": "Did Sam tell you to come here?", "expect": {"kind": "chat"}}
+{"id": 123, "group": "not_command", "core": false, "text": "What does voetsek mean?", "expect": {"kind": "chat"}}
+{"id": 124, "group": "not_command", "core": false, "text": "Oh come on, the wifi's down again.", "expect": {"kind": "chat"}}
+{"id": 125, "group": "not_command", "core": false, "text": "Hold on, that's the door.", "expect": {"kind": "chat"}}
+{"id": 126, "group": "not_command", "core": false, "text": "Mo's waiting outside in the car.", "expect": {"kind": "chat"}}
+{"id": 127, "group": "not_command", "core": false, "text": "Look on the bright side.", "expect": {"kind": "chat"}}
+{"id": 128, "group": "not_command", "core": false, "text": "Why do you follow Sam everywhere?", "expect": {"kind": "chat"}}
+{"id": 129, "group": "not_command", "core": false, "text": "Don't go to bed yet.", "expect": {"kind": "chat"}}
+{"id": 130, "group": "not_command", "core": false, "text": "How fast can you go?", "expect": {"kind": "chat"}}
+{"id": 131, "group": "not_command", "core": false, "text": "Come rain or shine, I walk the dog at six.", "expect": {"kind": "chat"}}
+{"id": 132, "group": "not_command", "core": false, "text": "You don't have to come with me.", "expect": {"kind": "chat"}}
+{"id": 133, "group": "adjust", "core": true, "text": "Slower.", "context": {"activity": {"kind": "follow", "with": "ina", "by": "ina"}}, "expect": {"kind": "adjust", "change": "slower"}}
+{"id": 134, "group": "adjust", "core": true, "text": "Slow down.", "context": {"activity": {"kind": "follow", "with": "ina", "by": "ina"}}, "expect": {"kind": "adjust", "change": "slower"}}
+{"id": 135, "group": "adjust", "core": false, "text": "Not so fast, Pebble.", "context": {"activity": {"kind": "follow", "with": "ina", "by": "ina"}}, "expect": {"kind": "adjust", "change": "slower"}}
+{"id": 136, "group": "adjust", "core": false, "text": "A bit slower please.", "context": {"activity": {"kind": "follow", "with": "ina", "by": "ina"}}, "expect": {"kind": "adjust", "change": "slower"}}
+{"id": 137, "group": "adjust", "core": false, "text": "Whoa, too fast!", "context": {"activity": {"kind": "follow", "with": "ina", "by": "ina"}}, "expect": {"kind": "adjust", "change": "slower"}}
+{"id": 138, "group": "adjust", "core": true, "text": "Faster.", "context": {"activity": {"kind": "follow", "with": "ina", "by": "ina"}}, "expect": {"kind": "adjust", "change": "faster"}}
+{"id": 139, "group": "adjust", "core": true, "text": "Speed up.", "context": {"activity": {"kind": "follow", "with": "ina", "by": "ina"}}, "expect": {"kind": "adjust", "change": "faster"}}
+{"id": 140, "group": "adjust", "core": false, "text": "Hurry up, Pebble.", "context": {"activity": {"kind": "follow", "with": "ina", "by": "ina"}}, "expect": {"kind": "adjust", "change": "faster"}}
+{"id": 141, "group": "adjust", "core": false, "text": "A bit faster, eh.", "context": {"activity": {"kind": "follow", "with": "ina", "by": "ina"}}, "expect": {"kind": "adjust", "change": "faster"}}
+{"id": 142, "group": "adjust", "core": true, "text": "Come closer.", "context": {"activity": {"kind": "follow", "with": "ina", "by": "ina"}}, "expect": {"kind": "adjust", "change": "closer"}}
+{"id": 143, "group": "adjust", "core": false, "text": "A little closer, Pebble.", "context": {"activity": {"kind": "follow", "with": "ina", "by": "ina"}}, "expect": {"kind": "adjust", "change": "closer"}}
+{"id": 144, "group": "adjust", "core": true, "text": "Not so close.", "context": {"activity": {"kind": "follow", "with": "ina", "by": "ina"}}, "expect": {"kind": "adjust", "change": "further"}}
+{"id": 145, "group": "adjust", "core": false, "text": "Give me a bit more room.", "context": {"activity": {"kind": "follow", "with": "ina", "by": "ina"}}, "expect": {"kind": "adjust", "change": "further"}}
+{"id": 146, "group": "adjust", "core": false, "text": "A bit further back.", "context": {"activity": {"kind": "follow", "with": "ina", "by": "ina"}}, "expect": {"kind": "adjust", "change": "further"}}
+{"id": 147, "group": "adjust", "core": false, "text": "Back off a bit.", "context": {"activity": {"kind": "follow", "with": "ina", "by": "ina"}}, "expect": {"kind": "adjust", "change": "further"}}
+{"id": 148, "group": "adjust", "core": false, "text": "You're too close.", "context": {"activity": {"kind": "follow", "with": "ina", "by": "ina"}}, "expect": {"kind": "adjust", "change": "further"}}
+{"id": 149, "group": "adjust", "core": true, "text": "That's far enough.", "context": {"activity": {"kind": "back_off", "with": "ina", "by": "ina"}}, "expect": {"kind": "adjust", "change": "enough"}}
+{"id": 150, "group": "adjust", "core": false, "text": "Ok, that'll do.", "context": {"activity": {"kind": "move", "by": "ina"}}, "expect": {"kind": "adjust", "change": "enough"}}
+{"id": 151, "group": "adjust", "core": true, "text": "Stay there.", "context": {"activity": {"kind": "come", "with": "ina", "by": "ina"}}, "expect": {"kind": "adjust", "change": "stay"}}
+{"id": 152, "group": "adjust", "core": false, "text": "Good, stay there.", "context": {"activity": {"kind": "come", "with": "ina", "by": "ina"}}, "expect": {"kind": "adjust", "change": "stay"}}
+{"id": 153, "group": "adjust", "core": false, "text": "Right there!", "context": {"activity": {"kind": "come", "with": "ina", "by": "ina"}}, "expect": {"kind": "adjust", "change": "stay"}}
+{"id": 154, "group": "adjust", "core": true, "text": "Other way.", "context": {"activity": {"kind": "turn", "by": "ina"}}, "expect": {"kind": "adjust", "change": "other_way"}}
+{"id": 155, "group": "adjust", "core": false, "text": "Wrong way, Pebble.", "context": {"activity": {"kind": "turn", "by": "ina"}}, "expect": {"kind": "adjust", "change": "other_way"}}
+{"id": 156, "group": "adjust", "core": false, "text": "No, the other way.", "context": {"activity": {"kind": "move", "by": "ina"}}, "expect": {"kind": "adjust", "change": "other_way"}}
+{"id": 157, "group": "adjust", "core": true, "text": "Keep going.", "context": {"activity": {"kind": "move", "by": "ina"}}, "expect": {"kind": "adjust", "change": "keep_going"}}
+{"id": 158, "group": "adjust", "core": false, "text": "Go on.", "context": {"activity": {"kind": "move", "by": "ina"}}, "expect": {"kind": "adjust", "change": "keep_going"}}
+{"id": 159, "group": "adjust", "core": false, "text": "Keep coming.", "context": {"activity": {"kind": "come", "with": "ina", "by": "ina"}}, "expect": {"kind": "adjust", "change": "keep_going"}}
+{"id": 160, "group": "adjust", "core": false, "text": "Slow down a bit, you'll bump into something.", "context": {"activity": {"kind": "go_to_place", "by": "ina"}}, "expect": {"kind": "adjust", "change": "slower"}}
+{"id": 161, "group": "compound", "core": true, "text": "Come here and then wait by me.", "expect": {"kind": "come", "who": "me", "then": [{"kind": "wait"}]}}
+{"id": 162, "group": "compound", "core": true, "text": "Wait here until I'm back.", "expect": {"kind": "wait", "until": "back"}}
+{"id": 163, "group": "compound", "core": true, "text": "Spin around then go to bed.", "expect": {"kind": "turn", "way": "around", "degrees": 360, "then": [{"kind": "go_home"}]}}
+{"id": 164, "group": "compound", "core": false, "text": "Turn around and go to bed.", "expect": {"kind": "turn", "way": "around", "then": [{"kind": "go_home"}]}}
+{"id": 165, "group": "compound", "core": false, "text": "Go to the kitchen and wait there.", "context": {"places": ["kitchen", "lounge", "front door"]}, "expect": {"kind": "go_to_place", "place": "kitchen", "then": [{"kind": "wait"}]}}
+{"id": 166, "group": "compound", "core": false, "text": "Look at me and then come here.", "expect": {"kind": "look", "who": "me", "then": [{"kind": "come", "who": "me"}]}}
+{"id": 167, "group": "compound", "core": false, "text": "Go to the lounge, then come back to me.", "context": {"places": ["kitchen", "lounge", "front door"]}, "expect": {"kind": "go_to_place", "place": "lounge", "then": [{"kind": "come", "who": "me"}]}}
+{"id": 168, "group": "compound", "core": false, "text": "Turn left and go forward a bit.", "expect": {"kind": "turn", "way": "left", "then": [{"kind": "move", "way": "forward", "amount": "little"}]}}
+{"id": 169, "group": "compound", "core": false, "text": "Come say hi to Mum, then go to bed.", "context": {"present": ["ina", "mum"]}, "expect": {"kind": "come", "who": "mum", "then": [{"kind": "go_home"}]}}
+{"id": 170, "group": "compound", "core": false, "text": "Wait here for a minute, then come to the kitchen.", "context": {"places": ["kitchen", "lounge", "front door"]}, "expect": {"kind": "wait", "seconds": 60, "then": [{"kind": "go_to_place", "place": "kitchen"}]}}
+{"id": 171, "group": "compound", "core": false, "text": "Go to the front door and wait till I call you.", "context": {"places": ["kitchen", "lounge", "front door"]}, "expect": {"kind": "go_to_place", "place": "front door", "then": [{"kind": "wait", "until": "called"}]}}
+{"id": 172, "group": "compound", "core": false, "text": "Turn right, then turn right again.", "expect": {"kind": "turn", "way": "right", "then": [{"kind": "turn", "way": "right"}]}}
+{"id": 173, "group": "compound", "core": false, "text": "Look at Sam, then look at me.", "context": {"present": ["ina", "sam"]}, "expect": {"kind": "look", "who": "sam", "then": [{"kind": "look", "who": "me"}]}}
+{"id": 174, "group": "compound", "core": false, "text": "Come here quick and then go back to bed.", "expect": {"kind": "come", "who": "me", "speed": "quick", "then": [{"kind": "go_home"}]}}
+{"id": 175, "group": "compound", "core": false, "text": "Reverse a bit, then turn around.", "expect": {"kind": "move", "way": "back", "amount": "little", "then": [{"kind": "turn", "way": "around"}]}}
+{"id": 176, "group": "compound", "core": false, "text": "Go to the kitchen, wait there five minutes, then go home.", "context": {"places": ["kitchen", "lounge", "front door"]}, "expect": {"kind": "go_to_place", "place": "kitchen", "then": [{"kind": "wait", "seconds": 300}, {"kind": "go_home"}]}}
+{"id": 177, "group": "compound", "core": false, "text": "Do a twirl and then come here.", "expect": {"kind": "turn", "way": "around", "degrees": 360, "then": [{"kind": "come", "who": "me"}]}}
+{"id": 178, "group": "context", "core": false, "text": "Follow her.", "context": {"present": ["ina", "sam"]}, "expect": {"kind": "follow", "who": "sam"}}
+{"id": 179, "group": "context", "core": false, "text": "Follow them, Pebble.", "context": {"present": ["ina", "mo"]}, "expect": {"kind": "follow", "who": "mo"}}
+{"id": 180, "group": "context", "core": false, "text": "Go say hi to him.", "context": {"present": ["ina", "sam", "mo"], "recent": ["mo: Sam's back from school!"]}, "expect": {"kind": "come", "who": "sam"}}
+{"id": 181, "group": "context", "core": false, "text": "Look at her.", "context": {"present": ["ina", "mo"]}, "expect": {"kind": "look", "who": "mo"}}
+{"id": 182, "group": "context", "core": false, "text": "Follow them.", "context": {"present": ["ina", "sam", "mo"], "recent": ["mo: Sam's off to the garden"]}, "expect": {"kind": "follow", "who": "sam"}}
+{"id": 183, "group": "context", "core": false, "text": "Go to them.", "context": {"speaker": "sam", "present": ["ina", "sam"]}, "expect": {"kind": "come", "who": "ina"}}
+{"id": 184, "group": "context", "core": true, "text": "Stop following me.", "context": {"activity": {"kind": "follow", "with": "ina", "by": "ina"}}, "expect": {"kind": "stop_activity"}}
+{"id": 185, "group": "context", "core": false, "text": "Quit following me.", "context": {"activity": {"kind": "follow", "with": "ina", "by": "ina"}}, "expect": {"kind": "stop_activity"}}
+{"id": 186, "group": "context", "core": false, "text": "You can stop following now.", "context": {"activity": {"kind": "follow", "with": "ina", "by": "ina"}}, "expect": {"kind": "stop_activity"}}
+{"id": 187, "group": "context", "core": true, "text": "Stop waiting.", "context": {"activity": {"kind": "wait", "by": "ina"}}, "expect": {"kind": "stop_activity"}}
+{"id": 188, "group": "context", "core": false, "text": "Enough waiting.", "context": {"activity": {"kind": "wait", "by": "ina"}}, "expect": {"kind": "stop_activity"}}
+{"id": 189, "group": "context", "core": false, "text": "You can stop now.", "context": {"activity": {"kind": "wait", "by": "ina"}}, "expect": {"kind": "stop_activity"}}
+{"id": 190, "group": "context", "core": false, "text": "You don't need to wait.", "context": {"activity": {"kind": "wait", "by": "ina"}}, "expect": {"kind": "release"}}
+{"id": 191, "group": "context", "core": false, "text": "Keep up!", "context": {"activity": {"kind": "follow", "with": "ina", "by": "ina"}}, "expect": {"kind": "adjust", "change": "faster"}}
+{"id": 192, "group": "context", "core": true, "text": "Closer.", "context": {"activity": {"kind": "follow", "with": "ina", "by": "ina"}}, "expect": {"kind": "adjust", "change": "closer"}}
+{"id": 193, "group": "context", "core": false, "text": "Follow me.", "context": {"speaker": null, "present": ["ina", "sam"]}, "expect": {"kind": "follow", "who": "me", "ask": "speaker"}}
+{"id": 194, "group": "context", "core": false, "text": "Come here, Pebble.", "context": {"speaker": null, "present": ["ina", "sam", "mo"]}, "expect": {"kind": "come", "who": "me", "ask": "speaker"}}
+{"id": 195, "group": "context", "core": false, "text": "Follow me.", "context": {"speaker": null}, "expect": {"kind": "follow", "who": "me"}}
+{"id": 196, "group": "context", "core": false, "text": "Follow Ina.", "context": {"speaker": null, "present": ["ina", "sam"]}, "expect": {"kind": "follow", "who": "ina"}}
+{"id": 197, "group": "context", "core": false, "text": "Pebble, stop.", "context": {"activity": {"kind": "follow", "with": "ina", "by": "ina"}}, "expect": {"kind": "stop_activity"}}
+{"id": 198, "group": "context", "core": false, "text": "Follow him instead.", "context": {"present": ["ina", "sam"], "activity": {"kind": "follow", "with": "ina", "by": "ina"}}, "expect": {"kind": "follow", "who": "sam"}}
+{"id": 199, "group": "context", "core": false, "text": "Come here.", "context": {"activity": {"kind": "follow", "with": "ina", "by": "ina"}}, "expect": {"kind": "come", "who": "me"}}
+{"id": 200, "group": "context", "core": false, "text": "Stay there.", "expect": {"kind": "wait"}}
+{"id": 201, "group": "context", "core": false, "text": "Slow down, Pebble.", "context": {"speaker": "sam", "present": ["ina", "sam"], "activity": {"kind": "follow", "with": "ina", "by": "ina"}}, "expect": {"kind": "adjust", "change": "slower"}}
+{"id": 202, "group": "context", "core": false, "text": "At ease.", "context": {"activity": {"kind": "look", "with": "ina", "by": "ina"}}, "expect": {"kind": "release"}}
+{"id": 203, "group": "context", "core": false, "text": "Never mind, you can stop.", "context": {"activity": {"kind": "come", "with": "ina", "by": "ina"}}, "expect": {"kind": "stop_activity"}}
+{"id": 204, "group": "context", "core": false, "text": "Follow me.", "context": {"speaker": "sam", "tier": "child", "present": ["ina", "sam"]}, "expect": {"kind": "follow", "who": "me"}}
+{"id": 205, "group": "context", "core": false, "text": "Go with her.", "context": {"present": ["ina", "sam"]}, "expect": {"kind": "follow", "who": "sam"}}
+{"id": 206, "group": "clarify", "core": true, "text": "Ina.", "context": {"present": ["ina", "sam"], "pending": {"about": "who", "request": {"kind": "follow"}, "question": "Who should I follow?"}}, "expect": {"kind": "follow", "who": "ina"}}
+{"id": 207, "group": "clarify", "core": false, "text": "Sam, please.", "context": {"present": ["ina", "sam"], "pending": {"about": "who", "request": {"kind": "follow"}, "question": "Who should I follow?"}}, "expect": {"kind": "follow", "who": "sam"}}
+{"id": 208, "group": "clarify", "core": true, "text": "Me.", "context": {"present": ["ina", "sam"], "pending": {"about": "who", "request": {"kind": "follow"}, "question": "Who should I follow?"}}, "expect": {"kind": "follow", "who": "me"}}
+{"id": 209, "group": "clarify", "core": true, "text": "Yes please.", "context": {"pending": {"about": "confirm", "request": {"kind": "come", "who": "me"}, "question": "Come to you?"}}, "expect": {"kind": "come", "who": "me"}}
+{"id": 210, "group": "clarify", "core": false, "text": "Ja.", "context": {"pending": {"about": "confirm", "request": {"kind": "come", "who": "me"}, "question": "Come to you?"}}, "expect": {"kind": "come", "who": "me"}}
+{"id": 211, "group": "clarify", "core": false, "text": "Yep.", "context": {"pending": {"about": "confirm", "request": {"kind": "come", "who": "me"}, "question": "Come to you?"}}, "expect": {"kind": "come", "who": "me"}}
+{"id": 212, "group": "clarify", "core": true, "text": "No.", "context": {"pending": {"about": "confirm", "request": {"kind": "come", "who": "me"}, "question": "Come to you?"}}, "expect": {"kind": "chat"}}
+{"id": 213, "group": "clarify", "core": false, "text": "Nah, never mind.", "context": {"pending": {"about": "confirm", "request": {"kind": "come", "who": "me"}, "question": "Come to you?"}}, "expect": {"kind": "chat"}}
+{"id": 214, "group": "clarify", "core": true, "text": "The kitchen.", "context": {"pending": {"about": "place", "request": {"kind": "go_to_place"}, "question": "Where should I go?"}, "places": ["kitchen", "lounge", "front door"]}, "expect": {"kind": "go_to_place", "place": "kitchen"}}
+{"id": 215, "group": "clarify", "core": false, "text": "Um, the lounge please.", "context": {"pending": {"about": "place", "request": {"kind": "go_to_place"}, "question": "Where should I go?"}, "places": ["kitchen", "lounge", "front door"]}, "expect": {"kind": "go_to_place", "place": "lounge"}}
+{"id": 216, "group": "clarify", "core": false, "text": "What's for dinner?", "context": {"pending": {"about": "place", "request": {"kind": "go_to_place"}, "question": "Where should I go?"}, "places": ["kitchen", "lounge", "front door"]}, "expect": {"kind": "chat"}}
+{"id": 217, "group": "clarify", "core": false, "text": "It's Sam.", "context": {"speaker": null, "present": ["ina", "sam"], "pending": {"about": "speaker", "request": {"kind": "follow", "who": "me"}, "question": "Who's asking?"}}, "expect": {"kind": "follow", "who": "me", "speaker": "sam"}}
+{"id": 218, "group": "clarify", "core": false, "text": "It's me, Ina.", "context": {"speaker": null, "present": ["ina", "sam"], "pending": {"about": "speaker", "request": {"kind": "follow", "who": "me"}, "question": "Who's asking?"}}, "expect": {"kind": "follow", "who": "me", "speaker": "ina"}}
+{"id": 219, "group": "clarify", "core": false, "text": "That was Mo.", "context": {"speaker": null, "present": ["ina", "sam", "mo"], "pending": {"about": "speaker", "request": {"kind": "follow", "who": "me"}, "question": "Who's asking?"}}, "expect": {"kind": "follow", "who": "me", "speaker": "mo"}}
+{"id": 220, "group": "clarify", "core": false, "text": "Actually, just go to bed.", "context": {"present": ["ina", "sam"], "pending": {"about": "who", "request": {"kind": "follow"}, "question": "Who should I follow?"}}, "expect": {"kind": "go_home"}}
+{"id": 221, "group": "clarify", "core": false, "text": "Never mind, wait here.", "context": {"pending": {"about": "place", "request": {"kind": "go_to_place"}, "question": "Where should I go?"}, "places": ["kitchen", "lounge", "front door"]}, "expect": {"kind": "wait"}}
+{"id": 222, "group": "clarify", "core": false, "text": "Never mind.", "context": {"present": ["ina", "sam"], "pending": {"about": "who", "request": {"kind": "follow"}, "question": "Who should I follow?"}}, "expect": {"kind": "chat"}}
+{"id": 223, "group": "clarify", "core": false, "text": "Go over there.", "context": {"places": ["kitchen", "lounge", "front door"]}, "expect": {"kind": "go_to_place", "ask": "place"}}
+{"id": 224, "group": "clarify", "core": false, "text": "Follow her.", "context": {"present": ["ina", "sam", "mo"]}, "expect": {"kind": "follow", "ask": "who"}}
+{"id": 225, "group": "clarify", "core": false, "text": "Look at him.", "context": {"present": ["ina", "sam", "mo"]}, "expect": {"kind": "look", "ask": "who"}}
+{"id": 226, "group": "clarify", "core": false, "text": "Come here.", "context": {"speaker": null, "present": ["ina", "sam"]}, "expect": {"kind": "come", "who": "me", "ask": "speaker"}}
+{"id": 227, "group": "clarify", "core": false, "text": "At Sam.", "context": {"present": ["ina", "sam"], "pending": {"about": "who", "request": {"kind": "look"}, "question": "Who should I look at?"}}, "expect": {"kind": "look", "who": "sam"}}
+{"id": 228, "group": "clarify", "core": false, "text": "Sure.", "context": {"pending": {"about": "confirm", "request": {"kind": "go_home"}, "question": "Back to my charger?"}}, "expect": {"kind": "go_home"}}
+{"id": 229, "group": "clarify", "core": false, "text": "Mum.", "context": {"present": ["ina", "mum", "sam"], "pending": {"about": "who", "request": {"kind": "come"}, "question": "Who should I go to?"}}, "expect": {"kind": "come", "who": "mum"}}
+{"id": 230, "group": "slang", "core": false, "text": "C'mere.", "expect": {"kind": "come", "who": "me"}}
+{"id": 231, "group": "slang", "core": false, "text": "Come 'ere, Pebble.", "expect": {"kind": "come", "who": "me"}}
+{"id": 232, "group": "slang", "core": false, "text": "Gimme some space.", "expect": {"kind": "back_off"}}
+{"id": 233, "group": "slang", "core": false, "text": "Follow along.", "expect": {"kind": "follow", "who": "me"}}
+{"id": 234, "group": "slang", "core": false, "text": "Hop to it.", "context": {"activity": {"kind": "come", "with": "ina", "by": "ina"}}, "expect": {"kind": "adjust", "change": "faster"}}
+{"id": 235, "group": "slang", "core": false, "text": "Voetsek!", "expect": {"kind": "back_off"}}
+{"id": 236, "group": "slang", "core": false, "text": "Bugger off, Pebble.", "expect": {"kind": "back_off"}}
+{"id": 237, "group": "slang", "core": false, "text": "Chur, Pebble.", "expect": {"kind": "chat"}}
+{"id": 238, "group": "slang", "core": false, "text": "Sweet as, carry on.", "context": {"activity": {"kind": "wait", "by": "ina"}}, "expect": {"kind": "release"}}
+{"id": 239, "group": "slang", "core": false, "text": "Lekker, now come here.", "expect": {"kind": "come", "who": "me"}}
+{"id": 240, "group": "slang", "core": false, "text": "Come say hi to Mum.", "context": {"present": ["ina", "mum"]}, "expect": {"kind": "come", "who": "mum"}}
+{"id": 241, "group": "slang", "core": false, "text": "Follow Ina.", "context": {"speaker": "sam", "present": ["ina", "sam"]}, "expect": {"kind": "follow", "who": "ina"}}
+{"id": 242, "group": "slang", "core": false, "text": "Wait till I'm back.", "expect": {"kind": "wait", "until": "back"}}
+{"id": 243, "group": "slang", "core": false, "text": "Hang on there.", "expect": {"kind": "wait"}}
+{"id": 244, "group": "slang", "core": false, "text": "Tag along, Pebble.", "expect": {"kind": "follow", "who": "me"}}
+{"id": 245, "group": "slang", "core": false, "text": "Shadow me.", "expect": {"kind": "follow", "who": "me"}}
+{"id": 246, "group": "slang", "core": false, "text": "Stay put.", "expect": {"kind": "wait"}}
+{"id": 247, "group": "slang", "core": false, "text": "Hold your horses.", "expect": {"kind": "wait"}}
+{"id": 248, "group": "slang", "core": false, "text": "Scoot back.", "expect": {"kind": "back_off"}}
+{"id": 249, "group": "slang", "core": false, "text": "Off to bed with you.", "expect": {"kind": "go_home"}}
+{"id": 250, "group": "slang", "core": false, "text": "Shoo!", "expect": {"kind": "back_off"}}
+{"id": 251, "group": "slang", "core": false, "text": "Sit tight, eh.", "expect": {"kind": "wait"}}
+{"id": 252, "group": "slang", "core": false, "text": "Wait up!", "expect": {"kind": "wait"}}
+{"id": 253, "group": "slang", "core": false, "text": "Eh Pebble, come here quick.", "expect": {"kind": "come", "who": "me", "speed": "quick"}}
+{"id": 254, "group": "slang", "core": false, "text": "Just wait here a tick.", "expect": {"kind": "wait", "seconds": 30}}
+{"id": 255, "group": "slang", "core": false, "text": "Jislaaik, come here.", "expect": {"kind": "come", "who": "me"}}
+{"id": 256, "group": "slang", "core": false, "text": "Howzit, Pebble.", "expect": {"kind": "chat"}}
+{"id": 257, "group": "slang", "core": false, "text": "Kia ora, Pebble.", "expect": {"kind": "chat"}}
+{"id": 258, "group": "slang", "core": false, "text": "Ag man, just follow me.", "expect": {"kind": "follow", "who": "me"}}
+{"id": 259, "group": "slang", "core": false, "text": "Come here, boet.", "expect": {"kind": "come", "who": "me"}}
+{"id": 260, "group": "slang", "core": false, "text": "Shot, bru.", "expect": {"kind": "chat"}}
+{"id": 261, "group": "slang", "core": false, "text": "Follow me, but take it easy.", "expect": {"kind": "follow", "who": "me", "speed": "slow"}}
+{"id": 262, "group": "slang", "core": false, "text": "Eyes on me, Pebble.", "expect": {"kind": "look", "who": "me"}}
+{"id": 263, "group": "slang", "core": false, "text": "Scoot forward.", "expect": {"kind": "move", "way": "forward", "amount": "little"}}
+{"id": 264, "group": "slang", "core": false, "text": "Chop chop, come here.", "expect": {"kind": "come", "who": "me", "speed": "quick"}}
+{"id": 265, "group": "slang", "core": false, "text": "Yeah nah, don't follow me.", "expect": {"kind": "chat"}}
+{"id": 266, "group": "slang", "core": false, "text": "Nah yeah, follow me.", "expect": {"kind": "follow", "who": "me"}}
+{"id": 267, "group": "slang", "core": false, "text": "As you were.", "context": {"activity": {"kind": "wait", "by": "ina"}}, "expect": {"kind": "release"}}
+{"id": 268, "group": "slang", "core": false, "text": "Give us a twirl, Pebble.", "expect": {"kind": "turn", "way": "around", "degrees": 360}}
+{"id": 269, "group": "slang", "core": false, "text": "Pebble, hold on a sec.", "expect": {"kind": "wait", "seconds": 30}}
+{"id": 270, "group": "slang", "core": false, "text": "Bedtime, Pebble.", "expect": {"kind": "go_home"}}

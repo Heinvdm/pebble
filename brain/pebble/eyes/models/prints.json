@@ -1,0 +1,21 @@
+{
+ "model": "facebook/dinov2-small",
+ "revision": "ed25f3a31f01632728cabb09d1542f84ab7b0056",
+ "licence": "Apache-2.0 (DINOv2, Meta)",
+ "mean": [
+  0.485,
+  0.456,
+  0.406
+ ],
+ "std": [
+  0.229,
+  0.224,
+  0.225
+ ],
+ "patch": 14,
+ "outputs": [
+  "cls",
+  "mean"
+ ],
+ "int8": "dynamic, weights QInt8"
+}

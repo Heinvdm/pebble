@@ -1,0 +1,18 @@
+{
+  "format": 1,
+  "scenes": {
+    "night-sky": {"text": "sky night\nstars 30 twinkle\nmoon 24 6 r4 pale\nhill 0 26 32 6 green", "source": "curated", "parent": null, "made_at": null, "about": "night stars moon hill calm", "shown": 0},
+    "rainy-day": {"text": "sky storm\ncloud 3 5 12 white drift\ncloud 18 3 10 pale drift\nrain 40 blue\nlightning 22 yellow", "source": "curated", "parent": null, "made_at": null, "about": "rain storm clouds lightning weather", "shown": 0},
+    "sunny": {"text": "sky day\nsun 6 6 r4 yellow spin\ncloud 18 5 10 white drift\nhill 0 25 32 7 green\nflower 8 26 pink sway\nflower 24 27 yellow sway", "source": "curated", "parent": null, "made_at": null, "about": "sun sunny day flowers happy", "shown": 0},
+    "love": {"text": "sky dusk\nheart 16 14 r6 red pulse\nsparkle 6 6 pink twinkle\nsparkle 26 22 white twinkle\nparticles 20 pink drift", "source": "curated", "parent": null, "made_at": null, "about": "love heart thanks hug", "shown": 0},
+    "sleepy": {"text": "sky night\nstars 20 twinkle\nmoon 8 7 r3 pale\neyes 16 16 sleepy white\nzzz 22 10 white", "source": "curated", "parent": null, "made_at": null, "about": "sleep tired night bed", "shown": 0},
+    "fish-tank": {"text": "waves 0 blue slow\nbubbles 12 white slow\nfish 8 14 yellow drift\nfish 20 22 pink drift\ngrass 29 green sway", "source": "curated", "parent": null, "made_at": null, "about": "fish sea water swim tank", "shown": 0},
+    "party": {"text": "sky space\nfirework 10 8 pink\nfirework 22 6 yellow\nconfetti 40 fast\ntext 4 24 \"YAY!\" white bounce", "source": "curated", "parent": null, "made_at": null, "about": "party birthday celebrate fireworks yay", "shown": 0},
+    "snowy": {"text": "sky dusk\nsnow 30 white slow\nhill 0 24 32 8 white\ntree 8 24 10 green sway\ntree 24 25 8 green sway", "source": "curated", "parent": null, "made_at": null, "about": "snow winter cold trees", "shown": 0},
+    "campfire": {"text": "sky night\nstars 25 twinkle\ngrass 28 green sway\nfire 16 27 8 red\nparticles 10 yellow drift", "source": "curated", "parent": null, "made_at": null, "about": "fire camp night warm cosy", "shown": 0},
+    "seaside": {"text": "sky dawn\nsun 16 16 r5 yellow pulse\nwaves 20 blue slow\nbird 6 6 black drift\nbird 22 4 black drift", "source": "curated", "parent": null, "made_at": null, "about": "sea beach morning birds sunrise", "shown": 0},
+    "music": {"text": "sky dusk\nnote 8 10 white bounce\nnote 20 6 yellow bounce\nnote 26 14 pink bounce\nmouth 16 22 o white", "source": "curated", "parent": null, "made_at": null, "about": "music song sing hum dance", "shown": 0},
+    "rainbow": {"text": "sky day\nrainbow 16 28 r12\ncloud 1 22 8 white\ncloud 23 22 8 white", "source": "curated", "parent": null, "made_at": null, "about": "rainbow colours after rain happy", "shown": 0},
+    "hello": {"text": "sky day\ntext 6 8 \"HELLO\" blue bounce\neyes 16 18 happy black\nmouth 16 24 smile black", "source": "curated", "parent": null, "made_at": null, "about": "hello hi greeting wave welcome", "shown": 0}
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "format": 1,
+  "decks": {
+    "theme": [
+      {"id": "sea-at-night", "text": "the sea at night"},
+      {"id": "first-snow", "text": "the first snow of the year"},
+      {"id": "lost-sock", "text": "a sock that got lost"},
+      {"id": "tiny-garden", "text": "a garden the size of a desk"},
+      {"id": "rainy-window", "text": "rain on a window"},
+      {"id": "space-trip", "text": "a trip to the moon"},
+      {"id": "birthday", "text": "a birthday party"},
+      {"id": "morning-sun", "text": "the sun coming up"},
+      {"id": "campfire", "text": "a campfire story"},
+      {"id": "fish-friend", "text": "a fish who wants a friend"},
+      {"id": "thunder", "text": "a thunderstorm far away"},
+      {"id": "charger", "text": "the charger as a cosy bed"},
+      {"id": "kitchen", "text": "smells from the kitchen"},
+      {"id": "bird-visit", "text": "a bird at the window"},
+      {"id": "dust-bunny", "text": "a dust bunny under the couch"},
+      {"id": "music", "text": "a song stuck in its head"},
+      {"id": "autumn", "text": "leaves falling"},
+      {"id": "lighthouse", "text": "a lighthouse in fog"},
+      {"id": "rainbow", "text": "a rainbow after rain"},
+      {"id": "stars", "text": "counting stars"}
+    ],
+    "constraint": [
+      {"id": "two-colours", "text": "use only two colours"},
+      {"id": "all-move", "text": "make everything move"},
+      {"id": "one-thing", "text": "one small thing in a big empty space"},
+      {"id": "no-sky", "text": "no sky at all"},
+      {"id": "top-half", "text": "keep everything in the top half"},
+      {"id": "a-word", "text": "include one short word"},
+      {"id": "symmetry", "text": "make the left match the right"},
+      {"id": "just-shapes", "text": "only circles, rings and dots"},
+      {"id": "busy", "text": "fill the screen"},
+      {"id": "slow", "text": "everything slow and calm"},
+      {"id": "night-version", "text": "the night-time version"},
+      {"id": "three-lines", "text": "three lines only"},
+      {"id": "a-face", "text": "hide a face in it"},
+      {"id": "bottom-heavy", "text": "everything low, near the ground"},
+      {"id": "one-colour", "text": "one colour plus black"}
+    ],
+    "voice": [
+      {"id": "sports", "text": "like a sports commentator"},
+      {"id": "pirate", "text": "like a sleepy pirate"},
+      {"id": "nature-doc", "text": "like a whispering nature documentary"},
+      {"id": "weather", "text": "like a weather forecast"},
+      {"id": "poem", "text": "as a tiny two-line poem"},
+      {"id": "butler", "text": "like a very polite butler"},
+      {"id": "explorer", "text": "like an explorer who just found something"},
+      {"id": "radio", "text": "like a late-night radio host"},
+      {"id": "chef", "text": "like a proud chef"},
+      {"id": "detective", "text": "like a detective with a clue"},
+      {"id": "haiku", "text": "as a haiku"},
+      {"id": "whisper", "text": "in a whisper, as if it were a secret"}
+    ]
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "name": "bme68x",
+  "version": "4.4.8",
+  "description": "Bosch Sensortec BME68x Sensor API v4.4.8 (github.com/boschsensortec/BME68x_SensorAPI, commit 80ea120a), unmodified",
+  "license": "BSD-3-Clause",
+  "frameworks": "*",
+  "platforms": "*"
+}

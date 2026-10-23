@@ -1,0 +1,16 @@
+{
+  "name": "pc-sim",
+  "link": "tcp:127.0.0.1:7777",
+  "sensors": {
+    "battery": {"kind": "fake", "percent": 80, "charging": false, "drain_per_hour": 6, "temperature_c": 33},
+    "temperature": {"kind": "fake", "celsius": 34},
+    "light": {"kind": "fake", "lux": 180},
+    "imu": {"kind": "none"}
+  },
+  "drive": {"max_power": 600, "max_speed_mm_s": 250, "max_move_seconds": 3, "wheel_track_mm": 165, "cpm": 20.7},
+  "tilt": {"min": -35, "max": 90, "rest": 8},
+  "screen": {"width": 2400, "height": 1080, "face_pixels": 32},
+  "firmware_settings": {},
+  "eyes": {"source": "none"},
+  "power": {"shutdown_command": null}
+}

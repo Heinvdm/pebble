@@ -1,0 +1,13 @@
+{
+  "format": 1,
+  "lists": {},
+  "visitors": {"on": false, "since": null, "by": null},
+  "place": null,
+  "guest_wifi": null,
+  "settings": {"cooking_watch": true, "children_arrivals": false, "guardians": [], "curtains": null},
+  "alarm_log": [],
+  "away": [],
+  "noise": [],
+  "asked": {},
+  "watchers": []
+}

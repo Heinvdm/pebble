@@ -1,0 +1,18 @@
+{
+  "name": "postmarketos",
+  "link": "tcp:pebble.local:7777",
+  "sensors": {
+    "battery": {"kind": "sysfs", "path": "/sys/class/power_supply"},
+    "temperature": {"kind": "auto"},
+    "light": {"kind": "none"},
+    "imu": {"kind": "none"}
+  },
+  "drive": {"max_power": 600, "max_speed_mm_s": 250, "max_move_seconds": 3, "wheel_track_mm": 165, "cpm": 0},
+  "tilt": {"min": -35, "max": 90, "rest": 8},
+  "screen": {"width": 2280, "height": 1080, "face_pixels": 32},
+  "firmware_settings": {},
+  "eyes": {"source": "v4l2", "front": {"device": 0, "fov_h_deg": 70, "width": 640, "height": 480, "rotate": 0, "mirror": false, "height_m": 0.14}, "rear": {"device": 1, "fov_h_deg": 65, "width": 1280, "height": 960, "rotate": 0, "mirror": false, "height_m": 0.14}, "tag_size_m": 0.048, "max_fps": 10, "threads": 2, "slow": true, "slow_threads": 1, "slow_every_s": 1.0, "pose": true, "pose_hz": 5, "prints": true, "print_threads": 2, "hazards": true, "hazard_every_s": 3.0, "hazard_threads": 1, "speaking": true, "speaking_gate": "voice", "speaking_faces": 2, "speaking_threads": 1, "floor": true, "floor_gate": "moving", "floor_every_s": 0.2, "floor_threads": 2, "floor_reach_m": 2.0},
+  "power": {"shutdown_command": ["systemctl", "poweroff"]},
+  "hearing": {"kind": "sherpa", "threads": 2},
+  "safety": {"hearing": {"kind": "command", "command": ["parecord", "--raw", "--format=s16le", "--rate=16000", "--channels=1"], "model": "local"}, "sounder": {"kind": "command", "command": ["paplay"]}, "threaded": true}
+}

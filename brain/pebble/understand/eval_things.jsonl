@@ -1,0 +1,110 @@
+{"id": 1, "group": "command", "core": true, "text": "Look at the ball.", "expect": {"kind": "look", "thing": "ball"}}
+{"id": 2, "group": "command", "core": true, "text": "Look at the cat.", "expect": {"kind": "look", "thing": "cat"}}
+{"id": 3, "group": "command", "core": false, "text": "Pebble, look at the dog.", "expect": {"kind": "look", "thing": "dog"}}
+{"id": 4, "group": "command", "core": false, "text": "Can you look at the telly?", "expect": {"kind": "look", "thing": "tv"}}
+{"id": 5, "group": "command", "core": false, "text": "Have a look at my new takkies.", "expect": {"kind": "look", "thing": "shoe"}}
+{"id": 6, "group": "command", "core": false, "text": "Turn to face the window.", "expect": {"kind": "look", "thing": "window"}}
+{"id": 7, "group": "command", "core": false, "text": "have a squiz at the pot plant", "expect": {"kind": "look", "thing": "plant"}}
+{"id": 8, "group": "command", "core": false, "text": "Have a gander at the fridge, would you?", "expect": {"kind": "look", "thing": "fridge"}}
+{"id": 9, "group": "command", "core": false, "text": "pebble look at the plant pot", "expect": {"kind": "look", "thing": "plant pot"}}
+{"id": 10, "group": "command", "core": true, "text": "Go to the chair.", "expect": {"kind": "go_to_thing", "thing": "chair"}}
+{"id": 11, "group": "command", "core": true, "text": "Go over to the couch.", "expect": {"kind": "go_to_thing", "thing": "couch"}}
+{"id": 12, "group": "command", "core": false, "text": "Roll up to the ball.", "expect": {"kind": "go_to_thing", "thing": "ball"}}
+{"id": 13, "group": "command", "core": true, "text": "Go say hi to the dog.", "expect": {"kind": "go_to_thing", "thing": "dog"}}
+{"id": 14, "group": "command", "core": false, "text": "Come over to the sofa.", "expect": {"kind": "go_to_thing", "thing": "couch"}}
+{"id": 15, "group": "command", "core": false, "text": "Could you go to the fridge, please?", "expect": {"kind": "go_to_thing", "thing": "fridge"}}
+{"id": 16, "group": "command", "core": false, "text": "go over to the settee", "expect": {"kind": "go_to_thing", "thing": "couch"}}
+{"id": 17, "group": "command", "core": false, "text": "Drive up to the bookshelf.", "expect": {"kind": "go_to_thing", "thing": "bookshelf"}}
+{"id": 18, "group": "command", "core": false, "text": "pop over to the tv for me", "expect": {"kind": "go_to_thing", "thing": "tv"}}
+{"id": 19, "group": "command", "core": false, "text": "Head over to the plant.", "expect": {"kind": "go_to_thing", "thing": "plant"}}
+{"id": 20, "group": "command", "core": false, "text": "Scoot over to the bin, bru.", "expect": {"kind": "go_to_thing", "thing": "bin"}}
+{"id": 21, "group": "command", "core": false, "text": "Go and greet the kitty.", "expect": {"kind": "go_to_thing", "thing": "cat"}}
+{"id": 22, "group": "command", "core": true, "text": "Find the cat.", "expect": {"kind": "find", "thing": "cat"}}
+{"id": 23, "group": "command", "core": true, "text": "Can you find my slipper?", "expect": {"kind": "find", "thing": "slipper"}}
+{"id": 24, "group": "command", "core": true, "text": "Look for the ball.", "expect": {"kind": "find", "thing": "ball"}}
+{"id": 25, "group": "command", "core": true, "text": "Go find the remote.", "expect": {"kind": "find", "thing": "remote control"}}
+{"id": 26, "group": "command", "core": true, "text": "Help me find my phone.", "expect": {"kind": "find", "thing": "phone"}}
+{"id": 27, "group": "command", "core": false, "text": "Search for my keys.", "expect": {"kind": "find", "thing": "key"}}
+{"id": 28, "group": "command", "core": false, "text": "See if you can find my glasses.", "expect": {"kind": "find", "thing": "glasses"}}
+{"id": 29, "group": "command", "core": false, "text": "have a look for my specs", "expect": {"kind": "find", "thing": "glasses"}}
+{"id": 30, "group": "command", "core": false, "text": "can u find the clicker", "expect": {"kind": "find", "thing": "remote control"}}
+{"id": 31, "group": "command", "core": false, "text": "Could you find my trainers?", "expect": {"kind": "find", "thing": "shoe"}}
+{"id": 32, "group": "command", "core": false, "text": "pebble find my plakkies", "expect": {"kind": "find", "thing": "jandal"}}
+{"id": 33, "group": "command", "core": false, "text": "Hunt around for my water bottle.", "expect": {"kind": "find", "thing": "water bottle"}}
+{"id": 34, "group": "command", "core": false, "text": "Boet, go look for the puppy.", "expect": {"kind": "find", "thing": "dog"}}
+{"id": 35, "group": "command", "core": false, "text": "Track down the moggy for me.", "expect": {"kind": "find", "thing": "cat"}}
+{"id": 36, "group": "command", "core": true, "text": "Follow the cat.", "expect": {"kind": "follow", "thing": "cat"}}
+{"id": 37, "group": "command", "core": true, "text": "Follow the dog, Pebble.", "expect": {"kind": "follow", "thing": "dog"}}
+{"id": 38, "group": "command", "core": false, "text": "follow that kitten", "expect": {"kind": "follow", "thing": "cat"}}
+{"id": 39, "group": "command", "core": false, "text": "Stick with the dog.", "expect": {"kind": "follow", "thing": "dog"}}
+{"id": 40, "group": "command", "core": false, "text": "Can you follow the puppy around?", "expect": {"kind": "follow", "thing": "dog"}}
+{"id": 41, "group": "question", "core": true, "text": "Where's my slipper?", "expect": {"kind": "where_is", "thing": "slipper"}}
+{"id": 42, "group": "question", "core": true, "text": "Have you seen the ball?", "expect": {"kind": "where_is", "thing": "ball"}}
+{"id": 43, "group": "question", "core": true, "text": "Do you know where the remote is?", "expect": {"kind": "where_is", "thing": "remote control"}}
+{"id": 44, "group": "question", "core": true, "text": "Any idea where my keys are?", "expect": {"kind": "where_is", "thing": "key"}}
+{"id": 45, "group": "question", "core": true, "text": "Where is the cat?", "expect": {"kind": "where_is", "thing": "cat"}}
+{"id": 46, "group": "question", "core": false, "text": "have you seen my mobile anywhere", "expect": {"kind": "where_is", "thing": "phone"}}
+{"id": 47, "group": "question", "core": false, "text": "Seen my jandals?", "expect": {"kind": "where_is", "thing": "jandal"}}
+{"id": 48, "group": "question", "core": false, "text": "Where'd my mug get to?", "expect": {"kind": "where_is", "thing": "cup"}}
+{"id": 49, "group": "question", "core": false, "text": "do you know where my handbag is", "expect": {"kind": "where_is", "thing": "bag"}}
+{"id": 50, "group": "question", "core": false, "text": "Pebble, where did you last see the tennis ball?", "expect": {"kind": "where_is", "thing": "ball"}}
+{"id": 51, "group": "question", "core": true, "text": "What's that?", "expect": {"kind": "what_is"}}
+{"id": 52, "group": "question", "core": true, "text": "What is this?", "expect": {"kind": "what_is"}}
+{"id": 53, "group": "question", "core": false, "text": "What are you looking at?", "expect": {"kind": "what_is"}}
+{"id": 54, "group": "question", "core": false, "text": "whats that thing", "expect": {"kind": "what_is"}}
+{"id": 55, "group": "question", "core": false, "text": "Pebble, what's that over there?", "expect": {"kind": "what_is"}}
+{"id": 56, "group": "question", "core": false, "text": "What do you reckon this is?", "expect": {"kind": "what_is"}}
+{"id": 57, "group": "question", "core": true, "text": "What can you see?", "expect": {"kind": "what_see"}}
+{"id": 58, "group": "question", "core": true, "text": "What do you see?", "expect": {"kind": "what_see"}}
+{"id": 59, "group": "question", "core": false, "text": "Tell me what's in front of you.", "expect": {"kind": "what_see"}}
+{"id": 60, "group": "question", "core": false, "text": "Anything interesting around?", "expect": {"kind": "what_see"}}
+{"id": 61, "group": "question", "core": false, "text": "what can you see from down there", "expect": {"kind": "what_see"}}
+{"id": 62, "group": "question", "core": false, "text": "Describe what you're seeing, Pebble.", "expect": {"kind": "what_see"}}
+{"id": 63, "group": "not_command", "core": true, "text": "I can't find my keys.", "expect": {"kind": "chat"}}
+{"id": 64, "group": "not_command", "core": false, "text": "i lost my phone again", "expect": {"kind": "chat"}}
+{"id": 65, "group": "not_command", "core": true, "text": "The cat is asleep.", "expect": {"kind": "chat"}}
+{"id": 66, "group": "not_command", "core": false, "text": "The dog keeps chasing the ball.", "expect": {"kind": "chat"}}
+{"id": 67, "group": "not_command", "core": true, "text": "The ball is under the couch.", "expect": {"kind": "chat"}}
+{"id": 68, "group": "not_command", "core": true, "text": "What's that noise?", "expect": {"kind": "chat"}}
+{"id": 69, "group": "not_command", "core": false, "text": "what's that smell", "expect": {"kind": "chat"}}
+{"id": 70, "group": "not_command", "core": false, "text": "My slipper is missing.", "expect": {"kind": "chat"}}
+{"id": 71, "group": "not_command", "core": true, "text": "Have you seen the news today?", "expect": {"kind": "chat"}}
+{"id": 72, "group": "not_command", "core": true, "text": "Look at the time!", "expect": {"kind": "chat"}}
+{"id": 73, "group": "not_command", "core": false, "text": "I'm looking for a new couch.", "expect": {"kind": "chat"}}
+{"id": 74, "group": "not_command", "core": false, "text": "Find out what time it is.", "expect": {"kind": "other"}}
+{"id": 75, "group": "not_command", "core": false, "text": "The remote is broken.", "expect": {"kind": "chat"}}
+{"id": 76, "group": "not_command", "core": true, "text": "Don't go near the cat.", "expect": {"kind": "chat"}}
+{"id": 77, "group": "not_command", "core": false, "text": "Leave the ball alone.", "expect": {"kind": "chat"}}
+{"id": 78, "group": "not_command", "core": true, "text": "Can you see colours?", "expect": {"kind": "chat"}}
+{"id": 79, "group": "not_command", "core": true, "text": "Do you like cats?", "expect": {"kind": "chat"}}
+{"id": 80, "group": "not_command", "core": false, "text": "Where's the remote, Sam?", "context": {"present": ["ina", "sam"]}, "expect": {"kind": "chat"}}
+{"id": 81, "group": "not_command", "core": true, "text": "I found my keys!", "expect": {"kind": "chat"}}
+{"id": 82, "group": "not_command", "core": false, "text": "Watch out for the cat.", "expect": {"kind": "chat"}}
+{"id": 83, "group": "not_command", "core": false, "text": "the chairs wobbly", "expect": {"kind": "chat"}}
+{"id": 84, "group": "not_command", "core": false, "text": "Find me a recipe for bobotie.", "expect": {"kind": "other"}}
+{"id": 85, "group": "not_command", "core": false, "text": "Where is the beach?", "expect": {"kind": "chat"}}
+{"id": 86, "group": "not_command", "core": false, "text": "Hey Mo, any idea where my keys are?", "context": {"present": ["ina", "mo"]}, "expect": {"kind": "chat"}}
+{"id": 87, "group": "not_command", "core": false, "text": "Just follow the recipe.", "expect": {"kind": "chat"}}
+{"id": 88, "group": "not_command", "core": false, "text": "Look what the cat dragged in.", "expect": {"kind": "chat"}}
+{"id": 89, "group": "not_command", "core": false, "text": "Can you find things on your own?", "expect": {"kind": "chat"}}
+{"id": 90, "group": "not_command", "core": false, "text": "I'm off to find the cat.", "expect": {"kind": "chat"}}
+{"id": 91, "group": "not_command", "core": false, "text": "Feed the cat, please.", "expect": {"kind": "other"}}
+{"id": 92, "group": "not_command", "core": false, "text": "Turn the telly on.", "expect": {"kind": "other"}}
+{"id": 93, "group": "context", "core": true, "text": "Go to it, Pebble.", "context": {"recent": ["ina: where's the ball?"]}, "expect": {"kind": "go_to_thing", "thing": "ball"}}
+{"id": 94, "group": "context", "core": true, "text": "Can you find them?", "context": {"recent": ["ina: I can't find my keys"]}, "expect": {"kind": "find", "thing": "key"}}
+{"id": 95, "group": "context", "core": false, "text": "Go find it.", "expect": {"kind": "find", "ask": "thing"}}
+{"id": 96, "group": "context", "core": false, "text": "Follow it.", "expect": {"kind": "follow", "ask": "thing"}}
+{"id": 97, "group": "context", "core": false, "text": "Pebble, go say hi to it.", "context": {"present": ["ina", "sam"], "recent": ["sam: Mum, the puppy's in the garden"]}, "expect": {"kind": "go_to_thing", "thing": "dog"}}
+{"id": 98, "group": "context", "core": false, "text": "Pebble, can you find it?", "context": {"speaker": "sam", "tier": "child", "present": ["ina", "sam", "mo"], "recent": ["mo: Sam left his teddy bear somewhere"]}, "expect": {"kind": "find", "thing": "teddy bear"}}
+{"id": 99, "group": "context", "core": false, "text": "What's that?", "context": {"recent": ["ina: where's the ball?"]}, "expect": {"kind": "what_is"}}
+{"id": 100, "group": "context", "core": false, "text": "Follow the cat instead.", "context": {"activity": {"kind": "follow", "with": "ina", "by": "ina"}}, "expect": {"kind": "follow", "thing": "cat"}}
+{"id": 101, "group": "context", "core": false, "text": "You can stop looking now, I found it.", "context": {"activity": {"kind": "find", "with": "ball", "by": "ina"}}, "expect": {"kind": "stop_activity"}}
+{"id": 102, "group": "context", "core": false, "text": "Look at the doggo.", "context": {"speaker": null, "present": ["ina", "sam"]}, "expect": {"kind": "look", "thing": "dog"}}
+{"id": 103, "group": "compound", "core": true, "text": "Find the ball and then come back to me.", "expect": {"kind": "find", "thing": "ball", "then": [{"kind": "come", "who": "me"}]}}
+{"id": 104, "group": "compound", "core": true, "text": "Go to the couch and wait there.", "expect": {"kind": "go_to_thing", "thing": "couch", "then": [{"kind": "wait"}]}}
+{"id": 105, "group": "compound", "core": false, "text": "Look at the cat, then look at me.", "expect": {"kind": "look", "thing": "cat", "then": [{"kind": "look", "who": "me"}]}}
+{"id": 106, "group": "compound", "core": false, "text": "Find my slipper, then go to bed.", "expect": {"kind": "find", "thing": "slipper", "then": [{"kind": "go_home"}]}}
+{"id": 107, "group": "compound", "core": false, "text": "Go say hi to the dog and then come here.", "expect": {"kind": "go_to_thing", "thing": "dog", "then": [{"kind": "come", "who": "me"}]}}
+{"id": 108, "group": "compound", "core": false, "text": "Turn around and look at the fridge.", "expect": {"kind": "turn", "way": "around", "then": [{"kind": "look", "thing": "fridge"}]}}
+{"id": 109, "group": "compound", "core": false, "text": "Go to the kitchen and find the cat.", "context": {"places": ["kitchen", "lounge", "front door"]}, "expect": {"kind": "go_to_place", "place": "kitchen", "then": [{"kind": "find", "thing": "cat"}]}}
+{"id": 110, "group": "compound", "core": false, "text": "Come here and look at the telly.", "expect": {"kind": "come", "who": "me", "then": [{"kind": "look", "thing": "tv"}]}}

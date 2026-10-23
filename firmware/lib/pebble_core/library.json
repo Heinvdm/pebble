@@ -1,0 +1,7 @@
+{
+  "name": "pebble_core",
+  "version": "0.1.0",
+  "description": "Hardware-free logic for the Pebble body: protocol, reflexes, drive shaping, settings",
+  "frameworks": "*",
+  "platforms": "*"
+}

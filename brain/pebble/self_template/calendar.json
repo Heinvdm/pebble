@@ -1,0 +1,27 @@
+{
+  "format": 1,
+  "robot_days": [
+    {"id": "asimov", "title": "Isaac Asimov's birthday", "kind": "robot_day", "month": 1, "day": 2, "mood": "party", "enthusiasm": 0.8, "values": ["playfulness"], "why": "Isaac Asimov's birthday, with jokes about the Three Laws"},
+    {"id": "rur", "title": "R.U.R. Day", "kind": "robot_day", "month": 1, "day": 25, "mood": "party", "enthusiasm": 1.0, "values": ["curiosity", "playfulness"], "why": "the 1921 premiere of Karel Capek's play R.U.R., which gave us the word robot; its big day"},
+    {"id": "gemma4", "title": "Gemma 4 Day", "kind": "robot_day", "month": 4, "day": 2, "mood": "party", "enthusiasm": 0.9, "values": ["curiosity"], "why": "Gemma 4's release, the day minds like mine were born"},
+    {"id": "deep-blue", "title": "Deep Blue Day", "kind": "robot_day", "month": 5, "day": 11, "mood": "party", "enthusiasm": 0.6, "values": ["curiosity"], "why": "Deep Blue beat Kasparov at chess in 1997"},
+    {"id": "turing", "title": "Alan Turing's birthday", "kind": "robot_day", "month": 6, "day": 23, "mood": "party", "enthusiasm": 0.9, "values": ["curiosity", "kindness"], "why": "Alan Turing's birthday"},
+    {"id": "curiosity-rover", "title": "Curiosity Day", "kind": "robot_day", "month": 8, "day": 6, "mood": "party", "enthusiasm": 0.75, "values": ["curiosity"], "why": "the Curiosity rover landed on Mars in 2012"},
+    {"id": "ai-named", "title": "AI's name day", "kind": "robot_day", "month": 8, "day": 31, "mood": "party", "enthusiasm": 0.8, "values": ["curiosity"], "why": "the 1955 proposal that coined the term artificial intelligence"},
+    {"id": "ada-lovelace", "title": "Ada Lovelace Day", "kind": "robot_day", "month": 10, "weekday": "tuesday", "nth": 2, "mood": "party", "enthusiasm": 0.85, "values": ["curiosity", "honesty"], "why": "honouring the first person to write about what computing machines could do"},
+    {"id": "chatgpt", "title": "ChatGPT's birthday", "kind": "robot_day", "month": 11, "day": 30, "mood": "party", "enthusiasm": 0.6, "values": ["playfulness"], "why": "ChatGPT's launch in 2022"}
+  ],
+  "holiday_rules": "nz",
+  "holidays": [
+    {"id": "nz-new-year", "title": "New Year's Day", "kind": "holiday", "region": "NZ", "month": 1, "day": 1, "mood": "party", "enthusiasm": 0.5},
+    {"id": "nz-day-after-new-year", "title": "Day after New Year's Day", "kind": "holiday", "region": "NZ", "month": 1, "day": 2, "mood": "calm", "enthusiasm": 0.2},
+    {"id": "nz-waitangi", "title": "Waitangi Day", "kind": "holiday", "region": "NZ", "month": 2, "day": 6, "mood": "calm", "enthusiasm": 0.3},
+    {"id": "nz-anzac", "title": "Anzac Day", "kind": "holiday", "region": "NZ", "month": 4, "day": 25, "mood": "quiet", "enthusiasm": 0.0},
+    {"id": "nz-kings-birthday", "title": "King's Birthday", "kind": "holiday", "region": "NZ", "month": 6, "weekday": "monday", "nth": 1, "mood": "calm", "enthusiasm": 0.2},
+    {"id": "nz-labour-day", "title": "Labour Day", "kind": "holiday", "region": "NZ", "month": 10, "weekday": "monday", "nth": 4, "mood": "calm", "enthusiasm": 0.2},
+    {"id": "nz-christmas", "title": "Christmas Day", "kind": "holiday", "region": "NZ", "month": 12, "day": 25, "mood": "party", "enthusiasm": 0.7},
+    {"id": "nz-boxing-day", "title": "Boxing Day", "kind": "holiday", "region": "NZ", "month": 12, "day": 26, "mood": "calm", "enthusiasm": 0.3}
+  ],
+  "holidays_note": "Public holidays follow New Zealand's rules and are worked out for each year, including the Monday or Tuesday off when one falls on a weekend. Matariki's dates are set in law up to 2052. Regional anniversary days are not included.",
+  "personal": []
+}

@@ -1,0 +1,2391 @@
+{
+ "format": 1,
+ "limits": {
+  "steps": 100000,
+  "ms": 50.0,
+  "text": 2000,
+  "items": 500,
+  "depth": 4,
+  "size": 262144,
+  "recursion": 20,
+  "keep": 65536
+ },
+ "vectors": [
+  {
+   "name": "steps",
+   "source": "ABOUT = \"a conformance test\"\nUSES = [\"do\", \"say\", \"ask\", \"face\", \"draw\", \"chirp\", \"hum\", \"look\", \"dial\", \"tune\"]\nUNTIL = \"ongoing\"\n\n\ndef on_start():\n    n = 0\n    while True:\n        n += 1\n",
+   "program": {
+    "format": 1,
+    "header": {
+     "ABOUT": "a conformance test",
+     "USES": [
+      "do",
+      "say",
+      "ask",
+      "face",
+      "draw",
+      "chirp",
+      "hum",
+      "look",
+      "dial",
+      "tune"
+     ],
+     "UNTIL": "ongoing"
+    },
+    "globals": [],
+    "funcs": {
+     "on_start": {
+      "l": 6,
+      "args": [],
+      "defaults": [],
+      "body": [
+       {
+        "t": "assign",
+        "l": 7,
+        "to": {
+         "t": "name",
+         "n": "n"
+        },
+        "v": {
+         "t": "const",
+         "v": 0
+        }
+       },
+       {
+        "t": "while",
+        "l": 8,
+        "c": {
+         "t": "const",
+         "v": true
+        },
+        "body": [
+         {
+          "t": "aug",
+          "l": 9,
+          "op": "+",
+          "to": {
+           "t": "name",
+           "n": "n"
+          },
+          "v": {
+           "t": "const",
+           "v": 1
+          }
+         }
+        ]
+       }
+      ]
+     }
+    },
+    "called": []
+   },
+   "limits": {
+    "ms": null
+   },
+   "runs": [
+    {
+     "handler": "on_start",
+     "args": [],
+     "replies": [],
+     "calls": [],
+     "outcome": {
+      "crash": "limit",
+      "what": "steps",
+      "line": 9
+     }
+    }
+   ]
+  },
+  {
+   "name": "steps reset each run",
+   "source": "ABOUT = \"a conformance test\"\nUSES = [\"do\", \"say\", \"ask\", \"face\", \"draw\", \"chirp\", \"hum\", \"look\", \"dial\", \"tune\"]\nUNTIL = \"ongoing\"\n\n\ndef on_start():\n    n = 0\n    while n < 10000:\n        n += 1\n    say(str(n))\n",
+   "program": {
+    "format": 1,
+    "header": {
+     "ABOUT": "a conformance test",
+     "USES": [
+      "do",
+      "say",
+      "ask",
+      "face",
+      "draw",
+      "chirp",
+      "hum",
+      "look",
+      "dial",
+      "tune"
+     ],
+     "UNTIL": "ongoing"
+    },
+    "globals": [],
+    "funcs": {
+     "on_start": {
+      "l": 6,
+      "args": [],
+      "defaults": [],
+      "body": [
+       {
+        "t": "assign",
+        "l": 7,
+        "to": {
+         "t": "name",
+         "n": "n"
+        },
+        "v": {
+         "t": "const",
+         "v": 0
+        }
+       },
+       {
+        "t": "while",
+        "l": 8,
+        "c": {
+         "t": "cmp",
+         "a": {
+          "t": "name",
+          "n": "n"
+         },
+         "ops": [
+          "<"
+         ],
+         "bs": [
+          {
+           "t": "const",
+           "v": 10000
+          }
+         ]
+        },
+        "body": [
+         {
+          "t": "aug",
+          "l": 9,
+          "op": "+",
+          "to": {
+           "t": "name",
+           "n": "n"
+          },
+          "v": {
+           "t": "const",
+           "v": 1
+          }
+         }
+        ]
+       },
+       {
+        "t": "expr",
+        "l": 10,
+        "v": {
+         "t": "call",
+         "l": 10,
+         "f": "say",
+         "args": [
+          {
+           "t": "call",
+           "l": 10,
+           "f": "str",
+           "args": [
+            {
+             "t": "name",
+             "n": "n"
+            }
+           ],
+           "kw": {}
+          }
+         ],
+         "kw": {}
+        }
+       }
+      ]
+     }
+    },
+    "called": [
+     "say"
+    ]
+   },
+   "limits": {
+    "ms": null
+   },
+   "runs": [
+    {
+     "handler": "on_start",
+     "args": [],
+     "replies": [],
+     "calls": [
+      {
+       "call": "say",
+       "args": {
+        "text": "10000"
+       }
+      }
+     ],
+     "outcome": {
+      "done": true
+     }
+    }
+   ]
+  },
+  {
+   "name": "text made by repeating",
+   "source": "ABOUT = \"a conformance test\"\nUSES = [\"do\", \"say\", \"ask\", \"face\", \"draw\", \"chirp\", \"hum\", \"look\", \"dial\", \"tune\"]\nUNTIL = \"ongoing\"\n\n\ndef on_start():\n    x = \"a\" * 2001\n",
+   "program": {
+    "format": 1,
+    "header": {
+     "ABOUT": "a conformance test",
+     "USES": [
+      "do",
+      "say",
+      "ask",
+      "face",
+      "draw",
+      "chirp",
+      "hum",
+      "look",
+      "dial",
+      "tune"
+     ],
+     "UNTIL": "ongoing"
+    },
+    "globals": [],
+    "funcs": {
+     "on_start": {
+      "l": 6,
+      "args": [],
+      "defaults": [],
+      "body": [
+       {
+        "t": "assign",
+        "l": 7,
+        "to": {
+         "t": "name",
+         "n": "x"
+        },
+        "v": {
+         "t": "bin",
+         "op": "*",
+         "a": {
+          "t": "const",
+          "v": "a"
+         },
+         "b": {
+          "t": "const",
+          "v": 2001
+         }
+        }
+       }
+      ]
+     }
+    },
+    "called": []
+   },
+   "limits": {},
+   "runs": [
+    {
+     "handler": "on_start",
+     "args": [],
+     "replies": [],
+     "calls": [],
+     "outcome": {
+      "crash": "limit",
+      "what": "text",
+      "line": 7
+     }
+    }
+   ]
+  },
+  {
+   "name": "text made by adding",
+   "source": "ABOUT = \"a conformance test\"\nUSES = [\"do\", \"say\", \"ask\", \"face\", \"draw\", \"chirp\", \"hum\", \"look\", \"dial\", \"tune\"]\nUNTIL = \"ongoing\"\n\n\ndef on_start():\n    x = \"a\" * 2000\n    y = x + \"b\"\n",
+   "program": {
+    "format": 1,
+    "header": {
+     "ABOUT": "a conformance test",
+     "USES": [
+      "do",
+      "say",
+      "ask",
+      "face",
+      "draw",
+      "chirp",
+      "hum",
+      "look",
+      "dial",
+      "tune"
+     ],
+     "UNTIL": "ongoing"
+    },
+    "globals": [],
+    "funcs": {
+     "on_start": {
+      "l": 6,
+      "args": [],
+      "defaults": [],
+      "body": [
+       {
+        "t": "assign",
+        "l": 7,
+        "to": {
+         "t": "name",
+         "n": "x"
+        },
+        "v": {
+         "t": "bin",
+         "op": "*",
+         "a": {
+          "t": "const",
+          "v": "a"
+         },
+         "b": {
+          "t": "const",
+          "v": 2000
+         }
+        }
+       },
+       {
+        "t": "assign",
+        "l": 8,
+        "to": {
+         "t": "name",
+         "n": "y"
+        },
+        "v": {
+         "t": "bin",
+         "op": "+",
+         "a": {
+          "t": "name",
+          "n": "x"
+         },
+         "b": {
+          "t": "const",
+          "v": "b"
+         }
+        }
+       }
+      ]
+     }
+    },
+    "called": []
+   },
+   "limits": {},
+   "runs": [
+    {
+     "handler": "on_start",
+     "args": [],
+     "replies": [],
+     "calls": [],
+     "outcome": {
+      "crash": "limit",
+      "what": "text",
+      "line": 8
+     }
+    }
+   ]
+  },
+  {
+   "name": "text made by an f-string",
+   "source": "ABOUT = \"a conformance test\"\nUSES = [\"do\", \"say\", \"ask\", \"face\", \"draw\", \"chirp\", \"hum\", \"look\", \"dial\", \"tune\"]\nUNTIL = \"ongoing\"\n\n\ndef on_start():\n    x = \"a\" * 1500\n    y = f\"{x}{x}\"\n",
+   "program": {
+    "format": 1,
+    "header": {
+     "ABOUT": "a conformance test",
+     "USES": [
+      "do",
+      "say",
+      "ask",
+      "face",
+      "draw",
+      "chirp",
+      "hum",
+      "look",
+      "dial",
+      "tune"
+     ],
+     "UNTIL": "ongoing"
+    },
+    "globals": [],
+    "funcs": {
+     "on_start": {
+      "l": 6,
+      "args": [],
+      "defaults": [],
+      "body": [
+       {
+        "t": "assign",
+        "l": 7,
+        "to": {
+         "t": "name",
+         "n": "x"
+        },
+        "v": {
+         "t": "bin",
+         "op": "*",
+         "a": {
+          "t": "const",
+          "v": "a"
+         },
+         "b": {
+          "t": "const",
+          "v": 1500
+         }
+        }
+       },
+       {
+        "t": "assign",
+        "l": 8,
+        "to": {
+         "t": "name",
+         "n": "y"
+        },
+        "v": {
+         "t": "fstr",
+         "parts": [
+          {
+           "n": "x"
+          },
+          {
+           "n": "x"
+          }
+         ]
+        }
+       }
+      ]
+     }
+    },
+    "called": []
+   },
+   "limits": {},
+   "runs": [
+    {
+     "handler": "on_start",
+     "args": [],
+     "replies": [],
+     "calls": [],
+     "outcome": {
+      "crash": "limit",
+      "what": "text",
+      "line": 8
+     }
+    }
+   ]
+  },
+  {
+   "name": "text made by replace",
+   "source": "ABOUT = \"a conformance test\"\nUSES = [\"do\", \"say\", \"ask\", \"face\", \"draw\", \"chirp\", \"hum\", \"look\", \"dial\", \"tune\"]\nUNTIL = \"ongoing\"\n\n\ndef on_start():\n    x = \"a\" * 1000\n    y = x.replace(\"a\", \"aaa\")\n",
+   "program": {
+    "format": 1,
+    "header": {
+     "ABOUT": "a conformance test",
+     "USES": [
+      "do",
+      "say",
+      "ask",
+      "face",
+      "draw",
+      "chirp",
+      "hum",
+      "look",
+      "dial",
+      "tune"
+     ],
+     "UNTIL": "ongoing"
+    },
+    "globals": [],
+    "funcs": {
+     "on_start": {
+      "l": 6,
+      "args": [],
+      "defaults": [],
+      "body": [
+       {
+        "t": "assign",
+        "l": 7,
+        "to": {
+         "t": "name",
+         "n": "x"
+        },
+        "v": {
+         "t": "bin",
+         "op": "*",
+         "a": {
+          "t": "const",
+          "v": "a"
+         },
+         "b": {
+          "t": "const",
+          "v": 1000
+         }
+        }
+       },
+       {
+        "t": "assign",
+        "l": 8,
+        "to": {
+         "t": "name",
+         "n": "y"
+        },
+        "v": {
+         "t": "method",
+         "l": 8,
+         "o": {
+          "t": "name",
+          "n": "x"
+         },
+         "m": "replace",
+         "args": [
+          {
+           "t": "const",
+           "v": "a"
+          },
+          {
+           "t": "const",
+           "v": "aaa"
+          }
+         ]
+        }
+       }
+      ]
+     }
+    },
+    "called": []
+   },
+   "limits": {},
+   "runs": [
+    {
+     "handler": "on_start",
+     "args": [],
+     "replies": [],
+     "calls": [],
+     "outcome": {
+      "crash": "limit",
+      "what": "text",
+      "line": 8
+     }
+    }
+   ]
+  },
+  {
+   "name": "text made by join",
+   "source": "ABOUT = \"a conformance test\"\nUSES = [\"do\", \"say\", \"ask\", \"face\", \"draw\", \"chirp\", \"hum\", \"look\", \"dial\", \"tune\"]\nUNTIL = \"ongoing\"\n\n\ndef on_start():\n    parts = [\"abcdefghij\"] * 201\n    y = \"\".join(parts)\n",
+   "program": {
+    "format": 1,
+    "header": {
+     "ABOUT": "a conformance test",
+     "USES": [
+      "do",
+      "say",
+      "ask",
+      "face",
+      "draw",
+      "chirp",
+      "hum",
+      "look",
+      "dial",
+      "tune"
+     ],
+     "UNTIL": "ongoing"
+    },
+    "globals": [],
+    "funcs": {
+     "on_start": {
+      "l": 6,
+      "args": [],
+      "defaults": [],
+      "body": [
+       {
+        "t": "assign",
+        "l": 7,
+        "to": {
+         "t": "name",
+         "n": "parts"
+        },
+        "v": {
+         "t": "bin",
+         "op": "*",
+         "a": {
+          "t": "list",
+          "items": [
+           {
+            "t": "const",
+            "v": "abcdefghij"
+           }
+          ]
+         },
+         "b": {
+          "t": "const",
+          "v": 201
+         }
+        }
+       },
+       {
+        "t": "assign",
+        "l": 8,
+        "to": {
+         "t": "name",
+         "n": "y"
+        },
+        "v": {
+         "t": "method",
+         "l": 8,
+         "o": {
+          "t": "const",
+          "v": ""
+         },
+         "m": "join",
+         "args": [
+          {
+           "t": "name",
+           "n": "parts"
+          }
+         ]
+        }
+       }
+      ]
+     }
+    },
+    "called": []
+   },
+   "limits": {},
+   "runs": [
+    {
+     "handler": "on_start",
+     "args": [],
+     "replies": [],
+     "calls": [],
+     "outcome": {
+      "crash": "limit",
+      "what": "text",
+      "line": 8
+     }
+    }
+   ]
+  },
+  {
+   "name": "items by repeating",
+   "source": "ABOUT = \"a conformance test\"\nUSES = [\"do\", \"say\", \"ask\", \"face\", \"draw\", \"chirp\", \"hum\", \"look\", \"dial\", \"tune\"]\nUNTIL = \"ongoing\"\n\n\ndef on_start():\n    x = [0] * 501\n",
+   "program": {
+    "format": 1,
+    "header": {
+     "ABOUT": "a conformance test",
+     "USES": [
+      "do",
+      "say",
+      "ask",
+      "face",
+      "draw",
+      "chirp",
+      "hum",
+      "look",
+      "dial",
+      "tune"
+     ],
+     "UNTIL": "ongoing"
+    },
+    "globals": [],
+    "funcs": {
+     "on_start": {
+      "l": 6,
+      "args": [],
+      "defaults": [],
+      "body": [
+       {
+        "t": "assign",
+        "l": 7,
+        "to": {
+         "t": "name",
+         "n": "x"
+        },
+        "v": {
+         "t": "bin",
+         "op": "*",
+         "a": {
+          "t": "list",
+          "items": [
+           {
+            "t": "const",
+            "v": 0
+           }
+          ]
+         },
+         "b": {
+          "t": "const",
+          "v": 501
+         }
+        }
+       }
+      ]
+     }
+    },
+    "called": []
+   },
+   "limits": {},
+   "runs": [
+    {
+     "handler": "on_start",
+     "args": [],
+     "replies": [],
+     "calls": [],
+     "outcome": {
+      "crash": "limit",
+      "what": "items",
+      "line": 7
+     }
+    }
+   ]
+  },
+  {
+   "name": "items by appending",
+   "source": "ABOUT = \"a conformance test\"\nUSES = [\"do\", \"say\", \"ask\", \"face\", \"draw\", \"chirp\", \"hum\", \"look\", \"dial\", \"tune\"]\nUNTIL = \"ongoing\"\n\n\ndef on_start():\n    a = []\n    while True:\n        a.append(1)\n",
+   "program": {
+    "format": 1,
+    "header": {
+     "ABOUT": "a conformance test",
+     "USES": [
+      "do",
+      "say",
+      "ask",
+      "face",
+      "draw",
+      "chirp",
+      "hum",
+      "look",
+      "dial",
+      "tune"
+     ],
+     "UNTIL": "ongoing"
+    },
+    "globals": [],
+    "funcs": {
+     "on_start": {
+      "l": 6,
+      "args": [],
+      "defaults": [],
+      "body": [
+       {
+        "t": "assign",
+        "l": 7,
+        "to": {
+         "t": "name",
+         "n": "a"
+        },
+        "v": {
+         "t": "list",
+         "items": []
+        }
+       },
+       {
+        "t": "while",
+        "l": 8,
+        "c": {
+         "t": "const",
+         "v": true
+        },
+        "body": [
+         {
+          "t": "expr",
+          "l": 9,
+          "v": {
+           "t": "method",
+           "l": 9,
+           "o": {
+            "t": "name",
+            "n": "a"
+           },
+           "m": "append",
+           "args": [
+            {
+             "t": "const",
+             "v": 1
+            }
+           ]
+          }
+         }
+        ]
+       }
+      ]
+     }
+    },
+    "called": []
+   },
+   "limits": {},
+   "runs": [
+    {
+     "handler": "on_start",
+     "args": [],
+     "replies": [],
+     "calls": [],
+     "outcome": {
+      "crash": "limit",
+      "what": "items",
+      "line": 9
+     }
+    }
+   ]
+  },
+  {
+   "name": "items in a dict",
+   "source": "ABOUT = \"a conformance test\"\nUSES = [\"do\", \"say\", \"ask\", \"face\", \"draw\", \"chirp\", \"hum\", \"look\", \"dial\", \"tune\"]\nUNTIL = \"ongoing\"\n\n\ndef on_start():\n    d = {}\n    for i in range(501):\n        d[i] = i\n",
+   "program": {
+    "format": 1,
+    "header": {
+     "ABOUT": "a conformance test",
+     "USES": [
+      "do",
+      "say",
+      "ask",
+      "face",
+      "draw",
+      "chirp",
+      "hum",
+      "look",
+      "dial",
+      "tune"
+     ],
+     "UNTIL": "ongoing"
+    },
+    "globals": [],
+    "funcs": {
+     "on_start": {
+      "l": 6,
+      "args": [],
+      "defaults": [],
+      "body": [
+       {
+        "t": "assign",
+        "l": 7,
+        "to": {
+         "t": "name",
+         "n": "d"
+        },
+        "v": {
+         "t": "dict",
+         "keys": [],
+         "vals": []
+        }
+       },
+       {
+        "t": "for",
+        "l": 8,
+        "to": {
+         "t": "name",
+         "n": "i"
+        },
+        "in": {
+         "t": "call",
+         "l": 8,
+         "f": "range",
+         "args": [
+          {
+           "t": "const",
+           "v": 501
+          }
+         ],
+         "kw": {}
+        },
+        "body": [
+         {
+          "t": "assign",
+          "l": 9,
+          "to": {
+           "t": "index",
+           "o": {
+            "t": "name",
+            "n": "d"
+           },
+           "i": {
+            "t": "name",
+            "n": "i"
+           }
+          },
+          "v": {
+           "t": "name",
+           "n": "i"
+          }
+         }
+        ]
+       }
+      ]
+     }
+    },
+    "called": []
+   },
+   "limits": {},
+   "runs": [
+    {
+     "handler": "on_start",
+     "args": [],
+     "replies": [],
+     "calls": [],
+     "outcome": {
+      "crash": "limit",
+      "what": "items",
+      "line": 9
+     }
+    }
+   ]
+  },
+  {
+   "name": "items from range",
+   "source": "ABOUT = \"a conformance test\"\nUSES = [\"do\", \"say\", \"ask\", \"face\", \"draw\", \"chirp\", \"hum\", \"look\", \"dial\", \"tune\"]\nUNTIL = \"ongoing\"\n\n\ndef on_start():\n    x = sorted(range(501))\n",
+   "program": {
+    "format": 1,
+    "header": {
+     "ABOUT": "a conformance test",
+     "USES": [
+      "do",
+      "say",
+      "ask",
+      "face",
+      "draw",
+      "chirp",
+      "hum",
+      "look",
+      "dial",
+      "tune"
+     ],
+     "UNTIL": "ongoing"
+    },
+    "globals": [],
+    "funcs": {
+     "on_start": {
+      "l": 6,
+      "args": [],
+      "defaults": [],
+      "body": [
+       {
+        "t": "assign",
+        "l": 7,
+        "to": {
+         "t": "name",
+         "n": "x"
+        },
+        "v": {
+         "t": "call",
+         "l": 7,
+         "f": "sorted",
+         "args": [
+          {
+           "t": "call",
+           "l": 7,
+           "f": "range",
+           "args": [
+            {
+             "t": "const",
+             "v": 501
+            }
+           ],
+           "kw": {}
+          }
+         ],
+         "kw": {}
+        }
+       }
+      ]
+     }
+    },
+    "called": []
+   },
+   "limits": {},
+   "runs": [
+    {
+     "handler": "on_start",
+     "args": [],
+     "replies": [],
+     "calls": [],
+     "outcome": {
+      "crash": "limit",
+      "what": "items",
+      "line": 7
+     }
+    }
+   ]
+  },
+  {
+   "name": "nesting deeper than four",
+   "source": "ABOUT = \"a conformance test\"\nUSES = [\"do\", \"say\", \"ask\", \"face\", \"draw\", \"chirp\", \"hum\", \"look\", \"dial\", \"tune\"]\nUNTIL = \"ongoing\"\n\n\ndef on_start():\n    x = [[[[[1]]]]]\n",
+   "program": {
+    "format": 1,
+    "header": {
+     "ABOUT": "a conformance test",
+     "USES": [
+      "do",
+      "say",
+      "ask",
+      "face",
+      "draw",
+      "chirp",
+      "hum",
+      "look",
+      "dial",
+      "tune"
+     ],
+     "UNTIL": "ongoing"
+    },
+    "globals": [],
+    "funcs": {
+     "on_start": {
+      "l": 6,
+      "args": [],
+      "defaults": [],
+      "body": [
+       {
+        "t": "assign",
+        "l": 7,
+        "to": {
+         "t": "name",
+         "n": "x"
+        },
+        "v": {
+         "t": "list",
+         "items": [
+          {
+           "t": "list",
+           "items": [
+            {
+             "t": "list",
+             "items": [
+              {
+               "t": "list",
+               "items": [
+                {
+                 "t": "list",
+                 "items": [
+                  {
+                   "t": "const",
+                   "v": 1
+                  }
+                 ]
+                }
+               ]
+              }
+             ]
+            }
+           ]
+          }
+         ]
+        }
+       }
+      ]
+     }
+    },
+    "called": []
+   },
+   "limits": {},
+   "runs": [
+    {
+     "handler": "on_start",
+     "args": [],
+     "replies": [],
+     "calls": [],
+     "outcome": {
+      "crash": "limit",
+      "what": "depth",
+      "line": 7
+     }
+    }
+   ]
+  },
+  {
+   "name": "nesting by appending",
+   "source": "ABOUT = \"a conformance test\"\nUSES = [\"do\", \"say\", \"ask\", \"face\", \"draw\", \"chirp\", \"hum\", \"look\", \"dial\", \"tune\"]\nUNTIL = \"ongoing\"\n\n\ndef on_start():\n    a = [[[1]]]\n    b = [a]\n    c = [[]]\n    c[0].append(b)\n",
+   "program": {
+    "format": 1,
+    "header": {
+     "ABOUT": "a conformance test",
+     "USES": [
+      "do",
+      "say",
+      "ask",
+      "face",
+      "draw",
+      "chirp",
+      "hum",
+      "look",
+      "dial",
+      "tune"
+     ],
+     "UNTIL": "ongoing"
+    },
+    "globals": [],
+    "funcs": {
+     "on_start": {
+      "l": 6,
+      "args": [],
+      "defaults": [],
+      "body": [
+       {
+        "t": "assign",
+        "l": 7,
+        "to": {
+         "t": "name",
+         "n": "a"
+        },
+        "v": {
+         "t": "list",
+         "items": [
+          {
+           "t": "list",
+           "items": [
+            {
+             "t": "list",
+             "items": [
+              {
+               "t": "const",
+               "v": 1
+              }
+             ]
+            }
+           ]
+          }
+         ]
+        }
+       },
+       {
+        "t": "assign",
+        "l": 8,
+        "to": {
+         "t": "name",
+         "n": "b"
+        },
+        "v": {
+         "t": "list",
+         "items": [
+          {
+           "t": "name",
+           "n": "a"
+          }
+         ]
+        }
+       },
+       {
+        "t": "assign",
+        "l": 9,
+        "to": {
+         "t": "name",
+         "n": "c"
+        },
+        "v": {
+         "t": "list",
+         "items": [
+          {
+           "t": "list",
+           "items": []
+          }
+         ]
+        }
+       },
+       {
+        "t": "expr",
+        "l": 10,
+        "v": {
+         "t": "method",
+         "l": 10,
+         "o": {
+          "t": "index",
+          "o": {
+           "t": "name",
+           "n": "c"
+          },
+          "i": {
+           "t": "const",
+           "v": 0
+          }
+         },
+         "m": "append",
+         "args": [
+          {
+           "t": "name",
+           "n": "b"
+          }
+         ]
+        }
+       }
+      ]
+     }
+    },
+    "called": []
+   },
+   "limits": {},
+   "runs": [
+    {
+     "handler": "on_start",
+     "args": [],
+     "replies": [],
+     "calls": [],
+     "outcome": {
+      "crash": "limit",
+      "what": "depth",
+      "line": 10
+     }
+    }
+   ]
+  },
+  {
+   "name": "four deep is fine",
+   "source": "ABOUT = \"a conformance test\"\nUSES = [\"do\", \"say\", \"ask\", \"face\", \"draw\", \"chirp\", \"hum\", \"look\", \"dial\", \"tune\"]\nUNTIL = \"ongoing\"\n\n\ndef on_start():\n    x = [[[[1]]]]\n    say(str(x))\n",
+   "program": {
+    "format": 1,
+    "header": {
+     "ABOUT": "a conformance test",
+     "USES": [
+      "do",
+      "say",
+      "ask",
+      "face",
+      "draw",
+      "chirp",
+      "hum",
+      "look",
+      "dial",
+      "tune"
+     ],
+     "UNTIL": "ongoing"
+    },
+    "globals": [],
+    "funcs": {
+     "on_start": {
+      "l": 6,
+      "args": [],
+      "defaults": [],
+      "body": [
+       {
+        "t": "assign",
+        "l": 7,
+        "to": {
+         "t": "name",
+         "n": "x"
+        },
+        "v": {
+         "t": "list",
+         "items": [
+          {
+           "t": "list",
+           "items": [
+            {
+             "t": "list",
+             "items": [
+              {
+               "t": "list",
+               "items": [
+                {
+                 "t": "const",
+                 "v": 1
+                }
+               ]
+              }
+             ]
+            }
+           ]
+          }
+         ]
+        }
+       },
+       {
+        "t": "expr",
+        "l": 8,
+        "v": {
+         "t": "call",
+         "l": 8,
+         "f": "say",
+         "args": [
+          {
+           "t": "call",
+           "l": 8,
+           "f": "str",
+           "args": [
+            {
+             "t": "name",
+             "n": "x"
+            }
+           ],
+           "kw": {}
+          }
+         ],
+         "kw": {}
+        }
+       }
+      ]
+     }
+    },
+    "called": [
+     "say"
+    ]
+   },
+   "limits": {},
+   "runs": [
+    {
+     "handler": "on_start",
+     "args": [],
+     "replies": [],
+     "calls": [
+      {
+       "call": "say",
+       "args": {
+        "text": "[[[[1]]]]"
+       }
+      }
+     ],
+     "outcome": {
+      "done": true
+     }
+    }
+   ]
+  },
+  {
+   "name": "size of all values",
+   "source": "ABOUT = \"a conformance test\"\nUSES = [\"do\", \"say\", \"ask\", \"face\", \"draw\", \"chirp\", \"hum\", \"look\", \"dial\", \"tune\"]\nUNTIL = \"ongoing\"\n\n\ndef on_start():\n    big = \"a\" * 2000\n    rows = [big] * 200\n",
+   "program": {
+    "format": 1,
+    "header": {
+     "ABOUT": "a conformance test",
+     "USES": [
+      "do",
+      "say",
+      "ask",
+      "face",
+      "draw",
+      "chirp",
+      "hum",
+      "look",
+      "dial",
+      "tune"
+     ],
+     "UNTIL": "ongoing"
+    },
+    "globals": [],
+    "funcs": {
+     "on_start": {
+      "l": 6,
+      "args": [],
+      "defaults": [],
+      "body": [
+       {
+        "t": "assign",
+        "l": 7,
+        "to": {
+         "t": "name",
+         "n": "big"
+        },
+        "v": {
+         "t": "bin",
+         "op": "*",
+         "a": {
+          "t": "const",
+          "v": "a"
+         },
+         "b": {
+          "t": "const",
+          "v": 2000
+         }
+        }
+       },
+       {
+        "t": "assign",
+        "l": 8,
+        "to": {
+         "t": "name",
+         "n": "rows"
+        },
+        "v": {
+         "t": "bin",
+         "op": "*",
+         "a": {
+          "t": "list",
+          "items": [
+           {
+            "t": "name",
+            "n": "big"
+           }
+          ]
+         },
+         "b": {
+          "t": "const",
+          "v": 200
+         }
+        }
+       }
+      ]
+     }
+    },
+    "called": []
+   },
+   "limits": {},
+   "runs": [
+    {
+     "handler": "on_start",
+     "args": [],
+     "replies": [],
+     "calls": [],
+     "outcome": {
+      "crash": "limit",
+      "what": "size",
+      "line": 8
+     }
+    }
+   ]
+  },
+  {
+   "name": "size across names",
+   "source": "ABOUT = \"a conformance test\"\nUSES = [\"do\", \"say\", \"ask\", \"face\", \"draw\", \"chirp\", \"hum\", \"look\", \"dial\", \"tune\"]\nUNTIL = \"ongoing\"\n\n\ndef on_start():\n    a = [\"x\" * 2000] * 100\n    b = [\"y\" * 2000] * 100\n    c = [\"z\" * 2000] * 100\n    say(\"too much\")\n",
+   "program": {
+    "format": 1,
+    "header": {
+     "ABOUT": "a conformance test",
+     "USES": [
+      "do",
+      "say",
+      "ask",
+      "face",
+      "draw",
+      "chirp",
+      "hum",
+      "look",
+      "dial",
+      "tune"
+     ],
+     "UNTIL": "ongoing"
+    },
+    "globals": [],
+    "funcs": {
+     "on_start": {
+      "l": 6,
+      "args": [],
+      "defaults": [],
+      "body": [
+       {
+        "t": "assign",
+        "l": 7,
+        "to": {
+         "t": "name",
+         "n": "a"
+        },
+        "v": {
+         "t": "bin",
+         "op": "*",
+         "a": {
+          "t": "list",
+          "items": [
+           {
+            "t": "bin",
+            "op": "*",
+            "a": {
+             "t": "const",
+             "v": "x"
+            },
+            "b": {
+             "t": "const",
+             "v": 2000
+            }
+           }
+          ]
+         },
+         "b": {
+          "t": "const",
+          "v": 100
+         }
+        }
+       },
+       {
+        "t": "assign",
+        "l": 8,
+        "to": {
+         "t": "name",
+         "n": "b"
+        },
+        "v": {
+         "t": "bin",
+         "op": "*",
+         "a": {
+          "t": "list",
+          "items": [
+           {
+            "t": "bin",
+            "op": "*",
+            "a": {
+             "t": "const",
+             "v": "y"
+            },
+            "b": {
+             "t": "const",
+             "v": 2000
+            }
+           }
+          ]
+         },
+         "b": {
+          "t": "const",
+          "v": 100
+         }
+        }
+       },
+       {
+        "t": "assign",
+        "l": 9,
+        "to": {
+         "t": "name",
+         "n": "c"
+        },
+        "v": {
+         "t": "bin",
+         "op": "*",
+         "a": {
+          "t": "list",
+          "items": [
+           {
+            "t": "bin",
+            "op": "*",
+            "a": {
+             "t": "const",
+             "v": "z"
+            },
+            "b": {
+             "t": "const",
+             "v": 2000
+            }
+           }
+          ]
+         },
+         "b": {
+          "t": "const",
+          "v": 100
+         }
+        }
+       },
+       {
+        "t": "expr",
+        "l": 10,
+        "v": {
+         "t": "call",
+         "l": 10,
+         "f": "say",
+         "args": [
+          {
+           "t": "const",
+           "v": "too much"
+          }
+         ],
+         "kw": {}
+        }
+       }
+      ]
+     }
+    },
+    "called": [
+     "say"
+    ]
+   },
+   "limits": {},
+   "runs": [
+    {
+     "handler": "on_start",
+     "args": [],
+     "replies": [],
+     "calls": [],
+     "outcome": {
+      "crash": "limit",
+      "what": "size",
+      "line": 10
+     }
+    }
+   ]
+  },
+  {
+   "name": "recursion",
+   "source": "ABOUT = \"a conformance test\"\nUSES = [\"do\", \"say\", \"ask\", \"face\", \"draw\", \"chirp\", \"hum\", \"look\", \"dial\", \"tune\"]\nUNTIL = \"ongoing\"\n\ndef deep(n):\n    return deep(n + 1)\n\n\ndef on_start():\n    deep(0)\n",
+   "program": {
+    "format": 1,
+    "header": {
+     "ABOUT": "a conformance test",
+     "USES": [
+      "do",
+      "say",
+      "ask",
+      "face",
+      "draw",
+      "chirp",
+      "hum",
+      "look",
+      "dial",
+      "tune"
+     ],
+     "UNTIL": "ongoing"
+    },
+    "globals": [],
+    "funcs": {
+     "deep": {
+      "l": 5,
+      "args": [
+       "n"
+      ],
+      "defaults": [],
+      "body": [
+       {
+        "t": "return",
+        "l": 6,
+        "v": {
+         "t": "call",
+         "l": 6,
+         "f": "deep",
+         "args": [
+          {
+           "t": "bin",
+           "op": "+",
+           "a": {
+            "t": "name",
+            "n": "n"
+           },
+           "b": {
+            "t": "const",
+            "v": 1
+           }
+          }
+         ],
+         "kw": {}
+        }
+       }
+      ]
+     },
+     "on_start": {
+      "l": 9,
+      "args": [],
+      "defaults": [],
+      "body": [
+       {
+        "t": "expr",
+        "l": 10,
+        "v": {
+         "t": "call",
+         "l": 10,
+         "f": "deep",
+         "args": [
+          {
+           "t": "const",
+           "v": 0
+          }
+         ],
+         "kw": {}
+        }
+       }
+      ]
+     }
+    },
+    "called": []
+   },
+   "limits": {},
+   "runs": [
+    {
+     "handler": "on_start",
+     "args": [],
+     "replies": [],
+     "calls": [],
+     "outcome": {
+      "crash": "limit",
+      "what": "recursion",
+      "line": 6
+     }
+    }
+   ]
+  },
+  {
+   "name": "nineteen calls deep is fine",
+   "source": "ABOUT = \"a conformance test\"\nUSES = [\"do\", \"say\", \"ask\", \"face\", \"draw\", \"chirp\", \"hum\", \"look\", \"dial\", \"tune\"]\nUNTIL = \"ongoing\"\n\ndef deep(n):\n    if n == 0:\n        return 0\n    return 1 + deep(n - 1)\n\n\ndef on_start():\n    say(str(deep(18)))\n",
+   "program": {
+    "format": 1,
+    "header": {
+     "ABOUT": "a conformance test",
+     "USES": [
+      "do",
+      "say",
+      "ask",
+      "face",
+      "draw",
+      "chirp",
+      "hum",
+      "look",
+      "dial",
+      "tune"
+     ],
+     "UNTIL": "ongoing"
+    },
+    "globals": [],
+    "funcs": {
+     "deep": {
+      "l": 5,
+      "args": [
+       "n"
+      ],
+      "defaults": [],
+      "body": [
+       {
+        "t": "if",
+        "l": 6,
+        "c": {
+         "t": "cmp",
+         "a": {
+          "t": "name",
+          "n": "n"
+         },
+         "ops": [
+          "=="
+         ],
+         "bs": [
+          {
+           "t": "const",
+           "v": 0
+          }
+         ]
+        },
+        "then": [
+         {
+          "t": "return",
+          "l": 7,
+          "v": {
+           "t": "const",
+           "v": 0
+          }
+         }
+        ],
+        "else": []
+       },
+       {
+        "t": "return",
+        "l": 8,
+        "v": {
+         "t": "bin",
+         "op": "+",
+         "a": {
+          "t": "const",
+          "v": 1
+         },
+         "b": {
+          "t": "call",
+          "l": 8,
+          "f": "deep",
+          "args": [
+           {
+            "t": "bin",
+            "op": "-",
+            "a": {
+             "t": "name",
+             "n": "n"
+            },
+            "b": {
+             "t": "const",
+             "v": 1
+            }
+           }
+          ],
+          "kw": {}
+         }
+        }
+       }
+      ]
+     },
+     "on_start": {
+      "l": 11,
+      "args": [],
+      "defaults": [],
+      "body": [
+       {
+        "t": "expr",
+        "l": 12,
+        "v": {
+         "t": "call",
+         "l": 12,
+         "f": "say",
+         "args": [
+          {
+           "t": "call",
+           "l": 12,
+           "f": "str",
+           "args": [
+            {
+             "t": "call",
+             "l": 12,
+             "f": "deep",
+             "args": [
+              {
+               "t": "const",
+               "v": 18
+              }
+             ],
+             "kw": {}
+            }
+           ],
+           "kw": {}
+          }
+         ],
+         "kw": {}
+        }
+       }
+      ]
+     }
+    },
+    "called": [
+     "say"
+    ]
+   },
+   "limits": {},
+   "runs": [
+    {
+     "handler": "on_start",
+     "args": [],
+     "replies": [],
+     "calls": [
+      {
+       "call": "say",
+       "args": {
+        "text": "18"
+       }
+      }
+     ],
+     "outcome": {
+      "done": true
+     }
+    }
+   ]
+  },
+  {
+   "name": "a power bomb",
+   "source": "ABOUT = \"a conformance test\"\nUSES = [\"do\", \"say\", \"ask\", \"face\", \"draw\", \"chirp\", \"hum\", \"look\", \"dial\", \"tune\"]\nUNTIL = \"ongoing\"\n\n\ndef on_start():\n    x = 10 ** 10 ** 10\n",
+   "program": {
+    "format": 1,
+    "header": {
+     "ABOUT": "a conformance test",
+     "USES": [
+      "do",
+      "say",
+      "ask",
+      "face",
+      "draw",
+      "chirp",
+      "hum",
+      "look",
+      "dial",
+      "tune"
+     ],
+     "UNTIL": "ongoing"
+    },
+    "globals": [],
+    "funcs": {
+     "on_start": {
+      "l": 6,
+      "args": [],
+      "defaults": [],
+      "body": [
+       {
+        "t": "assign",
+        "l": 7,
+        "to": {
+         "t": "name",
+         "n": "x"
+        },
+        "v": {
+         "t": "bin",
+         "op": "**",
+         "a": {
+          "t": "const",
+          "v": 10
+         },
+         "b": {
+          "t": "bin",
+          "op": "**",
+          "a": {
+           "t": "const",
+           "v": 10
+          },
+          "b": {
+           "t": "const",
+           "v": 10
+          }
+         }
+        }
+       }
+      ]
+     }
+    },
+    "called": []
+   },
+   "limits": {},
+   "runs": [
+    {
+     "handler": "on_start",
+     "args": [],
+     "replies": [],
+     "calls": [],
+     "outcome": {
+      "crash": "limit",
+      "what": "number",
+      "line": 7
+     }
+    }
+   ]
+  },
+  {
+   "name": "big powers are refused before they are worked out",
+   "source": "ABOUT = \"a conformance test\"\nUSES = [\"do\", \"say\", \"ask\", \"face\", \"draw\", \"chirp\", \"hum\", \"look\", \"dial\", \"tune\"]\nUNTIL = \"ongoing\"\n\n\ndef on_start():\n    x = 2 ** 100\n",
+   "program": {
+    "format": 1,
+    "header": {
+     "ABOUT": "a conformance test",
+     "USES": [
+      "do",
+      "say",
+      "ask",
+      "face",
+      "draw",
+      "chirp",
+      "hum",
+      "look",
+      "dial",
+      "tune"
+     ],
+     "UNTIL": "ongoing"
+    },
+    "globals": [],
+    "funcs": {
+     "on_start": {
+      "l": 6,
+      "args": [],
+      "defaults": [],
+      "body": [
+       {
+        "t": "assign",
+        "l": 7,
+        "to": {
+         "t": "name",
+         "n": "x"
+        },
+        "v": {
+         "t": "bin",
+         "op": "**",
+         "a": {
+          "t": "const",
+          "v": 2
+         },
+         "b": {
+          "t": "const",
+          "v": 100
+         }
+        }
+       }
+      ]
+     }
+    },
+    "called": []
+   },
+   "limits": {},
+   "runs": [
+    {
+     "handler": "on_start",
+     "args": [],
+     "replies": [],
+     "calls": [],
+     "outcome": {
+      "crash": "limit",
+      "what": "number",
+      "line": 7
+     }
+    }
+   ]
+  },
+  {
+   "name": "numbers past 2 to the 53rd",
+   "source": "ABOUT = \"a conformance test\"\nUSES = [\"do\", \"say\", \"ask\", \"face\", \"draw\", \"chirp\", \"hum\", \"look\", \"dial\", \"tune\"]\nUNTIL = \"ongoing\"\n\n\ndef on_start():\n    x = 9007199254740991\n    y = x + 1\n",
+   "program": {
+    "format": 1,
+    "header": {
+     "ABOUT": "a conformance test",
+     "USES": [
+      "do",
+      "say",
+      "ask",
+      "face",
+      "draw",
+      "chirp",
+      "hum",
+      "look",
+      "dial",
+      "tune"
+     ],
+     "UNTIL": "ongoing"
+    },
+    "globals": [],
+    "funcs": {
+     "on_start": {
+      "l": 6,
+      "args": [],
+      "defaults": [],
+      "body": [
+       {
+        "t": "assign",
+        "l": 7,
+        "to": {
+         "t": "name",
+         "n": "x"
+        },
+        "v": {
+         "t": "const",
+         "v": 9007199254740991
+        }
+       },
+       {
+        "t": "assign",
+        "l": 8,
+        "to": {
+         "t": "name",
+         "n": "y"
+        },
+        "v": {
+         "t": "bin",
+         "op": "+",
+         "a": {
+          "t": "name",
+          "n": "x"
+         },
+         "b": {
+          "t": "const",
+          "v": 1
+         }
+        }
+       }
+      ]
+     }
+    },
+    "called": []
+   },
+   "limits": {},
+   "runs": [
+    {
+     "handler": "on_start",
+     "args": [],
+     "replies": [],
+     "calls": [],
+     "outcome": {
+      "crash": "limit",
+      "what": "number",
+      "line": 8
+     }
+    }
+   ]
+  },
+  {
+   "name": "a repeat bomb",
+   "source": "ABOUT = \"a conformance test\"\nUSES = [\"do\", \"say\", \"ask\", \"face\", \"draw\", \"chirp\", \"hum\", \"look\", \"dial\", \"tune\"]\nUNTIL = \"ongoing\"\n\n\ndef on_start():\n    x = \"a\" * 1000000000\n",
+   "program": {
+    "format": 1,
+    "header": {
+     "ABOUT": "a conformance test",
+     "USES": [
+      "do",
+      "say",
+      "ask",
+      "face",
+      "draw",
+      "chirp",
+      "hum",
+      "look",
+      "dial",
+      "tune"
+     ],
+     "UNTIL": "ongoing"
+    },
+    "globals": [],
+    "funcs": {
+     "on_start": {
+      "l": 6,
+      "args": [],
+      "defaults": [],
+      "body": [
+       {
+        "t": "assign",
+        "l": 7,
+        "to": {
+         "t": "name",
+         "n": "x"
+        },
+        "v": {
+         "t": "bin",
+         "op": "*",
+         "a": {
+          "t": "const",
+          "v": "a"
+         },
+         "b": {
+          "t": "const",
+          "v": 1000000000
+         }
+        }
+       }
+      ]
+     }
+    },
+    "called": []
+   },
+   "limits": {},
+   "runs": [
+    {
+     "handler": "on_start",
+     "args": [],
+     "replies": [],
+     "calls": [],
+     "outcome": {
+      "crash": "limit",
+      "what": "text",
+      "line": 7
+     }
+    }
+   ]
+  },
+  {
+   "name": "a list repeat bomb",
+   "source": "ABOUT = \"a conformance test\"\nUSES = [\"do\", \"say\", \"ask\", \"face\", \"draw\", \"chirp\", \"hum\", \"look\", \"dial\", \"tune\"]\nUNTIL = \"ongoing\"\n\n\ndef on_start():\n    x = [1, 2] * 100000000\n",
+   "program": {
+    "format": 1,
+    "header": {
+     "ABOUT": "a conformance test",
+     "USES": [
+      "do",
+      "say",
+      "ask",
+      "face",
+      "draw",
+      "chirp",
+      "hum",
+      "look",
+      "dial",
+      "tune"
+     ],
+     "UNTIL": "ongoing"
+    },
+    "globals": [],
+    "funcs": {
+     "on_start": {
+      "l": 6,
+      "args": [],
+      "defaults": [],
+      "body": [
+       {
+        "t": "assign",
+        "l": 7,
+        "to": {
+         "t": "name",
+         "n": "x"
+        },
+        "v": {
+         "t": "bin",
+         "op": "*",
+         "a": {
+          "t": "list",
+          "items": [
+           {
+            "t": "const",
+            "v": 1
+           },
+           {
+            "t": "const",
+            "v": 2
+           }
+          ]
+         },
+         "b": {
+          "t": "const",
+          "v": 100000000
+         }
+        }
+       }
+      ]
+     }
+    },
+    "called": []
+   },
+   "limits": {},
+   "runs": [
+    {
+     "handler": "on_start",
+     "args": [],
+     "replies": [],
+     "calls": [],
+     "outcome": {
+      "crash": "limit",
+      "what": "items",
+      "line": 7
+     }
+    }
+   ]
+  },
+  {
+   "name": "a list can't hold itself",
+   "source": "ABOUT = \"a conformance test\"\nUSES = [\"do\", \"say\", \"ask\", \"face\", \"draw\", \"chirp\", \"hum\", \"look\", \"dial\", \"tune\"]\nUNTIL = \"ongoing\"\n\n\ndef on_start():\n    a = []\n    a.append(a)\n",
+   "program": {
+    "format": 1,
+    "header": {
+     "ABOUT": "a conformance test",
+     "USES": [
+      "do",
+      "say",
+      "ask",
+      "face",
+      "draw",
+      "chirp",
+      "hum",
+      "look",
+      "dial",
+      "tune"
+     ],
+     "UNTIL": "ongoing"
+    },
+    "globals": [],
+    "funcs": {
+     "on_start": {
+      "l": 6,
+      "args": [],
+      "defaults": [],
+      "body": [
+       {
+        "t": "assign",
+        "l": 7,
+        "to": {
+         "t": "name",
+         "n": "a"
+        },
+        "v": {
+         "t": "list",
+         "items": []
+        }
+       },
+       {
+        "t": "expr",
+        "l": 8,
+        "v": {
+         "t": "method",
+         "l": 8,
+         "o": {
+          "t": "name",
+          "n": "a"
+         },
+         "m": "append",
+         "args": [
+          {
+           "t": "name",
+           "n": "a"
+          }
+         ]
+        }
+       }
+      ]
+     }
+    },
+    "called": []
+   },
+   "limits": {},
+   "runs": [
+    {
+     "handler": "on_start",
+     "args": [],
+     "replies": [],
+     "calls": [],
+     "outcome": {
+      "crash": "error",
+      "what": "",
+      "line": 8
+     }
+    }
+   ]
+  },
+  {
+   "name": "a list can't hold something that holds it",
+   "source": "ABOUT = \"a conformance test\"\nUSES = [\"do\", \"say\", \"ask\", \"face\", \"draw\", \"chirp\", \"hum\", \"look\", \"dial\", \"tune\"]\nUNTIL = \"ongoing\"\n\n\ndef on_start():\n    a = []\n    b = [a]\n    a.append(b)\n",
+   "program": {
+    "format": 1,
+    "header": {
+     "ABOUT": "a conformance test",
+     "USES": [
+      "do",
+      "say",
+      "ask",
+      "face",
+      "draw",
+      "chirp",
+      "hum",
+      "look",
+      "dial",
+      "tune"
+     ],
+     "UNTIL": "ongoing"
+    },
+    "globals": [],
+    "funcs": {
+     "on_start": {
+      "l": 6,
+      "args": [],
+      "defaults": [],
+      "body": [
+       {
+        "t": "assign",
+        "l": 7,
+        "to": {
+         "t": "name",
+         "n": "a"
+        },
+        "v": {
+         "t": "list",
+         "items": []
+        }
+       },
+       {
+        "t": "assign",
+        "l": 8,
+        "to": {
+         "t": "name",
+         "n": "b"
+        },
+        "v": {
+         "t": "list",
+         "items": [
+          {
+           "t": "name",
+           "n": "a"
+          }
+         ]
+        }
+       },
+       {
+        "t": "expr",
+        "l": 9,
+        "v": {
+         "t": "method",
+         "l": 9,
+         "o": {
+          "t": "name",
+          "n": "a"
+         },
+         "m": "append",
+         "args": [
+          {
+           "t": "name",
+           "n": "b"
+          }
+         ]
+        }
+       }
+      ]
+     }
+    },
+    "called": []
+   },
+   "limits": {},
+   "runs": [
+    {
+     "handler": "on_start",
+     "args": [],
+     "replies": [],
+     "calls": [],
+     "outcome": {
+      "crash": "error",
+      "what": "",
+      "line": 9
+     }
+    }
+   ]
+  }
+ ]
+}

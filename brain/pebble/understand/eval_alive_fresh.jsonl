@@ -1,0 +1,40 @@
+{"id": 1, "group": "teach", "core": true, "text": "this jandal is my one", "expect": {"kind": "teach", "thing": "jandal", "who": "me"}}
+{"id": 2, "group": "teach", "core": false, "text": "these are my gumboots", "expect": {"kind": "teach", "thing": "gumboot", "who": "me"}}
+{"id": 3, "group": "teach", "core": false, "text": "this is nanas walking stick", "expect": {"kind": "teach", "thing": "walking stick", "who": "nana"}}
+{"id": 4, "group": "teach", "core": false, "text": "this pillows for you pebble", "expect": {"kind": "teach", "thing": "pillow", "who": "pebble"}}
+{"id": 5, "group": "teach", "core": true, "text": "this is my unicorn her name is sparkle", "context": {"speaker": "sam", "tier": "child", "present": ["ina", "sam"]}, "expect": {"kind": "teach", "thing": "unicorn", "who": "me", "name": "sparkle"}}
+{"id": 6, "group": "teach", "core": false, "text": "we call him boris", "expect": {"kind": "teach", "name": "boris"}}
+{"id": 7, "group": "teach", "core": false, "text": "this skateboard belongs to sam", "expect": {"kind": "teach", "thing": "skateboard", "who": "sam"}}
+{"id": 8, "group": "teach", "core": false, "text": "ok so this is a whisk", "expect": {"kind": "teach", "thing": "whisk"}}
+{"id": 9, "group": "teach", "core": false, "text": "my dinosaurs name is rexy", "context": {"speaker": "sam", "tier": "child", "present": ["ina", "sam"]}, "expect": {"kind": "teach", "thing": "dinosaur", "who": "me", "name": "rexy"}}
+{"id": 10, "group": "teach", "core": false, "text": "you can keep this one its a sticker", "context": {"speaker": "sam", "tier": "child", "present": ["ina", "sam"]}, "expect": {"kind": "teach", "thing": "sticker", "who": "pebble"}}
+{"id": 11, "group": "clarify", "core": true, "text": "um its dads", "context": {"pending": {"about": "name", "request": {"kind": "teach"}, "question": "Ooh, a hat? What's it called?"}}, "expect": {"kind": "teach", "who": "dad"}}
+{"id": 12, "group": "clarify", "core": false, "text": "its name is pickles", "context": {"pending": {"about": "name", "request": {"kind": "teach"}, "question": "A dog toy! What's it called?"}}, "expect": {"kind": "teach", "name": "pickles"}}
+{"id": 13, "group": "clarify", "core": true, "text": "dunno", "context": {"pending": {"about": "name", "request": {"kind": "teach"}, "question": "Ooh, a hat? What's it called?"}}, "expect": {"kind": "chat"}}
+{"id": 14, "group": "clarify", "core": false, "text": "belongs to sam", "context": {"pending": {"about": "name", "request": {"kind": "teach"}, "question": "Ooh, a cup? What's it called?"}}, "expect": {"kind": "teach", "who": "sam"}}
+{"id": 15, "group": "clarify", "core": false, "text": "forget it lets play", "context": {"pending": {"about": "name", "request": {"kind": "teach"}, "question": "A teddy! What's his name?"}}, "expect": {"kind": "play"}}
+{"id": 16, "group": "play", "core": false, "text": "come on pebble lets play a game", "expect": {"kind": "play"}}
+{"id": 17, "group": "play", "core": true, "text": "chase the ball pebble chase it", "expect": {"kind": "play", "thing": "ball"}}
+{"id": 18, "group": "play", "core": false, "text": "play with the squeaky toy", "expect": {"kind": "play", "thing": "squeaky toy"}}
+{"id": 19, "group": "play", "core": true, "text": "lets play hide and seek", "context": {"speaker": "sam", "tier": "child", "present": ["ina", "sam"]}, "expect": {"kind": "play"}}
+{"id": 20, "group": "play", "core": false, "text": "you can play with the box now", "expect": {"kind": "play", "thing": "box"}}
+{"id": 21, "group": "play", "core": false, "text": "you up for a game", "expect": {"kind": "play"}}
+{"id": 22, "group": "where_am_i", "core": true, "text": "oi pebble whered ya go", "expect": {"kind": "where_am_i"}}
+{"id": 23, "group": "where_am_i", "core": false, "text": "where in the house are you", "expect": {"kind": "where_am_i"}}
+{"id": 24, "group": "where_am_i", "core": false, "text": "pebble i cant see you where have you gone", "context": {"speaker": "sam", "tier": "child", "present": ["ina", "sam"]}, "expect": {"kind": "where_am_i"}}
+{"id": 25, "group": "where_am_i", "core": false, "text": "yo pebble where you at", "expect": {"kind": "where_am_i"}}
+{"id": 26, "group": "pointing", "core": false, "text": "kyk daar pebble", "context": {"pointing": true}, "expect": {"kind": "look", "place": "there"}}
+{"id": 27, "group": "pointing", "core": true, "text": "zoom over there", "context": {"pointing": true}, "expect": {"kind": "go_to_place", "place": "there"}}
+{"id": 28, "group": "pointing", "core": true, "text": "check that out", "context": {"pointing": true}, "expect": {"kind": "look", "place": "there"}}
+{"id": 29, "group": "pointing", "core": false, "text": "wow look at this mess", "expect": {"kind": "chat"}}
+{"id": 30, "group": "pointing", "core": false, "text": "go over there then come back", "context": {"pointing": true}, "expect": {"kind": "go_to_place", "place": "there", "then": [{"kind": "come", "who": "me"}]}}
+{"id": 31, "group": "not_command", "core": true, "text": "this is so boring", "expect": {"kind": "chat"}}
+{"id": 32, "group": "not_command", "core": false, "text": "this is my mate jono", "context": {"present": ["ina", "jono"]}, "expect": {"kind": "chat"}}
+{"id": 33, "group": "not_command", "core": false, "text": "sam is that your ball", "context": {"present": ["ina", "sam"]}, "expect": {"kind": "chat"}}
+{"id": 34, "group": "not_command", "core": false, "text": "the kids are playing outside", "expect": {"kind": "chat"}}
+{"id": 35, "group": "not_command", "core": false, "text": "put on the rugby", "expect": {"kind": "other"}}
+{"id": 36, "group": "not_command", "core": true, "text": "can you play the guitar", "expect": {"kind": "chat"}}
+{"id": 37, "group": "not_command", "core": true, "text": "maybe we can play tomorrow", "expect": {"kind": "chat"}}
+{"id": 38, "group": "not_command", "core": false, "text": "pebble is in the lounge", "expect": {"kind": "chat"}}
+{"id": 39, "group": "not_command", "core": false, "text": "whose turn is it to play", "context": {"speaker": "sam", "tier": "child", "present": ["ina", "sam"]}, "expect": {"kind": "chat"}}
+{"id": 40, "group": "not_command", "core": false, "text": "mine mine mine sam give it back", "context": {"speaker": "mo", "present": ["ina", "sam", "mo"]}, "expect": {"kind": "chat"}}

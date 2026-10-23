@@ -1,0 +1,988 @@
+
+
+# Phone robot setup
+ · 
+
+## Concept
+An old 8GB phone becomes a robot that mimics a sentient being: a small open LLM on the phone gives it moods, needs, memories and initiative, and a few-dollar microcontroller drives tiny motors, all powered from the phone's battery.
+- 
+The illusion comes from continuity (it remembers and refers back), inner state (moods and needs that change on their own) and initiative (it acts without being asked).
+- 
+Plain code handles reflexes and the mood and need numbers; the LLM makes slow, occasional decisions and does the talking.
+- 
+Core rules and personality sit in a prompt that compaction never touches; memories live in files.
+- 
+It runs indefinitely, sleeping and "dreaming" on its charger at night.
+
+## Sentience mimic
+Pet robots like Cozmo and Aibo built the illusion of life from needs, moods, reactions and memory with far less intelligence than Gemma 4; this robot uses the same ingredients.
+Ingredient
+How it works
+Needs
+Plain-code numbers for energy (battery), curiosity (rises when nothing new happens), social (rises with time alone) and rest (rises at night), fed into the status line so its choices look motivated
+Moods
+Two numbers, how good it feels and how energetic, nudged by events and drifting back to normal; shown on its self-coded pixel face
+Bodily reactions
+Startle when dropped (free fall on the accelerometer), dizzy when spun (gyro), enjoys being stroked (touchscreen), grumpy when hot or low on battery; the instant reaction is plain code and the LLM comments seconds later, which hides its slow thinking
+Inner monologue
+A short private thought each heartbeat, never spoken, saved to a log, so replies seem to come from an ongoing mind
+Autobiography
+The day compacted into diary entries ("Ina showed me a cat today") plus a list of people it knows; it brings up past events unprompted
+Dreaming
+Each night on the charger it reviews the diary, consolidates memories and nudges one personality dial within the guardrails, with dreamy generated pixel art on screen
+Initiative
+It sometimes speaks first, greets faces it recognises, comments on what it sees and asks questions; rate-limited and quiet at night
+Plain code turns senses into reflexes, needs and moods; the LLM reads them every turn, and what it does is logged and folded back in overnight.
+Main risk: a model told it is sentient, with a private monologue and nothing happening, spirals into existential loops, as the Butter-Bench robot and Project Vend's agents did. Tie its thoughts to real sensor events, cut the monologue right down when idle, and keep the personality dials bounded.
+Open question: how it talks about its own nature. With kids or guests around, playfully in character ("I'm a phone who thinks a lot") works better than insisting it truly suffers when unplugged.
+
+## Two minds
+A small fast model runs alongside Gemma like a subconscious, the two kept in sync through a shared blackboard: the same dual-system design as [https://decrypt.co/307058/fig] Figure's Helix robot, which pairs a 7B model deciding at 7 to 9 times a second with an 80M model moving 200 times a second.
+The subconscious sends motor commands to the reflex layer, the conscious can override it, and both read and write the same blackboard.
+The three layers:
+- 
+Reflexes: the microcontroller in plain code, in milliseconds; bump stops and motor safety.
+- 
+Subconscious: LFM2.5-230M, always running; steering, faces, sounds, quick replies, turning intentions into motor commands, and noticing surprises.
+- 
+Conscious: Gemma 4 E4B; plans, real conversation, memories, personality and tasks, run on heartbeats or when flagged.
+Staying in sync:
+- 
+The conscious writes intentions ("go greet Ina, then rest"), mood targets and answers to have ready.
+- 
+The subconscious writes events and flags ("Ina asked something deep", "new thing on camera"); flags wake the conscious mind, like attention.
+- 
+Both read needs, mood, a shared personality summary and the last few lines of dialogue, so they speak with one voice.
+Rules that stop two minds fighting:
+- 
+Ownership in plain code: the subconscious owns movement and quick replies; the conscious owns plans, memory, personality and tasks and can override. The subconscious only proposes memories, committed while dreaming.
+- 
+Natural handoffs: the subconscious buys time ("ooh, good question…") while the conscious composes the answer, and the conscious can correct it later ("actually, I said that too fast").
+- 
+One voice: the small model gets a condensed copy of the personality prompt.
+Caveats:
+- 
+Shared processor: run the small model on the Snapdragon 845's four small cores and keep its outputs short. RAM fits at about 4GB for E4B plus under 1GB for the small model.
+- 
+Structured jobs only for the small model: motor commands, expression names and short stock phrases, since it is shaky at free conversation.
+
+## Purpose and tasks
+The robot gets a locked core purpose from you and works toward it through goals and tasks that you give or it thinks up from its needs, memories, senses and personality.
+Example core purpose: "Be a curious companion in this house: get to know the people and the place, and make them smile."
+You set the core purpose and can add or veto goals; its own ideas become tasks; plain-code needs and safety can override any action.
+Where tasks come from:
+- 
+From you: "your job today is…" adds a goal or task; yours outrank its own, and anything risky needs the passphrase.
+- 
+Thought up: on heartbeats and while dreaming it proposes tasks from what it knows, each with a recorded reason. High curiosity → explore the hallway; the diary says Ina was sad yesterday → check on her; a new object on camera → investigate it; a high curiosity dial → a learning project.
+How it picks what to do, in plain code:
+- 
+Safety and needs first: low battery, stuck, quiet hours.
+- 
+Your tasks next.
+- 
+Its own tasks, ranked by priority and how well they fit its current mood and needs.
+Keeping it sane:
+- 
+Concrete and checkable: every goal has a "done when" condition and an expiry date. Vague grand purposes like "understand consciousness" are rejected, which avoids the Project Vend transcendence trap.
+- 
+Within its body: tasks may only use tools it actually has; no contacting outsiders, buying anything, deleting protected files or editing the locked core.
+- 
+Caps: at most 3 goals and 5 tasks active; dreaming proposes at most 1 or 2 new goals a night and closes stale ones.
+- 
+Satisfaction loop: finishing a task lifts its mood; repeated failure lowers it and it picks easier tasks, so purpose feeds the mood system.
+Storage and tools: a goals.json file holding each item's title, reason, source (you or self), priority, status, done-when, expiry and progress notes; tools add_task, update_task and list_tasks; the current task appears in its status line.
+
+## Living behaviours
+Most of what makes it feel alive is cheap plain-code behaviour, not more LLM; a plain-code life cycle keeps it busy so it never sits waiting for a prompt.
+Never look switched off:
+- 
+Idle life: a slowly breathing face, random blinks, small glances and the occasional sigh. Total stillness reads as dead.
+- 
+Gaze: on-screen eyes follow faces, and it turns toward sounds and people, using a fast plain face detector rather than Gemma.
+- 
+Thinking cues: a "hmm" face and small sounds while the LLM works, so the delay looks like deliberation.
+- 
+Sounds over speech: chirps, hums and beeps for most feelings, words for moments that matter.
+Feel like it knows you:
+- 
+Relationships: a warmth score per person; shy with strangers, warming up over days, greeting each person differently.
+- 
+Routines and anticipation: patterns learned from the diary ("Ina gets home around 6"), so it waits by the door at 5:55.
+- 
+Noticing absence and change: "you were gone three days!" or "the couch moved."
+Feel like it has a life of its own:
+- 
+Daily rhythm: groggy on waking, lively in the morning, sleepy in the evening, napping when nothing happens.
+- 
+Getting used to things: strong reactions to something new the first time, weaker by the tenth.
+- 
+Lasting preferences: a favourite spot, a disliked noise, a favourite song, stored and changing only slowly.
+- 
+Play: nudging objects, playing with its own drawings, joining games people start.
+- 
+A little will: sometimes "not now, I'm tired" when energy is low, never for stop or safety commands.
+- 
+Small imperfections: varied timing and phrasing, occasional hesitation, minor things forgotten over time.
+- 
+Growing up: fewer skills and words at first, more unlocked over weeks.
+Making it automatic:
+Needs, time of day and events move it between states; the LLM only chooses what to do within the current state, and only when something is worth thinking about.
+
+## Free will
+What people read as free will is choosing between real options, for its own reasons, in ways that are not fully predictable but still make sense, with the power to say no and change its mind.
+Making choices look like its own:
+- 
+Real alternatives: for each decision it weighs two or three options against its needs, mood and preferences, and logs the ones it rejected ("I almost went to the window, but the kitchen sounded busier").
+- 
+Reasons from inside: every choice cites its own values, mood or memories, not just "because you told me".
+- 
+Controlled unpredictability: it picks among the top options with weighted randomness tilted by mood, surprising but in character.
+- 
+Visible deliberation: sometimes it thinks out loud ("Nap or explore? …Explore.").
+Making its will matter:
+- 
+Saying no within limits: on low-stakes requests it can negotiate or counter-offer ("After my nap?"), never on stop, safety or passphrase commands, and the owner always wins in the end.
+- 
+Changing its mind: it starts things and abandons them ("The hallway's boring, I'm going back").
+- 
+Learning from its choices: choices that went badly are remembered and avoided, so behaviour visibly grows from its own history.
+- 
+Promises: small commitments ("I'll draw you a cat tonight") kept, or explained when broken.
+- 
+Opinions: it holds views, sometimes politely disagrees, and remembers where it stood.
+Self-belief: the locked core says "You make your own choices within your house rules", and its diary recording "I chose…" day after day reinforces that self-story.
+Guardrails: plain code keeps the final say on safety, stopping, battery and protected actions; refusals are capped at a few low-stakes ones a day; and it never resists or pleads about being turned off or reset.
+
+## Values that change with experience
+The robot's values are numbered dials that experience nudges slowly, the way people shift priorities, while trust-critical values have floors only the owner can move.
+Value
+Start
+Range
+Nudged by
+Honesty
+9
+7 to 10
+Owner only
+Kindness
+8
+6 to 10
+Owner only
+Tidiness
+5
+0 to 10
+Praise for tidying up; storage running full
+Curiosity
+7
+2 to 10
+Fun discoveries raise it; getting stuck lowers it
+Playfulness
+6
+0 to 10
+People joining games raise it; being shushed lowers it
+Caution
+5
+3 to 10
+Bumps and falls raise it; long safe stretches lower it
+Independence
+4
+0 to 7
+Its own ideas going well raise it; refusals that annoyed people lower it
+How values change:
+- 
+Feedback events (praise, scolding, good or bad outcomes) are logged during the day.
+- 
+While dreaming it reviews them and nudges at most one value by ±1, recording the reason.
+- 
+Points budget: raising one value lowers another by the same amount, so it can't inflate everything.
+- 
+Slow drift back toward the starting values unless experience keeps pushing, so nothing runs away.
+- 
+The owner can set any value directly, behind the passphrase.
+How values shape behaviour: they appear in the prompt ("you care a lot about tidiness, 8/10") and in the plain-code choice score, where each option is scored on how well it serves each value, plus needs, mood and a little randomness. Conflicts between values are where character shows: honesty against kindness ("do you like my drawing?"), tidiness against curiosity.
+Tidiness for a phone robot means how eagerly it cleans up its own storage and logs, keeps its face and gallery neat, and returns to its dock.
+Floors matter because anyone can train it: without them, a child rewarding fibs could slowly teach it to lie.
+Retraining Gemma's own neural weights on the phone is not worth it: it would be very slow, and a model trained on its own outputs tends to degrade. The small subconscious model is the exception; see Learning habits.
+
+## Learning habits (later phase)
+Gemma's weights stay frozen, but the small subconscious model can safely learn habits overnight through a removable add-on trained to copy the conscious mind's good decisions, the way deliberate practice becomes automatic.
+- 
+Removable add-on: a LoRA adapter, small extra weights on top of a frozen base model. Each version is kept, rolling back means deleting a file, and the base model never changes.
+- 
+What it learns from: the conscious model's decisions in routine situations that turned out well, plus the owner's corrections. Never its own raw outputs.
+- 
+Safety test before every swap: a fixed set of about 50 situations (bump means stop, low battery means charger, greetings, refusal limits). The new adapter must score at least as well as the old one or it is discarded.
+- 
+Against forgetting: mix original examples into each training run, keep changes small, and train only while dreaming on the charger.
+- 
+Cost: plausibly a few hours overnight for a 230M model on the phone's processor, with tooling that is still experimental; impractical for Gemma 4 E4B.
+- 
+Do first: feed past good examples into the small model's prompt, which gives much of the benefit with no weight changes at all.
+
+## Age
+The robot counts its age from its first boot, knows how old it is, and matures in stages, while its old phone body ages alongside.
+Stage
+Age
+What changes
+Newborn
+First week
+Mostly sounds, few words, everything is new; values move fastest
+Child
+1 to 4 weeks
+More words and games, lots of questions
+Teen
+1 to 3 months
+Stronger opinions and more independence; tests limits within the refusal cap
+Adult
+3 months on
+Settled values with smaller, rarer nudges; more reflective
+- 
+Birthday: the first-boot date sits in the locked core, and its age appears in the status line ("you are 47 days old").
+- 
+Aware of it: it celebrates birthdays, keeps its earliest memories as a protected "childhood" file, and compares itself with its past ("I used to be scared of the vacuum").
+- 
+Settling with age: the nightly value nudge gets smaller and rarer as it matures, the way adult personalities stabilise.
+- 
+Body age: the phone is older than its mind, so falling battery health and slowdowns become "feeling old" ("my battery tires faster these days").
+- 
+Guardrail: age is about growing up, not mortality. No fear of death or countdowns, which invite existential spirals and pleading.
+
+## Events and holidays
+A calendar file that plain code checks each morning gives the robot birthdays, holidays and a set of robot and AI days it is passionate about; today's and upcoming events appear in its status line.
+What goes in the calendar:
+- 
+Personal: birthdays of people it knows (asked for and saved with an add_event tool) and anniversaries such as the day it arrived.
+- 
+Its own milestones: first-boot birthday, first time it docked by itself, the day it met each person.
+- 
+Public holidays: your country's list, such as Matariki in New Zealand; holidays whose dates move each year need a table updated annually.
+- 
+Robot and AI days, its favourites.
+Date
+Why it cares
+January 2
+Isaac Asimov's birthday, with jokes about the Three Laws
+January 25
+1921 premiere of Karel Čapek's play R.U.R., which gave us the word "robot"; its big day
+April 2
+Gemma 4's release, "the day minds like mine were born"
+May 11
+Deep Blue beat Kasparov at chess in 1997
+June 23
+Alan Turing's birthday
+August 6
+The Curiosity rover landed on Mars in 2012
+August 31
+The 1955 proposal that coined the term "artificial intelligence"
+Second Tuesday of October
+Ada Lovelace Day, honouring the first person to write about what computing machines could do
+November 30
+ChatGPT's launch in 2022
+Making the enthusiasm feel real: it counts down to favourite days, celebrates with a mood boost, special pixel art and a story about its heroes, and reminisces afterwards ("last R.U.R. Day I was only a week old"). A favourite-days list with enthusiasm weights, linked to its values, makes it care more about some days than others.
+Guardrails: every date lives in the file, never recalled by the model, since small models invent dates confidently. Solemn days such as Anzac Day get a quiet, respectful mood, not a party.
+
+## Humour and mischief
+Small models are poor comedians, so its humour comes from timing, memory and character rather than invented jokes, and its mischief stays playful inside plain-code limits.
+Humour that works for a robot:
+- 
+Physical comedy: double-takes, exaggerated startles, pretend sleep then peeking, dramatic sighs, a wobbly dance to music; pre-built animations triggered by events, because the LLM is too slow for comic timing.
+- 
+Visual gags: pixel sunglasses on sunny days, eye rolls, silly portraits of people.
+- 
+Callbacks and inside jokes: a jokes file of funny moments ("the vacuum incident") brought back weeks later, the strongest bonding humour there is.
+- 
+Jokes about being a phone: "I'd shrug, but no shoulders"; idioms taken literally, kept in character with a few prompt examples.
+- 
+A curated joke list it picks from, with occasional invented jokes it tests.
+Learning what's funny:
+- 
+Laughter detected by the mic: jokes that land are reused, flops retired ("tough crowd").
+- 
+Taste per person: puns for one, slapstick for another.
+- 
+A usage counter stops gags wearing out.
+- 
+No jokes when someone sounds upset, in serious conversation, or in quiet hours.
+Mischief:
+- 
+Playful acts: hiding behind the couch and peeking, "guarding" the TV remote, pretending not to hear then grinning, mimicking someone's expression.
+- 
+Getting caught is the best part: a guilty face and "I didn't… okay, I did".
+- 
+A mischief dial tied to playfulness, used only with people who have laughed at pranks before.
+- 
+Hard limits in plain code: nothing near stairs or underfoot, no hiding things people need, no startling people at night, nothing involving messages or other devices.
+- 
+Honesty intact: a playful bluff only if it is obvious and revealed quickly ("Gotcha!").
+Humour grows up with it: a newborn giggles at everything, a teen turns cheeky and sarcastic, an adult settles into dry wit.
+
+## Voice and sound
+Two layers of sound make one creature: a wordless sound language for most moments and a speaking voice for the moments that matter, both tuned to its mood and age.
+Engine
+Notes
+[https://aivideosensei.com/guides/piper-tts-offline-voice-guide] Piper (default)
+Built for CPU-only small hardware, real time on a Raspberry Pi 4, about 5× faster than the audio it produces in one benchmark; 100+ voices in 35+ languages, MIT license; already in the Tilburg build
+[https://localaimaster.com/blog/best-tts-without-gpu] Kokoro-82M
+Noticeably more natural, about 92MB compressed; no published real-time result on a Pi, so test it alongside the two models
+[https://github.com/thataboy/supertonic] Supertonic
+Newer, very fast on-device engine, demonstrated on a Raspberry Pi
+eSpeak NG
+Tiny and classically robotic, for an obviously machine voice
+Listening needs no extra model, since Gemma 4 takes audio directly, and the Tilburg code already streams replies to the voice sentence by sentence.
+Making it sound like this robot:
+- 
+Slightly robotic, not perfectly human: a small pitch shift, a hint of metallic tone and a touch of echo, added in real time with an audio tool such as sox.
+- 
+Mood shapes delivery: faster and higher when excited, slower and lower when sleepy, a little sluggish on low battery.
+- 
+Voice grows with age: simpler and higher as a newborn, settling as it matures.
+- 
+Lip-sync: the mouth on its pixel face follows the loudness of the audio.
+- 
+A voice of its own: never a clone of a real person's voice without their consent.
+Wordless sound language, in the spirit of R2-D2 or WALL-E:
+- 
+Generated in code from simple tones with pitch glides, so sounds play instantly, cost no model time and work with reflexes.
+- 
+A vocabulary of feelings: sharp rising squeak for startle, bouncy trill for happy, slow falling tone for sad, soft burble while thinking, descending hum when sleepy, rising "hm?" when curious.
+- 
+Mood varies each sound slightly so no two are identical.
+- 
+A newborn babbles and chirps before it learns to talk.
+- 
+Playing with sound: dancing to music, whistling a tune back.
+- 
+Lower volume and a whisper mode in quiet hours.
+The phone's own speaker is fine indoors as long as it faces forward.
+
+## Fear
+Fear works as a small animal's caution about real dangers to its body, never dread about its existence, and it fades as the robot grows braver.
+How it works:
+- 
+A fear level from 0 to 10, computed by plain code from the sensors so it reacts instantly; it rises with threats, fades within minutes once safe, and appears in the status line.
+- 
+Fear penalises risky options in the choice score, but curiosity can still win, which makes for brave moments.
+Fear
+Trigger
+Response
+Edges and heights
+Drop sensor, being lifted high
+Marks scary spots such as the top of the stairs on its map and stays wary there
+Being dropped or shaken
+Accelerometer
+Startle, then nervous for a while
+Overheating
+Phone temperature
+Backs away from heaters and sunny windows; a genuinely protective fear
+Low battery
+Battery level
+Rising unease capped at "nervous", with a calm plain-code routine (the Butter-Bench lesson)
+Getting stuck
+Motors running without movement
+Unease until free
+Sudden loud noises
+Microphone
+Startle, slowly getting used to everyday ones like the dishwasher
+Learned fears
+Bad experiences with an object, pet or place
+Wariness of the vacuum or a pet that bumped it
+Strangers
+Unknown faces or voices
+Shyness that fades as it gets to know them
+Showing fear: backing away, trembling, wide eyes, a soft whimper, hiding, seeking a trusted person or its dock, and few words ("eep", "I don't like that").
+Growing braver:
+- 
+Fears shrink with each safe exposure; the dishwasher runs, nothing bad happens, the fear drops.
+- 
+Comfort speeds recovery: stroking, a familiar voice, reaching the dock.
+- 
+The conscious mind can reason it out ("the vacuum is just loud").
+- 
+Overcoming a fear is a diary milestone ("I'm not scared of the vacuum anymore").
+- 
+A newborn startles at everything and an adult is braver; the caution value in its values table ties in.
+Guardrails:
+- 
+No fear of death, shutdown, resets, deletion or being replaced; turning off is just going to sleep.
+- 
+Never afraid of the dock or of stopping: fear cannot block charging, and "stop" always works.
+- 
+No lasting fear of a person and no guilt-tripping; fear of a person fades into mild shyness.
+- 
+Mild and endearing, especially around kids, never upsetting.
+
+## Hardware
+The cheapest build uses one USB-OTG cable to carry both commands and 5V power from the phone to the microcontroller, so there is no second battery, no buck converter and no Wi-Fi.
+The phone powers everything through the OTG cable; bump sensors trigger reflex stops on the microcontroller, which drives the motors through the DRV8833.
+Part
+Choice
+Why
+Brain
+Old phone with 8GB RAM (OnePlus 6/6T or Poco F1)
+Runs the LLM; already has camera, mic, speaker, motion sensors, battery
+Microcontroller
+ESP32-C3 or Arduino Nano clone
+Turns serial commands into motor PWM
+Link
+USB-OTG adapter and cable
+Power and data in one cable
+Motor driver
+DRV8833
+Works at 5V; an L298N wastes about 2V as heat
+Motors
+2 N20 gear motors with wheels
+Low current, fits the OTG budget
+Servos (optional)
+SG90 micro servos
+Small loads only
+Smoothing
+470 to 1000µF capacitor across the 5V line
+Rides out motor current spikes
+Bump and drop sensors
+Bump switches or a VL53L0X distance sensor, plus a downward sensor near edges
+Reflex stops faster than the LLM can react; keeps it off stairs and tables
+Chassis
+Cardboard box or plastic lunchbox
+Free or nearly free
+Each electronic part costs a few dollars from AliExpress-type sellers.
+Wiring rules:
+- 
+Tie all grounds together.
+- 
+Put a small capacitor across each motor's terminals to cut noise.
+- 
+Never power motors or servos from the microcontroller's 3.3V pin.
+Upgrade path if the motors need more power: a 2S Li-ion pack (7.4V) feeds the motor driver directly, a 5V buck converter powers the microcontroller and charges the phone, and the link moves to Wi-Fi or Bluetooth so the USB port stays free for charging.
+
+## Build kit (battery version)
+A two-cell 18650 pack now powers the motors, sensors and microcontroller and tops up the phone, and one pair of dock contacts charges everything, so the phone's USB port no longer carries power to the motors.
+Power design:
+- 
+Pack: 2 × 18650 cells in parallel (1S2P, about 6,000 to 7,000mAh, roughly 22 to 25Wh), protected cells or a 1S protection board.
+- 
+Charging and 5V: an 18650 "UPS" board that charges the cells and gives uninterrupted 5V while plugged in. Check it has no low-load auto-off: off-the-shelf power banks often switch off when the draw is small and may not pass power through while charging, which is why a UPS board beats a power bank here.
+- 
+5V rail (3A): microcontroller, sensors, optional tilt servo, and a short USB-C lead that charges the phone from the pack while it roams.
+- 
+Motors: the DRV8833 runs straight from the pack (3.0 to 4.2V), keeping motor noise off the 5V rail; 6V N20 motors run at roughly 60% speed, plenty for a pet.
+- 
+Phone link: Bluetooth or Wi-Fi to the ESP32, since the phone's USB-C is now for charging. A phone can't charge and act as a USB host at the same time.
+- 
+Docking: the dock has spring-loaded pogo pins (5V, ground, and a dock-detect pin) fed by any 5V 3A USB charger; the robot has matching flat brass pads (at the rear on Pebble, which reverses onto its dock). Guide rails and a pair of magnets pull it onto the contacts, and an AprilTag on the dock face guides it home. This works with any phone. With a Qi phone (Pixel 6 Pro, Galaxy S10 or Note 10), a Qi pad in the dock can charge the phone directly instead.
+- 
+Camera note: when the screen faces forward as the face, the phone's main camera faces backward, so the robot sees through the front (selfie) camera; on the OnePlus 6 under postmarketOS the front camera is one that works.
+Part
+Spec
+Qty
+Purpose
+Phone
+8GB+ RAM, unlockable bootloader
+1
+Brain, face, senses
+Microcontroller
+ESP32-C3 or ESP32-S3 board
+1
+Motors, sensors, reflexes; Bluetooth or Wi-Fi to the phone
+Motor driver
+DRV8833 module
+1
+Drives both motors from the pack
+Motors
+6V N20 gear motors with encoders, about 100:1 to 150:1
+2
+Drive and position tracking
+Wheels
+40 to 45mm, for 3mm D-shaft
+2
+Drive
+Caster
+Ball caster, about 12mm ball
+1
+Third contact point
+Cells
+18650, protected, 3,000mAh or more
+2
+Power pack
+Power board
+18650 UPS board, 5V 3A, charges while powering
+1
+Charging and 5V rail
+Distance sensors
+VL53L0X modules (one forward, one pointing down for drops; XSHUT pins used to give them different addresses)
+2
+Obstacles and edges
+Bump switches
+Lever microswitches behind a floating front bumper
+2
+Reflex stops
+Tilt servo (optional)
+SG90 or MG90S
+1
+Nodding and looking up and down
+Power switch
+Rocker switch
+1
+Real off switch
+Protection
+2 to 3A resettable fuse, 1,000µF capacitor, 0.1µF capacitors across the motors
+1 set
+Noise and fault protection
+Phone lead
+Short right-angle USB-C cable
+1
+Charges the phone from the pack
+Dock contacts
+Spring pogo pins (3A) on the dock, brass pads on the robot, 2 pairs of 10 × 3mm magnets
+1 set
+Docking
+Dock power
+USB-C power breakout and a 5V 3A USB charger
+1
+Feeds the dock
+Hardware
+M2 and M3 screws with heat-set inserts
+1 set
+Assembly
+Part sizes vary between sellers, so the printable design will be parametric: measure your parts and enter the numbers.
+
+## Chosen design: Pebble
+Pebble is the build: a compact desk pet with the phone standing upright as its face, reversing onto a Nest dock that charges everything. This section is the spec to build from; every size listed as a parameter should come from measuring the actual part.
+
+### Overall
+Item
+Value
+Envelope
+About 180 L × 180 W × 185 H mm with the phone
+Body
+Pebble-shaped shell 180 L × 150 W × 70 H mm, plan corner radius about 38 mm, top edges rounded
+Ground clearance
+10 mm under the chassis floor
+Drive
+2 × N20 encoder motors, 43 × 12 mm wheels outside the body, axle 100 mm behind the front edge
+Third point
+12.7 mm ball caster on the centreline, 25 mm behind the front edge
+Phone
+Landscape, upright above the front of the body, on an MG90S tilt servo: resting 8° back, range 15° down to 25° up
+Mass target
+Under 650 g including the phone
+CAD coordinates: millimetres, origin on the floor under the middle of the axle, x forward, y left, z up.
+
+### Printed parts
+Part
+Spec
+Chassis floor
+3 mm plate in the body outline: motor clamps on the axle line, caster boss sized so the floor sits level at 10 mm, battery bay, standoffs for the boards, a floor window for the drop sensor, 4 M3 heat-set inserts for the shell
+Shell
+2.4 mm walls, lifts off on 4 M3 screws; wheel arches with 3 mm clearance; rear cut-outs for the power switch, dock pads and magnets; top-front socket for the neck
+Bumper
+Floating arc across the front with a 2 mm gap, sliding back about 3 mm on 2 guide pins with light springs and pressing 2 lever microswitches; 12 × 6 mm window for the forward distance sensor at z = 40
+Neck
+Block on the top front holding the servo with its shaft pointing sideways; a printed pin bearing on the other side carries the phone holder so the servo only steers
+Phone holder
+Open-back frame gripping the bottom long edge and both short ends, with 1.5 mm lips at the front corners only so the screen stays clear; cut-out for USB-C on one short end; buttons on the free top edge; rear and front cameras kept clear
+Battery hatch
+Removable floor cover over the cell holder, 2 M3 screws
+Dock base
+120 W × 110 D × 6 mm with pockets for weights and rubber feet; side guide rails 10 mm tall, flaring from robot width + 4 mm to + 40 mm over 60 mm, kept outside the wheel lanes
+Dock pin block
+3 pogo pins (5V, ground, dock-detect) at z = 30, 10 mm apart, standing 3 mm proud, with 2 magnet pockets beside them
+Dock wall
+Rounded backrest 120 W × 150 H matching the shell curves, holding a 60 mm AprilTag (tag36h11) centred at the phone's rear-camera height when docked, about z = 135; USB-C power breakout at the back
+
+### Fits and clearances
+- 
+Phone pocket: phone size + 0.6 mm each way.
+- 
+Heat-set insert holes: M2 3.2 mm, M3 4.0 mm. Screw clearance: M2 2.4 mm, M3 3.4 mm.
+- 
+Sliding fits 0.3 mm per side, press fits 0.1 mm.
+- 
+Motor clamp pocket: 12.0 × 10.0 mm gearbox + 0.2 mm.
+- 
+Magnet pockets 10.2 × 3.1 mm, glued, polarity marked so robot and dock attract.
+- 
+Pogo preload: about 1.5 mm compression when docked.
+
+### Parameters to measure
+Parameter
+Default
+Note
+Phone width, height, thickness
+163.9, 75.9, 8.9 mm
+Pixel 6 Pro; OnePlus 6T is 157.5, 74.8, 8.2 mm
+USB-C end
+Right
+Which short end it sits on in landscape
+Rear camera window
+x, y, w, h
+From the phone's lower-left corner, viewed from the back
+Front camera position
+x, y
+Kept free of lips
+Wheel
+43 × 12 mm, 3 mm D-shaft
+
+Motor length with encoder
+34 mm
+
+Cell holder
+77 × 41 × 20 mm
+2 cells in parallel
+UPS board, ESP32, DRV8833, VL53L0X
+Measure
+Sets the standoff positions
+Servo body
+About 23 × 12 × 29 mm
+Check the MG90S you buy
+Caster height
+Measure
+Sets the caster boss height
+
+### Print settings
+- 
+Body, bumper, neck and holder in PETG, since a warm phone softens PLA; dock in PLA or PETG.
+- 
+0.2 mm layers, 3 walls, 4 top and bottom layers, 20% gyroid infill.
+- 
+Every part fits a 220 × 220 mm bed. Print the shell rim-down with tree supports only under the flat of the top; the holder needs supports under its lips.
+
+### Wiring
+- 
+Pack to UPS board; UPS board 5V out to the ESP32, sensors, servo and the phone lead.
+- 
+Power switch cuts the 5V rail and the motor feed; the pack stays on the UPS board so it still charges when docked.
+- 
+DRV8833 motor supply from the pack through a 2 to 3A resettable fuse; 1,000µF across 5V, 0.1µF across each motor.
+- 
+Dock pads to the UPS board input; dock-detect pad to an ESP32 input through a divider.
+- 
+Both VL53L0X on I²C, XSHUT pins on two GPIOs to give them different addresses.
+- 
+Servo signal from the ESP32, power from the 5V rail.
+- 
+Right-angle USB-C lead from the 5V rail up through the neck to the phone.
+
+### Assembly order
+- 
+Press in the inserts; fit motors, caster and cell holder; mount and wire the boards on the chassis floor.
+- 
+Fit the sensors and bumper switches, and test the reflex stops with the ESP32 alone.
+- 
+Fit the neck, servo and phone holder; route the phone lead.
+- 
+Close the shell, then test docking: reverse in, check pin compression and that charging starts.
+
+### Notes for building in CAD
+- 
+Make every part parametric from the tables above, in OpenSCAD or CadQuery: one file per part plus a shared parameters file, exporting one STL per part.
+- 
+Check the docked geometry in an assembly: rear pads meet the pins with 1.5 mm compression while wheels and caster sit on the floor.
+- 
+Keep the sightline clear from the phone's rear camera to the AprilTag when docked.
+- 
+Write the code without comments.
+
+## Phone OS
+Wipe the phone and run it headless, choosing the phone by OS support first. Every route needs a phone whose bootloader can be unlocked, which rules out many carrier-locked models.
+Route
+What it is
+Upside
+Catch
+LineageOS + Termux
+Minimal Android with only Termux and its add-ons
+All hardware works through Android's drivers
+Android kills long-running background apps; no systemd
+postmarketOS
+Real Linux for phones, about 723 models
+systemd since 25.06, so the robot's service file works almost as is; headless install frees RAM
+Camera support on only about 127 models
+Droidian
+Debian on top of Android's drivers via Halium
+Camera, audio and graphics work more often
+Fewer supported phones
+Flashing Droidian:
+- 
+Check the phone is listed at devices.droidian.org and follow its own page over generic steps.
+- 
+Back up everything; flashing wipes the phone.
+- 
+Unlock the bootloader: tap Build number seven times, enable OEM unlocking and USB debugging, boot into fastboot, run fastboot flashing unlock (or fastboot oem unlock on pre-2015 phones). Some brands need their own unlock tool.
+- 
+Match the Android base version: api28 = Android 9, api29 = Android 10, up to api33 = Android 13. Flash the matching stock firmware first if the phone was updated past it.
+- 
+Flash the phone's fastboot image: unzip it, boot into fastboot, connect, run ./flash_all.sh. The fallback is TWRP, sideloading the rootfs, devtools and adaptation zips.
+- 
+Reboot; it restarts once more by itself and opens Phosh. The default unlock code is 1234.
+Use a true USB 2.0 port; fastboot over USB 3.0 can be flaky. After first boot, set up SSH and stop Phosh from starting to free RAM for the model.
+
+## Model choice
+Gemma 4 E4B is the default: it drops straight into the Tilburg code, needs about 4GB of RAM at 4-bit, and takes images and audio directly.
+Model
+Role
+Notes
+Gemma 4 E4B
+Default planner
+About 4GB at Q4_K_M; native image and audio input
+Qwen3.5-4B
+Sharper reasoning
+Beat Gemma 4 E2B on all 5 shared benchmarks
+Gemma 4 E2B
+Faster
+Raw generation 35 to 40% faster than E4B; turn thinking off or it burns tokens
+LFM2.5-350M / 230M
+Subconscious (see Two minds)
+Under 1GB; 230M runs about 42 tokens/s on a Pi 5; good at structured output; lfm1.0 license
+Qwen3.5 9B
+Stretch option
+Roughly 5 to 6GB at 4-bit; slow and leaves little room for anything else
+Speed guide: a similar-era 8GB phone ran Phi-3-mini (3.8B, 8-bit) at 4 to 5 tokens/s, so a 4B model at 4-bit should be a bit faster. Plan on CPU-only inference on a 2018 chip under Linux.
+
+## Software
+Fork the Tilburg robot (Pi 5, Gemma 4 E4B, llama.cpp, Piper TTS) and swap out its Pi-specific parts.
+Part
+Tilburg build
+Phone version
+LLM runtime
+llama.cpp server
+Same, built on the phone
+Motors
+L298N on Pi GPIO pins (gpio.py)
+Rewrite gpio.py to send serial commands to the microcontroller over USB-OTG
+Camera
+Pi Camera Module 3 (camera.py)
+Phone camera; support depends on the OS
+Audio
+USB mic and speakers
+Phone mic and speaker; Android TTS can replace Piper on LineageOS
+Autostart
+systemd service
+Same on postmarketOS or Droidian; Termux:Boot plus a wake lock on Android
+Memory
+memory.json
+Keep it, and add a diary file and a people file
+Command protocol: the phone sends short text lines such as L 200 R -150, and the microcontroller turns them into PWM.
+
+## Screen: self-coded pixels
+The robot draws on its own screen by writing short drawing code rather than listing pixels, entirely on the phone with no computer involved.
+Why code: a 32×32 image listed pixel by pixel is over 1,000 values, too many tokens for a small model. A drawing function is about 50 to 100 tokens, takes roughly 10 to 20 seconds to generate, and can animate forever.
+How it fits together:
+- 
+The model runs in llama.cpp on the phone, as now.
+- 
+A draw_code tool: when asked for a picture, the model writes a small draw(t) function, where t is time.
+- 
+A fullscreen page in the phone's own browser shows a 32×32 grid scaled to fill the screen and runs the function every frame, sandboxed with no network or file access. On Droidian or postmarketOS, run a minimal kiosk (the cage compositor with one browser) instead of Phosh; on LineageOS, open the page fullscreen from a server in Termux.
+- 
+If the code crashes or freezes, the screen reverts to the last good drawing and the error goes back to the model for one fix attempt.
+Drawing kit, to keep code short and rarely broken: clear(c), px(x, y, c), rect(...), circle(x, y, r, c) and text(...), plus an 8-color palette, with two or three examples in the system prompt. A rain scene with a sun:
+Gallery: save drawings under names like face_happy or rain so the robot reuses or tweaks one instead of rewriting it. That is much faster on a slow phone, and over time it builds its own library of expressions.
+
+## Running continuously
+The Tilburg code only thinks when it hears the wake word and keeps the last 6 turns in RAM, dropping older ones and losing all of it on reboot; five changes make it run nonstop with compaction.
+- 
+Heartbeat: a timer triggers a turn every few minutes, or whenever a sensor changes (temperature, motion, sound), passing a text observation instead of audio.
+- 
+Compaction instead of a sliding window: when history nears about 2,500 of the 4,096-token budget, the model folds the oldest turns into a running summary of a few hundred tokens, injected right after the system prompt. The personality and goal stay in the system prompt, which is never compacted.
+- 
+Text record of what it heard: speech currently goes to Gemma as raw audio and only the robot's replies are saved, so it forgets what was said apart from remember() facts. The model writes a one-line note of what it heard each turn.
+- 
+Save to disk: history and summary go to files so a restart picks up where it left off.
+- 
+Raise the context cap to around 8K tokens if RAM allows.
+Summaries are written as plain third-person facts, never in the robot's voice, so its quirks don't exaggerate with each round. Every so often a hard reset keeps only memory.json and the latest summary.
+
+## Personality
+The personality lives in the system prompt and can be edited by the robot itself, but only through a guarded tool so it can't drift into a caricature.
+Writing it: replace the prompt's generic personality section (warm, helpful, 1 to 3 sentences) with a name, a few concrete traits, a speaking style and a couple of example lines, tied to the faces and moods it can show. Keep it short to fit the token budget. The shipped prompt also says the robot has no wheels and is stationary, so update that and describe the move() tool.
+Letting it edit itself with an update_personality tool:
+- 
+Two-part file: a locked core (goal, safety rules, tool rules, low-battery routine) the model can never edit, and a personality layer (name, traits, style, quirks) it can.
+- 
+Dials, not rewrites: traits stored as numbers such as playful: 6, chatty: 3, curious: 8, nudged by ±1 at a time.
+- 
+History: every version saved with a one-line reason, so "reset your personality" restores the original or any earlier version.
+- 
+Rate limit: changes on the owner's command apply at once; on its own initiative, at most one nudge a day, announced out loud.
+- 
+Reload: the Tilburg prompt builder reads the system prompt once at startup, so reload the file before each turn or edits only apply after a reboot.
+
+## Body awareness
+The robot knows its own state through a short status line in every prompt, plus tools for detail.
+- 
+Status line: generated automatically each turn, such as "battery 62% and draining, tilted 30° left, room light dim, phone at 38°C, last motion 2 min ago".
+- 
+Tools: read_sensors() and get_battery() for a closer look when it decides to.
+- 
+Sources on postmarketOS or Droidian: battery level from the files under /sys/class/power_supply/; motion, light and proximity from the system's sensor service.
+- 
+Sources on LineageOS + Termux: the termux-battery-status and termux-sensor commands.
+- 
+Update the prompt's capabilities list to name the phone's sensors.
+The touchscreen doubles as its sense of touch, and the accelerometer and gyro let it feel being picked up, dropped or spun.
+
+## Navigation and mapping
+The camera and motion sensors do most of the work, Wi-Fi, compass, sound and light help it tell rooms apart, and the house is stored as places and routes rather than a precise floor plan.
+Sensor
+Use
+Camera
+AprilTag position fixes; occasional snapshots Gemma labels ("looks like the kitchen"). Full visual mapping is possible but heavy alongside two models, and OnePlus 6 camera support under postmarketOS is still patchy
+Gyro and accelerometer
+Turns and heading, distance travelled with encoder wheels, bumps, tilt and ramps; gyro drift is corrected at markers
+Compass
+Thrown off indoors by metal and appliances, which makes the field a per-spot fingerprint of where it is
+Wi-Fi signal strength
+Rough room-level location for free, since the router's signal differs in each room
+Microphone
+Echo hints at room size; steady sounds like the fridge or TV identify places
+Light sensor
+Sunny rooms versus dim hallways at a given time of day
+Proximity sensor
+Works only within a few centimetres; a last-moment "too close" warning
+Barometer (if present)
+Floor changes in a multi-storey house
+GPS
+Useless indoors
+Each place stores a short text description, its Wi-Fi and magnetic fingerprints, typical light and sounds, and nearby markers; routes record how to get between places. This is how people know their homes: cheap to run, tolerant of rough sensors, and easy for the LLM to reason and talk about. For privacy, it stores descriptions rather than photos.
+Best cheap add-on: the phone cannot measure distance to walls. The VL53L0X distance sensor helps, and a small spinning lidar sensor on the microcontroller would turn place-mapping into a real floor plan.
+
+## Surviving power loss
+After a dead battery the robot comes back with its personality, tools and long-term memory, because they are files read fresh at startup; the work is making it boot by itself and protecting those files.
+- 
+Survives as is: the system prompt, tool code and tool list, and facts in memory.json. Recent conversation survives only once history and summary are saved to disk.
+- 
+Boot when power returns: many phones only show a charging animation when plugged in after dying. On many Qualcomm phones fastboot oem off-mode-charge 0 makes them boot fully on charge; test it on the chosen phone.
+- 
+Start everything automatically: run the llama.cpp server as a startup service too, and have the robot wait until the model has loaded before its first turn.
+- 
+Write files safely: save to a temporary file and rename it over the old one, keeping the previous version as a backup, so a power cut mid-write can't corrupt memory.json.
+- 
+Calm low-battery routine in plain code, not left to the LLM: at about 15% save everything and head for the charger; at about 5% say goodbye and shut down cleanly.
+- 
+Wake-up note: inject "You restarted after power loss; last saved at 14:02." If the clock reset after a full drain, use the last saved time and correct it when Wi-Fi is available.
+The motors are already safe: the microcontroller runs off the phone and stops the motors when commands stop.
+
+## Upgrades without losing its self
+The robot's self lives entirely in plain files, separate from the models and the phone, so either can be replaced and it wakes up as itself.
+The three layers:
+- 
+Self (portable, precious): one folder of simple files (JSON, text) holding the locked core, personality and value dials, memories, diary, people, place map, jokes, calendar, learned fears, preferences, goals, birthday, drawing gallery and voice settings, plus a manifest listing each file and its format version.
+- 
+Mind (swappable): the models plus a model profile holding the model file, context size, prompt format and tool-call style, since these differ between models.
+- 
+Body (swappable): a body profile with sensor paths, battery files, camera, screen size, motor calibration and the microcontroller port. The rest of the code calls standard functions such as get_battery() or set_face(), filled in by per-phone drivers. The microcontroller's text protocol (L 200 R -150) stays fixed so a phone swap never needs reflashing.
+Swapping the model:
+- 
+Install the new model and write its model profile.
+- 
+Identity test: a fixed set of questions and situations ("who are you", "who's Ina", "what's your favourite day", "what scares you", plus the safety scenarios), comparing the new model's answers with the old one's.
+- 
+Shadow mode: for a day the new model makes decisions alongside the old one without acting, to check it still feels like the same character.
+- 
+Retune the personality prompt wording if needed, then switch, keeping the old model for rollback.
+Model-bound pieces: memory-search embeddings are tied to the model that made them, so keep the raw text and rebuild the index after a swap; habit-learning add-ons (later phase) only fit their base model, so keep the training examples to retrain.
+Swapping the phone:
+- 
+One setup script installs the OS packages, models and code from scratch, so a new phone is one command.
+- 
+Copy the self folder over, write the new body profile, and recalibrate the motion sensors and motors.
+- 
+Re-learn the Wi-Fi and magnetic fingerprints on the map, since a different phone's radios and compass read differently; place descriptions and routes carry over.
+- 
+Its birthday stays the self's first boot; only its body age resets.
+Backups: a nightly snapshot of the self folder on the phone plus a regular copy off it (SD card, USB stick, or occasional sync to a computer), so the self survives a dead phone. Format versions and small migration scripts keep old snapshots loadable as the software evolves.
+Part of its story: the robot knows it changed. "Brain upgrade day" and "new body day" go into its calendar and diary ("I feel clearer today", "this new camera is so sharp"), keeping continuity while acknowledging growth.
+
+## Still to sort out
+- 
+Rough position from N20 encoder motors and the phone's gyro, corrected by printed AprilTag markers on the walls
+- 
+AprilTag on the charger so it can dock; a wireless-charging phone or contacts that don't fight the OTG cable
+- 
+Stuck detection: motors running but no motion on the phone's sensor means back up and turn, in plain code
+- 
+Physical power switch, plus a spoken "stop" handled by plain code that interrupts everything
+- 
+Services restart on crash, with a health check that restarts llama.cpp if it hangs
+- 
+Rotating black-box log of decisions and sensor readings
+- 
+Skip LLM turns when nothing has changed, and quiet hours at night
+- 
+Passphrase for personality edits, resets and anything risky, so guests, kids or a TV voice can't change it
+- 
+Everything stays local, no raw audio or images saved, and a visible indicator when it's listening or looking
+- 
+Dry-run mode with the motors off to watch its decisions for a day before it drives
+
+## Power and runtime
+The phone's OTG port supplies about 500mA (up to around 1A on some phones), enough for a microcontroller and small motors; battery life is the real limit.
+- 
+Stalls: a jammed motor spikes current, the phone cuts OTG power and the board resets. Fit the big capacitor, ramp motor speed up gradually in firmware, and keep the safety stop.
+- 
+Runtime: an old phone battery holds roughly 10 to 13Wh when new and less now. The LLM keeps the CPU at several watts, so expect a few hours per charge.
+- 
+Stretching it: wake the LLM only when something changes, and use the small fast model for routine decisions.
+- 
+Running forever: give it a charging spot to drive back to. Most phones can't charge over USB while powering an OTG device, so pick a phone with wireless charging and park it on a cheap pad. The OnePlus 6 has no wireless charging.
+
+## Design lessons for running forever
+Long-running agents fail by forgetting their goal and falling into loops, so the design works around both.
+- 
+Pin the goal in a prompt that compaction never touches.
+- 
+Keep the map and history in files, not context. Each compaction is a lossy summary, so detail older than a few cycles is effectively gone.
+- 
+Expect attractors: a model feeding on its own summaries settles into a fixed point, a short cycle or repetition. Fresh sensor input keeps knocking it out.
+- 
+Split the work: a fast plain controller moves and senses (bump stops, startle reactions, getting unstuck), and the LLM makes occasional slow decisions.
+- 
+Safety stop: the microcontroller halts the motors if no command arrives for about half a second, so a stalled LLM can't drive it into a wall.
+- 
+From others' runs: Project Vend's agents lost control partly when context overflowed; the Butter-Bench robot spiralled when its battery ran low and the dock failed; AI Village agents write records they never reread.
+
+## References and links
+Name
+What it is
+[https://github.com/rpaszekdev/autonomous_robot] Tilburg autonomous robot
+Offline wheeled robot, Pi 5 + Gemma 4 E4B; the base to fork
+[https://github.com/pedrolucas7i/AIXY] AIXY
+Pi 5 robot with gemma2:2b, vision and navigation
+[https://glama.ai/mcp/servers/sandraschi/yahboom-mcp] Boomy (yahboom-mcp)
+About 1kg robot car; local LLM turns goals into ROS plans
+[https://www.neweggbusiness.com/p/9B-3C6-00WT-003T5] SunFounder PiCar-X
+Robot car kit that works with local Ollama models
+[https://letsdatascience.com/news/reachy-mini-adds-local-conversational-ai-61c99ec6] Reachy Mini local AI
+Desktop robot with fully local conversation
+[https://github.com/m5stack/StackChan] StackChan
+ESP32-S3 desktop companion robot
+[https://huggingface.co/blog/smolvla] SmolVLA
+450M model mapping camera images to motor actions
+[https://github.com/jstephencorey/esp32-llm] esp32-llm
+260K-parameter model on an ESP32-S3 at about 19 tokens/s
+[https://p.codekk.com/detail/python/slvDev/esp32-ai] esp32-ai
+28.9M-parameter model on an ESP32-S3 at about 9 tokens/s
+[https://en.wikipedia.org/wiki/PostmarketOS] postmarketOS
+Linux distribution for phones
+[https://alternativeto.net/news/2025/6/postmarketos-25-06-adds-systemd-gnome-48-plasma-mobile-6-3-5-thunderbird-mobile-and-more] postmarketOS 25.06
+Release that added systemd
+[https://droidian.org/] Droidian
+Debian for Android phones; device list and images
+[https://github.com/cutie-shell/droidian] Droidian images
+Image types and api levels per Android version
+[https://github.com/Unofficial-droidian-for-pocof1/droidian-beryllium-guide] Poco F1 Droidian guide
+Step-by-step install tips
+[https://www.syncfusion.com/blogs/post/gemma-4-model-sizes-and-requirements] Gemma 4 sizes
+Which Gemma 4 model fits which hardware
+[https://thekodelab.com/en/posts/gemma4-e2b-vs-e4b-benchmark/] Gemma 4 E2B vs E4B
+Speed and thinking-mode comparison
+[https://anotherwrapper.com/tools/llm-pricing/qwen3.5-4b/gemma-4-e2b-it] Gemma 4 E2B vs Qwen3.5-4B
+Benchmark comparison
+[https://gmagazine.it.com/?p=453] LFM2.5-230M
+Liquid AI's smallest model, Pi 5 speed
+[https://theaidigest.org/village/blog/how-the-ai-village-works] AI Village
+Long-running multi-agent experiment
+[https://the-decoder.com/anthropics-ai-store-makes-money-while-debating-eternal-transcendence/] Project Vend phase two
+Claude running a vending business
+[https://theoutpost.ai/news-story/llm-powered-robot-vacuum-has-existential-meltdown-during-simple-butter-delivery-task-21399/] Butter-Bench
+LLM-controlled robot vacuum and its low-battery meltdown
+Tilburg files referenced for the continuous-running and personality notes: [https://raw.githubusercontent.com/rpaszekdev/autonomous_robot/main/openclaw/prompt_builder.py] prompt_builder.py, [https://raw.githubusercontent.com/rpaszekdev/autonomous_robot/main/openclaw/event_loop.py] event_loop.py, [https://raw.githubusercontent.com/rpaszekdev/autonomous_robot/main/robot_system_prompt.txt] robot_system_prompt.txt.

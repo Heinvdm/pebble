@@ -1,0 +1,14 @@
+.gradle/
+build/
+app/build/
+local.properties
+keystore.properties
+*.jks
+llama/src/
+llama/build/
+llama/out/
+build-*.log
+llama/build.log
+libs/*.aar
+libs/*.part
+models/

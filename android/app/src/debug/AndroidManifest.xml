@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <application>
+        <service
+            android:name=".debug.ScriptProbeService"
+            android:exported="false"
+            android:isolatedProcess="true"
+            android:process=":scriptprobe" />
+        <receiver
+            android:name=".debug.DebugCommands"
+            android:exported="true"
+            android:permission="android.permission.DUMP">
+            <intent-filter>
+                <action android:name="nz.pebble.robot.debug.PIN" />
+                <action android:name="nz.pebble.robot.debug.CONFIG" />
+                <action android:name="nz.pebble.robot.debug.SEAL" />
+                <action android:name="nz.pebble.robot.debug.SELF" />
+                <action android:name="nz.pebble.robot.debug.HANG" />
+                <action android:name="nz.pebble.robot.debug.RECEIVE" />
+                <action android:name="nz.pebble.robot.debug.TZ" />
+                <action android:name="nz.pebble.robot.debug.BODYKEY" />
+                <action android:name="nz.pebble.robot.debug.MAP" />
+                <action android:name="nz.pebble.robot.debug.MEASURE" />
+                <action android:name="nz.pebble.robot.debug.HOUSE" />
+                <action android:name="nz.pebble.robot.debug.ADMIN" />
+                <action android:name="nz.pebble.robot.debug.BIRTH" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name=".debug.DebugBrain"
+            android:exported="true"
+            android:permission="android.permission.DUMP"
+            android:process=":brain">
+            <intent-filter>
+                <action android:name="nz.pebble.robot.debug.SENSES" />
+                <action android:name="nz.pebble.robot.debug.ALARM" />
+                <action android:name="nz.pebble.robot.debug.SAY" />
+                <action android:name="nz.pebble.robot.debug.TAP" />
+                <action android:name="nz.pebble.robot.debug.HEAR" />
+                <action android:name="nz.pebble.robot.debug.BARGE" />
+                <action android:name="nz.pebble.robot.debug.ECHO" />
+                <action android:name="nz.pebble.robot.debug.SNAP" />
+                <action android:name="nz.pebble.robot.debug.EARS" />
+                <action android:name="nz.pebble.robot.debug.FLOOR" />
+                <action android:name="nz.pebble.robot.debug.MOTION" />
+                <action android:name="nz.pebble.robot.debug.DEPTH" />
+                <action android:name="nz.pebble.robot.debug.VECTORS" />
+                <action android:name="nz.pebble.robot.debug.CLOSEUP" />
+                <action android:name="nz.pebble.robot.debug.TORCH" />
+                <action android:name="nz.pebble.robot.debug.HIGHBAND" />
+                <action android:name="nz.pebble.robot.debug.MICPROBE" />
+                <action android:name="nz.pebble.robot.debug.SCORES" />
+                <action android:name="nz.pebble.robot.debug.RECALL" />
+            </intent-filter>
+        </receiver>
+    </application>
+</manifest>

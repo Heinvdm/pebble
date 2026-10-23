@@ -1,0 +1,19 @@
+{
+  "name": "lfm2.5-230m",
+  "role": "subconscious",
+  "endpoint": "http://127.0.0.1:8081",
+  "model": "lfm2.5-230m",
+  "model_file": "LFM2.5-230M-Q8_0.gguf",
+  "context_tokens": 2048,
+  "compact_at_tokens": 1500,
+  "keep_tokens_after_compaction": 500,
+  "summary_tokens": 120,
+  "max_reply_tokens": 32,
+  "temperature": 0.2,
+  "timeout_s": 15,
+  "chars_per_token": 4.0,
+  "system_role": true,
+  "tools": false,
+  "extra_body": {},
+  "notes": "Structured jobs only (expression names, short choices). Run on the small cores: taskset -c 0-3 llama-server -m LFM2.5-230M-Q8_0.gguf -c 2048 --port 8081 -t 4."
+}

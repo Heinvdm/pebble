@@ -1,0 +1,7 @@
+pyserial>=3.5
+bleak>=0.22
+cryptography>=42
+opencv-python-headless>=4.8
+numpy>=1.24
+onnxruntime>=1.21
+sherpa-onnx>=1.13.8

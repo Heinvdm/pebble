@@ -1,0 +1,12156 @@
+{
+ "model": "yoloe-26n-seg-pf.pt",
+ "licence": "AGPL-3.0 (YOLOE, THU-MIG/yoloe; Ultralytics)",
+ "source": "https://github.com/ultralytics/assets/releases/download/v8.4.0/yoloe-26n-seg-pf.pt",
+ "source_sha256": "ae805a9ac11c85214588b32da8248d68a516e1d071465e1e86a03cbfadb66ba7",
+ "ultralytics": "8.4.177",
+ "imgsz": 416,
+ "layout": {
+  "boxes": 4,
+  "classes": 2013,
+  "mask": 32,
+  "anchors_last": true,
+  "scores": "probability"
+ },
+ "classes": [
+  {
+   "raw": "abacus",
+   "label": "abacus",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "abalone",
+   "label": "abalone",
+   "animal": true,
+   "depth": 10
+  },
+  {
+   "raw": "accordion",
+   "label": "accordion",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "acorn",
+   "label": "acorn",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "adhesive tape",
+   "label": "adhesive tape",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "antenna",
+   "label": "antenna",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "spray can",
+   "label": "spray can",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "air conditioner",
+   "label": "air conditioner",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "air conditioning",
+   "label": "air conditioning",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "aircraft model",
+   "label": "aircraft model",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "alarm",
+   "label": "alarm",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "alarm clock",
+   "label": "alarm clock",
+   "animal": false,
+   "depth": 11
+  },
+  {
+   "raw": "mollymawk",
+   "label": "mollymawk",
+   "animal": true,
+   "depth": 13
+  },
+  {
+   "raw": "album",
+   "label": "album",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "album cover",
+   "label": "album cover",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "alcohol",
+   "label": "alcohol",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "almond",
+   "label": "almond",
+   "animal": false,
+   "depth": 13
+  },
+  {
+   "raw": "aloe vera",
+   "label": "aloe vera",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "alpaca",
+   "label": "alpaca",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "german shepherd",
+   "label": "german shepherd",
+   "animal": true,
+   "depth": 11
+  },
+  {
+   "raw": "bald eagle",
+   "label": "bald eagle",
+   "animal": true,
+   "depth": 12
+  },
+  {
+   "raw": "American shorthair",
+   "label": "cat",
+   "animal": true,
+   "depth": 14
+  },
+  {
+   "raw": "amplifier",
+   "label": "amplifier",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "anchor",
+   "label": "anchor",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "anemone",
+   "label": "anemone",
+   "animal": false,
+   "depth": 11
+  },
+  {
+   "raw": "animal sculpture",
+   "label": "animal sculpture",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "anklet",
+   "label": "anklet",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "trench coat",
+   "label": "trench coat",
+   "animal": false,
+   "depth": 11
+  },
+  {
+   "raw": "ant",
+   "label": "ant",
+   "animal": true,
+   "depth": 11
+  },
+  {
+   "raw": "antique",
+   "label": "antique",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "anvil",
+   "label": "anvil",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "appetizer",
+   "label": "appetizer",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "apple",
+   "label": "apple",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "apple juice",
+   "label": "apple juice",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "apple pie",
+   "label": "apple pie",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "apple tree",
+   "label": "apple tree",
+   "animal": false,
+   "depth": 12
+  },
+  {
+   "raw": "applesauce",
+   "label": "applesauce",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "apricot",
+   "label": "apricot",
+   "animal": false,
+   "depth": 12
+  },
+  {
+   "raw": "apron",
+   "label": "apron",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "aquarium fish",
+   "label": "aquarium fish",
+   "animal": false,
+   "depth": 11
+  },
+  {
+   "raw": "arcade machine",
+   "label": "arcade machine",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "armband",
+   "label": "armband",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "armchair",
+   "label": "armchair",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "armoire",
+   "label": "armoire",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "art print",
+   "label": "art print",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "artichoke",
+   "label": "artichoke",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "ash",
+   "label": "ash",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "ashtray",
+   "label": "ashtray",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "asparagus",
+   "label": "asparagus",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "atlas",
+   "label": "atlas",
+   "animal": false,
+   "depth": 11
+  },
+  {
+   "raw": "atm",
+   "label": "atm",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "eggplant",
+   "label": "eggplant",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "car battery",
+   "label": "car battery",
+   "animal": false,
+   "depth": 12
+  },
+  {
+   "raw": "automobile model",
+   "label": "automobile model",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "autumn tree",
+   "label": "autumn tree",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "aviator sunglasses",
+   "label": "aviator sunglasses",
+   "animal": false,
+   "depth": 11
+  },
+  {
+   "raw": "avocado",
+   "label": "avocado",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "ax",
+   "label": "ax",
+   "animal": false,
+   "depth": 11
+  },
+  {
+   "raw": "azalea",
+   "label": "azalea",
+   "animal": false,
+   "depth": 11
+  },
+  {
+   "raw": "baby bottle",
+   "label": "baby bottle",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "baby carriage",
+   "label": "baby carriage",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "baby clothe",
+   "label": "baby clothes",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "baby food",
+   "label": "baby food",
+   "animal": false,
+   "depth": 5
+  },
+  {
+   "raw": "baby seat",
+   "label": "baby seat",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "backdrop",
+   "label": "backdrop",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "backpack",
+   "label": "backpack",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "bacon",
+   "label": "bacon",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "badminton racket",
+   "label": "badminton racket",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "bag",
+   "label": "bag",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "bagel",
+   "label": "bagel",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "bagpipe",
+   "label": "bagpipe",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "baguette",
+   "label": "baguette",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "bait",
+   "label": "bait",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "baked goods",
+   "label": "baked goods",
+   "animal": false,
+   "depth": 5
+  },
+  {
+   "raw": "baking sheet",
+   "label": "baking sheet",
+   "animal": false,
+   "depth": 11
+  },
+  {
+   "raw": "ball",
+   "label": "ball",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "ballet skirt",
+   "label": "ballet skirt",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "bamboo",
+   "label": "bamboo",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "banana",
+   "label": "banana",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "banana bread",
+   "label": "banana bread",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "banana leaf",
+   "label": "banana leaf",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "banana tree",
+   "label": "banana tree",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "band",
+   "label": "band",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "band aid",
+   "label": "band aid",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "bandage",
+   "label": "bandage",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "headscarf",
+   "label": "headscarf",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "bandeau",
+   "label": "bandeau",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "bracelet",
+   "label": "bracelet",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "banjo",
+   "label": "banjo",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "banner",
+   "label": "banner",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "banquet",
+   "label": "banquet",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "banyan tree",
+   "label": "banyan tree",
+   "animal": false,
+   "depth": 11
+  },
+  {
+   "raw": "baozi",
+   "label": "bun",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "bar stool",
+   "label": "bar stool",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "barbecue",
+   "label": "barbecue",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "barbell",
+   "label": "barbell",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "barbie",
+   "label": "doll",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "barley",
+   "label": "barley",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "barn owl",
+   "label": "barn owl",
+   "animal": true,
+   "depth": 12
+  },
+  {
+   "raw": "handcart",
+   "label": "handcart",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "baseball",
+   "label": "baseball",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "baseball bat",
+   "label": "baseball bat",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "baseball hat",
+   "label": "baseball hat",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "baseball glove",
+   "label": "baseball glove",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "baseball uniform",
+   "label": "baseball uniform",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "basil",
+   "label": "basil",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "basin",
+   "label": "basin",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "basket",
+   "label": "basket",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "basket container",
+   "label": "basket container",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "basketball",
+   "label": "basketball",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "basketball backboard",
+   "label": "basketball backboard",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "basketball hoop",
+   "label": "basketball hoop",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "bass",
+   "label": "bass",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "bass guitar",
+   "label": "bass guitar",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "bass horn",
+   "label": "bass horn",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "bath",
+   "label": "bath",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "bath heater",
+   "label": "bath heater",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "bath mat",
+   "label": "bath mat",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "bath towel",
+   "label": "bath towel",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "swimwear",
+   "label": "swimwear",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "bathrobe",
+   "label": "bathrobe",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "bathroom accessory",
+   "label": "bathroom accessory",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "bathroom cabinet",
+   "label": "bathroom cabinet",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "bathroom mirror",
+   "label": "bathroom mirror",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "bathroom sink",
+   "label": "bathroom sink",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "wand",
+   "label": "wand",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "batter",
+   "label": "batter",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "battery",
+   "label": "battery",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "battle rope",
+   "label": "battle rope",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "bay",
+   "label": "bay",
+   "animal": false,
+   "depth": 12
+  },
+  {
+   "raw": "bayberry",
+   "label": "bayberry",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "beach ball",
+   "label": "beach ball",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "beach chair",
+   "label": "beach chair",
+   "animal": false,
+   "depth": 11
+  },
+  {
+   "raw": "beach towel",
+   "label": "beach towel",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "beach volleyball",
+   "label": "beach volleyball",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "bead",
+   "label": "bead",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "beagle",
+   "label": "beagle",
+   "animal": true,
+   "depth": 11
+  },
+  {
+   "raw": "beaker",
+   "label": "beaker",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "beam",
+   "label": "beam",
+   "animal": false,
+   "depth": 5
+  },
+  {
+   "raw": "bean",
+   "label": "bean",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "bean bag chair",
+   "label": "bean bag chair",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "beanbag",
+   "label": "beanbag",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "beaver",
+   "label": "beaver",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "bed",
+   "label": "bed",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "bedcover",
+   "label": "bedcover",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "bedding",
+   "label": "bedding",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "bedside lamp",
+   "label": "bedside lamp",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "bee",
+   "label": "bee",
+   "animal": true,
+   "depth": 11
+  },
+  {
+   "raw": "beech tree",
+   "label": "beech tree",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "beef",
+   "label": "beef",
+   "animal": true,
+   "depth": 17
+  },
+  {
+   "raw": "beeper",
+   "label": "beeper",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "beer",
+   "label": "beer",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "beer bottle",
+   "label": "beer bottle",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "beer can",
+   "label": "beer can",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "beer glass",
+   "label": "beer glass",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "beet",
+   "label": "beet",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "beetle",
+   "label": "beetle",
+   "animal": true,
+   "depth": 10
+  },
+  {
+   "raw": "clock",
+   "label": "clock",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "bell pepper",
+   "label": "bell pepper",
+   "animal": false,
+   "depth": 11
+  },
+  {
+   "raw": "belt",
+   "label": "belt",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "belt buckle",
+   "label": "belt buckle",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "bench",
+   "label": "bench",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "bento",
+   "label": "bento box",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "beret",
+   "label": "beret",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "berry",
+   "label": "berry",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "berth",
+   "label": "berth",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "beverage",
+   "label": "beverage",
+   "animal": false,
+   "depth": 5
+  },
+  {
+   "raw": "bib",
+   "label": "bib",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "bichon",
+   "label": "dog",
+   "animal": true,
+   "depth": 14
+  },
+  {
+   "raw": "bicycle",
+   "label": "bicycle",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "bicycle helmet",
+   "label": "bicycle helmet",
+   "animal": false,
+   "depth": 11
+  },
+  {
+   "raw": "bicycle wheel",
+   "label": "bicycle wheel",
+   "animal": false,
+   "depth": 11
+  },
+  {
+   "raw": "bidet",
+   "label": "bidet",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "bikini",
+   "label": "bikini",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "billiard table",
+   "label": "billiard table",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "bin",
+   "label": "bin",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "binder",
+   "label": "binder",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "binocular",
+   "label": "binoculars",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "birch",
+   "label": "birch",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "birch tree",
+   "label": "birch tree",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "bird",
+   "label": "bird",
+   "animal": true,
+   "depth": 9
+  },
+  {
+   "raw": "bird bath",
+   "label": "bird bath",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "bird feeder",
+   "label": "bird feeder",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "birdbath",
+   "label": "birdbath",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "birthday cake",
+   "label": "birthday cake",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "birthday candle",
+   "label": "birthday candle",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "biscuit",
+   "label": "biscuit",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "black sheep",
+   "label": "black sheep",
+   "animal": true,
+   "depth": 16
+  },
+  {
+   "raw": "blackberry",
+   "label": "blackberry",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "blackbird",
+   "label": "blackbird",
+   "animal": true,
+   "depth": 13
+  },
+  {
+   "raw": "blackboard",
+   "label": "blackboard",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "blade",
+   "label": "blade",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "blanket",
+   "label": "blanket",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "sports coat",
+   "label": "sports coat",
+   "animal": false,
+   "depth": 11
+  },
+  {
+   "raw": "blender",
+   "label": "blender",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "blind",
+   "label": "blind",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "eye mask",
+   "label": "eye mask",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "flasher",
+   "label": "flasher",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "block",
+   "label": "block",
+   "animal": false,
+   "depth": 5
+  },
+  {
+   "raw": "bloom",
+   "label": "bloom",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "blossom",
+   "label": "blossom",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "blouse",
+   "label": "blouse",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "hair drier",
+   "label": "hair dryer",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "blowfish",
+   "label": "blowfish",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "blue",
+   "label": "blue",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "blue jay",
+   "label": "blue jay",
+   "animal": true,
+   "depth": 15
+  },
+  {
+   "raw": "blueberry",
+   "label": "blueberry",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "bluebird",
+   "label": "bluebird",
+   "animal": true,
+   "depth": 12
+  },
+  {
+   "raw": "pig",
+   "label": "pig",
+   "animal": true,
+   "depth": 14
+  },
+  {
+   "raw": "board eraser",
+   "label": "board eraser",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "paddle",
+   "label": "paddle",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "bobfloat",
+   "label": "bobfloat",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "bobcat",
+   "label": "bobcat",
+   "animal": true,
+   "depth": 16
+  },
+  {
+   "raw": "boiled egg",
+   "label": "boiled egg",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "boiler",
+   "label": "boiler",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "bolo tie",
+   "label": "bolo tie",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "bolt",
+   "label": "bolt",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "bonnet",
+   "label": "bonnet",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "bonsai",
+   "label": "bonsai",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "book",
+   "label": "book",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "book cover",
+   "label": "book cover",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "bookcase",
+   "label": "bookcase",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "folder",
+   "label": "folder",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "bookmark",
+   "label": "bookmark",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "bookshelf",
+   "label": "bookshelf",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "boom microphone",
+   "label": "boom microphone",
+   "animal": false,
+   "depth": 11
+  },
+  {
+   "raw": "boot",
+   "label": "boot",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "Border collie",
+   "label": "border collie",
+   "animal": true,
+   "depth": 11
+  },
+  {
+   "raw": "bottle",
+   "label": "bottle",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "bottle cap",
+   "label": "bottle cap",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "bottle opener",
+   "label": "bottle opener",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "bottle screw",
+   "label": "bottle screw",
+   "animal": false,
+   "depth": 11
+  },
+  {
+   "raw": "bougainvillea",
+   "label": "bougainvillea",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "bouquet",
+   "label": "bouquet",
+   "animal": false,
+   "depth": 5
+  },
+  {
+   "raw": "bow",
+   "label": "bow",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "bow tie",
+   "label": "bow tie",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "bowl",
+   "label": "bowl",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "bowling ball",
+   "label": "bowling ball",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "bowling equipment",
+   "label": "bowling equipment",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "box turtle",
+   "label": "box turtle",
+   "animal": true,
+   "depth": 13
+  },
+  {
+   "raw": "boxer",
+   "label": "boxer",
+   "animal": true,
+   "depth": 10
+  },
+  {
+   "raw": "boxing glove",
+   "label": "boxing glove",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "boxing ring",
+   "label": "boxing ring",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "brace",
+   "label": "brace",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "bracket",
+   "label": "bracket",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "brake",
+   "label": "brake",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "branch",
+   "label": "branch",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "brandy",
+   "label": "brandy",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "brass",
+   "label": "brass",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "brass plaque",
+   "label": "brass plaque",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "bread",
+   "label": "bread",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "breadbox",
+   "label": "breadbox",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "breakfast",
+   "label": "breakfast",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "chest",
+   "label": "chest",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "brick",
+   "label": "brick",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "wedding dress",
+   "label": "wedding dress",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "bridle",
+   "label": "bridle",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "briefcase",
+   "label": "briefcase",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "brim",
+   "label": "brim",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "broach",
+   "label": "broach",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "broadcasting",
+   "label": "broadcasting",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "broccoli",
+   "label": "broccoli",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "bronze",
+   "label": "bronze",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "bronze sculpture",
+   "label": "bronze sculpture",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "bronze statue",
+   "label": "bronze statue",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "brooch",
+   "label": "brooch",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "broom",
+   "label": "broom",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "broth",
+   "label": "broth",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "brownie",
+   "label": "brownie",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "brunch",
+   "label": "brunch",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "brush",
+   "label": "brush",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "brussels sprout",
+   "label": "brussels sprout",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "bubble",
+   "label": "bubble",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "bubble gum",
+   "label": "bubble gum",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "bubble tea",
+   "label": "bubble tea",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "bucket cabinet",
+   "label": "bucket cabinet",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "bud",
+   "label": "bud",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "buffet",
+   "label": "buffet",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "bug",
+   "label": "bug",
+   "animal": true,
+   "depth": 10
+  },
+  {
+   "raw": "building block",
+   "label": "building block",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "building material",
+   "label": "building material",
+   "animal": false,
+   "depth": 5
+  },
+  {
+   "raw": "lamp",
+   "label": "lamp",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "bull",
+   "label": "bull",
+   "animal": true,
+   "depth": 17
+  },
+  {
+   "raw": "bulldog",
+   "label": "bulldog",
+   "animal": true,
+   "depth": 10
+  },
+  {
+   "raw": "bulletin board",
+   "label": "bulletin board",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "megaphone",
+   "label": "megaphone",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "bumblebee",
+   "label": "bumblebee",
+   "animal": true,
+   "depth": 12
+  },
+  {
+   "raw": "bumper",
+   "label": "bumper",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "roll",
+   "label": "roll",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "bundle",
+   "label": "bundle",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "bungee",
+   "label": "bungee",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "bunk bed",
+   "label": "bunk bed",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "bunny",
+   "label": "bunny",
+   "animal": true,
+   "depth": 14
+  },
+  {
+   "raw": "bureau",
+   "label": "bureau",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "burrito",
+   "label": "burrito",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "bush",
+   "label": "bush",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "business suit",
+   "label": "business suit",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "bust",
+   "label": "bust",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "butter",
+   "label": "butter",
+   "animal": false,
+   "depth": 5
+  },
+  {
+   "raw": "cream",
+   "label": "cream",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "butterfly",
+   "label": "butterfly",
+   "animal": true,
+   "depth": 11
+  },
+  {
+   "raw": "button",
+   "label": "button",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "buttonwood",
+   "label": "buttonwood",
+   "animal": false,
+   "depth": 11
+  },
+  {
+   "raw": "cabbage",
+   "label": "cabbage",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "cabinet",
+   "label": "cabinet",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "cable",
+   "label": "cable",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "cactus",
+   "label": "cactus",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "canteen",
+   "label": "canteen",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "cake",
+   "label": "cake",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "cake stand",
+   "label": "cake stand",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "calculator",
+   "label": "calculator",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "caldron",
+   "label": "caldron",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "calf",
+   "label": "calf",
+   "animal": true,
+   "depth": 9
+  },
+  {
+   "raw": "phone box",
+   "label": "phone box",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "camcorder",
+   "label": "camcorder",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "camera",
+   "label": "camera",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "camera lens",
+   "label": "camera lens",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "camouflage",
+   "label": "camouflage",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "can",
+   "label": "can",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "can opener",
+   "label": "can opener",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "canary",
+   "label": "canary",
+   "animal": true,
+   "depth": 13
+  },
+  {
+   "raw": "candle",
+   "label": "candle",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "candle holder",
+   "label": "candle holder",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "candy",
+   "label": "candy",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "candy bar",
+   "label": "candy bar",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "candy cane",
+   "label": "candy cane",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "cane",
+   "label": "cane",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "jar",
+   "label": "jar",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "canopy",
+   "label": "canopy",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "canopy bed",
+   "label": "canopy bed",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "cantaloupe",
+   "label": "cantaloupe",
+   "animal": false,
+   "depth": 12
+  },
+  {
+   "raw": "canvas",
+   "label": "canvas",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "cap",
+   "label": "cap",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "cape",
+   "label": "cape",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "cappuccino",
+   "label": "cappuccino",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "capsule",
+   "label": "capsule",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "car mirror",
+   "label": "car mirror",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "car seat",
+   "label": "car seat",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "car window",
+   "label": "car window",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "caramel",
+   "label": "caramel",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "cardboard box",
+   "label": "cardboard box",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "cardigan",
+   "label": "cardigan",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "cardinal",
+   "label": "cardinal",
+   "animal": true,
+   "depth": 13
+  },
+  {
+   "raw": "carnation",
+   "label": "carnation",
+   "animal": false,
+   "depth": 12
+  },
+  {
+   "raw": "carp",
+   "label": "carp",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "carpet",
+   "label": "carpet",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "slipper",
+   "label": "slipper",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "house finch",
+   "label": "house finch",
+   "animal": true,
+   "depth": 13
+  },
+  {
+   "raw": "dalmatian",
+   "label": "dalmatian",
+   "animal": true,
+   "depth": 9
+  },
+  {
+   "raw": "carrot",
+   "label": "carrot",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "carrot cake",
+   "label": "carrot cake",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "cart",
+   "label": "cart",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "carton",
+   "label": "carton",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "cashew",
+   "label": "cashew",
+   "animal": false,
+   "depth": 12
+  },
+  {
+   "raw": "casserole",
+   "label": "casserole",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "cassette",
+   "label": "cassette",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "cassette deck",
+   "label": "cassette deck",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "plaster bandage",
+   "label": "plaster bandage",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "casting",
+   "label": "casting",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "cat",
+   "label": "cat",
+   "animal": true,
+   "depth": 13
+  },
+  {
+   "raw": "cat bed",
+   "label": "cat bed",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "cat food",
+   "label": "cat food",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "cat furniture",
+   "label": "cat furniture",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "cat tree",
+   "label": "cat tree",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "catamount",
+   "label": "catamount",
+   "animal": true,
+   "depth": 15
+  },
+  {
+   "raw": "caterpillar",
+   "label": "caterpillar",
+   "animal": true,
+   "depth": 8
+  },
+  {
+   "raw": "catfish",
+   "label": "catfish",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "cattle",
+   "label": "cattle",
+   "animal": true,
+   "depth": 16
+  },
+  {
+   "raw": "cauliflower",
+   "label": "cauliflower",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "caviar",
+   "label": "caviar",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "CD",
+   "label": "cd",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "CD player",
+   "label": "cd player",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "cedar",
+   "label": "cedar",
+   "animal": false,
+   "depth": 12
+  },
+  {
+   "raw": "ceiling fan",
+   "label": "ceiling fan",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "celery",
+   "label": "celery",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "cello",
+   "label": "cello",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "smartphone",
+   "label": "smartphone",
+   "animal": false,
+   "depth": 11
+  },
+  {
+   "raw": "cement",
+   "label": "cement",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "centerpiece",
+   "label": "centerpiece",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "centipede",
+   "label": "centipede",
+   "animal": true,
+   "depth": 9
+  },
+  {
+   "raw": "ceramic",
+   "label": "ceramic",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "ceramic tile",
+   "label": "ceramic tile",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "cereal",
+   "label": "cereal",
+   "animal": false,
+   "depth": 11
+  },
+  {
+   "raw": "chain",
+   "label": "chain",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "chain saw",
+   "label": "chain saw",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "chair",
+   "label": "chair",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "daybed",
+   "label": "daybed",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "chalice",
+   "label": "chalice",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "chalk",
+   "label": "chalk",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "chameleon",
+   "label": "chameleon",
+   "animal": true,
+   "depth": 13
+  },
+  {
+   "raw": "champagne",
+   "label": "champagne",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "champagne flute",
+   "label": "champagne flute",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "chandelier",
+   "label": "chandelier",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "changing table",
+   "label": "changing table",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "chap",
+   "label": "chap",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "character sculpture",
+   "label": "character sculpture",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "charcoal",
+   "label": "charcoal",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "charger",
+   "label": "charger",
+   "animal": true,
+   "depth": 17
+  },
+  {
+   "raw": "chessboard",
+   "label": "chessboard",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "cheese",
+   "label": "cheese",
+   "animal": false,
+   "depth": 5
+  },
+  {
+   "raw": "cheeseburger",
+   "label": "cheeseburger",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "cheesecake",
+   "label": "cheesecake",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "cherry",
+   "label": "cherry",
+   "animal": false,
+   "depth": 12
+  },
+  {
+   "raw": "cherry blossom",
+   "label": "cherry blossom",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "cherry tomato",
+   "label": "cherry tomato",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "cherry tree",
+   "label": "cherry tree",
+   "animal": false,
+   "depth": 12
+  },
+  {
+   "raw": "chess",
+   "label": "chess",
+   "animal": false,
+   "depth": 12
+  },
+  {
+   "raw": "chestnut",
+   "label": "chestnut",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "chicken",
+   "label": "chicken",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "chicken salad",
+   "label": "chicken salad",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "garbanzo",
+   "label": "garbanzo",
+   "animal": false,
+   "depth": 11
+  },
+  {
+   "raw": "chiffonier",
+   "label": "chiffonier",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "chihuahua",
+   "label": "chihuahua",
+   "animal": true,
+   "depth": 10
+  },
+  {
+   "raw": "chile",
+   "label": "chile",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "chili dog",
+   "label": "chili dog",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "chinaware",
+   "label": "chinaware",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "chinese cabbage",
+   "label": "chinese cabbage",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "chinese knot",
+   "label": "chinese knot",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "chinese rose",
+   "label": "chinese rose",
+   "animal": false,
+   "depth": 11
+  },
+  {
+   "raw": "chip",
+   "label": "chip",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "chipmunk",
+   "label": "chipmunk",
+   "animal": true,
+   "depth": 13
+  },
+  {
+   "raw": "chisel",
+   "label": "chisel",
+   "animal": false,
+   "depth": 11
+  },
+  {
+   "raw": "chocolate",
+   "label": "chocolate",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "chocolate bar",
+   "label": "chocolate bar",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "chocolate cake",
+   "label": "chocolate cake",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "chocolate chip",
+   "label": "chocolate chip",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "chocolate chip cookie",
+   "label": "chocolate chip cookie",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "chocolate milk",
+   "label": "chocolate milk",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "chocolate mousse",
+   "label": "chocolate mousse",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "truffle",
+   "label": "truffle",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "kitchen knife",
+   "label": "kitchen knife",
+   "animal": false,
+   "depth": 12
+  },
+  {
+   "raw": "cutting board",
+   "label": "cutting board",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "chopstick",
+   "label": "chopstick",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "christmas ball",
+   "label": "christmas ball",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "christmas decoration",
+   "label": "christmas decoration",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "christmas dinner",
+   "label": "christmas dinner",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "christmas hat",
+   "label": "christmas hat",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "christmas light",
+   "label": "christmas light",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "christmas ornament",
+   "label": "christmas ornament",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "christmas tree",
+   "label": "christmas tree",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "chrysanthemum",
+   "label": "chrysanthemum",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "cider",
+   "label": "cider",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "cigar box",
+   "label": "cigar box",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "waistband",
+   "label": "waistband",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "cinnamon",
+   "label": "cinnamon",
+   "animal": false,
+   "depth": 12
+  },
+  {
+   "raw": "circuit",
+   "label": "circuit",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "circuit board",
+   "label": "circuit board",
+   "animal": false,
+   "depth": 11
+  },
+  {
+   "raw": "water tank",
+   "label": "water tank",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "citrus fruit",
+   "label": "citrus fruit",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "clam",
+   "label": "clam",
+   "animal": true,
+   "depth": 10
+  },
+  {
+   "raw": "clarinet",
+   "label": "clarinet",
+   "animal": false,
+   "depth": 12
+  },
+  {
+   "raw": "clasp",
+   "label": "clasp",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "classic",
+   "label": "classic",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "claw",
+   "label": "claw",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "pottery",
+   "label": "pottery",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "cleaning product",
+   "label": "cleaning product",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "clementine",
+   "label": "clementine",
+   "animal": false,
+   "depth": 14
+  },
+  {
+   "raw": "climber",
+   "label": "climber",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "clip",
+   "label": "clip",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "clipboard",
+   "label": "clipboard",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "clipper",
+   "label": "clipper",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "cloak",
+   "label": "cloak",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "clogs",
+   "label": "clogs",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "cloth",
+   "label": "cloth",
+   "animal": false,
+   "depth": 5
+  },
+  {
+   "raw": "clothe",
+   "label": "clothes",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "clothing",
+   "label": "clothing",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "clothespin",
+   "label": "clothespin",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "clothesline",
+   "label": "clothesline",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "clover",
+   "label": "clover",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "clown fish",
+   "label": "clown fish",
+   "animal": false,
+   "depth": 11
+  },
+  {
+   "raw": "club",
+   "label": "club",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "clutch bag",
+   "label": "clutch bag",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "coat",
+   "label": "coat",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "cob",
+   "label": "cob",
+   "animal": false,
+   "depth": 12
+  },
+  {
+   "raw": "cock",
+   "label": "cock",
+   "animal": false,
+   "depth": 11
+  },
+  {
+   "raw": "cockatoo",
+   "label": "cockatoo",
+   "animal": true,
+   "depth": 11
+  },
+  {
+   "raw": "cocker",
+   "label": "cocker",
+   "animal": true,
+   "depth": 12
+  },
+  {
+   "raw": "roach",
+   "label": "roach",
+   "animal": true,
+   "depth": 11
+  },
+  {
+   "raw": "cocktail",
+   "label": "cocktail",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "cocktail dress",
+   "label": "cocktail dress",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "cocktail shaker",
+   "label": "cocktail shaker",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "cocktail table",
+   "label": "cocktail table",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "cocoa",
+   "label": "cocoa",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "coconut",
+   "label": "coconut",
+   "animal": false,
+   "depth": 5
+  },
+  {
+   "raw": "coconut tree",
+   "label": "coconut tree",
+   "animal": false,
+   "depth": 11
+  },
+  {
+   "raw": "coffee",
+   "label": "coffee",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "coffee bean",
+   "label": "coffee bean",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "coffee cup",
+   "label": "coffee cup",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "coffee machine",
+   "label": "coffee machine",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "coffeepot",
+   "label": "coffeepot",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "cognac",
+   "label": "cognac",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "coke",
+   "label": "coke",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "colander",
+   "label": "colander",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "slaw",
+   "label": "slaw",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "collage",
+   "label": "collage",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "sheepdog",
+   "label": "sheepdog",
+   "animal": true,
+   "depth": 10
+  },
+  {
+   "raw": "coloring book",
+   "label": "coloring book",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "pony",
+   "label": "pony",
+   "animal": true,
+   "depth": 15
+  },
+  {
+   "raw": "comb",
+   "label": "comb",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "combination lock",
+   "label": "combination lock",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "comfort food",
+   "label": "comfort food",
+   "animal": false,
+   "depth": 5
+  },
+  {
+   "raw": "comic book",
+   "label": "comic book",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "compass",
+   "label": "compass",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "computer",
+   "label": "computer",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "computer box",
+   "label": "computer box",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "computer chair",
+   "label": "computer chair",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "computer desk",
+   "label": "computer desk",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "keyboard",
+   "label": "keyboard",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "computer monitor",
+   "label": "computer monitor",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "computer screen",
+   "label": "computer screen",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "conch",
+   "label": "conch",
+   "animal": true,
+   "depth": 10
+  },
+  {
+   "raw": "concrete",
+   "label": "concrete",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "condiment",
+   "label": "condiment",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "cone",
+   "label": "cone",
+   "animal": false,
+   "depth": 5
+  },
+  {
+   "raw": "connector",
+   "label": "connector",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "converter",
+   "label": "converter",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "cooking spray",
+   "label": "cooking spray",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "cooker",
+   "label": "cooker",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "cooler",
+   "label": "cooler",
+   "animal": false,
+   "depth": 12
+  },
+  {
+   "raw": "coral",
+   "label": "coral",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "rope",
+   "label": "rope",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "corded phone",
+   "label": "corded phone",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "liquor",
+   "label": "liquor",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "corgi",
+   "label": "corgi",
+   "animal": true,
+   "depth": 9
+  },
+  {
+   "raw": "corkboard",
+   "label": "corkboard",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "cormorant",
+   "label": "cormorant",
+   "animal": true,
+   "depth": 13
+  },
+  {
+   "raw": "corn",
+   "label": "corn",
+   "animal": false,
+   "depth": 12
+  },
+  {
+   "raw": "cornbread",
+   "label": "cornbread",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "trumpet",
+   "label": "trumpet",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "cornmeal",
+   "label": "cornmeal",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "corset",
+   "label": "corset",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "cosmetic",
+   "label": "cosmetic",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "cosmetics brush",
+   "label": "cosmetics brush",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "cosmetics mirror",
+   "label": "cosmetics mirror",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "costume",
+   "label": "costume",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "infant bed",
+   "label": "infant bed",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "cotton",
+   "label": "cotton",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "cotton candy",
+   "label": "cotton candy",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "couch",
+   "label": "couch",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "counter",
+   "label": "counter",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "courgette",
+   "label": "courgette",
+   "animal": false,
+   "depth": 12
+  },
+  {
+   "raw": "coverall",
+   "label": "coverall",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "cow",
+   "label": "cow",
+   "animal": true,
+   "depth": 17
+  },
+  {
+   "raw": "cowbell",
+   "label": "cowbell",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "cowboy boot",
+   "label": "cowboy boot",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "cowboy hat",
+   "label": "cowboy hat",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "crab",
+   "label": "crab",
+   "animal": true,
+   "depth": 11
+  },
+  {
+   "raw": "crabmeat",
+   "label": "crabmeat",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "cradle",
+   "label": "cradle",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "craft",
+   "label": "craft",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "cranberry",
+   "label": "cranberry",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "crane",
+   "label": "crane",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "crape",
+   "label": "crape",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "crapper",
+   "label": "toilet",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "crate",
+   "label": "crate",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "lobster",
+   "label": "lobster",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "crayon",
+   "label": "crayon",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "cream cheese",
+   "label": "cream cheese",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "cream pitcher",
+   "label": "cream pitcher",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "croissant",
+   "label": "croissant",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "crest",
+   "label": "crest",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "cricket",
+   "label": "cricket",
+   "animal": true,
+   "depth": 11
+  },
+  {
+   "raw": "cricket ball",
+   "label": "cricket ball",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "crochet",
+   "label": "crochet",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "crock pot",
+   "label": "crock pot",
+   "animal": false,
+   "depth": 11
+  },
+  {
+   "raw": "crocodile",
+   "label": "crocodile",
+   "animal": true,
+   "depth": 12
+  },
+  {
+   "raw": "crossbar",
+   "label": "crossbar",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "crouton",
+   "label": "crouton",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "crow",
+   "label": "crow",
+   "animal": true,
+   "depth": 13
+  },
+  {
+   "raw": "crowbar",
+   "label": "crowbar",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "crt screen",
+   "label": "crt screen",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "crutch",
+   "label": "crutch",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "cub",
+   "label": "cub",
+   "animal": true,
+   "depth": 9
+  },
+  {
+   "raw": "cucumber",
+   "label": "cucumber",
+   "animal": false,
+   "depth": 11
+  },
+  {
+   "raw": "cue",
+   "label": "cue",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "cuff",
+   "label": "cuff",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "cufflink",
+   "label": "cufflink",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "cup",
+   "label": "cup",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "cupcake",
+   "label": "cupcake",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "hair roller",
+   "label": "hair roller",
+   "animal": false,
+   "depth": 12
+  },
+  {
+   "raw": "currant",
+   "label": "currant",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "curry",
+   "label": "curry",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "curtain",
+   "label": "curtain",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "pad",
+   "label": "pad",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "cutlery",
+   "label": "cutlery",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "cymbal",
+   "label": "cymbal",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "cypress",
+   "label": "cypress",
+   "animal": false,
+   "depth": 12
+  },
+  {
+   "raw": "cypress tree",
+   "label": "cypress tree",
+   "animal": false,
+   "depth": 12
+  },
+  {
+   "raw": "dachshund",
+   "label": "dachshund",
+   "animal": true,
+   "depth": 10
+  },
+  {
+   "raw": "daffodil",
+   "label": "daffodil",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "dahlia",
+   "label": "dahlia",
+   "animal": false,
+   "depth": 11
+  },
+  {
+   "raw": "daikon",
+   "label": "daikon",
+   "animal": false,
+   "depth": 11
+  },
+  {
+   "raw": "daisy",
+   "label": "daisy",
+   "animal": false,
+   "depth": 11
+  },
+  {
+   "raw": "dandelion",
+   "label": "dandelion",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "dartboard",
+   "label": "dartboard",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "dashboard",
+   "label": "dashboard",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "day bed",
+   "label": "day bed",
+   "animal": false,
+   "depth": 11
+  },
+  {
+   "raw": "deadbolt",
+   "label": "deadbolt",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "decanter",
+   "label": "decanter",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "decorative picture",
+   "label": "decorative picture",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "denim jacket",
+   "label": "denim jacket",
+   "animal": false,
+   "depth": 11
+  },
+  {
+   "raw": "derby",
+   "label": "derby",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "table",
+   "label": "table",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "table lamp",
+   "label": "table lamp",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "desktop",
+   "label": "desktop",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "desktop computer",
+   "label": "desktop computer",
+   "animal": false,
+   "depth": 11
+  },
+  {
+   "raw": "dessert",
+   "label": "dessert",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "dial",
+   "label": "dial",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "diamond",
+   "label": "diamond",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "diaper",
+   "label": "diaper",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "diaper bag",
+   "label": "diaper bag",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "journal",
+   "label": "journal",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "die",
+   "label": "die",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "digital clock",
+   "label": "digital clock",
+   "animal": false,
+   "depth": 11
+  },
+  {
+   "raw": "dill",
+   "label": "dill",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "dinner",
+   "label": "dinner",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "dinning table",
+   "label": "dining table",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "dinosaur",
+   "label": "dinosaur",
+   "animal": true,
+   "depth": 12
+  },
+  {
+   "raw": "dip",
+   "label": "dip",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "disco ball",
+   "label": "disco ball",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "plate",
+   "label": "plate",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "dish antenna",
+   "label": "dish antenna",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "dish washer",
+   "label": "dish washer",
+   "animal": false,
+   "depth": 11
+  },
+  {
+   "raw": "dishrag",
+   "label": "dishrag",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "dishes",
+   "label": "dishes",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "dishsoap",
+   "label": "dish soap",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "dispenser",
+   "label": "dispenser",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "trench",
+   "label": "trench",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "diving board",
+   "label": "diving board",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "paper cup",
+   "label": "paper cup",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "doberman",
+   "label": "doberman",
+   "animal": true,
+   "depth": 12
+  },
+  {
+   "raw": "document",
+   "label": "document",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "dog",
+   "label": "dog",
+   "animal": true,
+   "depth": 8
+  },
+  {
+   "raw": "dog bed",
+   "label": "dog bed",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "dog collar",
+   "label": "dog collar",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "dog food",
+   "label": "dog food",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "doll",
+   "label": "doll",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "dolly",
+   "label": "dolly",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "dolphin",
+   "label": "dolphin",
+   "animal": true,
+   "depth": 15
+  },
+  {
+   "raw": "domino",
+   "label": "domino",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "donkey",
+   "label": "donkey",
+   "animal": true,
+   "depth": 15
+  },
+  {
+   "raw": "donut",
+   "label": "doughnut",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "doodle",
+   "label": "doodle",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "door",
+   "label": "door",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "doormat",
+   "label": "doormat",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "doorplate",
+   "label": "doorplate",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "dough",
+   "label": "dough",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "dragon",
+   "label": "dragon",
+   "animal": true,
+   "depth": 14
+  },
+  {
+   "raw": "dragonfly",
+   "label": "dragonfly",
+   "animal": true,
+   "depth": 11
+  },
+  {
+   "raw": "drawing pin",
+   "label": "drawing pin",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "dress",
+   "label": "dress",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "dress hat",
+   "label": "dress hat",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "dress shirt",
+   "label": "dress shirt",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "dress shoe",
+   "label": "dress shoe",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "dress suit",
+   "label": "dress suit",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "dresser",
+   "label": "dresser",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "drill",
+   "label": "drill",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "drink",
+   "label": "drink",
+   "animal": false,
+   "depth": 5
+  },
+  {
+   "raw": "drinking water",
+   "label": "drinking water",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "drone",
+   "label": "drone",
+   "animal": true,
+   "depth": 12
+  },
+  {
+   "raw": "droplight",
+   "label": "hanging lamp",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "dropper",
+   "label": "dropper",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "drum",
+   "label": "drum",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "drumstick",
+   "label": "drumstick",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "duck",
+   "label": "duck",
+   "animal": true,
+   "depth": 13
+  },
+  {
+   "raw": "duckbill",
+   "label": "duckbill",
+   "animal": true,
+   "depth": 14
+  },
+  {
+   "raw": "duckling",
+   "label": "duckling",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "duct tape",
+   "label": "duct tape",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "duffel",
+   "label": "duffel",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "dumbbell",
+   "label": "dumbbell",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "dumpling",
+   "label": "dumpling",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "durian",
+   "label": "durian",
+   "animal": false,
+   "depth": 12
+  },
+  {
+   "raw": "dustpan",
+   "label": "dustpan",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "duvet",
+   "label": "duvet",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "DVD",
+   "label": "dvd",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "eagle",
+   "label": "eagle",
+   "animal": true,
+   "depth": 11
+  },
+  {
+   "raw": "earmuff",
+   "label": "earmuff",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "earphone",
+   "label": "earphone",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "earplug",
+   "label": "earplug",
+   "animal": false,
+   "depth": 11
+  },
+  {
+   "raw": "earring",
+   "label": "earring",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "easel",
+   "label": "easel",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "easter bunny",
+   "label": "easter bunny",
+   "animal": true,
+   "depth": 8
+  },
+  {
+   "raw": "easter egg",
+   "label": "easter egg",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "eclair",
+   "label": "eclair",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "eel",
+   "label": "eel",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "egg",
+   "label": "egg",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "egg roll",
+   "label": "egg roll",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "egg tart",
+   "label": "egg tart",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "egret",
+   "label": "egret",
+   "animal": true,
+   "depth": 13
+  },
+  {
+   "raw": "elastic band",
+   "label": "elastic band",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "electric drill",
+   "label": "electric drill",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "embellishment",
+   "label": "embellishment",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "emblem",
+   "label": "emblem",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "embroidery",
+   "label": "embroidery",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "emerald",
+   "label": "emerald",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "side table",
+   "label": "side table",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "engagement ring",
+   "label": "engagement ring",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "engine",
+   "label": "engine",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "english shorthair",
+   "label": "cat",
+   "animal": true,
+   "depth": 14
+  },
+  {
+   "raw": "entertainment center",
+   "label": "entertainment center",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "envelope",
+   "label": "envelope",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "eraser",
+   "label": "eraser",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "escargot",
+   "label": "escargot",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "espresso",
+   "label": "espresso",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "eucalyptus tree",
+   "label": "eucalyptus tree",
+   "animal": false,
+   "depth": 11
+  },
+  {
+   "raw": "evening dress",
+   "label": "evening dress",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "evergreen",
+   "label": "evergreen",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "ewe",
+   "label": "ewe",
+   "animal": true,
+   "depth": 16
+  },
+  {
+   "raw": "exhaust hood",
+   "label": "exhaust hood",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "exit",
+   "label": "exit",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "extension cord",
+   "label": "extension cord",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "extinguisher",
+   "label": "extinguisher",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "extractor",
+   "label": "extractor",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "eyeliner",
+   "label": "eyeliner",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "fabric",
+   "label": "fabric",
+   "animal": false,
+   "depth": 5
+  },
+  {
+   "raw": "face powder",
+   "label": "face powder",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "face towel",
+   "label": "face towel",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "facial tissue holder",
+   "label": "facial tissue holder",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "falcon",
+   "label": "falcon",
+   "animal": true,
+   "depth": 12
+  },
+  {
+   "raw": "fan",
+   "label": "fan",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "fashion accessory",
+   "label": "fashion accessory",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "fast food",
+   "label": "fast food",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "faucet",
+   "label": "faucet",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "fax",
+   "label": "fax",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "feast",
+   "label": "feast",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "fedora",
+   "label": "fedora",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "feed",
+   "label": "feed",
+   "animal": false,
+   "depth": 5
+  },
+  {
+   "raw": "feedbag",
+   "label": "feedbag",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "feeding chair",
+   "label": "feeding chair",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "mountain lion",
+   "label": "mountain lion",
+   "animal": true,
+   "depth": 15
+  },
+  {
+   "raw": "fern",
+   "label": "fern",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "fiber",
+   "label": "fiber",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "fiction book",
+   "label": "fiction book",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "fig",
+   "label": "fig",
+   "animal": false,
+   "depth": 11
+  },
+  {
+   "raw": "figurine",
+   "label": "figurine",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "file",
+   "label": "file",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "file cabinet",
+   "label": "file cabinet",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "film camera",
+   "label": "film camera",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "filter",
+   "label": "filter",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "fin",
+   "label": "fin",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "fir",
+   "label": "fir",
+   "animal": false,
+   "depth": 12
+  },
+  {
+   "raw": "fir tree",
+   "label": "fir tree",
+   "animal": false,
+   "depth": 12
+  },
+  {
+   "raw": "fire alarm",
+   "label": "fire alarm",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "fireplace",
+   "label": "fireplace",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "firework display",
+   "label": "firework display",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "first-aid kit",
+   "label": "first-aid kit",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "fish",
+   "label": "fish",
+   "animal": true,
+   "depth": 10
+  },
+  {
+   "raw": "fishing net",
+   "label": "fishing net",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "fishing pole",
+   "label": "fishing pole",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "flag",
+   "label": "flag",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "flamingo",
+   "label": "flamingo",
+   "animal": true,
+   "depth": 12
+  },
+  {
+   "raw": "flannel",
+   "label": "flannel",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "flap",
+   "label": "flap",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "flask",
+   "label": "flask",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "flat",
+   "label": "flat",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "flatfish",
+   "label": "flatfish",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "flea",
+   "label": "flea",
+   "animal": true,
+   "depth": 8
+  },
+  {
+   "raw": "flip-flop",
+   "label": "flip-flop",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "flipchart",
+   "label": "flipchart",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "float",
+   "label": "float",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "flood",
+   "label": "flood",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "floor fan",
+   "label": "floor fan",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "floor mat",
+   "label": "floor mat",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "floral arrangement",
+   "label": "floral arrangement",
+   "animal": false,
+   "depth": 4
+  },
+  {
+   "raw": "floss",
+   "label": "floss",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "flour",
+   "label": "flour",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "flower",
+   "label": "flower",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "flower basket",
+   "label": "flower basket",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "flower box",
+   "label": "flower box",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "flute",
+   "label": "flute",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "fly",
+   "label": "fly",
+   "animal": true,
+   "depth": 11
+  },
+  {
+   "raw": "horse",
+   "label": "horse",
+   "animal": true,
+   "depth": 14
+  },
+  {
+   "raw": "foil",
+   "label": "foil",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "folding chair",
+   "label": "folding chair",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "leaf",
+   "label": "leaf",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "fondant",
+   "label": "fondant",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "hotpot",
+   "label": "hotpot",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "food coloring",
+   "label": "food coloring",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "food processor",
+   "label": "food processor",
+   "animal": false,
+   "depth": 11
+  },
+  {
+   "raw": "food stand",
+   "label": "food stand",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "foosball",
+   "label": "table football",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "football",
+   "label": "football",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "football helmet",
+   "label": "football helmet",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "footrest",
+   "label": "footrest",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "footwear",
+   "label": "footwear",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "fork",
+   "label": "fork",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "fountain pen",
+   "label": "fountain pen",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "French bulldog",
+   "label": "french bulldog",
+   "animal": true,
+   "depth": 11
+  },
+  {
+   "raw": "French fries",
+   "label": "french fries",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "French toast",
+   "label": "french toast",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "fridge",
+   "label": "fridge",
+   "animal": false,
+   "depth": 12
+  },
+  {
+   "raw": "fried chicken",
+   "label": "fried chicken",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "fried egg",
+   "label": "fried egg",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "fried rice",
+   "label": "fried rice",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "frisbee",
+   "label": "frisbee",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "frog",
+   "label": "frog",
+   "animal": true,
+   "depth": 10
+  },
+  {
+   "raw": "frosting",
+   "label": "frosting",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "fruit cake",
+   "label": "fruit cake",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "fruit dish",
+   "label": "fruit dish",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "fruit salad",
+   "label": "fruit salad",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "fruit stand",
+   "label": "fruit stand",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "fruit tree",
+   "label": "fruit tree",
+   "animal": false,
+   "depth": 11
+  },
+  {
+   "raw": "frying pan",
+   "label": "frying pan",
+   "animal": false,
+   "depth": 11
+  },
+  {
+   "raw": "fudge",
+   "label": "fudge",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "funnel",
+   "label": "funnel",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "fur",
+   "label": "fur",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "fur coat",
+   "label": "fur coat",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "futon",
+   "label": "futon",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "muzzle",
+   "label": "muzzle",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "game board",
+   "label": "game board",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "game controller",
+   "label": "game controller",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "ham",
+   "label": "ham",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "garage kit",
+   "label": "garage kit",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "garbage",
+   "label": "garbage",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "garden asparagus",
+   "label": "garden asparagus",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "garden spider",
+   "label": "garden spider",
+   "animal": true,
+   "depth": 11
+  },
+  {
+   "raw": "gargoyle",
+   "label": "gargoyle",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "wreath",
+   "label": "wreath",
+   "animal": false,
+   "depth": 5
+  },
+  {
+   "raw": "garlic",
+   "label": "garlic",
+   "animal": false,
+   "depth": 11
+  },
+  {
+   "raw": "garment",
+   "label": "garment",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "gas stove",
+   "label": "gas stove",
+   "animal": false,
+   "depth": 12
+  },
+  {
+   "raw": "gauge",
+   "label": "gauge",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "gear",
+   "label": "gear",
+   "animal": false,
+   "depth": 11
+  },
+  {
+   "raw": "gecko",
+   "label": "gecko",
+   "animal": true,
+   "depth": 13
+  },
+  {
+   "raw": "gel",
+   "label": "gel",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "generator",
+   "label": "generator",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "geranium",
+   "label": "geranium",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "gift bag",
+   "label": "gift bag",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "gift basket",
+   "label": "gift basket",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "gift box",
+   "label": "gift box",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "gin",
+   "label": "gin",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "ginger",
+   "label": "ginger",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "gingerbread",
+   "label": "gingerbread",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "ginkgo tree",
+   "label": "ginkgo tree",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "glass bead",
+   "label": "glass bead",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "glass bottle",
+   "label": "glass bottle",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "glass bowl",
+   "label": "glass bowl",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "glass box",
+   "label": "glass box",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "glass jar",
+   "label": "glass jar",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "glass plate",
+   "label": "glass plate",
+   "animal": false,
+   "depth": 11
+  },
+  {
+   "raw": "glass table",
+   "label": "glass table",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "glass vase",
+   "label": "glass vase",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "glasses",
+   "label": "glasses",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "glaze",
+   "label": "glaze",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "glove",
+   "label": "glove",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "glue pudding",
+   "label": "glue pudding",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "goal",
+   "label": "goal",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "goat",
+   "label": "goat",
+   "animal": true,
+   "depth": 15
+  },
+  {
+   "raw": "goat cheese",
+   "label": "goat cheese",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "goggles",
+   "label": "goggles",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "golden retriever",
+   "label": "golden retriever",
+   "animal": true,
+   "depth": 12
+  },
+  {
+   "raw": "goldfish",
+   "label": "goldfish",
+   "animal": true,
+   "depth": 16
+  },
+  {
+   "raw": "golf cap",
+   "label": "golf cap",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "golf club",
+   "label": "golf club",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "goose",
+   "label": "goose",
+   "animal": true,
+   "depth": 13
+  },
+  {
+   "raw": "gourd",
+   "label": "gourd",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "gown",
+   "label": "gown",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "grain",
+   "label": "grain",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "granola",
+   "label": "granola",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "grape",
+   "label": "grape",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "grapefruit",
+   "label": "grapefruit",
+   "animal": false,
+   "depth": 13
+  },
+  {
+   "raw": "wine",
+   "label": "wine",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "grass",
+   "label": "grass",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "grasshopper",
+   "label": "grasshopper",
+   "animal": true,
+   "depth": 11
+  },
+  {
+   "raw": "grater",
+   "label": "grater",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "gravy",
+   "label": "gravy",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "gravy boat",
+   "label": "gravy boat",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "gray",
+   "label": "gray",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "greenery",
+   "label": "greenery",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "greyhound",
+   "label": "greyhound",
+   "animal": true,
+   "depth": 8
+  },
+  {
+   "raw": "griddle",
+   "label": "griddle",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "grille",
+   "label": "grille",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "grilled eel",
+   "label": "grilled eel",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "grinder",
+   "label": "grinder",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "grits",
+   "label": "grits",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "grocery bag",
+   "label": "grocery bag",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "ground squirrel",
+   "label": "ground squirrel",
+   "animal": true,
+   "depth": 13
+  },
+  {
+   "raw": "guacamole",
+   "label": "guacamole",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "guard dog",
+   "label": "guard dog",
+   "animal": true,
+   "depth": 10
+  },
+  {
+   "raw": "guinea pig",
+   "label": "guinea pig",
+   "animal": true,
+   "depth": 13
+  },
+  {
+   "raw": "guitar",
+   "label": "guitar",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "gull",
+   "label": "gull",
+   "animal": true,
+   "depth": 14
+  },
+  {
+   "raw": "gundam",
+   "label": "toy robot",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "hair spray",
+   "label": "hair spray",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "hairbrush",
+   "label": "hairbrush",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "hairgrip",
+   "label": "hairgrip",
+   "animal": false,
+   "depth": 11
+  },
+  {
+   "raw": "hairnet",
+   "label": "hairnet",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "hairpin",
+   "label": "hairpin",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "halloween costume",
+   "label": "halloween costume",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "halloween pumpkin",
+   "label": "halloween pumpkin",
+   "animal": false,
+   "depth": 11
+  },
+  {
+   "raw": "hamburger",
+   "label": "hamburger",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "hami melon",
+   "label": "hami melon",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "hammer",
+   "label": "hammer",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "hammock",
+   "label": "hammock",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "hamper",
+   "label": "hamper",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "hamster",
+   "label": "hamster",
+   "animal": true,
+   "depth": 12
+  },
+  {
+   "raw": "hand dryer",
+   "label": "hand dryer",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "hand glass",
+   "label": "hand glass",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "hand towel",
+   "label": "hand towel",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "handbag",
+   "label": "handbag",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "handball",
+   "label": "handball",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "handkerchief",
+   "label": "handkerchief",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "handsaw",
+   "label": "handsaw",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "hanger",
+   "label": "hanger",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "hardback book",
+   "label": "hardback book",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "safety helmet",
+   "label": "safety helmet",
+   "animal": false,
+   "depth": 11
+  },
+  {
+   "raw": "mouth organ",
+   "label": "mouth organ",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "pipe organ",
+   "label": "pipe organ",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "harpsichord",
+   "label": "harpsichord",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "hassock",
+   "label": "hassock",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "hat",
+   "label": "hat",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "hatbox",
+   "label": "hatbox",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "hautboy",
+   "label": "hautboy",
+   "animal": false,
+   "depth": 12
+  },
+  {
+   "raw": "hawthorn",
+   "label": "hawthorn",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "hay",
+   "label": "hay",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "hazelnut",
+   "label": "hazelnut",
+   "animal": false,
+   "depth": 12
+  },
+  {
+   "raw": "headlight",
+   "label": "headlight",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "headboard",
+   "label": "headboard",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "headdress",
+   "label": "headdress",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "heater",
+   "label": "heater",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "heather",
+   "label": "heather",
+   "animal": false,
+   "depth": 11
+  },
+  {
+   "raw": "hedgehog",
+   "label": "hedgehog",
+   "animal": true,
+   "depth": 12
+  },
+  {
+   "raw": "helmet",
+   "label": "helmet",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "hen",
+   "label": "hen",
+   "animal": true,
+   "depth": 13
+  },
+  {
+   "raw": "herb",
+   "label": "herb",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "hermit crab",
+   "label": "hermit crab",
+   "animal": true,
+   "depth": 11
+  },
+  {
+   "raw": "heron",
+   "label": "heron",
+   "animal": true,
+   "depth": 12
+  },
+  {
+   "raw": "hibiscus",
+   "label": "hibiscus",
+   "animal": false,
+   "depth": 11
+  },
+  {
+   "raw": "hibiscus flower",
+   "label": "hibiscus flower",
+   "animal": false,
+   "depth": 11
+  },
+  {
+   "raw": "high bar",
+   "label": "high bar",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "hiking boot",
+   "label": "hiking boot",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "hiking equipment",
+   "label": "hiking equipment",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "hinge",
+   "label": "hinge",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "hockey stick",
+   "label": "hockey stick",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "hoe",
+   "label": "hoe",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "hole",
+   "label": "hole",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "holly",
+   "label": "holly",
+   "animal": false,
+   "depth": 11
+  },
+  {
+   "raw": "holothurian",
+   "label": "holothurian",
+   "animal": true,
+   "depth": 9
+  },
+  {
+   "raw": "home base",
+   "label": "home base",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "hummus",
+   "label": "hummus",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "honey",
+   "label": "honey",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "beehive",
+   "label": "beehive",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "hoodie",
+   "label": "hoodie",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "hook",
+   "label": "hook",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "hornbill",
+   "label": "hornbill",
+   "animal": true,
+   "depth": 11
+  },
+  {
+   "raw": "horned cow",
+   "label": "horned cow",
+   "animal": false,
+   "depth": 18
+  },
+  {
+   "raw": "hornet",
+   "label": "hornet",
+   "animal": true,
+   "depth": 13
+  },
+  {
+   "raw": "horse blanket",
+   "label": "horse blanket",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "horse cart",
+   "label": "horse cart",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "horseshoe",
+   "label": "horseshoe",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "hose",
+   "label": "hose",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "hospital bed",
+   "label": "hospital bed",
+   "animal": false,
+   "depth": 11
+  },
+  {
+   "raw": "hot dog",
+   "label": "hot dog",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "hot sauce",
+   "label": "hot sauce",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "hotplate",
+   "label": "hotplate",
+   "animal": false,
+   "depth": 11
+  },
+  {
+   "raw": "hourglass",
+   "label": "hourglass",
+   "animal": false,
+   "depth": 11
+  },
+  {
+   "raw": "houseplant",
+   "label": "houseplant",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "hoverboard",
+   "label": "hoverboard",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "humidifier",
+   "label": "humidifier",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "hummingbird",
+   "label": "hummingbird",
+   "animal": true,
+   "depth": 11
+  },
+  {
+   "raw": "husky",
+   "label": "husky",
+   "animal": true,
+   "depth": 10
+  },
+  {
+   "raw": "hydrangea",
+   "label": "hydrangea",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "ice",
+   "label": "ice",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "ice bag",
+   "label": "ice bag",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "icecream",
+   "label": "ice cream",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "ice cream cone",
+   "label": "ice cream cone",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "ice cube",
+   "label": "ice cube",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "lollipop",
+   "label": "lollipop",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "ice maker",
+   "label": "ice maker",
+   "animal": false,
+   "depth": 11
+  },
+  {
+   "raw": "ice sculpture",
+   "label": "ice sculpture",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "skate",
+   "label": "skate",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "icing",
+   "label": "icing",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "light",
+   "label": "light",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "iguana",
+   "label": "iguana",
+   "animal": true,
+   "depth": 14
+  },
+  {
+   "raw": "induction cooker",
+   "label": "induction cooker",
+   "animal": false,
+   "depth": 11
+  },
+  {
+   "raw": "ingredient",
+   "label": "ingredient",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "inhalator",
+   "label": "inhalator",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "inking pad",
+   "label": "inking pad",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "insect",
+   "label": "insect",
+   "animal": true,
+   "depth": 9
+  },
+  {
+   "raw": "insulated cup",
+   "label": "insulated cup",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "invitation",
+   "label": "invitation",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "ipad",
+   "label": "tablet computer",
+   "animal": false,
+   "depth": 11
+  },
+  {
+   "raw": "iphone",
+   "label": "smartphone",
+   "animal": false,
+   "depth": 11
+  },
+  {
+   "raw": "ipod",
+   "label": "ipod",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "iris",
+   "label": "iris",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "iron",
+   "label": "iron",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "ironing board",
+   "label": "ironing board",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "irrigation system",
+   "label": "irrigation system",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "isopod",
+   "label": "isopod",
+   "animal": true,
+   "depth": 11
+  },
+  {
+   "raw": "ivy",
+   "label": "ivy",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "jack",
+   "label": "jack",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "jacket",
+   "label": "jacket",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "jade",
+   "label": "jade",
+   "animal": true,
+   "depth": 15
+  },
+  {
+   "raw": "jam",
+   "label": "jam",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "jasmine",
+   "label": "jasmine",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "jay",
+   "label": "jay",
+   "animal": true,
+   "depth": 13
+  },
+  {
+   "raw": "jeans",
+   "label": "jeans",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "jelly",
+   "label": "jelly",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "jelly bean",
+   "label": "jelly bean",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "jellyfish",
+   "label": "jellyfish",
+   "animal": true,
+   "depth": 11
+  },
+  {
+   "raw": "jewel",
+   "label": "jewel",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "jewellery",
+   "label": "jewellery",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "jigsaw puzzle",
+   "label": "jigsaw puzzle",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "jockey cap",
+   "label": "jockey cap",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "joystick",
+   "label": "joystick",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "jug",
+   "label": "jug",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "juice",
+   "label": "juice",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "juicer",
+   "label": "juicer",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "jujube",
+   "label": "jujube",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "jump rope",
+   "label": "jump rope",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "jumpsuit",
+   "label": "jumpsuit",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "kale",
+   "label": "kale",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "kaleidoscope",
+   "label": "kaleidoscope",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "kebab",
+   "label": "kebab",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "key",
+   "label": "key",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "kilt",
+   "label": "kilt",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "kimono",
+   "label": "kimono",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "king crab",
+   "label": "king crab",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "kitchen counter",
+   "label": "kitchen counter",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "kitchen sink",
+   "label": "kitchen sink",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "kitchen table",
+   "label": "kitchen table",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "kitchen utensil",
+   "label": "kitchen utensil",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "kitchenware",
+   "label": "kitchenware",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "kite",
+   "label": "kite",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "kiwi",
+   "label": "kiwi",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "knee pad",
+   "label": "knee pad",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "knife",
+   "label": "knife",
+   "animal": false,
+   "depth": 11
+  },
+  {
+   "raw": "knit",
+   "label": "knit",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "knitting needle",
+   "label": "knitting needle",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "knot",
+   "label": "knot",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "koi",
+   "label": "koi",
+   "animal": true,
+   "depth": 12
+  },
+  {
+   "raw": "lab coat",
+   "label": "lab coat",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "maze",
+   "label": "maze",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "lace",
+   "label": "lace",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "lace dress",
+   "label": "lace dress",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "ladle",
+   "label": "ladle",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "ladybird",
+   "label": "ladybird",
+   "animal": true,
+   "depth": 11
+  },
+  {
+   "raw": "lamb",
+   "label": "lamb",
+   "animal": true,
+   "depth": 9
+  },
+  {
+   "raw": "lamb chop",
+   "label": "lamb chop",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "lamp shade",
+   "label": "lamp shade",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "lanyard",
+   "label": "lanyard",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "lantern",
+   "label": "lantern",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "laptop",
+   "label": "laptop",
+   "animal": false,
+   "depth": 12
+  },
+  {
+   "raw": "laptop keyboard",
+   "label": "laptop keyboard",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "larva",
+   "label": "larva",
+   "animal": true,
+   "depth": 7
+  },
+  {
+   "raw": "lasagne",
+   "label": "lasagne",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "laser",
+   "label": "laser",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "lasso",
+   "label": "lasso",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "latch",
+   "label": "latch",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "latte",
+   "label": "latte",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "laundry",
+   "label": "laundry",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "laundry basket",
+   "label": "laundry basket",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "lavender",
+   "label": "lavender",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "leash",
+   "label": "leash",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "leather jacket",
+   "label": "leather jacket",
+   "animal": false,
+   "depth": 11
+  },
+  {
+   "raw": "leather shoe",
+   "label": "leather shoe",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "legging",
+   "label": "legging",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "lego",
+   "label": "lego",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "legume",
+   "label": "legume",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "lemon",
+   "label": "lemon",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "lemon juice",
+   "label": "lemon juice",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "lemonade",
+   "label": "lemonade",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "lens",
+   "label": "lens",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "lentil",
+   "label": "lentil",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "leotard",
+   "label": "leotard",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "tights",
+   "label": "tights",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "letter",
+   "label": "letter",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "mailbox",
+   "label": "mailbox",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "lettuce",
+   "label": "lettuce",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "license plate",
+   "label": "license plate",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "lid",
+   "label": "lid",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "life belt",
+   "label": "life belt",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "life jacket",
+   "label": "life jacket",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "light fixture",
+   "label": "light fixture",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "light switch",
+   "label": "light switch",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "lighting",
+   "label": "lighting",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "lilac",
+   "label": "lilac",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "lily",
+   "label": "lily",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "lime",
+   "label": "lime",
+   "animal": false,
+   "depth": 13
+  },
+  {
+   "raw": "linen",
+   "label": "linen",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "liner",
+   "label": "liner",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "lipstick",
+   "label": "lipstick",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "litchi",
+   "label": "litchi",
+   "animal": false,
+   "depth": 12
+  },
+  {
+   "raw": "lizard",
+   "label": "lizard",
+   "animal": true,
+   "depth": 12
+  },
+  {
+   "raw": "load",
+   "label": "load",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "loafer",
+   "label": "loafer",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "lock",
+   "label": "lock",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "longboard",
+   "label": "longboard",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "loom",
+   "label": "loom",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "lotus",
+   "label": "lotus",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "loveseat",
+   "label": "loveseat",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "luggage",
+   "label": "luggage",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "lumber",
+   "label": "lumber",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "lunch",
+   "label": "lunch",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "lunch box",
+   "label": "lunch box",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "mac",
+   "label": "computer",
+   "animal": false,
+   "depth": 11
+  },
+  {
+   "raw": "macadamia",
+   "label": "macadamia",
+   "animal": false,
+   "depth": 12
+  },
+  {
+   "raw": "macaroni",
+   "label": "macaroni",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "macaw",
+   "label": "macaw",
+   "animal": true,
+   "depth": 11
+  },
+  {
+   "raw": "magazine",
+   "label": "magazine",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "magnet",
+   "label": "magnet",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "magnifying glass",
+   "label": "magnifying glass",
+   "animal": false,
+   "depth": 12
+  },
+  {
+   "raw": "magnolia",
+   "label": "magnolia",
+   "animal": false,
+   "depth": 11
+  },
+  {
+   "raw": "magpie",
+   "label": "magpie",
+   "animal": true,
+   "depth": 13
+  },
+  {
+   "raw": "mail slot",
+   "label": "mail slot",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "makeup tool",
+   "label": "makeup tool",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "mallard",
+   "label": "mallard",
+   "animal": true,
+   "depth": 14
+  },
+  {
+   "raw": "mallard duck",
+   "label": "mallard duck",
+   "animal": false,
+   "depth": 14
+  },
+  {
+   "raw": "mallet",
+   "label": "mallet",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "mandala",
+   "label": "mandala",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "mandarin orange",
+   "label": "mandarin orange",
+   "animal": false,
+   "depth": 13
+  },
+  {
+   "raw": "mandarine",
+   "label": "mandarin",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "manger",
+   "label": "manger",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "mango",
+   "label": "mango",
+   "animal": false,
+   "depth": 12
+  },
+  {
+   "raw": "mangosteen",
+   "label": "mangosteen",
+   "animal": false,
+   "depth": 12
+  },
+  {
+   "raw": "mangrove",
+   "label": "mangrove",
+   "animal": false,
+   "depth": 11
+  },
+  {
+   "raw": "mannequin",
+   "label": "mannequin",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "mantid",
+   "label": "mantid",
+   "animal": true,
+   "depth": 11
+  },
+  {
+   "raw": "map",
+   "label": "map",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "maple",
+   "label": "maple",
+   "animal": false,
+   "depth": 11
+  },
+  {
+   "raw": "maple leaf",
+   "label": "maple leaf",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "maple syrup",
+   "label": "maple syrup",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "maraca",
+   "label": "maraca",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "marble",
+   "label": "marble",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "mare",
+   "label": "mare",
+   "animal": true,
+   "depth": 15
+  },
+  {
+   "raw": "marigold",
+   "label": "marigold",
+   "animal": false,
+   "depth": 11
+  },
+  {
+   "raw": "puppet",
+   "label": "puppet",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "martini",
+   "label": "martini",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "martini glass",
+   "label": "martini glass",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "mascara",
+   "label": "mascara",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "mashed potato",
+   "label": "mashed potato",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "masher",
+   "label": "masher",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "mask",
+   "label": "mask",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "mast",
+   "label": "mast",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "mat",
+   "label": "mat",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "match",
+   "label": "match",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "matchbox",
+   "label": "matchbox",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "mattress",
+   "label": "mattress",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "maxi dress",
+   "label": "maxi dress",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "measuring cup",
+   "label": "measuring cup",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "measuring tape",
+   "label": "measuring tape",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "meat",
+   "label": "meat",
+   "animal": false,
+   "depth": 5
+  },
+  {
+   "raw": "meatball",
+   "label": "meatball",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "mechanical fan",
+   "label": "mechanical fan",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "medical equipment",
+   "label": "medical equipment",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "medicine cabinet",
+   "label": "medicine cabinet",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "melon",
+   "label": "melon",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "menu",
+   "label": "menu",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "net",
+   "label": "net",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "messenger bag",
+   "label": "messenger bag",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "metal detector",
+   "label": "metal detector",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "meter",
+   "label": "meter",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "microphone",
+   "label": "microphone",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "microscope",
+   "label": "microscope",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "microwave",
+   "label": "microwave",
+   "animal": false,
+   "depth": 11
+  },
+  {
+   "raw": "military uniform",
+   "label": "military uniform",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "milk",
+   "label": "milk",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "milk can",
+   "label": "milk can",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "milk tea",
+   "label": "milk tea",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "mineral water",
+   "label": "mineral water",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "miniskirt",
+   "label": "miniskirt",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "miniature",
+   "label": "miniature",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "mint",
+   "label": "mint",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "mint candy",
+   "label": "mint candy",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "mirror",
+   "label": "mirror",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "mixer",
+   "label": "mixer",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "mixing bowl",
+   "label": "mixing bowl",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "mixture",
+   "label": "mixture",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "mold",
+   "label": "mold",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "molding",
+   "label": "molding",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "mole",
+   "label": "mole",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "monarch",
+   "label": "monarch",
+   "animal": true,
+   "depth": 13
+  },
+  {
+   "raw": "monkey wrench",
+   "label": "monkey wrench",
+   "animal": false,
+   "depth": 11
+  },
+  {
+   "raw": "monocycle",
+   "label": "monocycle",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "moon cake",
+   "label": "moon cake",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "swab",
+   "label": "swab",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "mosaic",
+   "label": "mosaic",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "mosquito",
+   "label": "mosquito",
+   "animal": true,
+   "depth": 11
+  },
+  {
+   "raw": "moth",
+   "label": "moth",
+   "animal": true,
+   "depth": 11
+  },
+  {
+   "raw": "motherboard",
+   "label": "circuit board",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "motor",
+   "label": "motor",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "motorcycle helmet",
+   "label": "motorcycle helmet",
+   "animal": false,
+   "depth": 11
+  },
+  {
+   "raw": "mountain bike",
+   "label": "mountain bike",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "mountaineering bag",
+   "label": "mountaineering bag",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "mouse",
+   "label": "mouse",
+   "animal": true,
+   "depth": 12
+  },
+  {
+   "raw": "mousepad",
+   "label": "mousepad",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "mousetrap",
+   "label": "mousetrap",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "movie poster",
+   "label": "movie poster",
+   "animal": false,
+   "depth": 16
+  },
+  {
+   "raw": "mower",
+   "label": "mower",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "muffin",
+   "label": "muffin",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "mug",
+   "label": "mug",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "mulberry",
+   "label": "mulberry",
+   "animal": false,
+   "depth": 12
+  },
+  {
+   "raw": "mulch",
+   "label": "mulch",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "mule",
+   "label": "mule",
+   "animal": true,
+   "depth": 14
+  },
+  {
+   "raw": "mural",
+   "label": "mural",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "music stool",
+   "label": "music stool",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "musical keyboard",
+   "label": "musical keyboard",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "mussel",
+   "label": "mussel",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "mustard",
+   "label": "mustard",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "nacho",
+   "label": "nacho",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "nail polish",
+   "label": "nail polish",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "nailfile",
+   "label": "nailfile",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "napkin",
+   "label": "napkin",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "national flag",
+   "label": "national flag",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "neckband",
+   "label": "neckband",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "necklace",
+   "label": "necklace",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "neckline",
+   "label": "neckline",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "nectar",
+   "label": "nectar",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "nectarine",
+   "label": "nectarine",
+   "animal": false,
+   "depth": 12
+  },
+  {
+   "raw": "needle",
+   "label": "needle",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "neon light",
+   "label": "neon light",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "newfoundland",
+   "label": "newfoundland",
+   "animal": true,
+   "depth": 9
+  },
+  {
+   "raw": "nightstand",
+   "label": "bedside table",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "noodle",
+   "label": "noodle",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "noseband",
+   "label": "noseband",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "note",
+   "label": "note",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "notebook",
+   "label": "notebook",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "nut",
+   "label": "nut",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "nutcracker",
+   "label": "nutcracker",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "oak",
+   "label": "oak",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "oak tree",
+   "label": "oak tree",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "oar",
+   "label": "oar",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "oatmeal",
+   "label": "oatmeal",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "oats",
+   "label": "oats",
+   "animal": false,
+   "depth": 12
+  },
+  {
+   "raw": "octopus",
+   "label": "octopus",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "office chair",
+   "label": "office chair",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "office desk",
+   "label": "office desk",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "oil lamp",
+   "label": "oil lamp",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "oil painting",
+   "label": "oil painting",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "okra",
+   "label": "okra",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "olive",
+   "label": "olive",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "olive tree",
+   "label": "olive tree",
+   "animal": false,
+   "depth": 12
+  },
+  {
+   "raw": "omelet",
+   "label": "omelet",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "onion",
+   "label": "onion",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "onion ring",
+   "label": "onion ring",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "orange",
+   "label": "orange",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "orange juice",
+   "label": "orange juice",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "orange tree",
+   "label": "orange tree",
+   "animal": false,
+   "depth": 13
+  },
+  {
+   "raw": "orchid",
+   "label": "orchid",
+   "animal": false,
+   "depth": 11
+  },
+  {
+   "raw": "ornament",
+   "label": "ornament",
+   "animal": false,
+   "depth": 5
+  },
+  {
+   "raw": "osprey",
+   "label": "osprey",
+   "animal": true,
+   "depth": 12
+  },
+  {
+   "raw": "ostrich",
+   "label": "ostrich",
+   "animal": true,
+   "depth": 11
+  },
+  {
+   "raw": "oven",
+   "label": "oven",
+   "animal": false,
+   "depth": 11
+  },
+  {
+   "raw": "overall",
+   "label": "overall",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "overcoat",
+   "label": "overcoat",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "owl",
+   "label": "owl",
+   "animal": true,
+   "depth": 11
+  },
+  {
+   "raw": "oyster",
+   "label": "oyster",
+   "animal": true,
+   "depth": 10
+  },
+  {
+   "raw": "teething ring",
+   "label": "teething ring",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "padlock",
+   "label": "padlock",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "paella",
+   "label": "paella",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "paint brush",
+   "label": "paint brush",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "paisley bandanna",
+   "label": "paisley bandanna",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "palette",
+   "label": "palette",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "palm tree",
+   "label": "palm tree",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "pan",
+   "label": "pan",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "pancake",
+   "label": "pancake",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "pansy",
+   "label": "pansy",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "pant",
+   "label": "pant",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "pants",
+   "label": "pants",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "pantyhose",
+   "label": "pantyhose",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "papaya",
+   "label": "papaya",
+   "animal": false,
+   "depth": 12
+  },
+  {
+   "raw": "paper",
+   "label": "paper",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "paper bag",
+   "label": "paper bag",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "paper cutter",
+   "label": "paper cutter",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "paper lantern",
+   "label": "paper lantern",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "paper plate",
+   "label": "paper plate",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "paper towel",
+   "label": "paper towel",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "paperback book",
+   "label": "paperback book",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "paperweight",
+   "label": "paperweight",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "parachute",
+   "label": "parachute",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "parrot",
+   "label": "parrot",
+   "animal": true,
+   "depth": 10
+  },
+  {
+   "raw": "paraquet",
+   "label": "paraquet",
+   "animal": true,
+   "depth": 11
+  },
+  {
+   "raw": "parasail",
+   "label": "parasail",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "park bench",
+   "label": "park bench",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "parking meter",
+   "label": "parking meter",
+   "animal": false,
+   "depth": 11
+  },
+  {
+   "raw": "parsley",
+   "label": "parsley",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "partridge",
+   "label": "partridge",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "party hat",
+   "label": "party hat",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "passion fruit",
+   "label": "passion fruit",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "pasta",
+   "label": "pasta",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "paste",
+   "label": "paste",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "pastry",
+   "label": "pastry",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "patch",
+   "label": "patch",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "pea",
+   "label": "pea",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "peach",
+   "label": "peach",
+   "animal": false,
+   "depth": 12
+  },
+  {
+   "raw": "peacock",
+   "label": "peacock",
+   "animal": true,
+   "depth": 13
+  },
+  {
+   "raw": "peanut",
+   "label": "peanut",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "peanut butter",
+   "label": "peanut butter",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "pear",
+   "label": "pear",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "pearl",
+   "label": "pearl",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "pecan",
+   "label": "pecan",
+   "animal": false,
+   "depth": 12
+  },
+  {
+   "raw": "peeler",
+   "label": "peeler",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "pegboard",
+   "label": "pegboard",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "pegleg",
+   "label": "pegleg",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "pelican",
+   "label": "pelican",
+   "animal": true,
+   "depth": 13
+  },
+  {
+   "raw": "pen",
+   "label": "pen",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "pencil",
+   "label": "pencil",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "pencil case",
+   "label": "pencil case",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "pencil sharpener",
+   "label": "pencil sharpener",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "pencil skirt",
+   "label": "pencil skirt",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "pendant",
+   "label": "pendant",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "pendulum",
+   "label": "pendulum",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "penguin",
+   "label": "penguin",
+   "animal": true,
+   "depth": 13
+  },
+  {
+   "raw": "pennant",
+   "label": "pennant",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "piggy bank",
+   "label": "piggy bank",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "peony",
+   "label": "peony",
+   "animal": false,
+   "depth": 11
+  },
+  {
+   "raw": "pepper",
+   "label": "pepper",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "pepper grinder",
+   "label": "pepper grinder",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "peppercorn",
+   "label": "peppercorn",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "pepperoni",
+   "label": "pepperoni",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "perch",
+   "label": "perch",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "perfume",
+   "label": "perfume",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "persian cat",
+   "label": "persian cat",
+   "animal": true,
+   "depth": 9
+  },
+  {
+   "raw": "persimmon",
+   "label": "persimmon",
+   "animal": false,
+   "depth": 12
+  },
+  {
+   "raw": "personal flotation device",
+   "label": "personal flotation device",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "pest",
+   "label": "pest",
+   "animal": true,
+   "depth": 7
+  },
+  {
+   "raw": "petal",
+   "label": "petal",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "petunia",
+   "label": "petunia",
+   "animal": false,
+   "depth": 11
+  },
+  {
+   "raw": "church bench",
+   "label": "church bench",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "pheasant",
+   "label": "pheasant",
+   "animal": true,
+   "depth": 10
+  },
+  {
+   "raw": "phone",
+   "label": "phone",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "phonebook",
+   "label": "phonebook",
+   "animal": false,
+   "depth": 12
+  },
+  {
+   "raw": "record player",
+   "label": "record player",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "photo booth",
+   "label": "photo booth",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "piano",
+   "label": "piano",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "plectrum",
+   "label": "plectrum",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "pickle",
+   "label": "pickle",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "picnic basket",
+   "label": "picnic basket",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "picnic table",
+   "label": "picnic table",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "picture frame",
+   "label": "picture frame",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "pie",
+   "label": "pie",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "pigeon",
+   "label": "pigeon",
+   "animal": true,
+   "depth": 12
+  },
+  {
+   "raw": "tablet",
+   "label": "tablet",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "pillow",
+   "label": "pillow",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "pin",
+   "label": "pin",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "pine",
+   "label": "pine",
+   "animal": false,
+   "depth": 12
+  },
+  {
+   "raw": "pine cone",
+   "label": "pine cone",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "pine nut",
+   "label": "pine nut",
+   "animal": false,
+   "depth": 12
+  },
+  {
+   "raw": "pineapple",
+   "label": "pineapple",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "table tennis table",
+   "label": "table tennis table",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "pink",
+   "label": "pink",
+   "animal": false,
+   "depth": 11
+  },
+  {
+   "raw": "pipe bowl",
+   "label": "pipe bowl",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "pirate flag",
+   "label": "pirate flag",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "pistachio",
+   "label": "pistachio",
+   "animal": false,
+   "depth": 12
+  },
+  {
+   "raw": "pocket bread",
+   "label": "pocket bread",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "pitaya",
+   "label": "dragon fruit",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "pitbull",
+   "label": "dog",
+   "animal": true,
+   "depth": 14
+  },
+  {
+   "raw": "pitcher",
+   "label": "pitcher",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "pitcher plant",
+   "label": "pitcher plant",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "pitchfork",
+   "label": "pitchfork",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "pizza",
+   "label": "pizza",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "pizza pan",
+   "label": "pizza pan",
+   "animal": false,
+   "depth": 11
+  },
+  {
+   "raw": "place mat",
+   "label": "place mat",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "plank",
+   "label": "plank",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "plaque",
+   "label": "plaque",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "platter",
+   "label": "platter",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "playhouse",
+   "label": "playhouse",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "plow",
+   "label": "plow",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "plug",
+   "label": "plug",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "plug hat",
+   "label": "plug hat",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "plum",
+   "label": "plum",
+   "animal": false,
+   "depth": 12
+  },
+  {
+   "raw": "plumbing fixture",
+   "label": "plumbing fixture",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "plume",
+   "label": "plume",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "pocket",
+   "label": "pocket",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "pocket watch",
+   "label": "pocket watch",
+   "animal": false,
+   "depth": 11
+  },
+  {
+   "raw": "pocketknife",
+   "label": "pocketknife",
+   "animal": false,
+   "depth": 12
+  },
+  {
+   "raw": "pod",
+   "label": "pod",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "podium",
+   "label": "podium",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "poinsettia",
+   "label": "poinsettia",
+   "animal": false,
+   "depth": 11
+  },
+  {
+   "raw": "pointer",
+   "label": "pointer",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "poker chip",
+   "label": "poker chip",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "poker table",
+   "label": "poker table",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "pole",
+   "label": "pole",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "police dog",
+   "label": "police dog",
+   "animal": true,
+   "depth": 10
+  },
+  {
+   "raw": "pollen",
+   "label": "pollen",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "polo neck",
+   "label": "polo neck",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "polo shirt",
+   "label": "polo shirt",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "pomegranate",
+   "label": "pomegranate",
+   "animal": false,
+   "depth": 12
+  },
+  {
+   "raw": "pomeranian",
+   "label": "pomeranian",
+   "animal": true,
+   "depth": 10
+  },
+  {
+   "raw": "poncho",
+   "label": "poncho",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "poodle",
+   "label": "poodle",
+   "animal": true,
+   "depth": 9
+  },
+  {
+   "raw": "pop",
+   "label": "pop",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "popcorn",
+   "label": "popcorn",
+   "animal": false,
+   "depth": 13
+  },
+  {
+   "raw": "poppy",
+   "label": "poppy",
+   "animal": false,
+   "depth": 11
+  },
+  {
+   "raw": "porcelain",
+   "label": "porcelain",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "pork",
+   "label": "pork",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "porridge",
+   "label": "porridge",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "portable battery",
+   "label": "portable battery",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "portfolio",
+   "label": "portfolio",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "poster",
+   "label": "poster",
+   "animal": true,
+   "depth": 15
+  },
+  {
+   "raw": "pot",
+   "label": "pot",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "potato",
+   "label": "potato",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "potato chip",
+   "label": "potato chip",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "potato salad",
+   "label": "potato salad",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "potholder",
+   "label": "potholder",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "potty",
+   "label": "potty",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "pouch",
+   "label": "pouch",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "poultry",
+   "label": "poultry",
+   "animal": true,
+   "depth": 11
+  },
+  {
+   "raw": "powder",
+   "label": "powder",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "power plugs and sockets",
+   "label": "plug socket",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "pressure cooker",
+   "label": "pressure cooker",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "pretzel",
+   "label": "pretzel",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "print",
+   "label": "print",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "printer",
+   "label": "printer",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "printing",
+   "label": "printing",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "produce",
+   "label": "produce",
+   "animal": false,
+   "depth": 5
+  },
+  {
+   "raw": "projection screen",
+   "label": "projection screen",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "projector",
+   "label": "projector",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "propeller",
+   "label": "propeller",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "protective suit",
+   "label": "protective suit",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "pudding",
+   "label": "pudding",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "puff",
+   "label": "puff",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "puffin",
+   "label": "puffin",
+   "animal": true,
+   "depth": 12
+  },
+  {
+   "raw": "pug",
+   "label": "pug",
+   "animal": true,
+   "depth": 9
+  },
+  {
+   "raw": "pulse",
+   "label": "pulse",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "pump",
+   "label": "pump",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "pumpkin",
+   "label": "pumpkin",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "pumpkin pie",
+   "label": "pumpkin pie",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "pumpkin seed",
+   "label": "pumpkin seed",
+   "animal": false,
+   "depth": 11
+  },
+  {
+   "raw": "punch bag",
+   "label": "punch bag",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "punch",
+   "label": "punch",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "puzzle",
+   "label": "puzzle",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "python",
+   "label": "python",
+   "animal": true,
+   "depth": 14
+  },
+  {
+   "raw": "quail",
+   "label": "quail",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "quesadilla",
+   "label": "quesadilla",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "quiche",
+   "label": "quiche",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "quilt",
+   "label": "quilt",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "quilting",
+   "label": "quilting",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "rabbit",
+   "label": "rabbit",
+   "animal": true,
+   "depth": 13
+  },
+  {
+   "raw": "racket",
+   "label": "racket",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "radar",
+   "label": "radar",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "radiator",
+   "label": "radiator",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "radio",
+   "label": "radio",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "rag doll",
+   "label": "rag doll",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "rain boot",
+   "label": "rain boot",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "rainbow trout",
+   "label": "rainbow trout",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "raincoat",
+   "label": "raincoat",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "raisin",
+   "label": "raisin",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "rake",
+   "label": "rake",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "ram",
+   "label": "ram",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "ramp",
+   "label": "ramp",
+   "animal": false,
+   "depth": 11
+  },
+  {
+   "raw": "rapeseed",
+   "label": "rapeseed",
+   "animal": false,
+   "depth": 11
+  },
+  {
+   "raw": "raspberry",
+   "label": "raspberry",
+   "animal": false,
+   "depth": 11
+  },
+  {
+   "raw": "rat",
+   "label": "rat",
+   "animal": true,
+   "depth": 12
+  },
+  {
+   "raw": "ratchet",
+   "label": "ratchet",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "raven",
+   "label": "raven",
+   "animal": true,
+   "depth": 13
+  },
+  {
+   "raw": "ray",
+   "label": "ray",
+   "animal": false,
+   "depth": 11
+  },
+  {
+   "raw": "razor",
+   "label": "razor",
+   "animal": false,
+   "depth": 11
+  },
+  {
+   "raw": "razor blade",
+   "label": "razor blade",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "reamer",
+   "label": "reamer",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "rear light",
+   "label": "rear light",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "rearview mirror",
+   "label": "rearview mirror",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "record",
+   "label": "record",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "recorder",
+   "label": "recorder",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "recycling bin",
+   "label": "recycling bin",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "red carpet",
+   "label": "red carpet",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "red wine",
+   "label": "red wine",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "reed",
+   "label": "reed",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "reel",
+   "label": "reel",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "reflector",
+   "label": "reflector",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "register",
+   "label": "register",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "rein",
+   "label": "rein",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "relish",
+   "label": "relish",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "remote",
+   "label": "remote control",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "reptile",
+   "label": "reptile",
+   "animal": true,
+   "depth": 9
+  },
+  {
+   "raw": "retriever",
+   "label": "retriever",
+   "animal": true,
+   "depth": 11
+  },
+  {
+   "raw": "rhododendron",
+   "label": "rhododendron",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "ribbon",
+   "label": "ribbon",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "rice",
+   "label": "rice",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "rice cooker",
+   "label": "rice cooker",
+   "animal": false,
+   "depth": 11
+  },
+  {
+   "raw": "ride",
+   "label": "ride",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "rim",
+   "label": "rim",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "ring",
+   "label": "ring",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "roast chicken",
+   "label": "roast chicken",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "robe",
+   "label": "robe",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "robin",
+   "label": "robin",
+   "animal": true,
+   "depth": 13
+  },
+  {
+   "raw": "robot",
+   "label": "robot",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "stone",
+   "label": "stone",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "rock face",
+   "label": "rock face",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "rocker",
+   "label": "rocker",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "rocking chair",
+   "label": "rocking chair",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "rodent",
+   "label": "rodent",
+   "animal": true,
+   "depth": 11
+  },
+  {
+   "raw": "roe",
+   "label": "roe",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "roller",
+   "label": "roller",
+   "animal": false,
+   "depth": 11
+  },
+  {
+   "raw": "coaster",
+   "label": "coaster",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "roller skate",
+   "label": "roller skate",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "roller skates",
+   "label": "roller skates",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "rolling pin",
+   "label": "rolling pin",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "root",
+   "label": "root",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "root beer",
+   "label": "root beer",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "rose",
+   "label": "rose",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "rosemary",
+   "label": "rosemary",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "rottweiler",
+   "label": "rottweiler",
+   "animal": true,
+   "depth": 11
+  },
+  {
+   "raw": "round table",
+   "label": "round table",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "router",
+   "label": "router",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "row",
+   "label": "row",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "rowan",
+   "label": "rowan",
+   "animal": false,
+   "depth": 12
+  },
+  {
+   "raw": "rubber stamp",
+   "label": "rubber stamp",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "rubik's cube",
+   "label": "rubik's cube",
+   "animal": false,
+   "depth": 12
+  },
+  {
+   "raw": "ruby",
+   "label": "ruby",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "ruffle",
+   "label": "ruffle",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "rugby ball",
+   "label": "rugby ball",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "ruler",
+   "label": "ruler",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "rum",
+   "label": "rum",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "running shoe",
+   "label": "running shoe",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "rye",
+   "label": "rye",
+   "animal": false,
+   "depth": 11
+  },
+  {
+   "raw": "sack",
+   "label": "sack",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "saddle",
+   "label": "saddle",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "saddlebag",
+   "label": "saddlebag",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "safe",
+   "label": "safe",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "safety vest",
+   "label": "safety vest",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "sage",
+   "label": "sage",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "sail",
+   "label": "sail",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "sake",
+   "label": "sake",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "salad",
+   "label": "salad",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "salad bowl",
+   "label": "salad bowl",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "salamander",
+   "label": "salamander",
+   "animal": true,
+   "depth": 10
+  },
+  {
+   "raw": "salami",
+   "label": "salami",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "salmon",
+   "label": "salmon",
+   "animal": true,
+   "depth": 12
+  },
+  {
+   "raw": "salsa",
+   "label": "salsa",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "salt",
+   "label": "salt",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "salt and pepper shakers",
+   "label": "salt and pepper shakers",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "salt shaker",
+   "label": "salt shaker",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "samoyed",
+   "label": "samoyed",
+   "animal": true,
+   "depth": 10
+  },
+  {
+   "raw": "sand box",
+   "label": "sand box",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "sand sculpture",
+   "label": "sand sculpture",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "sandal",
+   "label": "sandal",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "sandwich",
+   "label": "sandwich",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "sanitary napkin",
+   "label": "sanitary napkin",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "sapphire",
+   "label": "sapphire",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "sardine",
+   "label": "sardine",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "sari",
+   "label": "sari",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "sashimi",
+   "label": "sashimi",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "satchel",
+   "label": "satchel",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "satin",
+   "label": "satin",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "sauce",
+   "label": "sauce",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "saucer",
+   "label": "saucer",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "sausage",
+   "label": "sausage",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "saw",
+   "label": "saw",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "sax",
+   "label": "sax",
+   "animal": false,
+   "depth": 12
+  },
+  {
+   "raw": "scale",
+   "label": "scale",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "scale model",
+   "label": "scale model",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "scallop",
+   "label": "scallop",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "strawman",
+   "label": "strawman",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "scarf",
+   "label": "scarf",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "schnauzer",
+   "label": "schnauzer",
+   "animal": true,
+   "depth": 11
+  },
+  {
+   "raw": "school uniform",
+   "label": "school uniform",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "scissors",
+   "label": "scissors",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "wall lamp",
+   "label": "wall lamp",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "scone",
+   "label": "scone",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "scorpion",
+   "label": "scorpion",
+   "animal": true,
+   "depth": 10
+  },
+  {
+   "raw": "scrambled egg",
+   "label": "scrambled egg",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "scraper",
+   "label": "scraper",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "screw",
+   "label": "screw",
+   "animal": false,
+   "depth": 11
+  },
+  {
+   "raw": "screwdriver",
+   "label": "screwdriver",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "scrubbing brush",
+   "label": "scrubbing brush",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "sculpture",
+   "label": "sculpture",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "sea turtle",
+   "label": "sea turtle",
+   "animal": true,
+   "depth": 13
+  },
+  {
+   "raw": "sea urchin",
+   "label": "sea urchin",
+   "animal": true,
+   "depth": 9
+  },
+  {
+   "raw": "seabird",
+   "label": "seabird",
+   "animal": true,
+   "depth": 11
+  },
+  {
+   "raw": "seafood",
+   "label": "seafood",
+   "animal": false,
+   "depth": 5
+  },
+  {
+   "raw": "seal",
+   "label": "seal",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "seat",
+   "label": "seat",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "seat belt",
+   "label": "seat belt",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "secretary",
+   "label": "secretary",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "seed",
+   "label": "seed",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "seesaw",
+   "label": "seesaw",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "segway",
+   "label": "segway",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "sensor",
+   "label": "sensor",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "server",
+   "label": "server",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "sewing machine",
+   "label": "sewing machine",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "shaker",
+   "label": "shaker",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "shark",
+   "label": "shark",
+   "animal": true,
+   "depth": 13
+  },
+  {
+   "raw": "sharpener",
+   "label": "sharpener",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "sharpie",
+   "label": "sharpie",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "shaver",
+   "label": "shaver",
+   "animal": false,
+   "depth": 12
+  },
+  {
+   "raw": "shaving cream",
+   "label": "shaving cream",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "shawl",
+   "label": "shawl",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "shear",
+   "label": "shear",
+   "animal": false,
+   "depth": 11
+  },
+  {
+   "raw": "shears",
+   "label": "shears",
+   "animal": false,
+   "depth": 11
+  },
+  {
+   "raw": "sheep",
+   "label": "sheep",
+   "animal": true,
+   "depth": 15
+  },
+  {
+   "raw": "sheet",
+   "label": "sheet",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "shelf",
+   "label": "shelf",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "shellfish",
+   "label": "shellfish",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "sherbert",
+   "label": "sherbert",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "shiba inu",
+   "label": "dog",
+   "animal": true,
+   "depth": 14
+  },
+  {
+   "raw": "shipping container",
+   "label": "shipping container",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "shirt",
+   "label": "shirt",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "shoe",
+   "label": "shoe",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "shoe box",
+   "label": "shoe box",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "shoe tree",
+   "label": "shoe tree",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "shoot",
+   "label": "shoot",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "shopping bag",
+   "label": "shopping bag",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "shopping basket",
+   "label": "shopping basket",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "shopping cart",
+   "label": "shopping cart",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "short",
+   "label": "short",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "shorts",
+   "label": "shorts",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "shot glass",
+   "label": "shot glass",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "shoulder bag",
+   "label": "shoulder bag",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "shovel",
+   "label": "shovel",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "showcase",
+   "label": "showcase",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "shower",
+   "label": "shower",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "shower cap",
+   "label": "shower cap",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "shower curtain",
+   "label": "shower curtain",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "shower head",
+   "label": "shower head",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "shredder",
+   "label": "shredder",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "shrimp",
+   "label": "shrimp",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "shrub",
+   "label": "shrub",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "shutter",
+   "label": "shutter",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "siamese",
+   "label": "siamese",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "side cabinet",
+   "label": "side cabinet",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "side dish",
+   "label": "side dish",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "sideline",
+   "label": "sideline",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "silk",
+   "label": "silk",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "silk stocking",
+   "label": "silk stocking",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "silver",
+   "label": "silver",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "silverware",
+   "label": "silverware",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "sink",
+   "label": "sink",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "skateboard",
+   "label": "skateboard",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "sketch",
+   "label": "sketch",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "skewer",
+   "label": "skewer",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "ski",
+   "label": "ski",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "ski boot",
+   "label": "ski boot",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "ski equipment",
+   "label": "ski equipment",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "ski jacket",
+   "label": "ski jacket",
+   "animal": false,
+   "depth": 12
+  },
+  {
+   "raw": "ski pole",
+   "label": "ski pole",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "snowboard",
+   "label": "snowboard",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "skiing shoes",
+   "label": "skiing shoes",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "skullcap",
+   "label": "skullcap",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "slate",
+   "label": "slate",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "sleigh",
+   "label": "sleigh",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "sleeping bag",
+   "label": "sleeping bag",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "sleepwear",
+   "label": "sleepwear",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "sleeve",
+   "label": "sleeve",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "slide",
+   "label": "slide",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "slider",
+   "label": "slider",
+   "animal": true,
+   "depth": 13
+  },
+  {
+   "raw": "sling",
+   "label": "sling",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "slot",
+   "label": "slot",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "slot machine",
+   "label": "slot machine",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "slow cooker",
+   "label": "slow cooker",
+   "animal": false,
+   "depth": 11
+  },
+  {
+   "raw": "snack",
+   "label": "snack",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "snail",
+   "label": "snail",
+   "animal": true,
+   "depth": 10
+  },
+  {
+   "raw": "snake",
+   "label": "snake",
+   "animal": true,
+   "depth": 11
+  },
+  {
+   "raw": "snapper",
+   "label": "snapper",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "snorkel",
+   "label": "snorkel",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "snowball",
+   "label": "snowball",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "snowflake",
+   "label": "snowflake",
+   "animal": true,
+   "depth": 14
+  },
+  {
+   "raw": "snowman",
+   "label": "snowman",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "snowshoe",
+   "label": "snowshoe",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "soap dispenser",
+   "label": "soap dispenser",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "sock",
+   "label": "sock",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "socket",
+   "label": "socket",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "soda",
+   "label": "soda",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "softball",
+   "label": "softball",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "solar battery",
+   "label": "solar battery",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "sombrero",
+   "label": "sombrero",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "soup",
+   "label": "soup",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "soup bowl",
+   "label": "soup bowl",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "soupspoon",
+   "label": "soupspoon",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "sour cream",
+   "label": "sour cream",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "soybean milk",
+   "label": "soybean milk",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "spaghetti",
+   "label": "spaghetti",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "wrench",
+   "label": "wrench",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "sparkler",
+   "label": "sparkler",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "sparkling wine",
+   "label": "sparkling wine",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "sparrow",
+   "label": "sparrow",
+   "animal": true,
+   "depth": 11
+  },
+  {
+   "raw": "spatula",
+   "label": "spatula",
+   "animal": false,
+   "depth": 11
+  },
+  {
+   "raw": "speaker",
+   "label": "speaker",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "speech bubble",
+   "label": "speech bubble",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "speedometer",
+   "label": "speedometer",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "spice",
+   "label": "spice",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "spice rack",
+   "label": "spice rack",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "spider",
+   "label": "spider",
+   "animal": true,
+   "depth": 10
+  },
+  {
+   "raw": "spider web",
+   "label": "spider web",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "spike",
+   "label": "spike",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "spinach",
+   "label": "spinach",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "splash",
+   "label": "splash",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "sponge",
+   "label": "sponge",
+   "animal": true,
+   "depth": 8
+  },
+  {
+   "raw": "spoon",
+   "label": "spoon",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "sport equipment",
+   "label": "sport equipment",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "sports ball",
+   "label": "sports ball",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "sports equipment",
+   "label": "sports equipment",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "sportswear",
+   "label": "sportswear",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "spray",
+   "label": "spray",
+   "animal": false,
+   "depth": 5
+  },
+  {
+   "raw": "spring",
+   "label": "spring",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "spring roll",
+   "label": "spring roll",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "sprinkler",
+   "label": "sprinkler",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "sprout",
+   "label": "sprout",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "spruce",
+   "label": "spruce",
+   "animal": false,
+   "depth": 12
+  },
+  {
+   "raw": "squash",
+   "label": "squash",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "squid",
+   "label": "squid",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "squirrel",
+   "label": "squirrel",
+   "animal": true,
+   "depth": 12
+  },
+  {
+   "raw": "water gun",
+   "label": "water gun",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "staff",
+   "label": "staff",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "stage light",
+   "label": "stage light",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "stair",
+   "label": "stair",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "stairs",
+   "label": "stairs",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "stallion",
+   "label": "stallion",
+   "animal": true,
+   "depth": 9
+  },
+  {
+   "raw": "stand",
+   "label": "stand",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "staple",
+   "label": "staple",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "stapler",
+   "label": "stapler",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "starfish",
+   "label": "starfish",
+   "animal": true,
+   "depth": 9
+  },
+  {
+   "raw": "starfruit",
+   "label": "star fruit",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "starling",
+   "label": "starling",
+   "animal": true,
+   "depth": 12
+  },
+  {
+   "raw": "stationary bicycle",
+   "label": "stationary bicycle",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "statue",
+   "label": "statue",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "steak",
+   "label": "steak",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "steak knife",
+   "label": "steak knife",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "steamed bread",
+   "label": "steamed bread",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "steering wheel",
+   "label": "steering wheel",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "stem",
+   "label": "stem",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "stencil",
+   "label": "stencil",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "step stool",
+   "label": "step stool",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "stereo",
+   "label": "stereo",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "stethoscope",
+   "label": "stethoscope",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "stew",
+   "label": "stew",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "stick",
+   "label": "stick",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "stick insect",
+   "label": "stick insect",
+   "animal": true,
+   "depth": 11
+  },
+  {
+   "raw": "stilt",
+   "label": "stilt",
+   "animal": false,
+   "depth": 11
+  },
+  {
+   "raw": "stingray",
+   "label": "stingray",
+   "animal": true,
+   "depth": 14
+  },
+  {
+   "raw": "stirrer",
+   "label": "stirrer",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "stirrup",
+   "label": "stirrup",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "stock",
+   "label": "stock",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "stocking",
+   "label": "stocking",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "stone carving",
+   "label": "stone carving",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "stool",
+   "label": "stool",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "stop watch",
+   "label": "stop watch",
+   "animal": false,
+   "depth": 11
+  },
+  {
+   "raw": "storage box",
+   "label": "storage box",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "stork",
+   "label": "stork",
+   "animal": true,
+   "depth": 12
+  },
+  {
+   "raw": "stove",
+   "label": "stove",
+   "animal": false,
+   "depth": 11
+  },
+  {
+   "raw": "poker",
+   "label": "poker",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "strainer",
+   "label": "strainer",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "strap",
+   "label": "strap",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "straw hat",
+   "label": "straw hat",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "strawberry",
+   "label": "strawberry",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "street art",
+   "label": "street art",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "street dog",
+   "label": "street dog",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "street food",
+   "label": "street food",
+   "animal": false,
+   "depth": 5
+  },
+  {
+   "raw": "string",
+   "label": "string",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "string cheese",
+   "label": "string cheese",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "stuffed animal",
+   "label": "stuffed animal",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "stuffed toy",
+   "label": "stuffed toy",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "stuffing",
+   "label": "stuffing",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "stump",
+   "label": "stump",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "stylus",
+   "label": "stylus",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "submarine sandwich",
+   "label": "submarine sandwich",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "subwoofer",
+   "label": "subwoofer",
+   "animal": false,
+   "depth": 11
+  },
+  {
+   "raw": "succulent",
+   "label": "succulent",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "suede",
+   "label": "suede",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "sugar",
+   "label": "sugar",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "sugar bowl",
+   "label": "sugar bowl",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "sugar cane",
+   "label": "sugar cane",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "sugar cube",
+   "label": "sugar cube",
+   "animal": false,
+   "depth": 12
+  },
+  {
+   "raw": "suit",
+   "label": "suit",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "sun hat",
+   "label": "sun hat",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "sundial",
+   "label": "sundial",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "sunflower",
+   "label": "sunflower",
+   "animal": false,
+   "depth": 11
+  },
+  {
+   "raw": "sunflower seed",
+   "label": "sunflower seed",
+   "animal": false,
+   "depth": 11
+  },
+  {
+   "raw": "sunglasses",
+   "label": "sunglasses",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "sunshade",
+   "label": "sunshade",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "supermarket shelf",
+   "label": "supermarket shelf",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "surfboard",
+   "label": "surfboard",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "sushi",
+   "label": "sushi",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "suspenders",
+   "label": "suspenders",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "swallow",
+   "label": "swallow",
+   "animal": true,
+   "depth": 12
+  },
+  {
+   "raw": "swallowtail butterfly",
+   "label": "swallowtail butterfly",
+   "animal": false,
+   "depth": 12
+  },
+  {
+   "raw": "swan",
+   "label": "swan",
+   "animal": true,
+   "depth": 11
+  },
+  {
+   "raw": "sweat pant",
+   "label": "sweat pant",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "sweatband",
+   "label": "sweatband",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "sweater",
+   "label": "sweater",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "sweatshirt",
+   "label": "sweatshirt",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "sweet",
+   "label": "sweet",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "sweet potato",
+   "label": "sweet potato",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "swim cap",
+   "label": "swim cap",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "swing",
+   "label": "swing",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "switch",
+   "label": "switch",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "swivel chair",
+   "label": "swivel chair",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "swordfish",
+   "label": "swordfish",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "syrup",
+   "label": "syrup",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "t shirt",
+   "label": "t-shirt",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "t-shirt",
+   "label": "t-shirt",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "tabasco sauce",
+   "label": "tabasco sauce",
+   "animal": false,
+   "depth": 11
+  },
+  {
+   "raw": "tabby",
+   "label": "tabby",
+   "animal": true,
+   "depth": 9
+  },
+  {
+   "raw": "table tennis racket",
+   "label": "table tennis racket",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "tablecloth",
+   "label": "tablecloth",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "tablet computer",
+   "label": "tablet computer",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "tableware",
+   "label": "tableware",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "tachometer",
+   "label": "tachometer",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "tackle",
+   "label": "tackle",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "taco",
+   "label": "taco",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "tambourine",
+   "label": "tambourine",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "tangerine",
+   "label": "tangerine",
+   "animal": false,
+   "depth": 14
+  },
+  {
+   "raw": "tape",
+   "label": "tape",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "tapestry",
+   "label": "tapestry",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "taro",
+   "label": "taro",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "tarp",
+   "label": "tarp",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "tart",
+   "label": "tart",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "tassel",
+   "label": "tassel",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "tatami",
+   "label": "tatami mat",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "tea",
+   "label": "tea",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "tea bag",
+   "label": "tea bag",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "tea pot",
+   "label": "tea pot",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "tea set",
+   "label": "tea set",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "teacup",
+   "label": "teacup",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "teddy",
+   "label": "teddy bear",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "zoom lens",
+   "label": "zoom lens",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "telescope",
+   "label": "telescope",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "television",
+   "label": "television",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "television camera",
+   "label": "television camera",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "tempura",
+   "label": "tempura",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "tennis net",
+   "label": "tennis net",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "tennis racket",
+   "label": "tennis racket",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "tequila",
+   "label": "tequila",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "textile",
+   "label": "textile",
+   "animal": false,
+   "depth": 5
+  },
+  {
+   "raw": "thanksgiving dinner",
+   "label": "thanksgiving dinner",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "thermometer",
+   "label": "thermometer",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "thermos",
+   "label": "thermos",
+   "animal": false,
+   "depth": 11
+  },
+  {
+   "raw": "thermos bottle",
+   "label": "thermos bottle",
+   "animal": false,
+   "depth": 11
+  },
+  {
+   "raw": "thermostat",
+   "label": "thermostat",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "thimble",
+   "label": "thimble",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "thistle",
+   "label": "thistle",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "throw",
+   "label": "throw",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "throw pillow",
+   "label": "throw pillow",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "thyme",
+   "label": "thyme",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "tick",
+   "label": "tick",
+   "animal": true,
+   "depth": 11
+  },
+  {
+   "raw": "tie",
+   "label": "tie",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "tile",
+   "label": "tile",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "tin",
+   "label": "tin",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "tinfoil",
+   "label": "tinfoil",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "tinsel",
+   "label": "tinsel",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "tiramisu",
+   "label": "tiramisu",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "tire",
+   "label": "tire",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "toast",
+   "label": "toast",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "toaster",
+   "label": "toaster",
+   "animal": false,
+   "depth": 11
+  },
+  {
+   "raw": "tobacco",
+   "label": "tobacco",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "tofu",
+   "label": "tofu",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "toilet bowl",
+   "label": "toilet bowl",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "toilet seat",
+   "label": "toilet seat",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "toiletry",
+   "label": "toiletry",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "tomato",
+   "label": "tomato",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "tomato sauce",
+   "label": "tomato sauce",
+   "animal": false,
+   "depth": 11
+  },
+  {
+   "raw": "tomato soup",
+   "label": "tomato soup",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "tong",
+   "label": "tongs",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "tongs",
+   "label": "tongs",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "toolbox",
+   "label": "toolbox",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "toothbrush",
+   "label": "toothbrush",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "toothpick",
+   "label": "toothpick",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "topping",
+   "label": "topping",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "torch",
+   "label": "torch",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "tortilla",
+   "label": "tortilla",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "tortoise",
+   "label": "tortoise",
+   "animal": true,
+   "depth": 13
+  },
+  {
+   "raw": "tote bag",
+   "label": "tote bag",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "totoro",
+   "label": "soft toy",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "toucan",
+   "label": "toucan",
+   "animal": true,
+   "depth": 11
+  },
+  {
+   "raw": "towel",
+   "label": "towel",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "towel bar",
+   "label": "towel bar",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "toy",
+   "label": "toy",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "toy car",
+   "label": "toy car",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "trainer",
+   "label": "trainer",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "training bench",
+   "label": "training bench",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "trampoline",
+   "label": "trampoline",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "transformer",
+   "label": "transformer",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "tray",
+   "label": "tray",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "treadmill",
+   "label": "treadmill",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "treat",
+   "label": "treat",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "tree",
+   "label": "tree",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "tree branch",
+   "label": "tree branch",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "tree frog",
+   "label": "tree frog",
+   "animal": true,
+   "depth": 11
+  },
+  {
+   "raw": "tree house",
+   "label": "tree house",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "tree root",
+   "label": "tree root",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "tree trunk",
+   "label": "tree trunk",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "tricycle",
+   "label": "tricycle",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "trim",
+   "label": "trim",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "tripod",
+   "label": "tripod",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "trombone",
+   "label": "trombone",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "trophy cup",
+   "label": "trophy cup",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "trout",
+   "label": "trout",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "tub",
+   "label": "tub",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "tulip",
+   "label": "tulip",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "tuna",
+   "label": "tuna",
+   "animal": false,
+   "depth": 11
+  },
+  {
+   "raw": "turkey",
+   "label": "turkey",
+   "animal": true,
+   "depth": 12
+  },
+  {
+   "raw": "turnip",
+   "label": "turnip",
+   "animal": false,
+   "depth": 11
+  },
+  {
+   "raw": "turtle",
+   "label": "turtle",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "tv cabinet",
+   "label": "tv stand",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "twig",
+   "label": "twig",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "twine",
+   "label": "twine",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "typewriter",
+   "label": "typewriter",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "ukulele",
+   "label": "ukulele",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "ultraman",
+   "label": "action figure",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "umbrella",
+   "label": "umbrella",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "underclothes",
+   "label": "underclothes",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "uniform",
+   "label": "uniform",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "urn",
+   "label": "urn",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "vacuum",
+   "label": "vacuum",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "valve",
+   "label": "valve",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "vanilla",
+   "label": "vanilla",
+   "animal": false,
+   "depth": 12
+  },
+  {
+   "raw": "vanity",
+   "label": "vanity",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "vase",
+   "label": "vase",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "veil",
+   "label": "veil",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "velvet",
+   "label": "velvet",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "vending machine",
+   "label": "vending machine",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "vent",
+   "label": "vent",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "vest",
+   "label": "vest",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "video camera",
+   "label": "video camera",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "videotape",
+   "label": "videotape",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "view mirror",
+   "label": "view mirror",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "vine",
+   "label": "vine",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "vinegar",
+   "label": "vinegar",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "violet",
+   "label": "violet",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "violin",
+   "label": "violin",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "visor",
+   "label": "visor",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "vodka",
+   "label": "vodka",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "volleyball",
+   "label": "volleyball",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "vulture",
+   "label": "vulture",
+   "animal": true,
+   "depth": 11
+  },
+  {
+   "raw": "waffle",
+   "label": "waffle",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "waffle iron",
+   "label": "waffle iron",
+   "animal": false,
+   "depth": 11
+  },
+  {
+   "raw": "wagon",
+   "label": "wagon",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "wagon wheel",
+   "label": "wagon wheel",
+   "animal": false,
+   "depth": 11
+  },
+  {
+   "raw": "walking cane",
+   "label": "walking cane",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "wall clock",
+   "label": "wall clock",
+   "animal": false,
+   "depth": 11
+  },
+  {
+   "raw": "walnut",
+   "label": "walnut",
+   "animal": false,
+   "depth": 12
+  },
+  {
+   "raw": "warthog",
+   "label": "warthog",
+   "animal": true,
+   "depth": 14
+  },
+  {
+   "raw": "washer",
+   "label": "washer",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "washing machine",
+   "label": "washing machine",
+   "animal": false,
+   "depth": 11
+  },
+  {
+   "raw": "wasp",
+   "label": "wasp",
+   "animal": true,
+   "depth": 11
+  },
+  {
+   "raw": "waste container",
+   "label": "waste container",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "watch",
+   "label": "watch",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "water bird",
+   "label": "water bird",
+   "animal": true,
+   "depth": 11
+  },
+  {
+   "raw": "water cooler",
+   "label": "water cooler",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "water feature",
+   "label": "water feature",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "water heater",
+   "label": "water heater",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "water level",
+   "label": "water level",
+   "animal": false,
+   "depth": 11
+  },
+  {
+   "raw": "water lily",
+   "label": "water lily",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "water purifier",
+   "label": "water purifier",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "water ski",
+   "label": "water ski",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "watercolor",
+   "label": "watercolor",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "watercolor painting",
+   "label": "watercolor painting",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "watering can",
+   "label": "watering can",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "watermelon",
+   "label": "watermelon",
+   "animal": false,
+   "depth": 11
+  },
+  {
+   "raw": "waterproof jacket",
+   "label": "waterproof jacket",
+   "animal": false,
+   "depth": 11
+  },
+  {
+   "raw": "vane",
+   "label": "vane",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "web",
+   "label": "web",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "webcam",
+   "label": "webcam",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "wedding ring",
+   "label": "wedding ring",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "wedding bouquet",
+   "label": "wedding bouquet",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "wedding cake",
+   "label": "wedding cake",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "wedding invitation",
+   "label": "wedding invitation",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "wedge",
+   "label": "wedge",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "weed",
+   "label": "weed",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "weight",
+   "label": "weight",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "weight scale",
+   "label": "weight scale",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "well",
+   "label": "well",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "western food",
+   "label": "western food",
+   "animal": false,
+   "depth": 5
+  },
+  {
+   "raw": "wet bar",
+   "label": "wet bar",
+   "animal": false,
+   "depth": 11
+  },
+  {
+   "raw": "wet suit",
+   "label": "wet suit",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "wetsuit",
+   "label": "wetsuit",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "whale shark",
+   "label": "whale shark",
+   "animal": true,
+   "depth": 14
+  },
+  {
+   "raw": "wheat",
+   "label": "wheat",
+   "animal": false,
+   "depth": 12
+  },
+  {
+   "raw": "wheel",
+   "label": "wheel",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "wheelchair",
+   "label": "wheelchair",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "whipped cream",
+   "label": "whipped cream",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "whisk",
+   "label": "whisk",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "whiskey",
+   "label": "whiskey",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "whistle",
+   "label": "whistle",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "white wine",
+   "label": "white wine",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "whiteboard",
+   "label": "whiteboard",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "wicket",
+   "label": "wicket",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "wig",
+   "label": "wig",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "Wii",
+   "label": "game console",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "Wii controller",
+   "label": "wii controller",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "wildflower",
+   "label": "wildflower",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "willow",
+   "label": "willow",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "wind chime",
+   "label": "wind chime",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "window",
+   "label": "window",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "window box",
+   "label": "window box",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "window display",
+   "label": "window display",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "window screen",
+   "label": "window screen",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "window seat",
+   "label": "window seat",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "window sill",
+   "label": "window sill",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "wiper",
+   "label": "wiper",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "windshield",
+   "label": "windshield",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "wine bottle",
+   "label": "wine bottle",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "wine cooler",
+   "label": "wine cooler",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "wine cabinet",
+   "label": "wine cabinet",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "wine glass",
+   "label": "wine glass",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "wing",
+   "label": "wing",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "winter melon",
+   "label": "winter melon",
+   "animal": false,
+   "depth": 12
+  },
+  {
+   "raw": "wire",
+   "label": "wire",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "wisteria",
+   "label": "wisteria",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "witch hat",
+   "label": "witch hat",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "wok",
+   "label": "wok",
+   "animal": false,
+   "depth": 11
+  },
+  {
+   "raw": "wood duck",
+   "label": "wood duck",
+   "animal": true,
+   "depth": 14
+  },
+  {
+   "raw": "wood-burning stove",
+   "label": "wood-burning stove",
+   "animal": false,
+   "depth": 12
+  },
+  {
+   "raw": "wooden spoon",
+   "label": "wooden spoon",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "woodpecker",
+   "label": "woodpecker",
+   "animal": true,
+   "depth": 11
+  },
+  {
+   "raw": "woodworking plane",
+   "label": "woodworking plane",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "wool",
+   "label": "wool",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "workbench",
+   "label": "workbench",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "worm",
+   "label": "worm",
+   "animal": true,
+   "depth": 8
+  },
+  {
+   "raw": "wrap",
+   "label": "wrap",
+   "animal": false,
+   "depth": 10
+  },
+  {
+   "raw": "wrap dress",
+   "label": "wrap dress",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "wristband",
+   "label": "wristband",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "writing brush",
+   "label": "writing brush",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "writing desk",
+   "label": "writing desk",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "yak",
+   "label": "yak",
+   "animal": true,
+   "depth": 17
+  },
+  {
+   "raw": "yoga mat",
+   "label": "yoga mat",
+   "animal": false,
+   "depth": 8
+  },
+  {
+   "raw": "yoghurt",
+   "label": "yoghurt",
+   "animal": false,
+   "depth": 5
+  },
+  {
+   "raw": "yoke",
+   "label": "yoke",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "yolk",
+   "label": "yolk",
+   "animal": false,
+   "depth": 7
+  },
+  {
+   "raw": "zebra",
+   "label": "zebra",
+   "animal": true,
+   "depth": 14
+  },
+  {
+   "raw": "zip",
+   "label": "zip",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "zipper",
+   "label": "zipper",
+   "animal": false,
+   "depth": 9
+  },
+  {
+   "raw": "zongzi",
+   "label": "rice dumpling",
+   "animal": false,
+   "depth": 9
+  }
+ ],
+ "coco_depth": {
+  "apple": 7,
+  "backpack": 8,
+  "bag": 7,
+  "ball": 8,
+  "banana": 9,
+  "bed": 9,
+  "bench": 9,
+  "bicycle": 8,
+  "bird": 9,
+  "book": 9,
+  "bottle": 8,
+  "bowl": 8,
+  "broccoli": 10,
+  "cake": 6,
+  "car": 10,
+  "carrot": 8,
+  "cat": 13,
+  "chair": 9,
+  "clock": 10,
+  "computer mouse": 8,
+  "couch": 9,
+  "cow": 17,
+  "cup": 7,
+  "dog": 8,
+  "doughnut": 8,
+  "fork": 9,
+  "fridge": 12,
+  "frisbee": 6,
+  "glass": 7,
+  "hair dryer": 8,
+  "horse": 14,
+  "hot dog": 9,
+  "keyboard": 7,
+  "knife": 11,
+  "laptop": 12,
+  "microwave": 11,
+  "orange": 8,
+  "oven": 11,
+  "phone": 8,
+  "pizza": 7,
+  "plant": 7,
+  "racket": 8,
+  "remote control": 7,
+  "sandwich": 8,
+  "scissors": 10,
+  "sheep": 15,
+  "sink": 7,
+  "skateboard": 7,
+  "spoon": 7,
+  "suitcase": 9,
+  "table": 8,
+  "teddy bear": 6,
+  "tie": 9,
+  "toaster": 11,
+  "toilet": 8,
+  "toothbrush": 7,
+  "tv": 9,
+  "umbrella": 9,
+  "vase": 9
+ }
+}

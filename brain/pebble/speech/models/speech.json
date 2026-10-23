@@ -1,0 +1,31 @@
+{
+  "vad": "silero_vad.onnx",
+  "asr": {
+    "encoder": "asr/encoder.int8.onnx",
+    "decoder": "asr/decoder.int8.onnx",
+    "joiner": "asr/joiner.int8.onnx",
+    "tokens": "asr/tokens.txt",
+    "model_type": "",
+    "chunk_s": 0.48
+  },
+  "kws": {
+    "encoder": "kws/encoder.int8.onnx",
+    "decoder": "kws/decoder.onnx",
+    "joiner": "kws/joiner.int8.onnx",
+    "tokens": "kws/tokens.txt",
+    "bpe": "kws/bpe.model"
+  },
+  "speaker": "nemo_en_titanet_small.onnx",
+  "speaker_dims": 192,
+  "samples": [
+    "samples/librispeech_0.wav",
+    "samples/librispeech_1.wav"
+  ],
+  "licences": {
+    "vad": "MIT (Silero VAD, Silero Team; snakers4/silero-vad)",
+    "asr": "CC-BY-4.0 (NVIDIA NeMo stt_en_fastconformer_hybrid_large_streaming_multi, 480 ms, int8 export by k2-fsa sherpa-onnx)",
+    "kws": "Apache-2.0 (k2-fsa icefall keyword spotter, zipformer 3.3M trained on GigaSpeech)",
+    "speaker": "Apache-2.0 (NVIDIA NeMo TitaNet-S, covered by the NeMo toolkit's licence; export by k2-fsa sherpa-onnx)",
+    "samples": "CC-BY-4.0 (LibriSpeech, Vassil Panayotov et al., from LibriVox public-domain recordings)"
+  }
+}

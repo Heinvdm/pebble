@@ -1,0 +1,31 @@
+{
+  "self_format": 3,
+  "name": "Pebble",
+  "created_at": null,
+  "software": null,
+  "files": {
+    "core.json": {"format": 1, "kind": "locked"},
+    "personality.json": {"format": 1, "kind": "personality"},
+    "values.json": {"format": 1, "kind": "values"},
+    "goals.json": {"format": 1, "kind": "goals"},
+    "people.json": {"format": 1, "kind": "people"},
+    "changes.json": {"format": 1, "kind": "changes"},
+    "memory.json": {"format": 1, "kind": "memory"},
+    "diary.jsonl": {"format": 1, "kind": "diary"},
+    "jokes.json": {"format": 1, "kind": "jokes"},
+    "fears.json": {"format": 1, "kind": "fears"},
+    "preferences.json": {"format": 1, "kind": "preferences"},
+    "calendar.json": {"format": 1, "kind": "calendar"},
+    "places.json": {"format": 1, "kind": "places"},
+    "things.json": {"format": 1, "kind": "things"},
+    "alive.json": {"format": 1, "kind": "alive"},
+    "setup.json": {"format": 1, "kind": "setup"},
+    "state.json": {"format": 1, "kind": "state"},
+    "gallery.json": {"format": 1, "kind": "gallery"},
+    "ideas.json": {"format": 1, "kind": "ideas"},
+    "house.json": {"format": 1, "kind": "house"},
+    "sounds.json": {"format": 1, "kind": "sounds"},
+    "birth.json": {"format": 1, "kind": "birth"},
+    "dials.json": {"format": 1, "kind": "dials"}
+  }
+}

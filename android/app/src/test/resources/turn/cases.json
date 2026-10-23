@@ -1,0 +1,24 @@
+[
+ {
+  "name": "whole",
+  "samples": 57040,
+  "file": "whole.bin",
+  "probability": 0.9768373966217041,
+  "shape": [
+   1,
+   80,
+   800
+  ]
+ },
+ {
+  "name": "mid_word",
+  "samples": 39200,
+  "file": "mid_word.bin",
+  "probability": 0.041052937507629395,
+  "shape": [
+   1,
+   80,
+   800
+  ]
+ }
+]

@@ -1,0 +1,23 @@
+{
+  "name": "gemma4-e4b",
+  "role": "conscious",
+  "endpoint": "http://127.0.0.1:8080",
+  "model": "gemma-4-e4b-it",
+  "model_file": "gemma-4-E4B_q4_0-it.gguf",
+  "context_tokens": 8192,
+  "summary_tokens": 300,
+  "max_reply_tokens": 200,
+  "temperature": 0.7,
+  "timeout_s": 180,
+  "chars_per_token": 3.0,
+  "system_role": true,
+  "tools": true,
+  "extra_body": {"chat_template_kwargs": {"enable_thinking": false}, "reasoning_budget_tokens": 48},
+  "reply_shares_turn": false,
+  "steady_tools": true,
+  "people_in_message": true,
+  "read_ahead": true,
+  "reader_examples": 0,
+  "fold_picks": false,
+  "notes": "llama-server -m gemma-4-E4B_q4_0-it.gguf -c 8192 --swa-full --cache-ram 768 --reasoning off --jinja --port 8080. --jinja is needed for tool calls; thinking is switched off on both sides, but Gemma 4 E4B still opens a hidden thought on turn prompts, so reasoning_budget_tokens (read by llama-server per request) cuts it at 48 tokens and leaves the rest of the turn for tools. Replies keep their own prompt (reply_shares_turn false): sharing the turn's guide and tools made replies think, speak their thoughts or speak tool calls. The compaction point and how much history is kept are worked out from the prompt budget table (mind/budget.py) for the window the server really has, read from /props (6,144, 8,192 or 16,384 tokens); set compact_at_tokens and keep_tokens_after_compaction here only to override it. If the chat template rejects a system message, set system_role to false and the system text is folded into the first user turn."
+}

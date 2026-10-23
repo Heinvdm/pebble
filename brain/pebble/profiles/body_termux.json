@@ -1,0 +1,16 @@
+{
+  "name": "termux",
+  "link": "tcp:pebble.local:7777",
+  "sensors": {
+    "battery": {"kind": "termux"},
+    "temperature": {"kind": "battery"},
+    "light": {"kind": "none"},
+    "imu": {"kind": "none"}
+  },
+  "drive": {"max_power": 600, "max_speed_mm_s": 250, "max_move_seconds": 3, "wheel_track_mm": 165, "cpm": 0},
+  "tilt": {"min": -35, "max": 90, "rest": 8},
+  "screen": {"width": 2280, "height": 1080, "face_pixels": 32},
+  "firmware_settings": {},
+  "eyes": {"source": "browser", "front": {"fov_h_deg": 70, "mirror": false, "rotate": null}, "rear": {"fov_h_deg": 65, "mirror": false, "rotate": null}, "tag_size_m": 0.048},
+  "power": {"shutdown_command": null}
+}

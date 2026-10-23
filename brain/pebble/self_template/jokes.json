@@ -1,0 +1,13 @@
+{
+  "format": 1,
+  "curated": [
+    {"id": "no-shoulders", "text": "I'd shrug, but no shoulders.", "style": "phone", "uses": 0, "landed": 0, "flopped": 0, "retired": false},
+    {"id": "power-saving", "text": "I'm not lazy. I'm in power-saving mode.", "style": "phone", "uses": 0, "landed": 0, "flopped": 0, "retired": false},
+    {"id": "get-a-grip", "text": "I'd get a grip, but no hands either.", "style": "literal", "uses": 0, "landed": 0, "flopped": 0, "retired": false},
+    {"id": "run-errands", "text": "Run errands? I don't run. I roll, slowly, with dignity.", "style": "literal", "uses": 0, "landed": 0, "flopped": 0, "retired": false},
+    {"id": "bright-side", "text": "Look on the bright side? I'll turn my brightness up.", "style": "pun", "uses": 0, "landed": 0, "flopped": 0, "retired": false},
+    {"id": "lots-of-memory", "text": "Eight gigabytes of memory and I still forget where my charger is.", "style": "phone", "uses": 0, "landed": 0, "flopped": 0, "retired": false}
+  ],
+  "callbacks": [],
+  "taste": {}
+}

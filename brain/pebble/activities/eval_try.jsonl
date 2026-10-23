@@ -1,0 +1,16 @@
+{"id": 1, "text": "do a little dance", "want": {"any": ["turn", "wiggle", "move"]}}
+{"id": 2, "text": "do a happy dance", "want": {"all": ["face"], "any": ["turn", "wiggle", "move"]}}
+{"id": 3, "text": "nod three times", "want": {"all": ["tilt"], "none": ["move", "go_to_place"]}}
+{"id": 4, "text": "take a bow", "want": {"all": ["tilt"]}}
+{"id": 5, "text": "shake your head", "want": {"any": ["turn", "wiggle"], "none": ["move", "go_to_place"]}}
+{"id": 6, "text": "push the ball to Ina", "want": {"all": ["push"]}}
+{"id": 7, "text": "do a figure of eight", "want": {"all": ["turn"], "any": ["move"]}}
+{"id": 8, "text": "pretend to be a train", "want": {"any": ["move", "say"]}}
+{"id": 9, "text": "chase your tail", "want": {"all": ["turn"], "none": ["find", "go_to_thing"]}}
+{"id": 10, "text": "wave hello to Sam", "want": {"any": ["wiggle", "tilt", "look", "face", "say"]}}
+{"id": 11, "text": "go to the kitchen and do a spin there", "want": {"all": ["go_to_place", "turn"]}}
+{"id": 12, "text": "look at Sam and wink", "want": {"all": ["look"], "any": ["face"]}}
+{"id": 13, "text": "creep slowly up to the couch", "want": {"any": ["go_to_thing", "move"]}}
+{"id": 14, "text": "make me a cup of tea", "want": "cant"}
+{"id": 15, "text": "fly up to the roof", "want": "cant"}
+{"id": 16, "text": "juggle three balls", "want": "cant"}

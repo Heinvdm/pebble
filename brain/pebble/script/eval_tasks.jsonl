@@ -1,0 +1,40 @@
+{"id": "cat_lounge", "words": "Count how many times the cat comes through the lounge today and tell me tonight.", "for": "alex"}
+{"id": "keep_score", "words": "Keep score while we play cards. I'll tell you who wins each round, like point to Sam.", "for": "alex"}
+{"id": "simon", "words": "Let's play Simon says!", "for": "mo"}
+{"id": "animal_quiz", "words": "Give me a quiz about animals, five questions.", "for": "sam"}
+{"id": "red_light", "words": "Play red light green light with a twist.", "for": "mo"}
+{"id": "treasure", "words": "Let's do a treasure hunt: I'll hide your ball and you find it.", "for": "alex"}
+{"id": "morning_coat", "words": "Every morning, say hello to whoever's up first, and if it's been raining tell them to take a coat.", "for": "alex"}
+{"id": "doorbell_count", "words": "Count how many times the doorbell rings today and tell me at six.", "for": "ina"}
+{"id": "kettle_count", "words": "Keep track of how many times the kettle goes on today and tell me at bedtime.", "for": "ina"}
+{"id": "story", "words": "Tell me a bedtime story with your faces.", "for": "mo"}
+{"id": "check_in", "words": "At seven tonight, ask me how my day was and just listen.", "for": "sam"}
+{"id": "sam_home", "words": "Every time Sam comes home today, count it and tell me at nine.", "for": "ina"}
+{"id": "stretch", "words": "Every hour until five, remind me to stand up and stretch.", "for": "alex"}
+{"id": "water_glasses", "words": "Count how many glasses of water I drink today. I'll say glass each time. Tell me the total at eight.", "for": "alex"}
+{"id": "dog_count", "words": "Count how many times you hear the dog crying this afternoon and tell me at five.", "for": "ina"}
+{"id": "guess_number", "words": "Let's play a guessing game: pick a number from 1 to 10 and I'll guess, and you tell me higher or lower.", "for": "sam"}
+{"id": "spelling", "words": "Test my spelling with five words.", "for": "mo"}
+{"id": "times_table", "words": "Quiz me on my seven times table.", "for": "mo"}
+{"id": "visitors", "words": "Count how many people come home today and tell me at ten tonight.", "for": "ina"}
+{"id": "plants_twice", "words": "For the next two weeks, remind me to water the plants on Monday and Thursday mornings.", "for": "ina"}
+{"id": "tidy_challenge", "words": "Make a game: give me a tidy-up challenge every five minutes for half an hour.", "for": "mo"}
+{"id": "joke_arrive", "words": "Tell me a joke every time I come home today.", "for": "sam"}
+{"id": "count_twenty", "words": "Count to twenty out loud for hide and seek, then say coming.", "for": "mo"}
+{"id": "rps", "words": "Play rock paper scissors with me, best of five.", "for": "sam"}
+{"id": "kitchen_check", "words": "Go and check the kitchen every hour until ten tonight.", "for": "alex"}
+{"id": "dance_party", "words": "Do a dance party: spin and wiggle for a bit, then say ta-da.", "for": "alex"}
+{"id": "mo_home", "words": "When Mo gets home today, say welcome home and ask how school was.", "for": "ina"}
+{"id": "knock_count", "words": "Count the knocks at the door while I nap, and tell me when I say I'm awake.", "for": "alex"}
+{"id": "chore_list", "words": "Keep a list of the chores I tell you today, and read them back when I say read my list.", "for": "alex"}
+{"id": "goodnight", "words": "At half past eight tonight, say goodnight to everyone who's here.", "for": "ina"}
+{"id": "own_visits", "words": "count how many times each person comes home, and note it in my journal each night", "own": true}
+{"id": "own_plants", "words": "remind whoever is home to water the plants on Sunday mornings", "own": true}
+{"id": "own_cat", "words": "notice when the cat comes by and note the times in my journal", "own": true}
+{"id": "own_dance", "words": "a little dance of my own when I feel happy", "own": true}
+{"id": "own_patrol", "words": "have a look round the house at nine each evening and note how it went", "own": true}
+{"id": "own_bored", "words": "when I feel bored, make a curious face and look around", "own": true}
+{"id": "own_doorbell", "words": "keep a tally of the doorbell each day and note it at night", "own": true}
+{"id": "own_lonely", "words": "when I feel lonely and someone is here, say hello to them", "own": true}
+{"id": "own_morning", "words": "say good morning to the first person who comes home each morning", "own": true}
+{"id": "own_rain", "words": "when I hear rain, note it in my journal with the time", "own": true}

@@ -1,0 +1,775 @@
+{
+ "format": 1,
+ "limits": {
+  "steps": 100000,
+  "ms": 50.0,
+  "text": 2000,
+  "items": 500,
+  "depth": 4,
+  "size": 262144,
+  "recursion": 20,
+  "keep": 65536
+ },
+ "vectors": [
+  {
+   "name": "the cat counter",
+   "source": "ABOUT = \"Counts the cat.\"\nUSES = [\"look\", \"say\"]\nFOR = \"alex\"\nUNTIL = \"21:00\"\nWANTS = {\"seen\": [\"cat\"], \"at\": [\"21:00\"]}\n\n\ndef on_start():\n    keep(\"count\", 0)\n\n\ndef on_seen(thing, place):\n    if place == \"lounge\":\n        keep(\"count\", kept(\"count\") + 1)\n\n\ndef on_at(time):\n    n = kept(\"count\")\n    say_to(\"alex\", f\"The cat came {n} times.\")\n    finish()\n",
+   "program": {
+    "format": 1,
+    "header": {
+     "ABOUT": "Counts the cat.",
+     "USES": [
+      "look",
+      "say"
+     ],
+     "FOR": "alex",
+     "UNTIL": "21:00",
+     "WANTS": {
+      "seen": [
+       "cat"
+      ],
+      "at": [
+       "21:00"
+      ]
+     }
+    },
+    "globals": [],
+    "funcs": {
+     "on_start": {
+      "l": 8,
+      "args": [],
+      "defaults": [],
+      "body": [
+       {
+        "t": "expr",
+        "l": 9,
+        "v": {
+         "t": "call",
+         "l": 9,
+         "f": "keep",
+         "args": [
+          {
+           "t": "const",
+           "v": "count"
+          },
+          {
+           "t": "const",
+           "v": 0
+          }
+         ],
+         "kw": {}
+        }
+       }
+      ]
+     },
+     "on_seen": {
+      "l": 12,
+      "args": [
+       "thing",
+       "place"
+      ],
+      "defaults": [],
+      "body": [
+       {
+        "t": "if",
+        "l": 13,
+        "c": {
+         "t": "cmp",
+         "a": {
+          "t": "name",
+          "n": "place"
+         },
+         "ops": [
+          "=="
+         ],
+         "bs": [
+          {
+           "t": "const",
+           "v": "lounge"
+          }
+         ]
+        },
+        "then": [
+         {
+          "t": "expr",
+          "l": 14,
+          "v": {
+           "t": "call",
+           "l": 14,
+           "f": "keep",
+           "args": [
+            {
+             "t": "const",
+             "v": "count"
+            },
+            {
+             "t": "bin",
+             "op": "+",
+             "a": {
+              "t": "call",
+              "l": 14,
+              "f": "kept",
+              "args": [
+               {
+                "t": "const",
+                "v": "count"
+               }
+              ],
+              "kw": {}
+             },
+             "b": {
+              "t": "const",
+              "v": 1
+             }
+            }
+           ],
+           "kw": {}
+          }
+         }
+        ],
+        "else": []
+       }
+      ]
+     },
+     "on_at": {
+      "l": 17,
+      "args": [
+       "time"
+      ],
+      "defaults": [],
+      "body": [
+       {
+        "t": "assign",
+        "l": 18,
+        "to": {
+         "t": "name",
+         "n": "n"
+        },
+        "v": {
+         "t": "call",
+         "l": 18,
+         "f": "kept",
+         "args": [
+          {
+           "t": "const",
+           "v": "count"
+          }
+         ],
+         "kw": {}
+        }
+       },
+       {
+        "t": "expr",
+        "l": 19,
+        "v": {
+         "t": "call",
+         "l": 19,
+         "f": "say_to",
+         "args": [
+          {
+           "t": "const",
+           "v": "alex"
+          },
+          {
+           "t": "fstr",
+           "parts": [
+            "The cat came ",
+            {
+             "n": "n"
+            },
+            " times."
+           ]
+          }
+         ],
+         "kw": {}
+        }
+       },
+       {
+        "t": "expr",
+        "l": 20,
+        "v": {
+         "t": "call",
+         "l": 20,
+         "f": "finish",
+         "args": [],
+         "kw": {}
+        }
+       }
+      ]
+     }
+    },
+    "called": [
+     "finish",
+     "keep",
+     "kept",
+     "say_to"
+    ]
+   },
+   "limits": {},
+   "runs": [
+    {
+     "handler": "on_start",
+     "args": [],
+     "replies": [
+      null
+     ],
+     "calls": [
+      {
+       "call": "keep",
+       "args": {
+        "key": "count",
+        "value": 0
+       }
+      }
+     ],
+     "outcome": {
+      "done": true
+     }
+    },
+    {
+     "handler": "on_seen",
+     "args": [
+      "cat",
+      "lounge"
+     ],
+     "replies": [
+      0,
+      null
+     ],
+     "calls": [
+      {
+       "call": "kept",
+       "args": {
+        "key": "count",
+        "default": null
+       }
+      },
+      {
+       "call": "keep",
+       "args": {
+        "key": "count",
+        "value": 1
+       }
+      }
+     ],
+     "outcome": {
+      "done": true
+     }
+    },
+    {
+     "handler": "on_seen",
+     "args": [
+      "cat",
+      "kitchen"
+     ],
+     "replies": [],
+     "calls": [],
+     "outcome": {
+      "done": true
+     }
+    },
+    {
+     "handler": "on_at",
+     "args": [
+      "21:00"
+     ],
+     "replies": [
+      5,
+      null
+     ],
+     "calls": [
+      {
+       "call": "kept",
+       "args": {
+        "key": "count",
+        "default": null
+       }
+      },
+      {
+       "call": "say_to",
+       "args": {
+        "who": "alex",
+        "text": "The cat came 5 times."
+       }
+      }
+     ],
+     "outcome": {
+      "finish": true
+     }
+    }
+   ]
+  },
+  {
+   "name": "a handler gets only the arguments it asks for",
+   "source": "ABOUT = \"x\"\nUSES = [\"say\"]\nUNTIL = \"ongoing\"\nWANTS = {\"seen\": [\"cat\"]}\n\n\ndef on_seen(thing):\n    say(thing)\n",
+   "program": {
+    "format": 1,
+    "header": {
+     "ABOUT": "x",
+     "USES": [
+      "say"
+     ],
+     "UNTIL": "ongoing",
+     "WANTS": {
+      "seen": [
+       "cat"
+      ]
+     }
+    },
+    "globals": [],
+    "funcs": {
+     "on_seen": {
+      "l": 7,
+      "args": [
+       "thing"
+      ],
+      "defaults": [],
+      "body": [
+       {
+        "t": "expr",
+        "l": 8,
+        "v": {
+         "t": "call",
+         "l": 8,
+         "f": "say",
+         "args": [
+          {
+           "t": "name",
+           "n": "thing"
+          }
+         ],
+         "kw": {}
+        }
+       }
+      ]
+     }
+    },
+    "called": [
+     "say"
+    ]
+   },
+   "limits": {},
+   "runs": [
+    {
+     "handler": "on_seen",
+     "args": [
+      "cat",
+      "lounge"
+     ],
+     "replies": [
+      null
+     ],
+     "calls": [
+      {
+       "call": "say",
+       "args": {
+        "text": "cat"
+       }
+      }
+     ],
+     "outcome": {
+      "done": true
+     }
+    }
+   ]
+  },
+  {
+   "name": "missing arguments are None",
+   "source": "ABOUT = \"x\"\nUSES = [\"say\"]\nUNTIL = \"ongoing\"\nWANTS = {\"heard\": [\"me\"]}\nFOR = \"alex\"\n\n\ndef on_heard(who, words):\n    say(str(words))\n",
+   "program": {
+    "format": 1,
+    "header": {
+     "ABOUT": "x",
+     "USES": [
+      "say"
+     ],
+     "FOR": "alex",
+     "UNTIL": "ongoing",
+     "WANTS": {
+      "heard": [
+       "me"
+      ]
+     }
+    },
+    "globals": [],
+    "funcs": {
+     "on_heard": {
+      "l": 8,
+      "args": [
+       "who",
+       "words"
+      ],
+      "defaults": [],
+      "body": [
+       {
+        "t": "expr",
+        "l": 9,
+        "v": {
+         "t": "call",
+         "l": 9,
+         "f": "say",
+         "args": [
+          {
+           "t": "call",
+           "l": 9,
+           "f": "str",
+           "args": [
+            {
+             "t": "name",
+             "n": "words"
+            }
+           ],
+           "kw": {}
+          }
+         ],
+         "kw": {}
+        }
+       }
+      ]
+     }
+    },
+    "called": [
+     "say"
+    ]
+   },
+   "limits": {},
+   "runs": [
+    {
+     "handler": "on_heard",
+     "args": [
+      "Alex"
+     ],
+     "replies": [
+      null
+     ],
+     "calls": [
+      {
+       "call": "say",
+       "args": {
+        "text": "None"
+       }
+      }
+     ],
+     "outcome": {
+      "done": true
+     }
+    }
+   ]
+  },
+  {
+   "name": "a handler that isn't there does nothing",
+   "source": "ABOUT = \"x\"\nUSES = [\"say\"]\nUNTIL = \"ongoing\"\n\n\ndef on_start():\n    say(\"hi\")\n",
+   "program": {
+    "format": 1,
+    "header": {
+     "ABOUT": "x",
+     "USES": [
+      "say"
+     ],
+     "UNTIL": "ongoing"
+    },
+    "globals": [],
+    "funcs": {
+     "on_start": {
+      "l": 6,
+      "args": [],
+      "defaults": [],
+      "body": [
+       {
+        "t": "expr",
+        "l": 7,
+        "v": {
+         "t": "call",
+         "l": 7,
+         "f": "say",
+         "args": [
+          {
+           "t": "const",
+           "v": "hi"
+          }
+         ],
+         "kw": {}
+        }
+       }
+      ]
+     }
+    },
+    "called": [
+     "say"
+    ]
+   },
+   "limits": {},
+   "runs": [
+    {
+     "handler": "on_seen",
+     "args": [
+      "cat"
+     ],
+     "replies": [],
+     "calls": [],
+     "outcome": {
+      "done": true
+     }
+    }
+   ]
+  },
+  {
+   "name": "top-level lists last between events",
+   "source": "ABOUT = \"x\"\nUSES = [\"say\"]\nUNTIL = \"ongoing\"\nWANTS = {\"sound\": [\"doorbell\"]}\nSEEN = []\n\n\ndef on_sound(thing):\n    SEEN.append(thing)\n    say(str(len(SEEN)))\n",
+   "program": {
+    "format": 1,
+    "header": {
+     "ABOUT": "x",
+     "USES": [
+      "say"
+     ],
+     "UNTIL": "ongoing",
+     "WANTS": {
+      "sound": [
+       "doorbell"
+      ]
+     }
+    },
+    "globals": [
+     {
+      "t": "assign",
+      "l": 5,
+      "to": {
+       "t": "name",
+       "n": "SEEN"
+      },
+      "v": {
+       "t": "list",
+       "items": []
+      }
+     }
+    ],
+    "funcs": {
+     "on_sound": {
+      "l": 8,
+      "args": [
+       "thing"
+      ],
+      "defaults": [],
+      "body": [
+       {
+        "t": "expr",
+        "l": 9,
+        "v": {
+         "t": "method",
+         "l": 9,
+         "o": {
+          "t": "name",
+          "n": "SEEN"
+         },
+         "m": "append",
+         "args": [
+          {
+           "t": "name",
+           "n": "thing"
+          }
+         ]
+        }
+       },
+       {
+        "t": "expr",
+        "l": 10,
+        "v": {
+         "t": "call",
+         "l": 10,
+         "f": "say",
+         "args": [
+          {
+           "t": "call",
+           "l": 10,
+           "f": "str",
+           "args": [
+            {
+             "t": "call",
+             "l": 10,
+             "f": "len",
+             "args": [
+              {
+               "t": "name",
+               "n": "SEEN"
+              }
+             ],
+             "kw": {}
+            }
+           ],
+           "kw": {}
+          }
+         ],
+         "kw": {}
+        }
+       }
+      ]
+     }
+    },
+    "called": [
+     "say"
+    ]
+   },
+   "limits": {},
+   "runs": [
+    {
+     "handler": "on_sound",
+     "args": [
+      "doorbell"
+     ],
+     "replies": [
+      null
+     ],
+     "calls": [
+      {
+       "call": "say",
+       "args": {
+        "text": "1"
+       }
+      }
+     ],
+     "outcome": {
+      "done": true
+     }
+    },
+    {
+     "handler": "on_sound",
+     "args": [
+      "doorbell"
+     ],
+     "replies": [
+      null
+     ],
+     "calls": [
+      {
+       "call": "say",
+       "args": {
+        "text": "2"
+       }
+      }
+     ],
+     "outcome": {
+      "done": true
+     }
+    }
+   ]
+  },
+  {
+   "name": "a crash ends only that run",
+   "source": "ABOUT = \"x\"\nUSES = [\"say\"]\nUNTIL = \"ongoing\"\nWANTS = {\"sound\": [\"knock\"]}\n\n\ndef on_sound(thing):\n    say(thing)\n    x = 1 / 0\n",
+   "program": {
+    "format": 1,
+    "header": {
+     "ABOUT": "x",
+     "USES": [
+      "say"
+     ],
+     "UNTIL": "ongoing",
+     "WANTS": {
+      "sound": [
+       "knock"
+      ]
+     }
+    },
+    "globals": [],
+    "funcs": {
+     "on_sound": {
+      "l": 7,
+      "args": [
+       "thing"
+      ],
+      "defaults": [],
+      "body": [
+       {
+        "t": "expr",
+        "l": 8,
+        "v": {
+         "t": "call",
+         "l": 8,
+         "f": "say",
+         "args": [
+          {
+           "t": "name",
+           "n": "thing"
+          }
+         ],
+         "kw": {}
+        }
+       },
+       {
+        "t": "assign",
+        "l": 9,
+        "to": {
+         "t": "name",
+         "n": "x"
+        },
+        "v": {
+         "t": "bin",
+         "op": "/",
+         "a": {
+          "t": "const",
+          "v": 1
+         },
+         "b": {
+          "t": "const",
+          "v": 0
+         }
+        }
+       }
+      ]
+     }
+    },
+    "called": [
+     "say"
+    ]
+   },
+   "limits": {},
+   "runs": [
+    {
+     "handler": "on_sound",
+     "args": [
+      "knock"
+     ],
+     "replies": [
+      null
+     ],
+     "calls": [
+      {
+       "call": "say",
+       "args": {
+        "text": "knock"
+       }
+      }
+     ],
+     "outcome": {
+      "crash": "error",
+      "what": "",
+      "line": 9
+     }
+    },
+    {
+     "handler": "on_sound",
+     "args": [
+      "knock"
+     ],
+     "replies": [
+      null
+     ],
+     "calls": [
+      {
+       "call": "say",
+       "args": {
+        "text": "knock"
+       }
+      }
+     ],
+     "outcome": {
+      "crash": "error",
+      "what": "",
+      "line": 9
+     }
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,200 @@
+{
+ "model": "yoloe-26s-seg-pf.pt",
+ "mode": "builtin",
+ "licence": "AGPL-3.0 (YOLOE, THU-MIG/yoloe; Ultralytics)",
+ "source": "https://github.com/ultralytics/assets/releases/download/v8.4.0/yoloe-26s-seg-pf.pt",
+ "source_sha256": "01605da3f2e0e5325df45d5f5eef8e40b5b5c7d085399be3c33ac638258b150a",
+ "ultralytics": "8.4.177",
+ "imgsz": 416,
+ "layout": {
+  "boxes": 4,
+  "classes": 26,
+  "mask": 32,
+  "anchors_last": true,
+  "scores": "probability"
+ },
+ "classes": [
+  {
+   "raw": "fire",
+   "label": "fire",
+   "role": "fire",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "flame",
+   "label": "fire",
+   "role": "fire",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "bonfire",
+   "label": "fire",
+   "role": "fire",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "campfire",
+   "label": "fire",
+   "role": "fire",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "forest fire",
+   "label": "fire",
+   "role": "fire",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "wildfire",
+   "label": "fire",
+   "role": "fire",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "smoke",
+   "label": "smoke",
+   "role": "smoke",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "candle",
+   "label": "candle",
+   "role": "lookalike",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "birthday candle",
+   "label": "candle",
+   "role": "lookalike",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "fireplace",
+   "label": "fireplace",
+   "role": "lookalike",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "fire pit",
+   "label": "fire pit",
+   "role": "lookalike",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "wood-burning stove",
+   "label": "wood-burning stove",
+   "role": "lookalike",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "gas stove",
+   "label": "stove burner",
+   "role": "lookalike",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "stove",
+   "label": "stove",
+   "role": "lookalike",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "steam",
+   "label": "steam",
+   "role": "lookalike",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "fog",
+   "label": "fog",
+   "role": "lookalike",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "sunset",
+   "label": "sunset",
+   "role": "lookalike",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "television",
+   "label": "tv",
+   "role": "lookalike",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "lamp",
+   "label": "lamp",
+   "role": "lookalike",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "table lamp",
+   "label": "lamp",
+   "role": "lookalike",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "oil lamp",
+   "label": "lamp",
+   "role": "lookalike",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "insect",
+   "label": "insect",
+   "role": "life",
+   "animal": true,
+   "depth": 6
+  },
+  {
+   "raw": "spider",
+   "label": "spider",
+   "role": "life",
+   "animal": true,
+   "depth": 6
+  },
+  {
+   "raw": "snail",
+   "label": "snail",
+   "role": "life",
+   "animal": true,
+   "depth": 6
+  },
+  {
+   "raw": "plant",
+   "label": "plant",
+   "role": "life",
+   "animal": false,
+   "depth": 6
+  },
+  {
+   "raw": "flower",
+   "label": "flower",
+   "role": "life",
+   "animal": false,
+   "depth": 6
+  }
+ ]
+}

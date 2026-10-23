@@ -1,0 +1,1288 @@
+{
+ "format": 1,
+ "limits": {
+  "steps": 100000,
+  "ms": 50.0,
+  "text": 2000,
+  "items": 500,
+  "depth": 4,
+  "size": 262144,
+  "recursion": 20,
+  "keep": 65536
+ },
+ "vectors": [
+  {
+   "name": "get with and without a default",
+   "source": "ABOUT = \"a conformance test\"\nUSES = [\"do\", \"say\", \"ask\", \"face\", \"draw\", \"chirp\", \"hum\", \"look\", \"dial\", \"tune\"]\nUNTIL = \"ongoing\"\n\n\ndef on_start():\n    d = {\"a\": 1}\n    say(str(d.get(\"a\")))\n    say(str(d.get(\"b\")))\n    say(str(d.get(\"b\", 0)))\n",
+   "program": {
+    "format": 1,
+    "header": {
+     "ABOUT": "a conformance test",
+     "USES": [
+      "do",
+      "say",
+      "ask",
+      "face",
+      "draw",
+      "chirp",
+      "hum",
+      "look",
+      "dial",
+      "tune"
+     ],
+     "UNTIL": "ongoing"
+    },
+    "globals": [],
+    "funcs": {
+     "on_start": {
+      "l": 6,
+      "args": [],
+      "defaults": [],
+      "body": [
+       {
+        "t": "assign",
+        "l": 7,
+        "to": {
+         "t": "name",
+         "n": "d"
+        },
+        "v": {
+         "t": "dict",
+         "keys": [
+          {
+           "t": "const",
+           "v": "a"
+          }
+         ],
+         "vals": [
+          {
+           "t": "const",
+           "v": 1
+          }
+         ]
+        }
+       },
+       {
+        "t": "expr",
+        "l": 8,
+        "v": {
+         "t": "call",
+         "l": 8,
+         "f": "say",
+         "args": [
+          {
+           "t": "call",
+           "l": 8,
+           "f": "str",
+           "args": [
+            {
+             "t": "method",
+             "l": 8,
+             "o": {
+              "t": "name",
+              "n": "d"
+             },
+             "m": "get",
+             "args": [
+              {
+               "t": "const",
+               "v": "a"
+              }
+             ]
+            }
+           ],
+           "kw": {}
+          }
+         ],
+         "kw": {}
+        }
+       },
+       {
+        "t": "expr",
+        "l": 9,
+        "v": {
+         "t": "call",
+         "l": 9,
+         "f": "say",
+         "args": [
+          {
+           "t": "call",
+           "l": 9,
+           "f": "str",
+           "args": [
+            {
+             "t": "method",
+             "l": 9,
+             "o": {
+              "t": "name",
+              "n": "d"
+             },
+             "m": "get",
+             "args": [
+              {
+               "t": "const",
+               "v": "b"
+              }
+             ]
+            }
+           ],
+           "kw": {}
+          }
+         ],
+         "kw": {}
+        }
+       },
+       {
+        "t": "expr",
+        "l": 10,
+        "v": {
+         "t": "call",
+         "l": 10,
+         "f": "say",
+         "args": [
+          {
+           "t": "call",
+           "l": 10,
+           "f": "str",
+           "args": [
+            {
+             "t": "method",
+             "l": 10,
+             "o": {
+              "t": "name",
+              "n": "d"
+             },
+             "m": "get",
+             "args": [
+              {
+               "t": "const",
+               "v": "b"
+              },
+              {
+               "t": "const",
+               "v": 0
+              }
+             ]
+            }
+           ],
+           "kw": {}
+          }
+         ],
+         "kw": {}
+        }
+       }
+      ]
+     }
+    },
+    "called": [
+     "say"
+    ]
+   },
+   "limits": {},
+   "runs": [
+    {
+     "handler": "on_start",
+     "args": [],
+     "replies": [],
+     "calls": [
+      {
+       "call": "say",
+       "args": {
+        "text": "1"
+       }
+      },
+      {
+       "call": "say",
+       "args": {
+        "text": "None"
+       }
+      },
+      {
+       "call": "say",
+       "args": {
+        "text": "0"
+       }
+      }
+     ],
+     "outcome": {
+      "done": true
+     }
+    }
+   ]
+  },
+  {
+   "name": "keys, values and items keep their order",
+   "source": "ABOUT = \"a conformance test\"\nUSES = [\"do\", \"say\", \"ask\", \"face\", \"draw\", \"chirp\", \"hum\", \"look\", \"dial\", \"tune\"]\nUNTIL = \"ongoing\"\n\n\ndef on_start():\n    d = {\"b\": 2, \"a\": 1}\n    d[\"c\"] = 3\n    say(str(d.keys()))\n    say(str(d.values()))\n    say(str(d.items()))\n",
+   "program": {
+    "format": 1,
+    "header": {
+     "ABOUT": "a conformance test",
+     "USES": [
+      "do",
+      "say",
+      "ask",
+      "face",
+      "draw",
+      "chirp",
+      "hum",
+      "look",
+      "dial",
+      "tune"
+     ],
+     "UNTIL": "ongoing"
+    },
+    "globals": [],
+    "funcs": {
+     "on_start": {
+      "l": 6,
+      "args": [],
+      "defaults": [],
+      "body": [
+       {
+        "t": "assign",
+        "l": 7,
+        "to": {
+         "t": "name",
+         "n": "d"
+        },
+        "v": {
+         "t": "dict",
+         "keys": [
+          {
+           "t": "const",
+           "v": "b"
+          },
+          {
+           "t": "const",
+           "v": "a"
+          }
+         ],
+         "vals": [
+          {
+           "t": "const",
+           "v": 2
+          },
+          {
+           "t": "const",
+           "v": 1
+          }
+         ]
+        }
+       },
+       {
+        "t": "assign",
+        "l": 8,
+        "to": {
+         "t": "index",
+         "o": {
+          "t": "name",
+          "n": "d"
+         },
+         "i": {
+          "t": "const",
+          "v": "c"
+         }
+        },
+        "v": {
+         "t": "const",
+         "v": 3
+        }
+       },
+       {
+        "t": "expr",
+        "l": 9,
+        "v": {
+         "t": "call",
+         "l": 9,
+         "f": "say",
+         "args": [
+          {
+           "t": "call",
+           "l": 9,
+           "f": "str",
+           "args": [
+            {
+             "t": "method",
+             "l": 9,
+             "o": {
+              "t": "name",
+              "n": "d"
+             },
+             "m": "keys",
+             "args": []
+            }
+           ],
+           "kw": {}
+          }
+         ],
+         "kw": {}
+        }
+       },
+       {
+        "t": "expr",
+        "l": 10,
+        "v": {
+         "t": "call",
+         "l": 10,
+         "f": "say",
+         "args": [
+          {
+           "t": "call",
+           "l": 10,
+           "f": "str",
+           "args": [
+            {
+             "t": "method",
+             "l": 10,
+             "o": {
+              "t": "name",
+              "n": "d"
+             },
+             "m": "values",
+             "args": []
+            }
+           ],
+           "kw": {}
+          }
+         ],
+         "kw": {}
+        }
+       },
+       {
+        "t": "expr",
+        "l": 11,
+        "v": {
+         "t": "call",
+         "l": 11,
+         "f": "say",
+         "args": [
+          {
+           "t": "call",
+           "l": 11,
+           "f": "str",
+           "args": [
+            {
+             "t": "method",
+             "l": 11,
+             "o": {
+              "t": "name",
+              "n": "d"
+             },
+             "m": "items",
+             "args": []
+            }
+           ],
+           "kw": {}
+          }
+         ],
+         "kw": {}
+        }
+       }
+      ]
+     }
+    },
+    "called": [
+     "say"
+    ]
+   },
+   "limits": {},
+   "runs": [
+    {
+     "handler": "on_start",
+     "args": [],
+     "replies": [],
+     "calls": [
+      {
+       "call": "say",
+       "args": {
+        "text": "['b', 'a', 'c']"
+       }
+      },
+      {
+       "call": "say",
+       "args": {
+        "text": "[2, 1, 3]"
+       }
+      },
+      {
+       "call": "say",
+       "args": {
+        "text": "[('b', 2), ('a', 1), ('c', 3)]"
+       }
+      }
+     ],
+     "outcome": {
+      "done": true
+     }
+    }
+   ]
+  },
+  {
+   "name": "counting with a dict",
+   "source": "ABOUT = \"a conformance test\"\nUSES = [\"do\", \"say\", \"ask\", \"face\", \"draw\", \"chirp\", \"hum\", \"look\", \"dial\", \"tune\"]\nUNTIL = \"ongoing\"\n\n\ndef on_start():\n    counts = {}\n    for w in [\"cat\", \"dog\", \"cat\"]:\n        counts[w] = counts.get(w, 0) + 1\n    say(str(counts))\n",
+   "program": {
+    "format": 1,
+    "header": {
+     "ABOUT": "a conformance test",
+     "USES": [
+      "do",
+      "say",
+      "ask",
+      "face",
+      "draw",
+      "chirp",
+      "hum",
+      "look",
+      "dial",
+      "tune"
+     ],
+     "UNTIL": "ongoing"
+    },
+    "globals": [],
+    "funcs": {
+     "on_start": {
+      "l": 6,
+      "args": [],
+      "defaults": [],
+      "body": [
+       {
+        "t": "assign",
+        "l": 7,
+        "to": {
+         "t": "name",
+         "n": "counts"
+        },
+        "v": {
+         "t": "dict",
+         "keys": [],
+         "vals": []
+        }
+       },
+       {
+        "t": "for",
+        "l": 8,
+        "to": {
+         "t": "name",
+         "n": "w"
+        },
+        "in": {
+         "t": "list",
+         "items": [
+          {
+           "t": "const",
+           "v": "cat"
+          },
+          {
+           "t": "const",
+           "v": "dog"
+          },
+          {
+           "t": "const",
+           "v": "cat"
+          }
+         ]
+        },
+        "body": [
+         {
+          "t": "assign",
+          "l": 9,
+          "to": {
+           "t": "index",
+           "o": {
+            "t": "name",
+            "n": "counts"
+           },
+           "i": {
+            "t": "name",
+            "n": "w"
+           }
+          },
+          "v": {
+           "t": "bin",
+           "op": "+",
+           "a": {
+            "t": "method",
+            "l": 9,
+            "o": {
+             "t": "name",
+             "n": "counts"
+            },
+            "m": "get",
+            "args": [
+             {
+              "t": "name",
+              "n": "w"
+             },
+             {
+              "t": "const",
+              "v": 0
+             }
+            ]
+           },
+           "b": {
+            "t": "const",
+            "v": 1
+           }
+          }
+         }
+        ]
+       },
+       {
+        "t": "expr",
+        "l": 10,
+        "v": {
+         "t": "call",
+         "l": 10,
+         "f": "say",
+         "args": [
+          {
+           "t": "call",
+           "l": 10,
+           "f": "str",
+           "args": [
+            {
+             "t": "name",
+             "n": "counts"
+            }
+           ],
+           "kw": {}
+          }
+         ],
+         "kw": {}
+        }
+       }
+      ]
+     }
+    },
+    "called": [
+     "say"
+    ]
+   },
+   "limits": {},
+   "runs": [
+    {
+     "handler": "on_start",
+     "args": [],
+     "replies": [],
+     "calls": [
+      {
+       "call": "say",
+       "args": {
+        "text": "{'cat': 2, 'dog': 1}"
+       }
+      }
+     ],
+     "outcome": {
+      "done": true
+     }
+    }
+   ]
+  },
+  {
+   "name": "plus-equals on an item",
+   "source": "ABOUT = \"a conformance test\"\nUSES = [\"do\", \"say\", \"ask\", \"face\", \"draw\", \"chirp\", \"hum\", \"look\", \"dial\", \"tune\"]\nUNTIL = \"ongoing\"\n\n\ndef on_start():\n    d = {\"n\": 1}\n    d[\"n\"] += 4\n    say(str(d[\"n\"]))\n",
+   "program": {
+    "format": 1,
+    "header": {
+     "ABOUT": "a conformance test",
+     "USES": [
+      "do",
+      "say",
+      "ask",
+      "face",
+      "draw",
+      "chirp",
+      "hum",
+      "look",
+      "dial",
+      "tune"
+     ],
+     "UNTIL": "ongoing"
+    },
+    "globals": [],
+    "funcs": {
+     "on_start": {
+      "l": 6,
+      "args": [],
+      "defaults": [],
+      "body": [
+       {
+        "t": "assign",
+        "l": 7,
+        "to": {
+         "t": "name",
+         "n": "d"
+        },
+        "v": {
+         "t": "dict",
+         "keys": [
+          {
+           "t": "const",
+           "v": "n"
+          }
+         ],
+         "vals": [
+          {
+           "t": "const",
+           "v": 1
+          }
+         ]
+        }
+       },
+       {
+        "t": "aug",
+        "l": 8,
+        "op": "+",
+        "to": {
+         "t": "index",
+         "o": {
+          "t": "name",
+          "n": "d"
+         },
+         "i": {
+          "t": "const",
+          "v": "n"
+         }
+        },
+        "v": {
+         "t": "const",
+         "v": 4
+        }
+       },
+       {
+        "t": "expr",
+        "l": 9,
+        "v": {
+         "t": "call",
+         "l": 9,
+         "f": "say",
+         "args": [
+          {
+           "t": "call",
+           "l": 9,
+           "f": "str",
+           "args": [
+            {
+             "t": "index",
+             "o": {
+              "t": "name",
+              "n": "d"
+             },
+             "i": {
+              "t": "const",
+              "v": "n"
+             }
+            }
+           ],
+           "kw": {}
+          }
+         ],
+         "kw": {}
+        }
+       }
+      ]
+     }
+    },
+    "called": [
+     "say"
+    ]
+   },
+   "limits": {},
+   "runs": [
+    {
+     "handler": "on_start",
+     "args": [],
+     "replies": [],
+     "calls": [
+      {
+       "call": "say",
+       "args": {
+        "text": "5"
+       }
+      }
+     ],
+     "outcome": {
+      "done": true
+     }
+    }
+   ]
+  },
+  {
+   "name": "in a dict looks at keys",
+   "source": "ABOUT = \"a conformance test\"\nUSES = [\"do\", \"say\", \"ask\", \"face\", \"draw\", \"chirp\", \"hum\", \"look\", \"dial\", \"tune\"]\nUNTIL = \"ongoing\"\n\n\ndef on_start():\n    d = {\"a\": 1}\n    say(str(\"a\" in d))\n    say(str(1 in d))\n",
+   "program": {
+    "format": 1,
+    "header": {
+     "ABOUT": "a conformance test",
+     "USES": [
+      "do",
+      "say",
+      "ask",
+      "face",
+      "draw",
+      "chirp",
+      "hum",
+      "look",
+      "dial",
+      "tune"
+     ],
+     "UNTIL": "ongoing"
+    },
+    "globals": [],
+    "funcs": {
+     "on_start": {
+      "l": 6,
+      "args": [],
+      "defaults": [],
+      "body": [
+       {
+        "t": "assign",
+        "l": 7,
+        "to": {
+         "t": "name",
+         "n": "d"
+        },
+        "v": {
+         "t": "dict",
+         "keys": [
+          {
+           "t": "const",
+           "v": "a"
+          }
+         ],
+         "vals": [
+          {
+           "t": "const",
+           "v": 1
+          }
+         ]
+        }
+       },
+       {
+        "t": "expr",
+        "l": 8,
+        "v": {
+         "t": "call",
+         "l": 8,
+         "f": "say",
+         "args": [
+          {
+           "t": "call",
+           "l": 8,
+           "f": "str",
+           "args": [
+            {
+             "t": "cmp",
+             "a": {
+              "t": "const",
+              "v": "a"
+             },
+             "ops": [
+              "in"
+             ],
+             "bs": [
+              {
+               "t": "name",
+               "n": "d"
+              }
+             ]
+            }
+           ],
+           "kw": {}
+          }
+         ],
+         "kw": {}
+        }
+       },
+       {
+        "t": "expr",
+        "l": 9,
+        "v": {
+         "t": "call",
+         "l": 9,
+         "f": "say",
+         "args": [
+          {
+           "t": "call",
+           "l": 9,
+           "f": "str",
+           "args": [
+            {
+             "t": "cmp",
+             "a": {
+              "t": "const",
+              "v": 1
+             },
+             "ops": [
+              "in"
+             ],
+             "bs": [
+              {
+               "t": "name",
+               "n": "d"
+              }
+             ]
+            }
+           ],
+           "kw": {}
+          }
+         ],
+         "kw": {}
+        }
+       }
+      ]
+     }
+    },
+    "called": [
+     "say"
+    ]
+   },
+   "limits": {},
+   "runs": [
+    {
+     "handler": "on_start",
+     "args": [],
+     "replies": [],
+     "calls": [
+      {
+       "call": "say",
+       "args": {
+        "text": "True"
+       }
+      },
+      {
+       "call": "say",
+       "args": {
+        "text": "False"
+       }
+      }
+     ],
+     "outcome": {
+      "done": true
+     }
+    }
+   ]
+  },
+  {
+   "name": "numbers as keys",
+   "source": "ABOUT = \"a conformance test\"\nUSES = [\"do\", \"say\", \"ask\", \"face\", \"draw\", \"chirp\", \"hum\", \"look\", \"dial\", \"tune\"]\nUNTIL = \"ongoing\"\n\n\ndef on_start():\n    d = {1: \"one\"}\n    d[2] = \"two\"\n    say(str(d))\n    say(str(len(d)))\n",
+   "program": {
+    "format": 1,
+    "header": {
+     "ABOUT": "a conformance test",
+     "USES": [
+      "do",
+      "say",
+      "ask",
+      "face",
+      "draw",
+      "chirp",
+      "hum",
+      "look",
+      "dial",
+      "tune"
+     ],
+     "UNTIL": "ongoing"
+    },
+    "globals": [],
+    "funcs": {
+     "on_start": {
+      "l": 6,
+      "args": [],
+      "defaults": [],
+      "body": [
+       {
+        "t": "assign",
+        "l": 7,
+        "to": {
+         "t": "name",
+         "n": "d"
+        },
+        "v": {
+         "t": "dict",
+         "keys": [
+          {
+           "t": "const",
+           "v": 1
+          }
+         ],
+         "vals": [
+          {
+           "t": "const",
+           "v": "one"
+          }
+         ]
+        }
+       },
+       {
+        "t": "assign",
+        "l": 8,
+        "to": {
+         "t": "index",
+         "o": {
+          "t": "name",
+          "n": "d"
+         },
+         "i": {
+          "t": "const",
+          "v": 2
+         }
+        },
+        "v": {
+         "t": "const",
+         "v": "two"
+        }
+       },
+       {
+        "t": "expr",
+        "l": 9,
+        "v": {
+         "t": "call",
+         "l": 9,
+         "f": "say",
+         "args": [
+          {
+           "t": "call",
+           "l": 9,
+           "f": "str",
+           "args": [
+            {
+             "t": "name",
+             "n": "d"
+            }
+           ],
+           "kw": {}
+          }
+         ],
+         "kw": {}
+        }
+       },
+       {
+        "t": "expr",
+        "l": 10,
+        "v": {
+         "t": "call",
+         "l": 10,
+         "f": "say",
+         "args": [
+          {
+           "t": "call",
+           "l": 10,
+           "f": "str",
+           "args": [
+            {
+             "t": "call",
+             "l": 10,
+             "f": "len",
+             "args": [
+              {
+               "t": "name",
+               "n": "d"
+              }
+             ],
+             "kw": {}
+            }
+           ],
+           "kw": {}
+          }
+         ],
+         "kw": {}
+        }
+       }
+      ]
+     }
+    },
+    "called": [
+     "say"
+    ]
+   },
+   "limits": {},
+   "runs": [
+    {
+     "handler": "on_start",
+     "args": [],
+     "replies": [],
+     "calls": [
+      {
+       "call": "say",
+       "args": {
+        "text": "{1: 'one', 2: 'two'}"
+       }
+      },
+      {
+       "call": "say",
+       "args": {
+        "text": "2"
+       }
+      }
+     ],
+     "outcome": {
+      "done": true
+     }
+    }
+   ]
+  },
+  {
+   "name": "nested dicts",
+   "source": "ABOUT = \"a conformance test\"\nUSES = [\"do\", \"say\", \"ask\", \"face\", \"draw\", \"chirp\", \"hum\", \"look\", \"dial\", \"tune\"]\nUNTIL = \"ongoing\"\n\n\ndef on_start():\n    d = {\"ina\": {\"cat\": 1}}\n    d[\"ina\"][\"cat\"] += 1\n    say(str(d))\n",
+   "program": {
+    "format": 1,
+    "header": {
+     "ABOUT": "a conformance test",
+     "USES": [
+      "do",
+      "say",
+      "ask",
+      "face",
+      "draw",
+      "chirp",
+      "hum",
+      "look",
+      "dial",
+      "tune"
+     ],
+     "UNTIL": "ongoing"
+    },
+    "globals": [],
+    "funcs": {
+     "on_start": {
+      "l": 6,
+      "args": [],
+      "defaults": [],
+      "body": [
+       {
+        "t": "assign",
+        "l": 7,
+        "to": {
+         "t": "name",
+         "n": "d"
+        },
+        "v": {
+         "t": "dict",
+         "keys": [
+          {
+           "t": "const",
+           "v": "ina"
+          }
+         ],
+         "vals": [
+          {
+           "t": "dict",
+           "keys": [
+            {
+             "t": "const",
+             "v": "cat"
+            }
+           ],
+           "vals": [
+            {
+             "t": "const",
+             "v": 1
+            }
+           ]
+          }
+         ]
+        }
+       },
+       {
+        "t": "aug",
+        "l": 8,
+        "op": "+",
+        "to": {
+         "t": "index",
+         "o": {
+          "t": "index",
+          "o": {
+           "t": "name",
+           "n": "d"
+          },
+          "i": {
+           "t": "const",
+           "v": "ina"
+          }
+         },
+         "i": {
+          "t": "const",
+          "v": "cat"
+         }
+        },
+        "v": {
+         "t": "const",
+         "v": 1
+        }
+       },
+       {
+        "t": "expr",
+        "l": 9,
+        "v": {
+         "t": "call",
+         "l": 9,
+         "f": "say",
+         "args": [
+          {
+           "t": "call",
+           "l": 9,
+           "f": "str",
+           "args": [
+            {
+             "t": "name",
+             "n": "d"
+            }
+           ],
+           "kw": {}
+          }
+         ],
+         "kw": {}
+        }
+       }
+      ]
+     }
+    },
+    "called": [
+     "say"
+    ]
+   },
+   "limits": {},
+   "runs": [
+    {
+     "handler": "on_start",
+     "args": [],
+     "replies": [],
+     "calls": [
+      {
+       "call": "say",
+       "args": {
+        "text": "{'ina': {'cat': 2}}"
+       }
+      }
+     ],
+     "outcome": {
+      "done": true
+     }
+    }
+   ]
+  },
+  {
+   "name": "looping over a dict",
+   "source": "ABOUT = \"a conformance test\"\nUSES = [\"do\", \"say\", \"ask\", \"face\", \"draw\", \"chirp\", \"hum\", \"look\", \"dial\", \"tune\"]\nUNTIL = \"ongoing\"\n\n\ndef on_start():\n    d = {\"x\": 1, \"y\": 2}\n    for k in d:\n        say(k)\n",
+   "program": {
+    "format": 1,
+    "header": {
+     "ABOUT": "a conformance test",
+     "USES": [
+      "do",
+      "say",
+      "ask",
+      "face",
+      "draw",
+      "chirp",
+      "hum",
+      "look",
+      "dial",
+      "tune"
+     ],
+     "UNTIL": "ongoing"
+    },
+    "globals": [],
+    "funcs": {
+     "on_start": {
+      "l": 6,
+      "args": [],
+      "defaults": [],
+      "body": [
+       {
+        "t": "assign",
+        "l": 7,
+        "to": {
+         "t": "name",
+         "n": "d"
+        },
+        "v": {
+         "t": "dict",
+         "keys": [
+          {
+           "t": "const",
+           "v": "x"
+          },
+          {
+           "t": "const",
+           "v": "y"
+          }
+         ],
+         "vals": [
+          {
+           "t": "const",
+           "v": 1
+          },
+          {
+           "t": "const",
+           "v": 2
+          }
+         ]
+        }
+       },
+       {
+        "t": "for",
+        "l": 8,
+        "to": {
+         "t": "name",
+         "n": "k"
+        },
+        "in": {
+         "t": "name",
+         "n": "d"
+        },
+        "body": [
+         {
+          "t": "expr",
+          "l": 9,
+          "v": {
+           "t": "call",
+           "l": 9,
+           "f": "say",
+           "args": [
+            {
+             "t": "name",
+             "n": "k"
+            }
+           ],
+           "kw": {}
+          }
+         }
+        ]
+       }
+      ]
+     }
+    },
+    "called": [
+     "say"
+    ]
+   },
+   "limits": {},
+   "runs": [
+    {
+     "handler": "on_start",
+     "args": [],
+     "replies": [],
+     "calls": [
+      {
+       "call": "say",
+       "args": {
+        "text": "x"
+       }
+      },
+      {
+       "call": "say",
+       "args": {
+        "text": "y"
+       }
+      }
+     ],
+     "outcome": {
+      "done": true
+     }
+    }
+   ]
+  }
+ ]
+}

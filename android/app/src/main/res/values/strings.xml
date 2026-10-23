@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Pebble</string>
+    <string name="admin_description">Lets Pebble run as this phone\'s only app: it stays on screen, starts by itself and keeps the screen awake while charging.</string>
+    <string name="channel_name">Pebble running</string>
+</resources>

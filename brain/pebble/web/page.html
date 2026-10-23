@@ -1,0 +1,1590 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="theme-color" content="#000000">
+<title>Pebble</title>
+<style>
+html,body{margin:0;width:100%;height:100%;background:#000;overflow:hidden;touch-action:none;-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:transparent}
+canvas{position:fixed;left:0;top:0;width:100vw;height:100vh;display:block;image-rendering:pixelated;image-rendering:crisp-edges;cursor:pointer}
+#dbg{position:fixed;left:6px;top:6px;color:#7f7;font:11px/1.3 monospace;white-space:pre;pointer-events:none;display:none;text-shadow:0 0 2px #000}
+#teach{position:fixed;right:8px;top:8px;max-width:38vw;color:#cfe;font:13px/1.35 sans-serif;pointer-events:none;display:none;text-shadow:0 0 3px #000}
+#teach b{display:inline-block;padding:2px 8px;border-radius:9px;background:#2a6;color:#fff;font-weight:600;margin-bottom:4px}
+#teach ol{margin:2px 0 0 18px;padding:0}
+#pad{position:fixed;left:0;right:0;bottom:0;height:34vh;display:none;pointer-events:none}
+#stick{position:absolute;left:3vw;bottom:3vh;width:26vh;height:26vh;border-radius:50%;background:rgba(80,170,130,.18);border:2px solid rgba(160,230,200,.5);pointer-events:auto;touch-action:none}
+#knob{position:absolute;left:50%;top:50%;width:9vh;height:9vh;margin:-4.5vh 0 0 -4.5vh;border-radius:50%;background:rgba(170,240,210,.7)}
+#keys{position:absolute;right:3vw;bottom:3vh;display:flex;flex-wrap:wrap;gap:6px;max-width:42vw;justify-content:flex-end;pointer-events:auto}
+#keys button{font:15px sans-serif;padding:8px 12px;border-radius:10px;border:1px solid #6b9;background:rgba(20,50,40,.75);color:#dfe;touch-action:manipulation}
+</style>
+</head>
+<body>
+<canvas id="screen"></canvas>
+<div id="dbg"></div>
+<div id="teach"><b>Learning</b><ol id="steps"></ol></div>
+<div id="pad"><div id="stick"><div id="knob"></div></div><div id="keys"><button data-pad="tilt" data-way="up">Head up</button><button data-pad="tilt" data-way="down">Head down</button><button data-pad="face" data-face="happy">Happy</button><button data-pad="face" data-face="surprised">Surprised</button><button data-pad="face" data-face="love">Love</button><button data-pad="face" data-face="sad">Sad</button><button data-pad="stop">Stop</button></div></div>
+<script id="registry" type="application/json">__PEBBLE_REGISTRY__</script>
+<script id="eyes" type="application/json">__PEBBLE_EYES__</script>
+<script>
+"use strict";
+(() => {
+const cv = document.getElementById("screen");
+const ctx = cv.getContext("2d", { alpha: false });
+const dbg = document.getElementById("dbg");
+const DEBUG = /(^|[?&])debug\b/.test(location.search);
+const BG = [0, 0, 0];
+const WHITE = [255, 255, 255];
+const FACE_C = [120, 236, 255];
+const DARK = [10, 14, 30];
+const BAYER = [0, 8, 2, 10, 12, 4, 14, 6, 3, 11, 1, 9, 15, 7, 13, 5].map(v => (v + 0.5) / 16);
+const SPD = { slow: 0.55, normal: 1, fast: 1.8 };
+const SKY = {
+  day: ["#5fb8ff", "#8fd0ff", "#c4e9ff"],
+  night: ["#04061a", "#0b1238", "#1b2456"],
+  dusk: ["#1f1446", "#6a2c70", "#f0725c"],
+  dawn: ["#3a4f9a", "#f6a57a", "#ffe0a8"],
+  storm: ["#151a24", "#262d3c", "#3a4255"],
+  space: ["#000000", "#03030c", "#080818"]
+};
+const RAINBOW = ["#ef4646", "#ff9a3c", "#ffd23f", "#3fbf5f", "#3b8bf6", "#9b6bff"];
+const FONT_SRC = "A25755 B65656 C34443 D65556 E74647 F74644 G34553 H55755 I72227 J11152 K55655 L44447 M57755 N65555 O25552 P65644 Q25563 R65655 S34216 T72222 U55557 V55552 W55775 X55255 Y55222 Z71247 075557 126227 261247 361216 455711 574616 634757 771222 875757 975716 !22202 ?61202 .00002 ,00024 '22000 +02720 :02020 -00700";
+const FONT = {};
+FONT_SRC.split(" ").forEach(g => { FONT[g[0]] = g.slice(1).split("").map(Number); });
+
+let REG = null;
+let PAL = {};
+let W = 64, H = 32, OX = 16, OY = 0, img = null, d = null;
+let LA = 1;
+const SHIFT_S = 120;
+const SHIFT_PATH = [];
+[-1, 0, 1].forEach((y, row) => { for (let i = 0; i < 5; i++) SHIFT_PATH.push([row % 2 ? 2 - i : i - 2, y]); });
+const MARK_PATH = [[0, 0], [1, 0], [1, 1], [0, 1]];
+const SH = { x: 0, y: 0, mx: 0, my: 0 };
+function shiftAt(t) {
+  const k = Math.floor(t / SHIFT_S), span = SHIFT_PATH.length - 1, i = k % (2 * span);
+  const p = SHIFT_PATH[i <= span ? i : 2 * span - i], m = MARK_PATH[k % MARK_PATH.length];
+  SH.x = p[0]; SH.y = p[1]; SH.mx = m[0]; SH.my = m[1];
+}
+
+function hex(h) {
+  const v = parseInt(String(h).replace("#", ""), 16);
+  return [(v >> 16) & 255, (v >> 8) & 255, v & 255];
+}
+function mix(a, b, t) {
+  return [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t, a[2] + (b[2] - a[2]) * t];
+}
+function shade(c, k) {
+  if (k === 1 || k === undefined) return c;
+  if (k > 1) return mix(c, WHITE, Math.min(1, k - 1));
+  return [c[0] * k, c[1] * k, c[2] * k];
+}
+function colour(name, fallback) {
+  return PAL[name] || PAL[fallback] || WHITE;
+}
+function hash(n) {
+  n = n | 0;
+  n = Math.imul(n ^ (n >>> 16), 0x45d9f3b);
+  n = Math.imul(n ^ (n >>> 16), 0x45d9f3b);
+  n = n ^ (n >>> 16);
+  return (n >>> 0) / 4294967296;
+}
+function noise(seed, t) {
+  const i = Math.floor(t), f = t - i, u = f * f * (3 - 2 * f);
+  const a = hash(Math.imul(seed | 0, 7919) + i), b = hash(Math.imul(seed | 0, 7919) + i + 1);
+  return a + (b - a) * u;
+}
+function snoise(seed, t) {
+  return noise(seed, t) * 2 - 1;
+}
+function seeded(seed) {
+  let s = seed >>> 0;
+  return () => {
+    s = (s + 0x6d2b79f5) >>> 0;
+    let r = Math.imul(s ^ (s >>> 15), 1 | s);
+    r = (r + Math.imul(r ^ (r >>> 7), 61 | r)) ^ r;
+    return ((r ^ (r >>> 14)) >>> 0) / 4294967296;
+  };
+}
+function strHash(s) {
+  let h = 2166136261;
+  for (let i = 0; i < s.length; i++) h = Math.imul(h ^ s.charCodeAt(i), 16777619);
+  return h >>> 0;
+}
+
+function resize() {
+  const vw = Math.max(1, window.innerWidth), vh = Math.max(1, window.innerHeight);
+  if (vw >= vh) {
+    H = 32;
+    W = Math.max(32, Math.round(32 * vw / vh));
+  } else {
+    W = 32;
+    H = Math.max(32, Math.round(32 * vh / vw));
+  }
+  OX = Math.floor((W - 32) / 2);
+  OY = Math.floor((H - 32) / 2);
+  cv.width = W;
+  cv.height = H;
+  img = ctx.createImageData(W, H);
+  d = img.data;
+  shown = null;
+}
+
+function px(x, y, c, a) {
+  x = Math.floor(x);
+  y = Math.floor(y);
+  if (x < 0 || y < 0 || x >= W || y >= H) return;
+  const k = (a === undefined ? 1 : a) * LA;
+  if (k <= 0.004) return;
+  const i = (y * W + x) << 2;
+  if (k >= 1) {
+    d[i] = c[0]; d[i + 1] = c[1]; d[i + 2] = c[2];
+    return;
+  }
+  d[i] += (c[0] - d[i]) * k;
+  d[i + 1] += (c[1] - d[i + 1]) * k;
+  d[i + 2] += (c[2] - d[i + 2]) * k;
+}
+function fill(c) {
+  for (let i = 0; i < d.length; i += 4) {
+    d[i] = c[0]; d[i + 1] = c[1]; d[i + 2] = c[2]; d[i + 3] = 255;
+  }
+}
+function box(x, y, w, h, c, a) {
+  for (let yy = Math.floor(y); yy < y + h; yy++) for (let xx = Math.floor(x); xx < x + w; xx++) px(xx, yy, c, a);
+}
+function seg(x0, y0, x1, y1, c, a) {
+  x0 = Math.round(x0); y0 = Math.round(y0); x1 = Math.round(x1); y1 = Math.round(y1);
+  const dx = Math.abs(x1 - x0), dy = -Math.abs(y1 - y0), sx = x0 < x1 ? 1 : -1, sy = y0 < y1 ? 1 : -1;
+  let err = dx + dy, guard = 0;
+  while (guard++ < 400) {
+    px(x0, y0, c, a);
+    if (x0 === x1 && y0 === y1) break;
+    const e2 = 2 * err;
+    if (e2 >= dy) { err += dy; x0 += sx; }
+    if (e2 <= dx) { err += dx; y0 += sy; }
+  }
+}
+function glyph(ch) {
+  return FONT[String(ch).toUpperCase()] || null;
+}
+function textWidth(s) {
+  return s.length * 4 - 1;
+}
+
+function motionOf(name, t, ph, speed) {
+  const m = { dx: 0, dy: 0, a: 0, k: 1, s: 1, drift: false };
+  const v = speed || 1;
+  switch (name) {
+    case "twinkle": m.k = 0.45 + 0.55 * noise((ph * 1000) | 0, t * 3.2 * v); break;
+    case "drift": m.dx = t * 1.7 * v + ph * 3; m.dy = Math.sin(t * 0.9 * v + ph) * 0.8; m.drift = true; break;
+    case "bounce": m.dy = -Math.abs(Math.sin(t * 2.6 * v + ph)) * 3; break;
+    case "pulse": m.s = 1 + 0.2 * Math.sin(t * 3 * v + ph); m.k = 0.88 + 0.12 * Math.sin(t * 3 * v + ph); break;
+    case "sway": m.dx = Math.sin(t * 1.5 * v + ph) * 1.3; m.a = Math.sin(t * 1.5 * v + ph) * 0.14; break;
+    case "spin": m.a = t * 1.5 * v + ph; break;
+  }
+  return m;
+}
+function wrapX(x, pad) {
+  const span = W + pad * 2;
+  return ((x + pad) % span + span) % span - pad;
+}
+function stamp(ax, ay, ext, fn, m, a) {
+  const s = m.s || 1, ang = m.a || 0, ca = Math.cos(-ang), sa = Math.sin(-ang);
+  const reach = Math.ceil(ext * Math.max(1, s)) + 1;
+  const bx = Math.round(m.drift ? wrapX(ax + m.dx, reach) : ax + m.dx), by = Math.round(ay + m.dy);
+  for (let y = -reach; y <= reach; y++) {
+    for (let x = -reach; x <= reach; x++) {
+      let lx = x, ly = y;
+      if (ang) { const rx = lx * ca - ly * sa, ry = lx * sa + ly * ca; lx = rx; ly = ry; }
+      if (s !== 1) { lx /= s; ly /= s; }
+      const c = fn(Math.round(lx), Math.round(ly));
+      if (c) px(bx + x, by + y, shade(c, m.k), c.length > 3 ? c[3] * (a === undefined ? 1 : a) : a);
+    }
+  }
+}
+function sprite(rows, palette) {
+  const h = rows.length, w = rows[0].length, ox = Math.floor(w / 2), oy = Math.floor(h / 2);
+  return (lx, ly) => {
+    const r = rows[ly + oy];
+    if (!r) return null;
+    const ch = r[lx + ox];
+    return ch && ch !== "." ? palette[ch] || null : null;
+  };
+}
+
+const R = {};
+R.sky = (e, t) => {
+  const p = (SKY[e.look] || SKY.day).map(hex);
+  const bands = p.length - 1;
+  for (let y = 0; y < H; y++) {
+    const f = (y / Math.max(1, H - 1)) * bands;
+    const band = Math.min(bands - 1, Math.floor(f)), local = f - band;
+    for (let x = 0; x < W; x++) px(x, y, local > BAYER[(y & 3) * 4 + (x & 3)] ? p[band + 1] : p[band]);
+  }
+  if (e.look === "space") {
+    const r = seeded(e.seed);
+    for (let i = 0; i < W * H / 40; i++) px(r() * W, r() * H, [200, 200, 230], 0.35 + r() * 0.4);
+  }
+  if (e.look === "storm") {
+    const p2 = 5.3, ph = (t + e.ph) % p2;
+    if (ph < 0.18) box(0, 0, W, H, WHITE, 0.18 * (1 - ph / 0.18));
+  }
+};
+R.stars = (e, t) => {
+  const r = seeded(e.seed), c = e.c, m = motionOf(e.motion, t, e.ph);
+  for (let i = 0; i < e.n; i++) {
+    let x = r() * W, y = r() * H * 0.78;
+    const ph = r() * 50, big = r() < 0.12;
+    let k = 1;
+    if (e.motion === "twinkle") k = 0.25 + 0.75 * noise(e.seed + i * 13, t * (1.5 + ph % 2));
+    else if (e.motion === "drift") x = wrapX(x + t * (0.6 + (ph % 1) * 0.8), 1);
+    else if (e.motion === "spin") {
+      const cx = W / 2, cy = H / 2, ang = t * 0.06, dx = x - cx, dy = y - cy;
+      x = cx + dx * Math.cos(ang) - dy * Math.sin(ang);
+      y = cy + dx * Math.sin(ang) + dy * Math.cos(ang);
+    } else { x += m.dx; y += m.dy; k = m.k; }
+    const col = shade(c, k);
+    px(x, y, col);
+    if (big && k > 0.6) {
+      px(x - 1, y, col, 0.35); px(x + 1, y, col, 0.35); px(x, y - 1, col, 0.35); px(x, y + 1, col, 0.35);
+    }
+  }
+};
+R.moon = (e, t) => {
+  const r = e.r, c = e.c, dim = shade(c, 0.78), rs = seeded(e.seed);
+  const craters = [[Math.round((rs() - 0.5) * r), Math.round((rs() - 0.5) * r)], [Math.round((rs() - 0.5) * r), Math.round((rs() - 0.5) * r)]];
+  stamp(OX + e.x, OY + e.y, r + 1, (x, y) => {
+    const dd = x * x + y * y;
+    if (dd <= r * r + r * 0.6) {
+      for (const k of craters) if (r > 2 && (x - k[0]) * (x - k[0]) + (y - k[1]) * (y - k[1]) <= (r > 4 ? 1.5 : 0.5)) return dim;
+      return c;
+    }
+    if (dd <= (r + 1) * (r + 1) + r) return [c[0], c[1], c[2], 0.18];
+    return null;
+  }, motionOf(e.motion, t, e.ph));
+};
+R.sun = (e, t) => {
+  const r = e.r, c = e.c, ray = shade(c, 0.9);
+  stamp(OX + e.x, OY + e.y, r + 3, (x, y) => {
+    const dd = Math.sqrt(x * x + y * y);
+    if (dd <= r + 0.4) return dd > r - 0.8 ? shade(c, 1.15) : c;
+    if (dd <= r + 2.6 && dd >= r + 1.2) {
+      const ang = Math.atan2(y, x), slot = Math.PI / 4, off = Math.abs(((ang % slot) + slot) % slot - slot / 2);
+      if (off > slot / 2 - 0.28) return ray;
+    }
+    return null;
+  }, motionOf(e.motion, t, e.ph));
+};
+R.cloud = (e, t) => {
+  const w = e.w, q = w / 4, c = e.c, under = shade(c, 0.82);
+  const blobs = [[-q, 0.5, q + 0.8], [q, 0.5, q + 0.5], [0, -1.2, q + 1.4]];
+  stamp(OX + e.x + w / 2, OY + e.y, w / 2 + 2, (x, y) => {
+    if (y > 2) return null;
+    for (const b of blobs) {
+      const dx = x - b[0], dy = y - b[1];
+      if (dx * dx + dy * dy <= b[2] * b[2]) return y >= 2 ? under : c;
+    }
+    return null;
+  }, motionOf(e.motion, t, e.ph, 0.6));
+};
+R.rain = (e, t) => {
+  const r = seeded(e.seed), c = e.c, v = SPD[e.speed] || 1;
+  for (let i = 0; i < e.n; i++) {
+    const x0 = r() * W, y0 = r() * (H + 4), sp = (13 + r() * 8) * v;
+    const y = ((y0 + t * sp) % (H + 4)) - 3, x = wrapX(x0 - y * 0.18, 1);
+    px(x, y, c);
+    px(x + 0.18, y - 1, c, 0.55);
+    if (v > 1.2) px(x + 0.36, y - 2, c, 0.3);
+  }
+};
+R.snow = (e, t) => {
+  const r = seeded(e.seed), c = e.c, v = SPD[e.speed] || 1;
+  for (let i = 0; i < e.n; i++) {
+    const x0 = r() * W, y0 = r() * (H + 2), sp = (2.5 + r() * 3) * v, ph = r() * 6.28;
+    const y = ((y0 + t * sp) % (H + 2)) - 1, x = wrapX(x0 + Math.sin(t * 0.9 + ph) * 1.6, 1);
+    px(x, y, c, 0.7 + 0.3 * Math.sin(ph + t));
+  }
+};
+R.fire = (e, t) => {
+  const half = Math.max(1, Math.floor(e.w / 2)), base = OY + e.y, cx = OX + e.x, hot = [255, 244, 190], mid = PAL.yellow || [255, 210, 63], c = e.c;
+  const hmax = e.w * 0.9 + 2;
+  for (let col = -half; col <= half; col++) {
+    const edge = 1 - Math.abs(col) / (half + 1);
+    const h = Math.max(1, hmax * edge * (0.55 + 0.45 * noise(e.seed + col * 31, t * 5.5)));
+    for (let k = 0; k < h; k++) {
+      const f = k / h;
+      if (f > 0.75 && noise(e.seed + col * 7 + k * 3, t * 9) > 0.65) continue;
+      const colr = f < 0.3 ? mix(hot, mid, f / 0.3) : f < 0.65 ? mix(mid, c, (f - 0.3) / 0.35) : shade(c, 1 - (f - 0.65) * 1.2);
+      px(cx + col, base - k, colr, f > 0.85 ? 0.6 : 1);
+    }
+  }
+  for (let i = 0; i < 3; i++) {
+    const life = ((t * 0.7 + i / 3 + e.ph) % 1);
+    px(cx + Math.sin((t + i) * 3) * half * 0.6, base - hmax - life * 6, mid, 1 - life);
+  }
+};
+R.waves = (e, t) => {
+  const c = e.c, v = SPD[e.speed] || 1, top = OY + e.y, foam = mix(c, WHITE, 0.55);
+  for (let x = 0; x < W; x++) {
+    const surf = top + Math.sin(x * 0.45 + t * 1.6 * v) * 0.9 + Math.sin(x * 0.17 - t * 0.9 * v + 1) * 0.7;
+    const s0 = Math.round(surf);
+    for (let y = Math.max(0, s0); y < H; y++) {
+      const depth = (y - surf) / Math.max(4, H - top);
+      px(x, y, y === s0 ? foam : shade(c, 1 - Math.min(0.55, depth * 0.6)));
+    }
+    if (noise(e.seed + x * 17, t * 1.3) > 0.86) px(x, s0 + 2 + (x % 3), foam, 0.5);
+  }
+};
+R.hill = (e, t) => {
+  const c = e.c, top = shade(c, 1.18), left = e.x <= 0 ? 0 : OX + e.x, right = e.x + e.w >= 32 ? W : OX + e.x + e.w;
+  const bottom = e.y + e.h >= 31 ? H : OY + e.y + e.h, crest = OY + e.y;
+  const full = e.x <= 0 && e.x + e.w >= 32;
+  const cx = OX + e.x + e.w / 2, half = Math.max(1, e.w / 2);
+  for (let x = Math.floor(left); x < right; x++) {
+    let y0;
+    if (full) y0 = crest + (1 - Math.cos((x / W) * Math.PI * 2 + e.ph)) * e.h * 0.16;
+    else {
+      const u = Math.max(-1, Math.min(1, (x + 0.5 - cx) / half));
+      y0 = crest + e.h * (1 - Math.sqrt(1 - u * u));
+    }
+    const s0 = Math.round(y0);
+    for (let y = s0; y < bottom; y++) px(x, y, y === s0 ? top : c);
+  }
+};
+R.grass = (e, t) => {
+  const c = e.c, dark = shade(c, 0.7), tip = shade(c, 1.15), y0 = OY + e.y, m = e.motion;
+  for (let x = 0; x < W; x++) {
+    for (let y = y0 + 1; y < H; y++) px(x, y, dark);
+    const hgt = 1 + Math.floor(hash(e.seed + x * 101) * 3);
+    let lean = 0;
+    if (m === "sway") lean = Math.sin(t * 1.4 + x * 0.35) * 1.2;
+    else if (m === "drift") lean = Math.sin(t * 2.4 + x * 0.6) * 0.8;
+    else if (m === "bounce") lean = Math.abs(Math.sin(t * 2.6 + x * 0.3));
+    for (let k = 0; k <= hgt; k++) {
+      const f = hgt ? k / hgt : 0;
+      px(x + Math.round(lean * f), y0 - k, k === hgt ? tip : c, m === "twinkle" ? 0.6 + 0.4 * noise(e.seed + x, t * 3) : 1);
+    }
+  }
+};
+R.tree = (e, t) => {
+  const h = e.h, c = e.c, trunk = [124, 84, 48], light = shade(c, 1.2), cr = Math.max(2, Math.round(h * 0.33));
+  const m = motionOf(e.motion, t, e.ph);
+  const bx = OX + e.x, by = OY + e.y, tt = Math.round(h * 0.45);
+  for (let k = 0; k < tt + 1; k++) {
+    px(bx, by - k, trunk);
+    if (h >= 10) px(bx + 1, by - k, shade(trunk, 0.8));
+  }
+  const top = by - Math.round(h * 0.62), lean = e.motion === "sway" ? Math.round(m.dx) : 0;
+  stamp(bx + lean, top, cr + 1, (x, y) => {
+    const dd = x * x + (y * 1.1) * (y * 1.1);
+    if (dd > cr * cr + cr * 0.6) return null;
+    return x + y < -cr * 0.6 ? light : c;
+  }, e.motion === "sway" ? { dx: 0, dy: 0, a: 0, k: 1, s: 1 } : m);
+};
+R.flower = (e, t) => {
+  const c = e.c, stem = PAL.green || [63, 191, 95], m = motionOf(e.motion, t, e.ph);
+  const bx = OX + e.x, by = OY + e.y, lean = Math.round(m.dx);
+  for (let k = 0; k < 4; k++) px(bx + (k > 2 ? lean : 0), by - k, stem);
+  px(bx + 1, by - 1, stem, 0.8);
+  const hx = bx + lean, hy = by - 5;
+  const k = e.motion === "twinkle" || e.motion === "pulse" ? m.k : 1;
+  [[0, -1], [-1, 0], [1, 0], [0, 1]].forEach(o => px(hx + o[0], hy + o[1], shade(c, k)));
+  px(hx, hy, PAL.yellow || [255, 210, 63]);
+};
+R.heart = (e, t) => {
+  const r = e.r, c = e.c, hi = shade(c, 1.35);
+  stamp(OX + e.x, OY + e.y, r + 1, (x, y) => {
+    const u = x / (r * 0.95), v = -y / (r * 0.95) + 0.25;
+    const q = u * u + v * v - 1;
+    if (q * q * q - u * u * v * v * v > 0) return null;
+    return (u < -0.25 && v > 0.35 && r > 2) ? hi : c;
+  }, motionOf(e.motion, t, e.ph));
+};
+R.star = (e, t) => {
+  const r = e.r + 0.5, inner = r * 0.45, c = e.c;
+  stamp(OX + e.x, OY + e.y, r + 1, (x, y) => {
+    const dd = Math.sqrt(x * x + y * y);
+    if (dd < 0.5) return c;
+    const step = Math.PI * 2 / 5, ang = Math.atan2(y, x) + Math.PI / 2;
+    const k = (((ang % step) + step) % step) / step;
+    const edge = inner + (r - inner) * Math.abs(1 - 2 * k);
+    return dd <= edge ? c : null;
+  }, motionOf(e.motion, t, e.ph));
+};
+R.circle = (e, t) => {
+  const r = e.r, c = e.c, hi = shade(c, 1.2);
+  stamp(OX + e.x, OY + e.y, r + 1, (x, y) => {
+    const dd = x * x + y * y;
+    if (dd > r * r + r * 0.6) return null;
+    return r > 3 && x < 0 && y < 0 && dd > (r - 1.5) * (r - 1.5) ? hi : c;
+  }, motionOf(e.motion, t, e.ph));
+};
+R.ring = (e, t) => {
+  const r = e.r, c = e.c;
+  stamp(OX + e.x, OY + e.y, r + 1, (x, y) => Math.abs(Math.sqrt(x * x + y * y) - r) < 0.62 ? c : null, motionOf(e.motion, t, e.ph));
+};
+R.rect = (e, t) => {
+  const m = motionOf(e.motion, t, e.ph), c = shade(e.c, m.k);
+  const x0 = e.x <= 0 && e.w >= 8 ? 0 : OX + e.x, x1 = e.x + e.w >= 32 && e.w >= 8 ? W : OX + e.x + e.w;
+  const y1 = e.y + e.h >= 32 ? H : OY + e.y + e.h;
+  if (m.a || m.s !== 1) {
+    const hw = e.w / 2, hh = e.h / 2;
+    stamp(OX + e.x + hw, OY + e.y + hh, Math.max(hw, hh) + 1, (x, y) => (Math.abs(x + 0.5) <= hw && Math.abs(y + 0.5) <= hh ? e.c : null), m);
+    return;
+  }
+  const dx = m.drift ? wrapX(x0 + m.dx, e.w) - x0 : Math.round(m.dx);
+  box(x0 + dx, OY + e.y + Math.round(m.dy), x1 - x0, y1 - (OY + e.y), c);
+};
+R.line = (e, t) => {
+  const m = motionOf(e.motion, t, e.ph), c = shade(e.c, m.k);
+  const cx = (e.x + e.x2) / 2, cy = (e.y + e.y2) / 2, ca = Math.cos(m.a), sa = Math.sin(m.a);
+  const rot = (x, y) => [cx + ((x - cx) * ca - (y - cy) * sa) * m.s, cy + ((x - cx) * sa + (y - cy) * ca) * m.s];
+  const a = rot(e.x, e.y), b = rot(e.x2, e.y2);
+  const dx = m.drift ? wrapX(OX + cx + m.dx, 2) - (OX + cx) : m.dx;
+  seg(OX + a[0] + dx, OY + a[1] + m.dy, OX + b[0] + dx, OY + b[1] + m.dy, c);
+};
+R.dot = (e, t) => {
+  const m = motionOf(e.motion, t, e.ph);
+  stamp(OX + e.x, OY + e.y, 0, (x, y) => (x === 0 && y === 0 ? e.c : null), m);
+};
+R.text = (e, t) => {
+  const s = String(e.text || ""), tw = textWidth(s), c = e.c;
+  const m = motionOf(e.motion, t, e.ph);
+  const hw = tw / 2, hh = 2.5;
+  stamp(OX + e.x + Math.floor(hw), OY + e.y + 2, Math.max(hw, hh) + 1, (x, y) => {
+    const gx = x + Math.floor(hw), gy = y + 2;
+    if (gx < 0 || gy < 0 || gy > 4 || gx >= tw) return null;
+    const idx = Math.floor(gx / 4), col = gx % 4;
+    if (col === 3) return null;
+    const g = glyph(s[idx]);
+    return g && (g[gy] >> (2 - col)) & 1 ? c : null;
+  }, m);
+};
+R.sparkle = (e, t) => {
+  const c = e.c, m = motionOf(e.motion === "twinkle" ? "still" : e.motion, t, e.ph);
+  const len = e.motion === "twinkle" ? Math.round(1 + 2 * (0.5 + 0.5 * Math.sin(t * 4.2 + e.ph * 3))) : 2;
+  stamp(OX + e.x, OY + e.y, 4, (x, y) => {
+    if (x === 0 && y === 0) return shade(c, 1.3);
+    if ((x === 0 && Math.abs(y) <= len) || (y === 0 && Math.abs(x) <= len)) return [c[0], c[1], c[2], 1 - Math.max(Math.abs(x), Math.abs(y)) / (len + 1)];
+    if (len >= 3 && Math.abs(x) === 1 && Math.abs(y) === 1) return [c[0], c[1], c[2], 0.4];
+    return null;
+  }, m);
+};
+R.bubbles = (e, t) => {
+  const r = seeded(e.seed), c = e.c, v = SPD[e.speed] || 1;
+  for (let i = 0; i < e.n; i++) {
+    const x0 = r() * W, y0 = r() * (H + 6), sp = (3.5 + r() * 4) * v, big = r() < 0.35, ph = r() * 6.28;
+    const y = H + 2 - ((y0 + t * sp) % (H + 6)), x = x0 + Math.sin(t * 1.7 + ph) * 1.2;
+    if (big) {
+      px(x, y - 1, c, 0.7); px(x - 1, y, c, 0.7); px(x + 1, y, c, 0.7); px(x, y + 1, c, 0.7); px(x, y, c, 0.15);
+    } else px(x, y, c, 0.8);
+  }
+};
+R.particles = (e, t) => {
+  const r = seeded(e.seed), c = e.c, mo = e.motion;
+  for (let i = 0; i < e.n; i++) {
+    let x = r() * W, y = r() * H;
+    const ph = r() * 6.28, sp = 0.5 + r();
+    let a = 0.75;
+    if (mo === "drift") { x = wrapX(x + snoise(e.seed + i * 3, t * 0.25 * sp) * 7 + t * 0.6 * sp, 1); y += snoise(e.seed + i * 3 + 1, t * 0.25 * sp) * 4; }
+    else if (mo === "spin") { const cx = W / 2, cy = H / 2, ang = t * 0.4 * sp, dx = x - cx, dy = y - cy; x = cx + dx * Math.cos(ang) - dy * Math.sin(ang); y = cy + dx * Math.sin(ang) + dy * Math.cos(ang); }
+    else if (mo === "bounce") y -= Math.abs(Math.sin(t * 2.4 + ph)) * 3;
+    else if (mo === "sway") x += Math.sin(t * 1.4 + ph) * 1.5;
+    else if (mo === "twinkle") a = noise(e.seed + i * 7, t * 2.5 * sp);
+    else if (mo === "pulse") a = 0.4 + 0.5 * (0.5 + 0.5 * Math.sin(t * 3 + ph));
+    px(x, y, c, a);
+  }
+};
+R.confetti = (e, t) => {
+  const r = seeded(e.seed), v = SPD[e.speed] || 1;
+  const cols = Object.keys(PAL).filter(k => k !== "black").map(k => PAL[k]);
+  for (let i = 0; i < e.n; i++) {
+    const x0 = r() * W, y0 = r() * (H + 3), sp = (5 + r() * 6) * v, ph = r() * 6.28, col = cols[Math.floor(r() * cols.length)] || WHITE;
+    const y = ((y0 + t * sp) % (H + 3)) - 2, x = wrapX(x0 + Math.sin(t * 2 + ph) * 2, 1);
+    px(x, y, col);
+    if (Math.sin(t * 7 + ph) > 0) px(x + 1, y, col, 0.8); else px(x, y + 1, col, 0.8);
+  }
+};
+R.fish = (e, t) => {
+  const c = e.c, eye = DARK, fin = shade(c, 0.75);
+  const flap = Math.floor(t * 4 + e.ph) % 2 === 0;
+  const body = sprite(flap ? ["#.###.", "######", "#.###."] : [".####.", "######", ".####."], { "#": c });
+  const m = motionOf(e.motion, t, e.ph, 0.9);
+  stamp(OX + e.x, OY + e.y, 4, (x, y) => {
+    if (x === 1 && y === 0) return eye;
+    const p = body(x, y);
+    return p && x <= -2 ? fin : p;
+  }, m);
+};
+R.bird = (e, t) => {
+  const c = e.c, up = Math.floor(t * 5 + e.ph * 2) % 2 === 0;
+  const s = sprite(up ? ["#...#", ".#.#.", "..#.."] : [".....", "##.##", "..#.."], { "#": c });
+  stamp(OX + e.x, OY + e.y, 3, s, motionOf(e.motion, t, e.ph, 1.3));
+};
+function blinkAt(t, ph) {
+  const p = 3.1 + (ph % 1.5), k = (t + ph * 2) % p;
+  return k < 0.14;
+}
+R.eyes = (e, t) => {
+  const c = e.c, look = e.look, closed = look === "closed" || ((look === "open" || look === "wide") && blinkAt(t, e.ph));
+  const m = motionOf(e.motion, t, e.ph);
+  stamp(OX + e.x, OY + e.y, 7, (x, y) => {
+    const side = x < 0 ? -1 : 1, lx = x - side * 4;
+    if (Math.abs(lx) > 2) return null;
+    if (closed || look === "sleepy") {
+      if (look === "sleepy" && !closed) return (y === 0 && Math.abs(lx) <= 1) || (y === -1 && Math.abs(lx) <= 1) ? (y === -1 ? shade(c, 0.6) : c) : null;
+      return y === 0 && Math.abs(lx) <= 1 ? c : null;
+    }
+    if (look === "happy") return (y === -1 && lx === 0) || (y === 0 && Math.abs(lx) === 1) ? c : null;
+    if (look === "wide") {
+      if (Math.abs(lx) <= 2 && Math.abs(y + 0.5) <= 2.5 && !(Math.abs(lx) === 2 && Math.abs(y + 0.5) === 2.5)) return (lx === 0 && (y === 0 || y === -1)) ? DARK : c;
+      return null;
+    }
+    return Math.abs(lx) <= 1 && y >= -2 && y <= 1 ? c : null;
+  }, m);
+};
+R.mouth = (e, t) => {
+  const c = e.c, sh = e.shape;
+  stamp(OX + e.x, OY + e.y, 5, (x, y) => {
+    if (Math.abs(x) > 3) return null;
+    const u = x / 3;
+    if (sh === "o") return Math.abs(Math.sqrt(x * x / 2.2 + y * y) - 1.2) < 0.55 && Math.abs(x) <= 2 ? c : null;
+    if (sh === "flat") return y === 0 ? c : null;
+    if (sh === "wavy") return y === Math.round(Math.sin(u * Math.PI * 1.5 + t * 5) * 0.8) ? c : null;
+    const b = sh === "frown" ? -1.6 : 1.6;
+    return y === Math.round(b * (0.5 - u * u)) ? c : null;
+  }, motionOf(e.motion, t, e.ph));
+};
+R.zzz = (e, t) => {
+  const c = e.c;
+  for (let i = 0; i < 3; i++) {
+    const age = (t * 0.45 + i / 3 + e.ph) % 1, x = OX + e.x + Math.round(age * 4), y = OY + e.y - Math.round(age * 8);
+    const a = Math.sin(age * Math.PI), big = age > 0.45;
+    if (big) {
+      box(x, y, 3, 1, c, a); px(x + 1, y + 1, c, a); box(x, y + 2, 3, 1, c, a);
+    } else {
+      box(x, y, 2, 1, c, a); box(x, y + 1, 2, 1, c, a * 0.7);
+    }
+  }
+};
+R.lightning = (e, t) => {
+  const p = 3.4 + hash(e.seed) * 2, k = (t + e.ph) % p;
+  if (k > 0.28) return;
+  const strike = Math.floor((t + e.ph) / p), r = seeded(e.seed + strike * 977), c = e.c;
+  box(0, 0, W, H, WHITE, 0.22 * (1 - k / 0.28));
+  let x = OX + e.x, y = 0;
+  const end = OY + 18 + Math.floor(r() * 8);
+  while (y < end) {
+    const nx = x + Math.round((r() - 0.5) * 4), ny = y + 2 + Math.floor(r() * 3);
+    seg(x, y, nx, ny, c);
+    px(x + 1, y, WHITE, 0.6);
+    x = nx; y = ny;
+  }
+};
+R.rainbow = (e, t) => {
+  const cols = RAINBOW.map(hex), r = e.r;
+  stamp(OX + e.x, OY + e.y, r + 1, (x, y) => {
+    if (y > 0) return null;
+    const band = Math.floor(r + 0.5 - Math.sqrt(x * x + y * y));
+    return band >= 0 && band < cols.length ? cols[band] : null;
+  }, motionOf(e.motion, t, e.ph));
+};
+R.firework = (e, t) => {
+  const p = 2.6 + hash(e.seed) * 1.4, k = ((t + e.ph) % p) / p, c = e.c, cx = OX + e.x, cy = OY + e.y;
+  if (k < 0.3) {
+    const f = k / 0.3, y = H + (cy - H) * f;
+    px(cx, y, [255, 240, 200]);
+    px(cx, y + 1, [255, 200, 120], 0.5);
+    return;
+  }
+  const f = (k - 0.3) / 0.7, rad = 1 + f * 8, a = 1 - f;
+  const r = seeded(e.seed + Math.floor((t + e.ph) / p) * 31);
+  for (let i = 0; i < 14; i++) {
+    const ang = (i / 14) * Math.PI * 2 + r() * 0.3, rr = rad * (0.8 + r() * 0.3);
+    px(cx + Math.cos(ang) * rr, cy + Math.sin(ang) * rr + f * f * 3, i % 4 === 0 ? WHITE : c, a);
+    px(cx + Math.cos(ang) * rr * 0.7, cy + Math.sin(ang) * rr * 0.7 + f * f * 2, c, a * 0.5);
+  }
+};
+R.note = (e, t) => {
+  const s = sprite(["..##.", "..#.#", "..#..", "..#..", "###..", "###.."], { "#": e.c });
+  stamp(OX + e.x, OY + e.y, 4, s, motionOf(e.motion, t, e.ph));
+};
+
+let scene = null;
+function sceneElement(raw, sid, index) {
+  const e = Object.assign({}, raw);
+  e.seed = strHash(sid + ":" + index + ":" + raw.element);
+  e.ph = hash(e.seed) * 6.283;
+  const def = REG && REG.elements[raw.element];
+  const slot = def ? def.slots.find(s => s.name === "colour") : null;
+  e.c = colour(e.colour, slot ? slot.default : "white");
+  e.born = now();
+  return e;
+}
+function sceneAlpha(t) {
+  if (!scene) return 0;
+  let a = Math.min(1, (t - scene.began) / 0.25);
+  let endAt = scene.ended;
+  if (endAt === null && t - scene.began > 30) endAt = scene.began + 30;
+  if (scene.out !== null) a = Math.min(a, 1 - (t - scene.out) / 0.4);
+  else if (endAt !== null && t > endAt + scene.hold) a = Math.min(a, 1 - (t - endAt - scene.hold) / 0.45);
+  if (a <= 0) { scene = null; return 0; }
+  return Math.max(0, a);
+}
+function drawScene(t, overlay) {
+  if (!overlay) box(0, 0, W, H, BG);
+  for (const e of scene.els) {
+    if (overlay && e.element === "sky") continue;
+    const f = R[e.element];
+    if (!f) continue;
+    const keep = LA;
+    LA = keep * Math.min(1, (t - e.born) / 0.25);
+    try { f(e, t); } catch (err) { if (DEBUG) console.warn(err); }
+    LA = keep;
+  }
+}
+
+const target = { expression: "neutral", valence: 0, arousal: 0, fear: 0, gaze: [0, 0], talk: 0, asleep: false, chaos: 3, noise_seed: 1, motion: {}, alarm: "" };
+const cur = { valence: 0, arousal: 0, fear: 0, gx: 0, gy: 0, talk: 0, sleep: 0 };
+const F = { shape: "neutral", trans: null, blinkStart: -9, nextBlink: 1.5, doubleAt: -1, wx: 0, wy: 0, sx: 0, sy: 0, nextSac: 1, rand: seeded(1), seed: 1 };
+const E = o => Object.assign({ w: 9, h: 13, open: 1, slant: 0, kind: "round", dy: 0 }, o);
+const MO = o => Object.assign({ w: 7, bend: 0.6, open: 0, kind: "line", dx: 0, tilt: 0 }, o);
+const EXPR = {
+  neutral: { L: E({}), R: E({}), m: MO({}), mood: true },
+  happy: { L: E({ kind: "arc", w: 10, h: 10 }), R: E({ kind: "arc", w: 10, h: 10 }), m: MO({ w: 10, bend: 2.6 }), blush: true },
+  curious: { L: E({ h: 11, dy: 1 }), R: E({ w: 10, h: 15, dy: -1 }), m: MO({ kind: "o", w: 3, open: 1.2 }), mood: true },
+  thinking: { L: E({ open: 0.5, slant: 0.2 }), R: E({ open: 0.9 }), m: MO({ w: 5, bend: -0.3, dx: 3 }), dots: true, look: [0.7, -0.7], mood: true },
+  sleepy: { L: E({ open: 0.3 }), R: E({ open: 0.3 }), m: MO({ w: 5, bend: 0.3 }), zzz: true, dim: 0.75 },
+  sad: { L: E({ open: 0.8, slant: -0.45, dy: 1 }), R: E({ open: 0.8, slant: -0.45, dy: 1 }), m: MO({ w: 7, bend: -1.8 }), tint: [140, 180, 255], tear: true },
+  surprised: { L: E({ w: 10, h: 15 }), R: E({ w: 10, h: 15 }), m: MO({ kind: "o", w: 5, open: 2.6 }) },
+  scared: { L: E({ w: 10, h: 15, kind: "pupil" }), R: E({ w: 10, h: 15, kind: "pupil" }), m: MO({ kind: "wavy", w: 7 }), tremble: 0.6, sweat: true, tint: [235, 240, 255] },
+  grumpy: { L: E({ w: 10, h: 11, open: 0.8, slant: 0.6 }), R: E({ w: 10, h: 11, open: 0.8, slant: 0.6 }), m: MO({ w: 7, bend: -1.0 }), tint: [255, 150, 130] },
+  love: { L: E({ kind: "heart", w: 12, h: 12 }), R: E({ kind: "heart", w: 12, h: 12 }), m: MO({ w: 8, bend: 2.2 }), tint: [255, 110, 175], tintMix: 0.9, blush: true, beat: true },
+  dizzy: { L: E({ kind: "spiral", w: 11, h: 11 }), R: E({ kind: "spiral", w: 11, h: 11 }), m: MO({ kind: "wavy", w: 8 }), wobble: true },
+  mischief: { L: E({ open: 0.42, slant: 0.4 }), R: E({ h: 13 }), m: MO({ w: 8, bend: 1.4, dx: 2, tilt: -1.0 }), look: [0.4, 0] }
+};
+
+function reseed(seed) {
+  F.seed = seed | 0;
+  F.rand = seeded(seed >>> 0);
+}
+function blinkGap() {
+  const mo = target.motion || {};
+  const jitter = mo.blink === undefined ? 0.25 : mo.blink;
+  const base = 3.8 - 1.3 * Math.max(0, cur.arousal) + 1.5 * Math.max(0, -cur.arousal);
+  return Math.max(0.9, base * (1 + (F.rand() - 0.5) * 2 * jitter));
+}
+function updateFace(t, dt) {
+  const k = Math.min(1, dt * 6);
+  cur.valence += (target.valence - cur.valence) * k;
+  cur.arousal += (target.arousal - cur.arousal) * k;
+  cur.fear += (target.fear - cur.fear) * k;
+  const looking = !target.attend && t < SEEN.until ? 1 : 0;
+  SEEN.w += (looking - SEEN.w) * Math.min(1, dt * (looking ? 5 : 1.2));
+  cur.gx += ((target.gaze[0] || 0) * (1 - SEEN.w) + SEEN.x * SEEN.w - cur.gx) * Math.min(1, dt * 8);
+  cur.gy += ((target.gaze[1] || 0) * (1 - SEEN.w) + SEEN.y * SEEN.w - cur.gy) * Math.min(1, dt * 8);
+  cur.talk += (target.talk - cur.talk) * Math.min(1, dt * 12);
+  cur.sleep += ((target.asleep ? 1 : 0) - cur.sleep) * Math.min(1, dt * 1.5);
+  if (target.expression !== F.shape && !F.trans && EXPR[target.expression]) F.trans = { to: target.expression, start: t };
+  if (F.trans && t - F.trans.start >= 0.1 && F.shape !== F.trans.to) F.shape = F.trans.to;
+  if (F.trans && t - F.trans.start >= 0.2) F.trans = null;
+  if (t >= F.nextBlink) {
+    F.blinkStart = t;
+    F.nextBlink = t + blinkGap();
+    if (F.rand() < 0.1 + 0.02 * (target.chaos || 0)) F.doubleAt = t + 0.3;
+  }
+  if (F.doubleAt > 0 && t >= F.doubleAt) { F.blinkStart = t; F.doubleAt = -1; }
+  const mo = target.motion || {};
+  const wander = mo.gaze === undefined ? 0.8 : mo.gaze;
+  if (t >= F.nextSac) {
+    const calm = 1 - 0.7 * Math.max(SEEN.w, target.attend ? 1 : 0);
+    F.sx = (F.rand() * 2 - 1) * wander * calm;
+    F.sy = (F.rand() * 2 - 1) * wander * 0.55 * calm;
+    F.nextSac = t + 0.9 + F.rand() * 3.2 * (1.25 - Math.min(10, target.chaos || 0) / 12);
+  }
+  F.wx += (F.sx - F.wx) * Math.min(1, dt * 14);
+  F.wy += (F.sy - F.wy) * Math.min(1, dt * 14);
+}
+function openness(t) {
+  let b = 1;
+  const p = (t - F.blinkStart) / 0.16;
+  if (p >= 0 && p < 1) b = Math.abs(1 - 2 * p);
+  if (F.trans) {
+    const q = (t - F.trans.start) / 0.2;
+    if (q >= 0 && q < 1) b = Math.min(b, Math.abs(1 - 2 * q));
+  }
+  return b;
+}
+function inRound(dx, dy, hw, hh, rr) {
+  const ax = Math.abs(dx), ay = Math.abs(dy);
+  if (ax > hw || ay > hh) return false;
+  const cx = ax - (hw - rr), cy = ay - (hh - rr);
+  return !(cx > 0 && cy > 0 && cx * cx + cy * cy > rr * rr);
+}
+function closedEye(cx, cy, w, c, sleeping) {
+  const hw = Math.floor(w / 2);
+  for (let x = -hw; x <= hw; x++) {
+    const u = x / Math.max(1, hw);
+    px(cx + x, cy + (sleeping ? Math.round((1 - u * u) * 1.2) : 0), c);
+  }
+}
+function eye(cx, cy, p, side, t, c, ex) {
+  cx = Math.round(cx);
+  cy = Math.round(cy + p.dy);
+  let w = p.w, h = p.h * (1 + 0.1 * cur.arousal);
+  if (ex.beat) { const s = 1 + 0.12 * Math.max(0, Math.sin(t * 7)); w *= s; h *= s; }
+  const b = openness(t);
+  const sleeping = cur.sleep > 0.55;
+  const open = p.open * b * (1 - cur.sleep * 0.8);
+  if (sleeping || open < 0.14) { closedEye(cx, cy + Math.round(h * 0.18), w, c, sleeping); return; }
+  const hw = w / 2, hh = h / 2;
+  if (p.kind === "arc") {
+    const oy = cy + h * 0.2, R2 = hw;
+    for (let y = Math.floor(cy - hh) - 1; y <= Math.ceil(oy); y++) for (let x = Math.floor(cx - hw) - 1; x <= Math.ceil(cx + hw); x++) {
+      const dx = x + 0.5 - cx, dy = (y + 0.5 - oy) / Math.max(0.3, b);
+      const dd = Math.sqrt(dx * dx + dy * dy);
+      if (dy <= 0.5 && dd <= R2 + 0.3 && dd >= R2 - 2.2) px(x, y, c);
+    }
+    return;
+  }
+  if (p.kind === "heart") {
+    for (let y = Math.floor(cy - hh) - 1; y <= Math.ceil(cy + hh); y++) for (let x = Math.floor(cx - hw) - 1; x <= Math.ceil(cx + hw); x++) {
+      const u = (x + 0.5 - cx) / (hw * 0.95), v = -(y + 0.5 - cy) / (hh * 0.95 * Math.max(0.3, b)) + 0.25;
+      const q = u * u + v * v - 1;
+      if (q * q * q - u * u * v * v * v <= 0) px(x, y, (u < -0.3 && v > 0.4) ? shade(c, 1.3) : c);
+    }
+    return;
+  }
+  if (p.kind === "spiral") {
+    for (let y = Math.floor(cy - hh); y <= Math.ceil(cy + hh); y++) for (let x = Math.floor(cx - hw); x <= Math.ceil(cx + hw); x++) {
+      const dx = x + 0.5 - cx, dy = y + 0.5 - cy, r = Math.sqrt(dx * dx + dy * dy);
+      if (r > hw) continue;
+      const v = r / 1.7 - (Math.atan2(dy, dx) * side) / (Math.PI * 2) + t * 1.6;
+      if (v - Math.floor(v) < 0.5 || r > hw - 0.8) px(x, y, c);
+    }
+    return;
+  }
+  const top = cy - hh, rr = Math.min(w, h) * 0.34;
+  for (let y = Math.floor(cy - hh); y < Math.ceil(cy + hh); y++) for (let x = Math.floor(cx - hw); x < Math.ceil(cx + hw); x++) {
+    const dx = x + 0.5 - cx, dy = y + 0.5 - cy;
+    if (!inRound(dx, dy, hw, hh, rr)) continue;
+    const uIn = -side * dx / hw;
+    const tilt = p.slant > 0 ? p.slant * h * 0.5 * (uIn + 1) / 2 : -p.slant * h * 0.5 * (1 - uIn) / 2;
+    if (y + 0.5 < top + (1 - open) * h + tilt) continue;
+    px(x, y, c);
+  }
+  if (p.kind === "pupil") {
+    const ox = Math.round(cx + (cur.gx * 0.6 + F.wx * 0.4) * (hw - 2)), oy = Math.round(cy + 1 + cur.gy * (hh - 3));
+    box(ox - 1, oy - 1, 2, 2, DARK);
+  }
+}
+function mouth(mx, my, p, t, c, ex) {
+  mx = Math.round(mx + p.dx);
+  my = Math.round(my);
+  const hw = Math.max(1, Math.floor(p.w / 2));
+  if (cur.talk > 0.04) {
+    const o = 1 + cur.talk * 3.2 * (0.35 + 0.65 * noise(F.seed + 9, t * 13));
+    const rx = hw + 0.5, ry = Math.max(0.8, o / 2), cy = my + ry - 0.5;
+    for (let y = Math.floor(cy - ry - 1); y <= Math.ceil(cy + ry + 1); y++) for (let x = -hw - 1; x <= hw + 1; x++) {
+      const v = (x * x) / (rx * rx) + ((y - cy) * (y - cy)) / (ry * ry);
+      if (v <= 1) px(mx + x, y, v > 0.45 ? c : shade(c, 0.25));
+    }
+    return;
+  }
+  if (p.kind === "o") {
+    const rx = Math.max(1.4, p.w / 2), ry = Math.max(1, p.open);
+    for (let y = -Math.ceil(ry) - 1; y <= Math.ceil(ry) + 1; y++) for (let x = -Math.ceil(rx) - 1; x <= Math.ceil(rx) + 1; x++) {
+      const v = Math.sqrt((x * x) / (rx * rx) + (y * y) / (ry * ry));
+      if (Math.abs(v - 1) < 0.34) px(mx + x, my + y, c);
+    }
+    return;
+  }
+  let prev = null;
+  const bias = ex.mood ? cur.valence * 1.2 : 0;
+  for (let x = -hw; x <= hw; x++) {
+    const u = x / hw;
+    let y;
+    if (p.kind === "wavy") y = my + Math.sin(u * Math.PI * 2 + t * 5) * 0.9;
+    else y = my + (p.bend + bias) * (0.5 - u * u) + p.tilt * u;
+    y = Math.round(y);
+    if (prev !== null && Math.abs(y - prev) > 1) {
+      const step = y > prev ? 1 : -1;
+      for (let k = prev + step; k !== y; k += step) px(mx + x - 1, k, c);
+    }
+    px(mx + x, y, c);
+    prev = y;
+  }
+}
+function faceColour(ex) {
+  let c = FACE_C;
+  if (ex.tint) c = mix(c, ex.tint, ex.tintMix || 0.65);
+  if (ex.dim) c = shade(c, ex.dim);
+  return shade(c, 1 - 0.45 * cur.sleep);
+}
+function drawFace(t) {
+  const ex = EXPR[F.shape] || EXPR.neutral;
+  const mo = target.motion || {};
+  const spd = mo.speed === undefined ? 0.6 : mo.speed, sway = mo.sway === undefined ? 0.3 : mo.sway;
+  const breath = 1.4 + 0.9 * (cur.arousal + 1) / 2;
+  let fx = W / 2 + SH.x + snoise(F.seed + 3, t * 0.25 * spd) * sway * 1.6;
+  let fy = H / 2 - 1 + SH.y + Math.sin(t * breath) * 0.55;
+  if (ex.wobble) { fx += Math.cos(t * 3) * 1.2; fy += Math.sin(t * 3) * 0.8; }
+  const tremble = Math.max(ex.tremble || 0, Math.max(0, cur.fear - 3) / 7);
+  if (tremble > 0.02) {
+    const j = Math.floor(t * 18);
+    fx += (hash(j * 7 + F.seed) - 0.5) * 2 * tremble;
+    fy += (hash(j * 13 + F.seed) - 0.5) * 1.4 * tremble;
+  }
+  const look = ex.look || [0, 0];
+  const gx = (cur.gx + look[0]) * 2.4 + F.wx + snoise(F.seed + 1, t * 0.7 * spd) * 0.25;
+  const gy = (cur.gy + look[1]) * 1.6 + F.wy + snoise(F.seed + 2, t * 0.7 * spd) * 0.2;
+  const c = faceColour(ex);
+  const sep = 13, ey = fy - 3;
+  eye(fx - sep + gx, ey + gy, ex.L, -1, t, c, ex);
+  eye(fx + sep + gx, ey + gy, ex.R, 1, t, c, ex);
+  mouth(fx + gx * 0.35, fy + 10 + gy * 0.3, ex.m, t, c, ex);
+  const pink = [255, 126, 182];
+  if (ex.blush) {
+    [[-sep, -1], [sep, 1]].forEach(o => { const bx = Math.round(fx + o[0] + gx) - 2; box(bx + (o[1] < 0 ? -1 : 2), Math.round(ey + gy + 7), 3, 1, pink, 0.45); });
+  }
+  if (ex.zzz || cur.sleep > 0.5) {
+    for (let i = 0; i < 3; i++) {
+      const age = (t * 0.4 + i / 3) % 1, a = Math.sin(age * Math.PI) * 0.9;
+      const x = Math.round(fx + 18 + age * 4), y = Math.round(fy - 7 - age * 7);
+      box(x, y, 3, 1, c, a); px(x + 1, y + 1, c, a); box(x, y + 2, 3, 1, c, a);
+    }
+  }
+  if (ex.dots) {
+    const n = Math.floor(t * 2.5) % 4;
+    for (let i = 0; i < 3; i++) if (n > i) px(Math.round(fx + 18 + i * 2), Math.round(fy - 11), c);
+  }
+  if (ex.tear) {
+    const k = (t % 2.8) / 2.8;
+    if (k < 0.75) {
+      const tx = Math.round(fx - sep + gx + 3), ty = Math.round(ey + gy + 7 + k * 8);
+      px(tx, ty, [110, 170, 255], 1 - k);
+      px(tx, ty - 1, [110, 170, 255], 0.5 * (1 - k));
+    }
+  }
+  if (ex.sweat) {
+    const sx = Math.round(fx + sep + 7), sy = Math.round(fy - 10 + (t % 1.6) * 1.5);
+    px(sx, sy, [150, 200, 255]); px(sx, sy + 1, [150, 200, 255]); px(sx - 1, sy + 1, [150, 200, 255], 0.5);
+  }
+}
+
+const ALARM_RED = [230, 20, 20];
+const ALARM_FLASHES = 2;
+function drawAlarm(t, word) {
+  const lit = Math.floor(t * ALARM_FLASHES * 2) % 2 === 0;
+  const ground = lit ? ALARM_RED : WHITE, ink = lit ? WHITE : ALARM_RED;
+  fill(ground);
+  const sep = 13, ey = 4;
+  [-1, 1].forEach(side => { box(Math.round(W / 2 + side * sep - 3), ey, 6, 8, ink); box(Math.round(W / 2 + side * sep - 1), ey + 3, 2, 3, ground); });
+  const s = word.slice(0, 8), scale = textWidth(s) * 2 <= W - 2 ? 2 : 1;
+  const x0 = Math.round((W - textWidth(s) * scale) / 2), y0 = H - 5 * scale - 3;
+  for (let i = 0; i < s.length; i++) {
+    const g = glyph(s[i]);
+    if (!g) continue;
+    for (let gy = 0; gy < 5; gy++) for (let col = 0; col < 3; col++) {
+      if ((g[gy] >> (2 - col)) & 1) box(x0 + (i * 4 + col) * scale, y0 + gy * scale, scale, scale, ink);
+    }
+  }
+}
+
+const ripples = [];
+function drawRipples(t) {
+  for (let i = ripples.length - 1; i >= 0; i--) {
+    const r = ripples[i], age = t - r.t;
+    if (age > 0.6) { ripples.splice(i, 1); continue; }
+    const rad = 1 + age * 12, a = 1 - age / 0.6;
+    for (let k = 0; k < 24; k++) {
+      const ang = (k / 24) * Math.PI * 2;
+      px(r.x + Math.cos(ang) * rad, r.y + Math.sin(ang) * rad, FACE_C, a * 0.7);
+    }
+  }
+}
+
+let es = null, linkDownSince = 0;
+function apply(ev, data) {
+  if (ev === "face") {
+    Object.assign(target, data);
+    if ((data.noise_seed | 0) !== F.seed) reseed(data.noise_seed | 0);
+    return;
+  }
+  if (ev !== "scene") return;
+  const t = now();
+  if (data.op === "begin") {
+    scene = { id: data.id, mode: data.mode === "overlay" ? "overlay" : "full", hold: Math.max(1, +data.hold || 8), title: data.title || "", els: [], began: t, ended: null, out: null };
+  } else if (data.op === "line" && scene && scene.id === data.id && data.element && R[data.element.element]) {
+    scene.els.push(sceneElement(data.element, scene.id, data.index | 0));
+  } else if (data.op === "end" && scene && scene.id === data.id) {
+    scene.ended = t;
+  } else if (data.op === "clear" && scene) {
+    scene.out = t;
+  }
+}
+function connect() {
+  try {
+    es = new EventSource("/events");
+  } catch (err) {
+    setTimeout(connect, 2000);
+    return;
+  }
+  ["face", "scene"].forEach(name => es.addEventListener(name, m => {
+    try { apply(name, JSON.parse(m.data)); } catch (err) { if (DEBUG) console.warn(err); }
+    rouse();
+  }));
+  es.addEventListener("eyes", m => {
+    try { eyesEvent(JSON.parse(m.data)); } catch (err) { if (DEBUG) console.warn(err); }
+  });
+  es.addEventListener("teach", m => {
+    try { teachShown(JSON.parse(m.data)); } catch (err) { if (DEBUG) console.warn(err); }
+    rouse();
+  });
+  es.addEventListener("ears", m => {
+    try { const e = JSON.parse(m.data); EARS.on = !!e.on; EARS.words = !!e.words; EARS.muted = !!e.muted; } catch (err) { if (DEBUG) console.warn(err); }
+    rouse();
+  });
+  es.addEventListener("camera", m => {
+    try { EYE.brainCam = !!JSON.parse(m.data).on; } catch (err) { if (DEBUG) console.warn(err); }
+    rouse();
+  });
+  es.addEventListener("look", m => {
+    try { lookAt(JSON.parse(m.data)); } catch (err) { if (DEBUG) console.warn(err); }
+    rouse();
+  });
+  es.onopen = () => { linkDownSince = 0; };
+  es.onerror = () => { if (!linkDownSince) linkDownSince = now(); };
+}
+
+let lastSent = 0;
+function sendTouch(kind, cx, cy) {
+  const t = now();
+  if (t - lastSent < 0.25 && kind === "tap") return;
+  lastSent = t;
+  const body = JSON.stringify({ kind: kind, x: Math.max(0, Math.min(1, cx / window.innerWidth)), y: Math.max(0, Math.min(1, cy / window.innerHeight)) });
+  fetch("/touch", { method: "POST", headers: { "Content-Type": "application/json" }, body: body }).catch(() => {});
+}
+const PAD = { on: false, x: 0, y: 0, held: false, timer: 0, id: null };
+function teachShown(d) {
+  const box = document.getElementById("teach"), list = document.getElementById("steps");
+  box.style.display = d.on ? "block" : "none";
+  list.textContent = "";
+  (d.steps || []).forEach(s => { const li = document.createElement("li"); li.textContent = String(s); list.appendChild(li); });
+  PAD.on = !!(d.on && d.pad);
+  document.getElementById("pad").style.display = PAD.on ? "block" : "none";
+  if (!PAD.on) padRelease();
+}
+function postPad(body) {
+  fetch("/pad", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) }).catch(() => {});
+}
+function padSend() {
+  if (!PAD.on) return;
+  postPad({ kind: "drive", x: Math.round(PAD.x * 1000) / 1000, y: Math.round(PAD.y * 1000) / 1000 });
+}
+function padMove(ev) {
+  const r = document.getElementById("stick").getBoundingClientRect();
+  const half = r.width / 2;
+  let dx = (ev.clientX - r.left - half) / half, dy = (ev.clientY - r.top - half) / half;
+  const size = Math.hypot(dx, dy);
+  if (size > 1) { dx /= size; dy /= size; }
+  PAD.x = -dx; PAD.y = -dy;
+  const knob = document.getElementById("knob");
+  knob.style.transform = "translate(" + (dx * half * 0.7) + "px," + (dy * half * 0.7) + "px)";
+}
+function padRelease() {
+  if (!PAD.held) return;
+  PAD.held = false; PAD.x = 0; PAD.y = 0;
+  clearInterval(PAD.timer);
+  document.getElementById("knob").style.transform = "";
+  postPad({ kind: "drive", x: 0, y: 0 });
+}
+(function padWire() {
+  const stick = document.getElementById("stick");
+  stick.addEventListener("pointerdown", ev => {
+    ev.stopPropagation();
+    if (!PAD.on) return;
+    PAD.held = true; PAD.id = ev.pointerId;
+    try { stick.setPointerCapture(ev.pointerId); } catch (err) {}
+    padMove(ev); padSend();
+    clearInterval(PAD.timer);
+    PAD.timer = setInterval(padSend, 150);
+  });
+  stick.addEventListener("pointermove", ev => { if (PAD.held && ev.pointerId === PAD.id) padMove(ev); });
+  stick.addEventListener("pointerup", padRelease);
+  stick.addEventListener("pointercancel", padRelease);
+  document.querySelectorAll("#keys button").forEach(b => b.addEventListener("pointerdown", ev => {
+    ev.stopPropagation();
+    if (!PAD.on) return;
+    const kind = b.dataset.pad;
+    if (kind === "tilt") postPad({ kind: "tilt", way: b.dataset.way });
+    else if (kind === "face") postPad({ kind: "face", expression: b.dataset.face });
+    else { padRelease(); postPad({ kind: "stop" }); }
+  }));
+})();
+let press = null, wake = null, wantAwake = false;
+function keepAwake() {
+  if (!navigator.wakeLock || wake) return;
+  navigator.wakeLock.request("screen").then(l => { wake = l; l.addEventListener("release", () => { wake = null; }); }).catch(() => {});
+}
+function goFull() {
+  const el = document.documentElement;
+  if (!document.fullscreenElement && el.requestFullscreen) el.requestFullscreen({ navigationUI: "hide" }).then(() => {
+    if (screen.orientation && screen.orientation.lock) screen.orientation.lock("landscape").catch(() => {});
+  }).catch(() => {});
+  wantAwake = true;
+  keepAwake();
+  eyesTouched();
+}
+cv.addEventListener("pointerdown", rouse);
+cv.addEventListener("pointerdown", ev => {
+  goFull();
+  const lx = ev.clientX / window.innerWidth * W, ly = ev.clientY / window.innerHeight * H;
+  ripples.push({ x: lx, y: ly, t: now() });
+  press = { x: ev.clientX, y: ev.clientY, travel: 0, sent: false, timer: null };
+  press.timer = setTimeout(() => { if (press && !press.sent) { press.sent = true; sendTouch("hold", press.x, press.y); } }, 700);
+});
+cv.addEventListener("pointermove", ev => {
+  if (!press) return;
+  press.travel += Math.hypot(ev.movementX || 0, ev.movementY || 0);
+  if (!press.sent && press.travel > Math.min(window.innerWidth, window.innerHeight) * 0.08) {
+    press.sent = true;
+    clearTimeout(press.timer);
+    sendTouch("stroke", ev.clientX, ev.clientY);
+  }
+});
+function release(ev) {
+  if (!press) return;
+  clearTimeout(press.timer);
+  if (!press.sent) sendTouch("tap", ev.clientX, ev.clientY);
+  press = null;
+}
+cv.addEventListener("pointerup", release);
+cv.addEventListener("pointercancel", () => { if (press) clearTimeout(press.timer); press = null; });
+document.addEventListener("visibilitychange", () => {
+  if (document.visibilityState !== "visible") return;
+  if (wantAwake) keepAwake();
+  if (EYE.on) applyEyes();
+});
+
+const Q = new URLSearchParams(location.search);
+const SEEN = { x: 0, y: 0, w: 0, until: 0, track: null };
+const EYE = {
+  cfg: readEyes(), source: Q.get("source") || "camera", pin: Q.get("camera"),
+  on: false, want: "front", seq: 0, applied: 0, cam: null, live: false, brainCam: false,
+  worker: null, ready: false, engine: null, waiters: [], fallback: false, busy: false, touched: false, granted: false, job: Promise.resolve(),
+  stream: null, video: null, img: null, scene: null, timer: 0, loopId: 0, hadStream: false,
+  lastFrame: 0, lastPost: 0, lastSeen: 0, fps: 0, frames: 0, last: null, report: "", status: "off",
+  sid: Math.random().toString(36).slice(2, 10)
+};
+const TAG0 = ["..........", ".########.", ".#..#.#.#.", ".##...#.#.", ".##..####.", ".#.#.####.", ".##.#..##.", ".####.###.", ".########.", ".........."];
+
+function readEyes() {
+  try { return JSON.parse(document.getElementById("eyes").textContent) || {}; } catch (err) { return {}; }
+}
+function clamp(v, lo, hi) {
+  return Math.max(lo, Math.min(hi, v));
+}
+function round(v, n) {
+  const k = Math.pow(10, n);
+  return Math.round(v * k) / k;
+}
+function sleep(ms) {
+  return new Promise(ok => setTimeout(ok, ms));
+}
+function why(err) {
+  const name = err && err.name;
+  if (name === "NotAllowedError" || name === "SecurityError") return "the camera is not allowed; allow it for this page";
+  if (name === "NotReadableError" || name === "AbortError") return "the camera is busy or cannot start";
+  if (name === "NotFoundError" || name === "OverconstrainedError") return "no such camera on this phone";
+  return String((err && err.message) || err).slice(0, 160);
+}
+function camSetting(cam, key) {
+  const q = Q.get((key === "fov_h_deg" ? "fov" : key) + "_" + cam);
+  const base = ((EYE.cfg.cameras || {})[cam] || {})[key];
+  if (q === null) return base;
+  if (key === "mirror") return q === "1" || q === "true";
+  const n = parseFloat(q);
+  return isFinite(n) ? n : base;
+}
+function fovOf(cam) {
+  const v = +camSetting(cam, "fov_h_deg");
+  return v > 1 && v < 179 ? v : (cam === "rear" ? 65 : 70);
+}
+function rotationOf(cam, w, h) {
+  const set = camSetting(cam, "rotate");
+  if (set !== null && set !== undefined && set !== "") return (((Math.round(+set / 90) * 90) % 360) + 360) % 360;
+  if (EYE.source !== "camera") return 0;
+  if ((window.innerWidth >= window.innerHeight) === (w >= h)) return 0;
+  const angle = screen.orientation ? screen.orientation.angle : (window.orientation || 0);
+  return angle === 270 || angle === -90 ? 90 : 270;
+}
+function postJSON(path, body) {
+  return fetch(path, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) }).then(r => r.status).catch(() => 0);
+}
+function report(state, reason) {
+  const cam = state === "on" ? EYE.cam : (EYE.pin || EYE.want);
+  const key = [state, cam, EYE.applied, EYE.seq, reason || ""].join("|");
+  EYE.status = state + (reason ? ": " + reason : "");
+  if (key === EYE.report) return;
+  EYE.report = key;
+  const size = EYE.last ? { width: EYE.last.w, height: EYE.last.h } : {};
+  postJSON("/eyes", Object.assign({ state: state, camera: cam, seq: state === "on" ? EYE.applied : EYE.seq, reason: reason || "", source: EYE.source }, size));
+}
+
+function eyesBoot() {
+  if (!EYE.cfg.camera) return;
+  if (!EYE.cfg.assets) {
+    EYE.status = "failed: the eye files are missing";
+    return;
+  }
+  const cfg = { vendor: EYE.cfg.vendor, people: Q.get("people") || EYE.cfg.people || "both", tag: EYE.cfg.tag || { id: 0, size_m: 0.06 }, delegate: Q.get("delegate") || "CPU", decimate: +Q.get("decimate") || 0 };
+  let w = null;
+  if (window.Worker && typeof OffscreenCanvas !== "undefined" && Q.get("worker") !== "0") {
+    try { w = new Worker("/eyes_worker.js"); } catch (err) { w = null; }
+  }
+  if (w) {
+    w.onmessage = e => onEngine(e.data);
+    w.onerror = () => { if (!EYE.ready) { w.terminate(); fallbackEngine(cfg); } };
+    EYE.worker = w;
+    w.postMessage({ op: "init", cfg: cfg });
+  } else {
+    fallbackEngine(cfg);
+  }
+  if (EYE.source === "camera" && navigator.permissions && navigator.permissions.query) {
+    navigator.permissions.query({ name: "camera" }).then(p => {
+      EYE.granted = p.state === "granted";
+      if (EYE.granted && EYE.on) applyEyes();
+    }).catch(() => {});
+  }
+}
+function fallbackEngine(cfg) {
+  EYE.fallback = true;
+  const s = document.createElement("script");
+  s.src = "/eyes_worker.js";
+  s.onload = () => {
+    const engine = window.PebbleEyesEngine;
+    const run = m => engine.handle(m).then(onEngine, err => onEngine({ op: m.op === "init" ? "ready" : "seen", error: why(err), errors: [why(err)] }));
+    EYE.worker = { postMessage: m => requestAnimationFrame(() => setTimeout(() => run(m), 0)) };
+    EYE.worker.postMessage({ op: "init", cfg: cfg });
+  };
+  s.onerror = () => { EYE.status = "failed: the eyes could not load"; };
+  document.head.appendChild(s);
+}
+function engineReady(ms) {
+  if (EYE.ready) return Promise.resolve(EYE.engine);
+  return new Promise(ok => {
+    const timer = setTimeout(() => ok(null), ms);
+    EYE.waiters.push(r => { clearTimeout(timer); ok(r); });
+  });
+}
+function onEngine(r) {
+  if (!r) return;
+  if (r.op === "ready") {
+    EYE.ready = true;
+    EYE.engine = r;
+    if (r.errors && r.errors.length) console.warn("eyes:", r.errors.join("; "));
+    EYE.waiters.splice(0).forEach(f => f(r));
+    return;
+  }
+  if (r.op !== "seen") return;
+  EYE.busy = false;
+  if (!EYE.live || r.camera !== EYE.cam || !r.people) return;
+  const t = now();
+  if (EYE.lastSeen) EYE.fps = EYE.fps ? EYE.fps * 0.85 + 0.15 / Math.max(0.001, t - EYE.lastSeen) : 1 / Math.max(0.001, t - EYE.lastSeen);
+  EYE.lastSeen = t;
+  EYE.frames++;
+  EYE.last = r;
+  if (r.camera === "front") aim(r.people);
+  sendSight(r);
+}
+function aim(people) {
+  if (!people.length) return;
+  const weight = p => (p.face ? 2 : 1) * p.height_frac;
+  const best = people.reduce((a, p) => (weight(p) > weight(a) ? p : a), people[0]);
+  let pick = people.find(p => p.track === SEEN.track) || best;
+  if (best !== pick && weight(best) > 1.6 * weight(pick)) pick = best;
+  SEEN.track = pick.track;
+  lookAt({ on: true, bearing_deg: pick.bearing_deg, elevation_deg: pick.elevation_deg });
+}
+function lookAt(d) {
+  if (!d || !d.on || !isFinite(d.bearing_deg) || !isFinite(d.elevation_deg)) {
+    SEEN.until = 0;
+    return;
+  }
+  SEEN.x = clamp(-d.bearing_deg / 30, -1, 1);
+  SEEN.y = clamp(-d.elevation_deg / 22, -1, 1);
+  SEEN.until = now() + 0.7;
+}
+function sendSight(r) {
+  const rate = clamp(+EYE.cfg.rate_hz || 10, 1, 30), t = now();
+  if (t - EYE.lastPost < 1 / rate - 0.01) return;
+  EYE.lastPost = t;
+  const people = r.people.map(p => ({ bearing_deg: round(p.bearing_deg, 2), elevation_deg: round(p.elevation_deg, 2), height_frac: round(p.height_frac, 4), width_frac: round(p.width_frac, 4), score: round(p.score, 3), face: !!p.face, track: p.track }));
+  const tags = r.tags.map(g => ({ id: g.id, bearing_deg: round(g.bearing_deg, 2), distance_m: round(g.distance_m, 4), yaw_deg: round(g.yaw_deg, 2), score: round(g.score, 3) }));
+  const avg = r.avg || {};
+  const stats = { fps: round(EYE.fps, 1), w: r.w, h: r.h, face_ms: round(avg.face || 0, 1), body_ms: round(avg.body || 0, 1), tag_ms: round(avg.tag || 0, 1), source: EYE.source, worker: EYE.fallback ? "no" : "yes", blocked: r.blocked | 0 };
+  if (r.error) stats.error = r.error;
+  postJSON("/see", { sid: EYE.sid, seq: r.seq, camera: r.camera, fov_h_deg: r.fov, t: r.t, sent: now(), people: people, tags: tags, stats: stats });
+}
+
+function eyesEvent(data) {
+  EYE.on = !!data.on;
+  EYE.want = data.camera === "rear" ? "rear" : "front";
+  EYE.seq = data.seq | 0;
+  applyEyes();
+}
+function eyesTouched() {
+  if (EYE.touched) return;
+  EYE.touched = true;
+  if (EYE.on && !EYE.live) applyEyes();
+}
+function applyEyes() {
+  EYE.job = EYE.job.then(applyNow, applyNow);
+}
+async function applyNow() {
+  if (!EYE.cfg.camera) return;
+  const seq = EYE.seq;
+  if (!EYE.on) {
+    stopSource();
+    EYE.cam = null;
+    report("off");
+    return;
+  }
+  if (!EYE.cfg.assets) { report("failed", "the eye files are missing; run python -m pebble.web.fetch_eyes"); return; }
+  const cam = EYE.pin === "rear" || EYE.pin === "front" ? EYE.pin : EYE.want;
+  if (EYE.live && EYE.cam === cam) {
+    EYE.applied = seq;
+    report("on");
+    return;
+  }
+  if (EYE.source === "camera" && !EYE.granted && !EYE.touched) { report("waiting", "touch the screen to let Pebble see"); return; }
+  report("starting");
+  stopSource();
+  try {
+    const engine = await engineReady(30000);
+    if (!engine) throw new Error("the eyes did not load in time");
+    if (!engine.faces && !engine.bodies && !engine.tags) throw new Error("the eyes could not load: " + (engine.errors || []).join("; "));
+    await startSource(cam);
+    EYE.cam = cam;
+    EYE.live = true;
+    EYE.applied = seq;
+    report("on");
+  } catch (err) {
+    stopSource();
+    report("failed", why(err));
+  }
+  if (EYE.seq !== seq) applyEyes();
+}
+function stopSource() {
+  clearTimeout(EYE.timer);
+  EYE.timer = 0;
+  EYE.loopId++;
+  if (EYE.stream) EYE.stream.getTracks().forEach(tr => tr.stop());
+  EYE.stream = null;
+  if (EYE.video) EYE.video.srcObject = null;
+  EYE.live = false;
+  EYE.busy = false;
+  EYE.img = null;
+  EYE.scene = null;
+  EYE.lastSeen = 0;
+  SEEN.until = 0;
+}
+function videoEl() {
+  if (!EYE.video) {
+    const v = document.createElement("video");
+    v.muted = true;
+    v.playsInline = true;
+    v.setAttribute("playsinline", "");
+    v.setAttribute("muted", "");
+    v.style.cssText = "position:fixed;left:0;top:0;width:2px;height:2px;opacity:0;pointer-events:none";
+    document.body.appendChild(v);
+    EYE.video = v;
+  }
+  return EYE.video;
+}
+async function openCamera(cam) {
+  const size = cam === "rear" ? [1280, 960] : [640, 480];
+  const base = { width: { ideal: size[0] }, height: { ideal: size[1] }, frameRate: { ideal: 30, max: 30 } };
+  const ask = video => navigator.mediaDevices.getUserMedia({ video: Object.assign({}, base, video), audio: false });
+  try {
+    return await ask({ facingMode: { exact: cam === "rear" ? "environment" : "user" } });
+  } catch (err) {
+    if (err && (err.name === "NotAllowedError" || err.name === "SecurityError")) throw err;
+    const devices = (await navigator.mediaDevices.enumerateDevices()).filter(d => d.kind === "videoinput");
+    const pick = devices.find(d => (cam === "rear" ? /back|rear|environment/i : /front|user|face/i).test(d.label));
+    if (pick) return ask({ deviceId: { exact: pick.deviceId } });
+    if (cam === "front" && devices.length) return ask({});
+    throw new Error("this phone has no " + cam + " camera that the browser can open");
+  }
+}
+async function startSource(cam) {
+  if (EYE.source === "image") {
+    EYE.img = await loadImage(Q.get("src") || "/vendor/samples/portrait.jpg");
+    loopTimer();
+    return;
+  }
+  if (EYE.source === "scene") {
+    EYE.scene = makeScene(cam);
+    loopTimer();
+    return;
+  }
+  if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) throw new Error("this browser cannot open the camera here; open the page at 127.0.0.1 on the phone itself");
+  if (EYE.hadStream) await sleep(250);
+  const stream = await openCamera(cam);
+  EYE.hadStream = true;
+  EYE.granted = true;
+  EYE.stream = stream;
+  const v = videoEl();
+  v.srcObject = stream;
+  await v.play();
+  stream.getVideoTracks().forEach(tr => tr.addEventListener("ended", () => {
+    if (EYE.stream !== stream) return;
+    stopSource();
+    report("failed", "the camera stopped");
+    setTimeout(applyEyes, 3000);
+  }));
+  loopVideo();
+}
+function loadImage(src) {
+  return new Promise((ok, bad) => {
+    const i = new Image();
+    i.onload = () => ok(i);
+    i.onerror = () => bad(new Error("cannot load the test picture " + src));
+    i.src = src;
+  });
+}
+function loopVideo() {
+  const id = EYE.loopId, v = EYE.video;
+  const step = (stamp, meta) => {
+    if (id !== EYE.loopId) return;
+    let t = now();
+    if (meta && meta.captureTime && Math.abs(meta.captureTime / 1000 - t) < 2) t = meta.captureTime / 1000;
+    pump(v, v.videoWidth, v.videoHeight, t);
+    if (v.requestVideoFrameCallback) v.requestVideoFrameCallback(step);
+    else EYE.timer = setTimeout(step, 30);
+  };
+  if (v.requestVideoFrameCallback) v.requestVideoFrameCallback(step);
+  else step();
+}
+function loopTimer() {
+  const id = EYE.loopId;
+  const step = () => {
+    if (id !== EYE.loopId) return;
+    const t = now();
+    if (EYE.scene && EYE.scene.moving) drawTagScene(EYE.scene, t);
+    const src = EYE.img || EYE.scene.canvas;
+    pump(src, src.naturalWidth || src.width, src.naturalHeight || src.height, t);
+    EYE.timer = setTimeout(step, 30);
+  };
+  step();
+}
+function pump(src, w, h, t) {
+  if (!EYE.ready || EYE.busy || !EYE.live || !w || !h) return;
+  const maxFps = EYE.fallback ? 5 : clamp(+Q.get("fps") || 15, 1, 30), tn = now();
+  if (tn - EYE.lastFrame < 1 / maxFps - 0.004) return;
+  EYE.lastFrame = tn;
+  const cam = EYE.cam, k = Math.min(1, (cam === "rear" ? 1280 : 640) / Math.max(w, h));
+  const opts = k < 1 ? { resizeWidth: Math.round(w * k), resizeHeight: Math.round(h * k), resizeQuality: "medium" } : {};
+  const msg = { op: "frame", camera: cam, fov: fovOf(cam), mirror: !!camSetting(cam, "mirror"), rotate: rotationOf(cam, w, h), people: (Q.get("people") || EYE.cfg.people) !== "none", tags: cam === "rear" || Q.get("tags") === "both", t: t, seq: EYE.applied, fps: maxFps };
+  EYE.busy = true;
+  createImageBitmap(src, opts).then(bm => {
+    if (!EYE.live || cam !== EYE.cam) { bm.close(); EYE.busy = false; return; }
+    msg.bitmap = bm;
+    EYE.worker.postMessage(msg, EYE.fallback ? [] : [bm]);
+  }).catch(() => { EYE.busy = false; });
+}
+
+function makeScene(cam) {
+  const w = +Q.get("w") || (cam === "rear" ? 1280 : 640), h = +Q.get("h") || Math.round(w * 3 / 4);
+  const c = document.createElement("canvas");
+  c.width = w;
+  c.height = h;
+  const sc = { canvas: c, w: w, h: h, cam: cam, moving: Q.get("move") === "1" };
+  drawTagScene(sc, 0);
+  return sc;
+}
+function sceneTag(sc, t) {
+  const num = (k, d) => { const v = parseFloat(Q.get(k)); return isFinite(v) ? v : d; };
+  const p = { d: num("tag_d", 0.5), b: num("tag_b", 0), e: num("tag_e", 0), yaw: num("tag_yaw", 0), size: num("tag_size", (EYE.cfg.tag && EYE.cfg.tag.size_m) || 0.06) };
+  if (sc.moving) {
+    p.yaw += 25 * Math.sin(t * 0.7);
+    p.d *= 1 + 0.3 * Math.sin(t * 0.43);
+    p.b += 8 * Math.sin(t * 0.31);
+  }
+  return p;
+}
+function drawTagScene(sc, t) {
+  const p = sceneTag(sc, t), x = sc.canvas.getContext("2d", { willReadFrequently: true }), w = sc.w, h = sc.h;
+  sc.truth = p;
+  const g = x.createLinearGradient(0, 0, 0, h);
+  g.addColorStop(0, "#8d939b");
+  g.addColorStop(1, "#5a5e66");
+  x.fillStyle = g;
+  x.fillRect(0, 0, w, h);
+  const f = (w / 2) / Math.tan(fovOf(sc.cam) * Math.PI / 360), cx = w / 2, cy = h / 2, rad = Math.PI / 180;
+  const B = p.b * rad, El = p.e * rad, A = (p.yaw - p.b) * rad;
+  const T = [p.d * Math.sin(B) * Math.cos(El), -p.d * Math.sin(El), p.d * Math.cos(B) * Math.cos(El)];
+  const N = [Math.sin(A), 0, -Math.cos(A)], Rv = [Math.cos(A), 0, Math.sin(A)], cell = p.size / 8, half = cell * 5;
+  let x0 = w, y0 = h, x1 = 0, y1 = 0;
+  [[-1, -1], [1, -1], [1, 1], [-1, 1]].forEach(s => {
+    const P = [T[0] + s[0] * half * Rv[0], T[1] + s[1] * half, T[2] + s[0] * half * Rv[2]];
+    if (P[2] <= 0.01) return;
+    const u = cx + f * P[0] / P[2], v = cy + f * P[1] / P[2];
+    x0 = Math.min(x0, u); x1 = Math.max(x1, u); y0 = Math.min(y0, v); y1 = Math.max(y1, v);
+  });
+  x0 = clamp(Math.floor(x0) - 1, 0, w); y0 = clamp(Math.floor(y0) - 1, 0, h);
+  x1 = clamp(Math.ceil(x1) + 1, 0, w); y1 = clamp(Math.ceil(y1) + 1, 0, h);
+  if (x1 <= x0 || y1 <= y0) return;
+  const im = x.getImageData(x0, y0, x1 - x0, y1 - y0), px4 = im.data, bw = x1 - x0, nt = N[0] * T[0] + N[2] * T[2];
+  for (let j = 0; j < y1 - y0; j++) for (let i = 0; i < bw; i++) {
+    let sum = 0, hits = 0;
+    for (let sy = 0; sy < 3; sy++) for (let sx = 0; sx < 3; sx++) {
+      const dx = (x0 + i + (sx + 0.5) / 3 - cx) / f, dy = (y0 + j + (sy + 0.5) / 3 - cy) / f;
+      const nd = N[0] * dx + N[2];
+      if (Math.abs(nd) < 1e-9) continue;
+      const lam = nt / nd;
+      const q0 = lam * dx - T[0], q1 = lam * dy - T[1], q2 = lam - T[2];
+      const a = (q0 * Rv[0] + q2 * Rv[2]) / cell + 5, b = q1 / cell + 5;
+      if (a < 0 || b < 0 || a >= 10 || b >= 10) continue;
+      hits++;
+      sum += TAG0[Math.floor(b)][Math.floor(a)] === "#" ? 28 : 232;
+    }
+    if (!hits) continue;
+    const k = (j * bw + i) * 4, cover = hits / 9, val = sum / hits;
+    for (let c = 0; c < 3; c++) px4[k + c] = px4[k + c] * (1 - cover) + val * cover;
+  }
+  x.putImageData(im, x0, y0);
+}
+
+function eyesDebug() {
+  return { status: EYE.status, on: EYE.on, want: EYE.want, seq: EYE.seq, applied: EYE.applied, camera: EYE.cam, live: EYE.live, source: EYE.source, ready: EYE.ready, engine: EYE.engine, fallback: EYE.fallback, fps: EYE.fps, frames: EYE.frames, last: EYE.last, truth: EYE.scene ? EYE.scene.truth : null, seen: { x: SEEN.x, y: SEEN.y, w: SEEN.w, track: SEEN.track } };
+}
+function eyesLine() {
+  if (!EYE.cfg.camera) return "";
+  const r = EYE.last;
+  return "\neyes " + EYE.status + (EYE.live ? " " + EYE.cam + " " + EYE.fps.toFixed(0) + "/s" + (r ? " " + r.people.length + "p " + r.tags.length + "t" : "") : "");
+}
+
+function now() {
+  return performance.now() / 1000;
+}
+let lastT = now(), frames = 0, fpsAt = now(), fps = 0;
+let shown = null, changedAt = now(), pending = false, waiting = 0;
+const IDLE_AFTER = 0.25, IDLE_MS = 50;
+const EARS = { on: false, words: false, muted: false };
+function drawEars() {
+  if (!EARS.on && !EARS.muted) return;
+  const c = EARS.muted ? [150, 150, 160] : (EARS.words ? [120, 190, 255] : [90, 120, 170]);
+  const a = EARS.muted ? 0.5 : (EARS.words ? 0.8 : 0.45);
+  const x = SH.mx, y = SH.my;
+  px(x + 4, y, c, a); px(x + 3, y + 1, c, a); px(x + 4, y + 2, c, a);
+  px(x + 5, y, c, a); px(x + 6, y + 1, c, a); px(x + 5, y + 2, c, a);
+  if (EARS.muted) { const r = [230, 70, 60]; px(x + 3, y + 3, r, 0.85); px(x + 4, y + 2, r, 0.85); px(x + 5, y + 1, r, 0.85); px(x + 6, y, r, 0.85); }
+}
+function drawSeeing() {
+  if (EYE.live || EYE.brainCam) px(1 + SH.mx, 1 + SH.my, [80, 220, 120], 0.7);
+}
+function render(t) {
+  const dt = Math.min(0.1, Math.max(0, t - lastT));
+  lastT = t;
+  updateFace(t, dt);
+  shiftAt(t);
+  if (target.alarm) {
+    drawAlarm(t, String(target.alarm));
+    drawSeeing();
+    drawEars();
+    present();
+    return;
+  }
+  fill(BG);
+  const a = sceneAlpha(t);
+  if (!scene || scene.mode === "overlay" || a < 1) drawFace(t);
+  if (scene && a > 0) {
+    LA = a;
+    drawScene(t, scene.mode === "overlay");
+    LA = 1;
+  }
+  drawRipples(t);
+  if (linkDownSince && t - linkDownSince > 3) px(W - 2 - SH.mx, 1 + SH.my, [200, 40, 40], 0.8);
+  drawSeeing();
+  drawEars();
+  present();
+}
+function present() {
+  const u = new Uint32Array(d.buffer);
+  if (shown && shown.length === u.length) {
+    let same = true;
+    for (let i = 0; i < u.length; i++) if (u[i] !== shown[i]) { same = false; break; }
+    if (same) return;
+    shown.set(u);
+  } else {
+    shown = u.slice();
+  }
+  changedAt = now();
+  ctx.putImageData(img, 0, 0);
+}
+function schedule() {
+  if (pending || waiting) return;
+  if (now() - changedAt < IDLE_AFTER) {
+    pending = true;
+    requestAnimationFrame(tick);
+  } else {
+    waiting = setTimeout(() => { waiting = 0; pending = true; requestAnimationFrame(tick); }, IDLE_MS);
+  }
+}
+function tick() {
+  pending = false;
+  frame();
+}
+function rouse() {
+  changedAt = now();
+  if (waiting) {
+    clearTimeout(waiting);
+    waiting = 0;
+    schedule();
+  }
+}
+function bench(n) {
+  const count = Math.max(1, n | 0), t0 = performance.now();
+  for (let i = 0; i < count; i++) render(now());
+  return (performance.now() - t0) / count;
+}
+function frame() {
+  const t = now();
+  render(t);
+  frames++;
+  if (t - fpsAt >= 1) {
+    fps = frames / (t - fpsAt);
+    frames = 0;
+    fpsAt = t;
+    if (DEBUG) dbg.textContent = fps.toFixed(0) + " fps  " + W + "x" + H + "\n" + target.expression + "  chaos " + (+target.chaos).toFixed(1) + (scene ? "\nscene " + scene.id + " " + scene.els.length + " lines" : "") + eyesLine();
+  }
+  schedule();
+}
+function start(reg) {
+  REG = reg;
+  PAL = {};
+  Object.keys((reg && reg.palette) || {}).forEach(k => { PAL[k] = hex(reg.palette[k]); });
+  if (reg && reg.elements) {
+    const missing = Object.keys(reg.elements).filter(n => !R[n]);
+    if (missing.length) console.warn("no drawing for", missing.join(", "));
+  }
+  if (DEBUG) dbg.style.display = "block";
+  window.pebble = { apply: apply, render: render, bench: bench, now: now, state: () => ({ target: target, shape: F.shape, scene: scene, W: W, H: H, fps: fps }), elements: Object.keys(R), eyes: eyesDebug };
+  resize();
+  window.addEventListener("resize", resize);
+  eyesBoot();
+  connect();
+  schedule();
+}
+let reg = null;
+try { reg = JSON.parse(document.getElementById("registry").textContent); } catch (err) { reg = null; }
+if (reg) start(reg);
+else fetch("/elements.json").then(r => r.json()).then(start).catch(() => start(null));
+})();
+</script>
+<script src="/text_layer.js"></script>
+</body>
+</html>
