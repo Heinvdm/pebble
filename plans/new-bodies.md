@@ -612,7 +612,7 @@ The owner's question: could Pebble live in a full humanoid like INRIA's Poppy Hu
 ### Where the money goes in the original
 - A complete Poppy costs US$8,000–9,000, about 60 % of it on 25 Dynamixel servos:
   - 19 MX-28AT, about €245 each;
-  - 4 MX-64AT in the hips, about €350 each;
+  - 4 MX-64AT, about €350 each: both hips' forward swing (`hip_y`) and the abdomen's forward and sideways bend (`abs_y`, `abs_x`), per Poppy's configuration file;
   - 2 AX-12A in the head, about €45 each.
 - The original paper put the actuators at €4,700 of €7,500, and €1,200 for professional 3D printing in polyamide.
 
@@ -621,7 +621,7 @@ The owner's question: could Pebble live in a full humanoid like INRIA's Poppy Hu
 | Original | Replacement | Torque (stall, at 12 V) | Size | Weight | Price seen |
 | --- | --- | --- | --- | --- | --- |
 | 19 × MX-28AT (2.5 Nm, 35.6 × 50.6 × 35.5 mm, 77 g) | Feetech STS3215-C018 | 30 kg·cm (about 2.9 Nm), rated 10 kg·cm | 45.2 × 24.7 × 35 mm | 55 g | about US$26–29 |
-| 4 × MX-64AT (126 g), hips | Feetech STS3250 | 50 kg·cm (about 4.9 Nm), rated 16 kg·cm, a little under the MX-64 | the same body as the STS3215 | 74.5 g | about €76–US$125 |
+| 4 × MX-64AT (126 g): hip swing and abdomen | Feetech STS3250 | 50 kg·cm (about 4.9 Nm), rated 16 kg·cm, a little under the MX-64 | the same body as the STS3215 | 74.5 g | about €76–US$125 |
 | 2 × AX-12A, head | Feetech STS3215-C018 | as above | as above | 55 g | about US$26–29 |
 
 - All 25 come to about US$900, against about €4,700.
@@ -651,7 +651,7 @@ The same Feetech servos cost much less on AliExpress. Prices are New Zealand dol
   - the HLS3950M, 50 kg, NZ$121.19, in a different case;
   - Hiwonder's HTS-35H, NZ$37–41, on another protocol, so it needs a second bus;
   - the 7.4 V STS3215: 19.5 kg·cm, too weak.
-- **Stronger hips, if the STS3250 isn't enough:**
+- **Stronger hips and abdomen, if the STS3250 isn't enough:**
   - Waveshare's RSBL85-12, 85 kg·cm and brushless, about NZ$330 each;
   - a Steadywin GIM6010-8 with its driver, NZ$145 (see "Later: brushless joints" below);
   - against the MX-64AT at about €350 (about NZ$690).
@@ -730,7 +730,7 @@ Prices are New Zealand dollars without GST, as in "Buying the servos".
   | Choice | Cost (NZ$, without GST) |
   | --- | --- |
   | All Feetech ("Buying the servos") | about 1,050 |
-  | Home-built brushless in the 4 hips only, Feetech elsewhere | about 880–940, with stronger hips |
+  | Home-built brushless in the 4 strong joints only (hip swing and abdomen), Feetech elsewhere | about 880–940, with stronger joints there |
   | Home-built brushless in the 10–12 leg joints, Feetech elsewhere | about 1,000–1,200 |
   | All 25 home-built brushless | about 1,250–1,630 |
 
@@ -741,6 +741,84 @@ Prices are New Zealand dollars without GST, as in "Buying the servos".
   - **Current:** 5–15 A a joint in a hard move at 12 V. Size the drivers, wiring and fuses for it.
   - **Spares:** expect to replace a few boards and reprint a few gearboxes.
 - **What brushless buys is better legs, not a lower price:** joints that feel force and give when pushed. That is the sensible mix above.
+
+### Options looked at: cables and other actuators (23 October 2026, not designed yet)
+Two options passed a check of whether this repo's tools can design them and whether every part they need is counted. Nothing is drawn yet; the design waits for the owner.
+
+**Can it be designed here?** Yes, within these limits:
+- **CAD:** the same Python and manifold3d tools as the tank body, with `cad/check.py` for collisions and joint ranges.
+  - Poppy's parts exist only as 52 STL meshes and a SolidWorks assembly without its part files. Every changed part is redrawn as Python, with the STL as the reference.
+  - Cables change more parts than the plain servo swap: the pelvis, thighs, shins and torso.
+- **Simulation:** MuJoCo loads Poppy's URDF (joint positions, limits and masses) and models cables as tendons over pulleys. It isn't in the repo yet (`pip install mujoco`, Apache-2.0).
+- **Electronics and firmware:** ESP32 limb boards like the tank body's, and LeRobot's Feetech driver on the Pi. The maths is standard: undoing the pull the knee puts on the ankle cable, mixing the hip differential, the two-rod ankle, and the twisted-string model.
+- **Only the bench can settle:**
+  - how much Vectran stretches and drags over printed pulleys;
+  - push-rod speed and force with the chosen motor and screw lead;
+  - how long the hand strings last;
+  - the real masses.
+
+**Option A: the cable layout (23 servos, all STS3215, none of the strong ones)**
+
+| Part | Poppy | With cables | Motors |
+| --- | --- | --- | --- |
+| Head | 2 | Unchanged: direct pan and tilt for the phone | 2 |
+| Arms | 8 | Unchanged: cables across a 3-axis shoulder get messy | 8 |
+| Spine | 5 (2 strong) | One pair of cables bends both sections forward and back together, a second pair bends them sideways, twist stays direct. Motors low in the pelvis; the cables pull about 3 times further from the bend than the servo's drum is wide, roughly 7–8 Nm after friction (estimate) | 3 |
+| Hips | 6 (2 strong) | Forward swing and sideways lift share two servos through a cable differential in the pelvis: either axis gets both servos' strength, up to about 5.8 Nm, when the other is lightly loaded. Turn stays direct | 6 |
+| Knees | 2 | Servo at the top of the thigh, cable to a drum at the knee | 2 |
+| Ankles | 2 | Servo on the thigh, cable over a pulley on the knee axis to the ankle; software undoes the knee's pull | 2 |
+
+- Each shin and foot loses about 110 g of servo.
+- Vectran, not Dyneema: it barely stretches under a load that never lets up. Steel wire rope would need pulleys 20–30 times its thickness.
+- An angle sensor on every cable joint reads the joint itself, not the servo, so stretch doesn't become error.
+
+**Option B: push rods and twisted strings, on top of A**
+- **Knees:** a geared motor turns a T8 lead screw that pushes a rod.
+  - A 2 mm lead holds the robot up with the power off, but is slow: roughly 50–60°/s at the knee (estimate).
+  - An 8 mm lead is four times faster, but doesn't hold itself.
+- **Ankles:** two push rods side by side tip each foot forward and back and side to side. That adds the sideways balance Poppy's ankles lack, for one more motor per leg.
+- **Hands:** a small motor twists two strings together to close three fingers; springs open them. The strings wear, and are replaced like a part.
+- The four knee and ankle servos come out: 19 servos, 6 push rods and 2 hand motors.
+
+**Every part they need** (NZ$ without GST; AliExpress search-page prices on 23 October 2026, so open the listing first; counts are before design)
+
+| Part | Option | Count | About (NZ$) |
+| --- | --- | --- | --- |
+| STS3215 12 V, four 6-packs ("Buying the servos") | A: 23 + 1 spare; B: 19 + 5 spares | 24 | 767 |
+| Vectran line, about 1 mm | A, B | 50–100 m | 15–30 |
+| Crimp sleeves or spliced ends, and a crimp tool | A, B | about 40 | 15 |
+| Cable tensioners: printed, on M3 screws | A, B | about 16 | in filament and screws |
+| Idler pulley bearings (MR105, 623 or 625) | A, B | 30–40 | 30–40 |
+| Thin bearings for the drums and the hip differential (6800–6805) | A, B | 8–12 | 10–15 |
+| Steel pins or bolts for pulley axles | A, B | about 30 | 5–10 |
+| MT6701 angle sensors with 6 × 2.5 mm magnets | A: 10; B: 16 | 10–16 | 45–80 |
+| Sensor reader: a small board on the Pi, or the limb boards, plus an I2C splitter (every MT6701 has the same I2C address) | A, B | 1–2 | 10–20 |
+| Springs: cable pre-tension, hand opening | A, B | about 10 | 5–10 |
+| Extra filament for drums, pulleys and rod mounts | A, B | about 0.5 kg | 15–25 |
+| JGA25-370 12 V geared motor with encoder; speed picked on the bench | B | 6 + 1 spare | 55–135 |
+| T8 lead screw and anti-backlash nut | B | 6 + 1 spare | 40–65 |
+| Shaft couplers and thrust bearings | B | 6 sets | 15–25 |
+| Rod-end ball joints (M4 or M5) | B | 12 | 15–35 |
+| Ankle cross joints: printed, 4 bearings each | B | 2 | 5–10 |
+| Hand motors: N20 with encoder | B | 2 | about 28 |
+| Motor drivers: DRV8871 for the push rods, DRV8833 for the hands | B | 6 + 1 | 15–25 |
+| Limb boards: an ESP32-S3 counts only 4 motor encoders in hardware, so two boards, or steer by the joint sensors alone | B | 2 | 20–30 |
+
+- **Option A:** about NZ$920–980, against about NZ$1,080 for plain servos with one spare.
+- **Option B:** about NZ$220–380 more than A, so more than plain servos. Buying 20 servos instead of 24 takes about NZ$120 off.
+- **Every version, cables or not:** the actuator power cut for section 4's safety chip, rated 30–40 A, with a fuse per branch (about NZ$30–50). It isn't in "Cost (estimate)" yet.
+- **Unchanged:** the Pi, the bus adapter, the packs and charger, the regulator, and the screws already counted in "Cost (estimate)".
+- **Tools, if not already owned:** a bench power supply with a current limit, for first runs of the motors, and a luggage scale to set cable tension.
+
+**Looked at and set aside:**
+- **One motor for several joints through a switching gearbox:**
+  - a clutch and brake per joint costs about NZ$90 a joint (micro clutch NZ$52, holding brake from NZ$37), more than a servo;
+  - a selector gearbox saves only NZ$15–20 a joint, moves one joint at a time, wastes about half the torque in its worm gears, can't be moved by hand and strips in a fall;
+  - a one-way-bearing box pushes each joint one way only.
+  - Fixed couplings, like option A's spine and the hands, are the kind worth having.
+- **Air muscles:** the compressor is noisy beside Pebble's hearing, each muscle needs two valves (NZ$10–18 each), and air is poor on battery.
+- **Memory wire and coiled nylon:** seconds to cool, about 1–2 % efficient.
+- **Cheaper motors driving joints directly** (MG996R, DS3218, N20, JGB37-520): no position feedback, too weak, or dearer once a driver and sensor are added.
 
 ### Trade-offs
 - Feetech servos' own control is cruder than the Dynamixels', so expect more tuning for the same smoothness.
@@ -755,7 +833,8 @@ Section 4 applies to this body. In addition:
 
 ### For the owner to decide
 - two or three packs;
-- STS3250s in the hips, or keep MX-64s there (stronger, dearer), or a Steadywin GIM6010-8 (stronger, NZ$145 each; see "What brushless joints would cost");
+- STS3250s in the hip swing and abdomen joints, or keep MX-64s there (stronger, dearer), or a Steadywin GIM6010-8 (stronger, NZ$145 each; see "What brushless joints would cost");
+- the cable layout (option A) and the push rods and twisted strings (option B) in "Options looked at", or plain servos;
 - grippers now or later;
 - which Pi.
 
