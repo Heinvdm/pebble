@@ -629,6 +629,33 @@ The owner's question: could Pebble live in a full humanoid like INRIA's Poppy Hu
 - They report position, load, current, voltage and temperature, and cut out on overload and overheating. That makes teaching by hand (section 2b) precise.
 - The hexapod research found reports of STS3215 gears stripping after stalls (`research_notes/Hexapod motors and boards/smart_servos_alternatives.md`). Keep torque limits set in every servo, and buy spares.
 
+### Buying the servos: AliExpress prices (23 October 2026)
+The same Feetech servos cost much less on AliExpress. Prices are New Zealand dollars without GST (15 % is added at checkout), read from each listing's 12 V servo option. US$1 was NZ$1.76 that day.
+- **Open the listing before trusting a price.** The prices on AliExpress search pages are mostly for brackets, driver boards or the weaker 7.4 V version.
+
+| Servo | Listing | Price | Each |
+| --- | --- | --- | --- |
+| STS3215 12 V 30 kg | [stemedu Official Store, 6-pack](https://www.aliexpress.com/item/1005009214017320.html) (110 sold) | NZ$191.79 | NZ$32 |
+| STS3215 12 V 30 kg | [Waveshare ST3215, single](https://www.aliexpress.com/item/1005009743256558.html): made by Feetech under Waveshare's name, same bus protocol | NZ$34.89 | NZ$34.89 |
+| STS3215 12 V 30 kg | [stemedu Official Store, single](https://www.aliexpress.com/item/1005008856944075.html) (477 sold) | NZ$37.89 | NZ$37.89 |
+| STS3250 12 V 50 kg | [2-pack](https://www.aliexpress.com/item/1005010806397582.html) (168 sold, 4.6 stars) | NZ$184.19 | NZ$92 |
+| STS3250 12 V 50 kg | [RCmall Store](https://www.aliexpress.com/item/1005012463197951.html) or [stemedu Official Store](https://www.aliexpress.com/item/1005009439334793.html), single | NZ$108.79–111.99 | NZ$109–112 |
+
+- **All 25:** three 6-packs, three Waveshare singles and two STS3250 2-packs come to NZ$1,048 without GST: about NZ$1,205 with it, or about US$595. The table above puts them at about US$900 (about NZ$1,580).
+- **Spares:** a fourth 6-pack in place of the three singles gives 3 spare STS3215s, for NZ$1,136 in all.
+- **Cheaper, but unproven:**
+  - a [Gintech ST3215 12 V at NZ$23.29](https://www.aliexpress.com/item/1005010341100355.html), from a store with 4 sales;
+  - a [vvhobby STS3215 at NZ$30.39](https://www.aliexpress.com/item/1005008486898657.html), whose title says 12 V 30 kg but whose description gives 6 V figures. Ask the seller to confirm it's the C018 first.
+- **Looked at, and not cheaper:**
+  - the all-metal STS3235, 30 kg, NZ$78.99: a tougher choice if gears strip;
+  - the HLS3950M, 50 kg, NZ$121.19, in a different case;
+  - Hiwonder's HTS-35H, NZ$37–41, on another protocol, so it needs a second bus;
+  - the 7.4 V STS3215: 19.5 kg·cm, too weak.
+- **Stronger hips, if the STS3250 isn't enough:**
+  - Waveshare's RSBL85-12, 85 kg·cm and brushless, about NZ$330 each;
+  - a Steadywin GIM6010-8 with its driver, NZ$145 (see "Later: brushless joints" below);
+  - against the MX-64AT at about €350 (about NZ$690).
+
 ### Keeping Poppy's shape
 - The Feetech body fits inside the MX-28's outline, but the screw holes, horn and spline differ. Poppy's forum confirms that different servos don't drop into the stock parts.
 - So every servo pocket and horn mount is redrawn, while the outer shapes and the joint positions stay as Poppy's. Mostly that means filling the pockets in to hold the smaller servo.
@@ -665,6 +692,8 @@ The owner's question: could Pebble live in a full humanoid like INRIA's Poppy Hu
 ### Cost (estimate)
 About US$1,100–1,300 in all: about US$900 of servos, plus the Pi and bus adapter, the packs and a balance charger, filament, bearings and screws. The original is US$8,000–9,000.
 
+With the servos from AliExpress (about US$595, see "Buying the servos"), the whole robot comes to about US$800–1,000.
+
 ### Hands
 Poppy's hands don't grip. A small gripper on an STS3215 at each wrist would add the fetching and carrying that `everyday-uses.md` lists as missing. Not designed yet.
 
@@ -673,6 +702,45 @@ Poppy's hands don't grip. A small gripper on an STS3215 at each wrist would add 
 - They give torque control and joints that give when pushed, which is better for walking, falling and learning.
 - The catch: bigger joints, a redesign of the parts around them, and 12–16 control loops to tune.
 - **The sensible mix if it comes:** brushless joints in the hips, knees, ankles and perhaps the shoulders; Feetech servos for the head, wrists and grippers.
+
+### What brushless joints would cost (AliExpress, 23 October 2026)
+Brushless joints don't make the robot cheaper. A Feetech servo brings the motor, gearbox, encoder, driver and case for NZ$32; built from parts, a joint costs nearly twice that. Having Claude write the joint code doesn't change this: the motor control already exists as the open SimpleFOC library, and the cost is in the parts, the bulkier joints and the tuning on the bench.
+
+Prices are New Zealand dollars without GST, as in "Buying the servos".
+
+| Part of one home-built joint | Listing | Price |
+| --- | --- | --- |
+| 5010 360KV drone motor | [single](https://www.aliexpress.com/item/1005005438724862.html) (362 sold) | NZ$20.09 |
+| MT6701 magnetic encoder | a module, from several sellers | about NZ$4–5 |
+| Half of a two-motor FOC board with current sensing | [MKS ESP32 FOC Mega](https://www.aliexpress.com/item/1005011652368824.html), NZ$29.89 for two motors; boards for higher currents cost up to about NZ$57 | NZ$15–30 |
+| Two thin bearings, a printed 10:1 planetary gearbox, magnet, screws, wires | 6806 bearings about NZ$1 each in tens | about NZ$10 |
+| **One joint** | | **about NZ$50–65** |
+
+- This is less than the US$65–74 a joint above, which assumed better motors. A drone motor like this needs a driver that can give 5–15 A.
+- **Ready-made brushless joints** (motor, gearbox, encoder and driver in one):
+
+  | Module | Listing | Price |
+  | --- | --- | --- |
+  | Steadywin GIM6010-8 with a GDS68 driver, sold as 5 Nm | [listing](https://www.aliexpress.com/item/1005013199573112.html) (367 sold) | NZ$145.39 |
+  | Steadywin GIM4310-10 with a GDZ34 or GDS34 driver | [listing](https://www.aliexpress.com/item/1005013054939951.html) (376 sold) | NZ$186–232 |
+  | Damiao DM-J4310-2EC | several listings | NZ$230 and up |
+
+- **The whole robot's servos:**
+
+  | Choice | Cost (NZ$, without GST) |
+  | --- | --- |
+  | All Feetech ("Buying the servos") | about 1,050 |
+  | Home-built brushless in the 4 hips only, Feetech elsewhere | about 880–940, with stronger hips |
+  | Home-built brushless in the 10–12 leg joints, Feetech elsewhere | about 1,000–1,200 |
+  | All 25 home-built brushless | about 1,250–1,630 |
+
+- **Costs the code doesn't remove:**
+  - **Size:** a 5010 with its gearbox is about 60 mm across, against 45 × 25 × 35 mm for an STS3215. Poppy's limbs would be redrawn round it, not just their servo pockets.
+  - **Weight:** roughly 130–150 g a joint against 55 g (an estimate; weigh one). Over 25 joints that is about 2 kg more, and heavier legs need stronger joints.
+  - **Holding still:** a joint that gives when pushed draws current to hold a pose, while the STS3215's 345:1 gears hold it almost for free. Standing then costs battery, unless springs carry the weight as in the hexapod (section 7a).
+  - **Current:** 5–15 A a joint in a hard move at 12 V. Size the drivers, wiring and fuses for it.
+  - **Spares:** expect to replace a few boards and reprint a few gearboxes.
+- **What brushless buys is better legs, not a lower price:** joints that feel force and give when pushed. That is the sensible mix above.
 
 ### Trade-offs
 - Feetech servos' own control is cruder than the Dynamixels', so expect more tuning for the same smoothness.
@@ -687,7 +755,7 @@ Section 4 applies to this body. In addition:
 
 ### For the owner to decide
 - two or three packs;
-- STS3250s in the hips, or keep MX-64s there (stronger, dearer);
+- STS3250s in the hips, or keep MX-64s there (stronger, dearer), or a Steadywin GIM6010-8 (stronger, NZ$145 each; see "What brushless joints would cost");
 - grippers now or later;
 - which Pi.
 
@@ -716,3 +784,4 @@ Section 4 applies to this body. In addition:
 - [Dynamixel MX-28AT](https://robotis.us/dynamixel-mx-28at)
 - [Feetech STS3215](https://aifitlab.com/products/feetech-sts3215-servo-motor) and [STS3250](https://aifitlab.com/products/feetech-sts3250-servo-motor), and [prices at OpenELAB](https://openelab.io/it/collections/feetech-motor)
 - [A printed brushless actuator (Hackaday.io)](https://hackaday.io/project/177599-3d-printed-robotic-actuator) and [TipTap's](https://hackaday.io/project/163093-tiptap/discussion-140318)
+- AliExpress prices: the listings are linked in "Buying the servos" and "What brushless joints would cost". The exchange rate is from [Frankfurter](https://api.frankfurter.dev/v1/latest?from=USD&symbols=NZD,EUR) (22 October 2026 rates).
