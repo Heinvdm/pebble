@@ -587,3 +587,132 @@ The owner asked for a pebble-shaped shell round the 12-motor hexapod, then set i
   The sweep finds the centre-of-mass height for each orientation (the furthest point of the shell in that direction, minus the centre of mass in that direction). It lets many random starts slide downhill, and checks that they all end belly down.
 - **Drop-test** the closed shell before trusting the phone in it.
 - Interactive 3D sketches of this body (folding, hiding, walking and rolling back after a fall) were made for the owner as a claude.ai page, outside the repo.
+
+## 8. A humanoid body: Poppy on cheaper servos (owner's idea, 23 October 2026)
+The owner's question: could Pebble live in a full humanoid like INRIA's Poppy Humanoid, made much cheaper than the original, keeping Poppy's design and parts, with the phone as the main brain, a Raspberry Pi to drive the servos, and batteries to move it?
+
+**Decided (owner, 23 October 2026):**
+- Poppy Humanoid's design and printed parts: about 84 cm tall, 3.5 kg, 25 joints, with its 5-joint spine. Printed at home.
+- The phone is the brain, face and cameras, as in every body.
+- A Raspberry Pi drives the servos.
+- 3S LiPo packs of about 3,000 mAh, kept close to the centre of mass: in the pelvis and the lower belly, not in the limbs.
+
+**Looked at and set aside (23 October 2026):**
+
+| Robot | Cost to build | Why not |
+| --- | --- | --- |
+| PhoneBot (UCLA) | about US$400 without the phone | Legs only, no arms; the owner wants a full humanoid like Poppy |
+| Aster (a Poppy remix) | under US$200 | MG996R hobby servos; it can't walk |
+| Zeroth Bot (K-Scale) | about US$350 | 40–46 cm, no hands, and K-Scale has moved on from it |
+| Microban (Rhoban) | about US$567 | 30 cm, too small to carry a phone well on its XL330 servos |
+| HOPEJr (Hugging Face) | about US$3,000 estimated | Dexterous hands, but full-size and still mostly remote-controlled |
+| ToddlerBot (Stanford) | under US$6,000 | Has grippers, but most of the cost is Dynamixels and a Jetson |
+| Berkeley Humanoid Lite | under US$5,000 | Printed brushless joints; costly |
+
+### Where the money goes in the original
+- A complete Poppy costs US$8,000–9,000, about 60 % of it on 25 Dynamixel servos:
+  - 19 MX-28AT, about €245 each;
+  - 4 MX-64AT in the hips, about €350 each;
+  - 2 AX-12A in the head, about €45 each.
+- The original paper put the actuators at €4,700 of €7,500, and €1,200 for professional 3D printing in polyamide.
+
+### The servos: Feetech serial-bus servos in place of the Dynamixels
+
+| Original | Replacement | Torque (stall, at 12 V) | Size | Weight | Price seen |
+| --- | --- | --- | --- | --- | --- |
+| 19 × MX-28AT (2.5 Nm, 35.6 × 50.6 × 35.5 mm, 77 g) | Feetech STS3215-C018 | 30 kg·cm (about 2.9 Nm), rated 10 kg·cm | 45.2 × 24.7 × 35 mm | 55 g | about US$26–29 |
+| 4 × MX-64AT (126 g), hips | Feetech STS3250 | 50 kg·cm (about 4.9 Nm), rated 16 kg·cm, a little under the MX-64 | the same body as the STS3215 | 74.5 g | about €76–US$125 |
+| 2 × AX-12A, head | Feetech STS3215-C018 | as above | as above | 55 g | about US$26–29 |
+
+- All 25 come to about US$900, against about €4,700.
+- One bus and one voltage: all of them run on 12 V, like the originals.
+- They report position, load, current, voltage and temperature, and cut out on overload and overheating. That makes teaching by hand (section 2b) precise.
+- The hexapod research found reports of STS3215 gears stripping after stalls (`research_notes/Hexapod motors and boards/smart_servos_alternatives.md`). Keep torque limits set in every servo, and buy spares.
+
+### Keeping Poppy's shape
+- The Feetech body fits inside the MX-28's outline, but the screw holes, horn and spline differ. Poppy's forum confirms that different servos don't drop into the stock parts.
+- So every servo pocket and horn mount is redrawn, while the outer shapes and the joint positions stay as Poppy's. Mostly that means filling the pockets in to hold the smaller servo.
+- Redraw the parts as Python in `cad/`, like today's body, so `cad/check.py` can check collisions and joint ranges.
+- Print the legs and hips in PETG or a nylon-carbon filament with thick walls, not PLA; the original was printed in polyamide.
+- **Licences:** Poppy's hardware is CC BY-SA and its software GPL-3.0. The redrawn parts stay CC BY-SA; list them in NOTES.md ("Licences of the parts") once they're in the repo. For the servo code, LeRobot (Apache-2.0) has a Feetech driver in Python. Keep Waveshare's SCServo code out, as section 7a says.
+
+### The phone, the Pi and the link
+- **The phone goes in the head,** in place of Poppy's screen and camera, its screen the face. The two head servos pan and tilt it, so no tilt yoke is needed.
+  - Check that the head takes a Pixel 6 Pro lying sideways (about 166–168 × 78–80 mm in a slim case, `interfaces.md`). If not, widen the face plate and keep the outline.
+  - The phone (210 g plus its case) sits high up. Check the neck servos and balance with the real head.
+- **The Pi moves from Poppy's head to the torso or pelvis,** near the batteries.
+- **The link:** the phone talks to the Pi over USB, with the Pi in USB gadget mode so the phone stays host as it is with the ESP32 today (to check). Wi-Fi is the fallback. The Pi speaks the same link protocol as the wheeled body (`interfaces.md`), with a humanoid body profile (section 3).
+- **The servo bus:** the Pi drives the Feetech bus through a small bus adapter board.
+- **Reflexes and safety:** the reflexes (stop, sit, fall) run on the Pi, so they never wait on the phone. The Pi isn't a real-time board, so section 4's safety chip cuts servo power on "stop", a fall or a lost heartbeat, and the servos' own limits are the last backstop.
+
+### Power: 3S LiPos near the centre of mass
+- A 3S LiPo (11.1 V nominal, 12.6 V full) feeds the 12 V servos directly. A 5 V regulator powers the Pi.
+- **The weight budget:** the servo swap saves about 620 g (19 × 22 g, plus 4 × about 51 g). A 3S 3,000 mAh pack weighs about 230–260 g.
+  - **Two packs, about 500 g:** no heavier than the original 3.5 kg.
+  - **Three packs, about 750 g:** about 150 g over the original. Treat three as the limit.
+  - The phone against Poppy's original head electronics isn't counted yet; weigh both.
+- **Where:**
+  - the pelvis, between the hip servos, first: low and central, and still when the spine bends;
+  - the lower belly, just above it, second;
+  - never the chest, where the 5-joint spine swings the weight about, and never the shins, feet or forearms, where weight costs the servos most.
+- **Wiring:** the packs in parallel, identical, at the same charge, each with its own fuse, and balance-charged separately.
+- **Falls:** humanoids fall a lot, and a crushed LiPo can catch fire. Each pack sits in a rigid printed pocket, away from the joints' pinch points.
+- **Current:** an STS3215 can draw 2.7 A stalled, and the STS3250s more, so 25 servos straining together can pull tens of amps. Three packs in parallel cover it easily.
+- **Option:** 3S packs of high-drain 18650 cells. Their steel cans survive falls far better than pouches.
+- **Runtime (estimate, to measure):** at an average of 3–6 A while moving, each 3,000 mAh pack gives about 30–45 minutes. Three give about 1.5–2 hours, more when it stands still.
+- **Charging the phone:** the same open question as the hexapod (section 7a).
+
+### Cost (estimate)
+About US$1,100–1,300 in all: about US$900 of servos, plus the Pi and bus adapter, the packs and a balance charger, filament, bearings and screws. The original is US$8,000–9,000.
+
+### Hands
+Poppy's hands don't grip. A small gripper on an STS3215 at each wrist would add the fetching and carrying that `everyday-uses.md` lists as missing. Not designed yet.
+
+### Later: brushless joints where the torque is
+- Brushless motors with encoders and FOC, in printed gearboxes, cost about US$65–74 a joint built at home, against about US$200 for each original Dynamixel.
+- They give torque control and joints that give when pushed, which is better for walking, falling and learning.
+- The catch: bigger joints, a redesign of the parts around them, and 12–16 control loops to tune.
+- **The sensible mix if it comes:** brushless joints in the hips, knees, ankles and perhaps the shoulders; Feetech servos for the head, wrists and grippers.
+
+### Trade-offs
+- Feetech servos' own control is cruder than the Dynamixels', so expect more tuning for the same smoothness.
+- Walking an 84 cm biped is hard; Poppy was built for walking research. Pebble learns its gait in a sim first (section 2b, MuJoCo), then on a harness.
+
+### Safety
+Section 4 applies to this body. In addition:
+- **A falling 4 kg robot can hurt a child or a pet.** Walking is learned on a stand or harness, only in clear space, and never with a person or animal near.
+- **Torque limits** are set in every servo, and learning never raises them.
+- **Falls protect the phone:** a planned way of falling that keeps the phone's face off the floor. To design in the sim.
+- **Pinch points** at the knees, elbows, hips and spine need gaps or covers.
+
+### For the owner to decide
+- two or three packs;
+- STS3250s in the hips, or keep MX-64s there (stronger, dearer);
+- grippers now or later;
+- which Pi.
+
+### Build order
+1. Get Poppy's parts files, redraw one leg's servo pockets for the STS3215 and STS3250 in `cad/`, and print it.
+2. Bench-test that leg on the Pi: torque, heat, current, and holding a pose.
+3. The phone in the head, and the link to the Pi.
+4. The whole robot on a stand: standing, sitting, arm and head moves, the power budget, and weighing it.
+5. A MuJoCo model, and walking in the sim.
+6. Walking on a harness, then free.
+7. Pebble tuning its own gaits (section 2).
+
+### Tests
+- No redrawn part moves any of Poppy's joint positions.
+- "Stop" works mid-step.
+- Every fall in the sim keeps the phone's face off the floor.
+- The packs' current limit is never exceeded.
+- Learning never raises a servo's torque limit.
+- It never walks near a person or an animal.
+
+### Where the numbers came from (23 October 2026)
+- [Poppy Humanoid repository and cost](https://github.com/poppy-project/poppy-humanoid)
+- [Poppy servo counts and prices (Polytech)](https://forge.polytech.uca.fr/attachments/download/14493/Poppy_robot.pdf)
+- [The original Poppy paper (IROS 2013)](http://vigir.missouri.edu/~gdesouza/Research/Conference_CDs/IEEE_IROS_2013/media/files/0591.pdf)
+- [Poppy forum: different servos don't fit the stock parts](https://poppy.discourse.group/t/some-questions-on-the-poppy-humanoid/4817)
+- [Dynamixel MX-28AT](https://robotis.us/dynamixel-mx-28at)
+- [Feetech STS3215](https://aifitlab.com/products/feetech-sts3215-servo-motor) and [STS3250](https://aifitlab.com/products/feetech-sts3250-servo-motor), and [prices at OpenELAB](https://openelab.io/it/collections/feetech-motor)
+- [A printed brushless actuator (Hackaday.io)](https://hackaday.io/project/177599-3d-printed-robotic-actuator) and [TipTap's](https://hackaday.io/project/163093-tiptap/discussion-140318)
